@@ -1787,7 +1787,7 @@ pre code {
   background-color: #fff;
   border-color: #bac8f3;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(129, 78, 223, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(167, 156, 189, 0.267);
 }
 .form-control::-webkit-input-placeholder {
   color: #858796;
@@ -2210,7 +2210,8 @@ textarea.form-control.is-invalid {
   }
 }
 .btn {
-  display: inline-block;
+  width:135px;
+  /* display: inline-block; */
   font-weight: 400;
   color: #858796;
   text-align: center;
@@ -2234,13 +2235,13 @@ textarea.form-control.is-invalid {
   }
 }
 .btn:hover {
-  color: #858796;
+  color: #4c4f5e;
   text-decoration: none;
 }
 .btn.focus,
 .btn:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+  /* box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25); */
 }
 .btn.disabled,
 .btn:disabled {
@@ -9567,9 +9568,9 @@ a:focus {
 }
 .scroll {
   position: fixed;
-    overflow-y: scroll;
-    top: 0;
-    bottom: 0;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -9740,7 +9741,6 @@ a:focus {
 .sidebar-dark hr.sidebar-divider {
   border-top: 2px solid rgba(255, 255, 255, 0.15);
   width: 100%;
-
 }
 .sidebar-dark .sidebar-heading {
   color: rgba(255, 255, 255, 0.4);
@@ -10278,6 +10278,44 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+
+.header-href {
+  color: #727272;
+  font-family: "Poppins", sans-serif;
+}
+.signup-bg {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff008c+0,ff6357+100 */
+  /* FF3.6-15 */
+  background: -moz-linear-gradient(right, #ec89c0 0%, #ffb184 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  /* background: -webkit-linear-gradient(right, #ff008c 0%, #575aff 100%); */
+  background: linear-gradient(to right, #ec89c0 0%, #ffb184 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* background: -webkit-linear-gradient(right, #ff008c 0%, #575aff 100%); */
+  background: linear-gradient(to right, #ec89c0 0%, #ffb184 100%);
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ec89c0', endColorstr='#ffb184',GradientType=1 );
+}
+.signup-btn {
+  background: transparent;
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #f82d4f;
+  color: #f82d4f;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.signup-btn:hover {
+  background: #f5403a;
+  color: #ffffff;
+}
 .login-bg {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff008c+0,ff6357+100 */
   /* FF3.6-15 */
@@ -10290,10 +10328,6 @@ body.sidebar-toggled footer.sticky-footer {
   background: linear-gradient(to right, #ec89c0 0%, #aeaff8 100%);
   /* IE6-9 */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff008c', endColorstr='#575aff',GradientType=1 );
-}
-.header-href {
-  color: #727272;
-  font-family: "Poppins", sans-serif;
 }
 .login-btn {
   background: transparent;
@@ -10337,6 +10371,25 @@ body.sidebar-toggled footer.sticky-footer {
 }
 .CV-field-title {
   color: #690c86;
-  /*#7a7878*/
   font-size: 20px;
+}
+.ul-noBullet{
+  list-style-type:none;
+  padding: 0;
+  margin-top: 0;
+}
+.fieldbar{
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e3e6f0;
+  border-radius: 0.4rem;
+  font-size: 15px;
+  font-weight: 500;
+ /* color: */
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;  
 }

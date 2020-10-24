@@ -2,9 +2,9 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
 
   <!-- Sidebar Toggle (Topbar) -->
-  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+  <!-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
     <i class="fa fa-bars"></i>
-  </button>
+  </button> -->
 
   <!-- Topbar Search -->
   <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -180,132 +180,107 @@
 
   <!-- Main Content -->
   <div id="content-wrapper" class="d-flex flex-column">
-    <div id="content">
-      <form>
-        <input id="formInput" type="hidden">
-        <div id="CVContent" class="container-fluid">
+    <div id="content" class="container-fluid container">
 
-          <!-- Education -->
-          <div class="card shadow mb-4 resize-drag"
-            style="position:absolute; left:265px; top:90px; height: 400px; width:630px;">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <span class="m-0 font-weight-bold CV-field-title">Education</span>
-              <div class="dropdown no-arrow">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                </a>
-                <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                  aria-labelledby="dropdownMenuLink">
-                  <div class="dropdown-header">Dropdown Header:</div>
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div> -->
+      <!-- Content position -->
+      <div style="position:absolute; left:268px; top:90px; height: 400px; width:980px;">
+        <!--  Due to sidebar, cannot use col *height is useless but cannot without it -->
+
+        <form>
+          <input id="formInput" type="hidden">
+
+          <div id="CVContent">
+            <div class="cotainer">
+              <div class="row">
+
+                <!-- Fieldbar -->
+                <div class="col-sm-2">
+                  <ul class="fieldbar ul-noBullet">
+                    <div class="my-3"></div>
+                    <!-- Nav Item - Dashboard -->
+                    <li class="nav-item mx-1">
+                      <button class="btn">
+                       Basic Information
+                      </button>
+                    </li>
+                    <hr>
+                    <!-- Nav Item - Charts -->
+                    <li class="nav-item mx-1">
+                      <button class="btn">
+                        Education
+                       </button>
+                    </li>
+                    <hr>
+                    <li class="nav-item mx-1">
+                      <button class="btn">
+                        Work Experience
+                    </li>
+                    <hr>
+                    <li class="nav-item mx-1">
+                      <button class="btn">
+                        Skill
+                       </button>
+                    </li>
+                    <hr>
+                    <li class="nav-item mx-1">
+                      <button class="btn">
+                        Education
+                       </button>
+                    </li>
+
+                   <div class="my-3"></div>
+                  </ul>
+                </div>
+
+                <!-- Content -->
+                <div class="col-sm-10 card shadow mb-4 resize-only">
+
+                  <p>jhjhjhjh</p>
+
+
+
+
+
+
+
+
+                </div>
+
               </div>
             </div>
-            <!-- Card Body -->
-            <div class="card-body">
-            </div>
+            <!-- End of container -->
           </div>
+        </form>
+      </div>
+    </div>
 
 
-          <!-- Basic info -->
-          <div class="card shadow mb-4 resize-drag"
-            style="position:absolute; left:915px; top:90px; height: 800px; width:340px;">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold CV-field-title">Basic Information</h6>
-              <!-- <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div> -->
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-              <!-- <div class="chart-pie pt-4 pb-2">
-                  <canvas id="myPieChart"></canvas>
-                </div> -->
-              <div class="mt-4 text-center small">
-                <span class="mr-2">
-                  <i class="fas fa-circle text-primary"></i> Direct
-                </span>
-                <span class="mr-2">
-                  <i class="fas fa-circle text-success"></i> Social
-                </span>
-                <span class="mr-2">
-                  <i class="fas fa-circle text-info"></i> Referral
-                </span>
-              </div>
-            </div>
-          </div>
+    <!-- End of Main Content -->
 
-
-          <!-- Work Experience -->
-          <div class="card shadow mb-4 resize-drag"
-            style="position:absolute; left:265px; top:515px; height: 400px; width:630px;">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <span class="m-0 font-weight-bold CV-field-title">Work Experience</span>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-            </div>
-          </div>
-
-          <!-- <form>
-
-            <input type="date" class="resize-drag" style="position:absolute; left:315px; top:168px; width:150px;"
-              id="eduSchool1" value="Hong Kong Baptist Unviersity">
-
-            <textarea onmouseup="setColor();" class="resize-drag" style="position:absolute; left:550px; top:160px; width:280px;"
-              id="eduLevel1" value="Bachelor Degree"></textarea>
-              <p contentEditable="true" onmouseup="setColor();" style="color: black;">this is some text</p>
-              <input type="text">
-          </form> -->
-
-
-        </div>
-      </form>
-      <!-- End of Main Content -->
-
-      <!-- Copyright -->
-      <!-- <footer class="sticky-footer bg-white">
+    <!-- Copyright -->
+    <!-- <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2020</span>
           </div>
         </div>
       </footer> -->
-      <!-- End of Copyright -->
+    <!-- End of Copyright -->
 
-      <!-- <button onclick="createContent()">Sumbit</button> -->
+    <!-- <button onclick="createContent()">Sumbit</button> -->
 
-    </div>
     <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
+  <!-- <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-  </a>
+  </a> -->
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -322,7 +297,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -354,11 +329,12 @@
     }
 
 
-    // for class resize-drag
-    interact('.resize-drag')
+
+    //for class resize-only
+    interact('.resize-only')
       .resizable({
         // resize from all edges and corners
-        edges: { left: true, right: true, bottom: true, top: true },
+        edges: { bottom: true },
 
         listeners: {
           move(event) {
@@ -390,6 +366,48 @@
 
           // minimum size
           interact.modifiers.restrictSize({
+            min: { width: 980, height: 100 }
+          })
+        ],
+        inertia: true
+      })
+
+    // for class resize-drag
+    interact('.resize-drag')
+      .resizable({
+        // resize from all edges and corners
+        edges: { left: true, right: true, bottom: true, top: true },
+
+        listeners: {
+          move(event) {
+            var target = event.target
+            var x = (parseFloat(target.getAttribute('data-x')) || 0)
+            var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+            // update the element's size
+            target.style.width = event.rect.width + 'px'
+            target.style.height = event.rect.height + 'px'
+
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left
+            y += event.deltaRect.top
+
+            target.style.webkitTransform = target.style.transform =
+              'translate(' + x + 'px,' + y + 'px)'
+
+            target.setAttribute('data-x', x)
+            target.setAttribute('data-y', y)
+            //target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+          }
+        },
+        modifiers: [
+          // keep the edges inside the parent
+          interact.modifiers.restrictEdges({
+            outer: 'parent'
+          }),
+
+          // minimum size
+          interact.modifiers.restrictSize({
             min: { width: 100, height: 50 }
           })
         ],
@@ -402,7 +420,7 @@
         autoScroll: true,
         modifiers: [
           interact.modifiers.restrictRect({
-            // restriction: 'parent',
+            restriction: 'parent',
             endOnly: true
           })
         ]
