@@ -2873,14 +2873,14 @@ input[type="submit"].btn-block {
   float: left;
   min-width: 10rem;
   padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 0.85rem;
   color: #858796;
   text-align: left;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #f556ad;
+  /* border: 1px solid #f556ad; */
   border-radius: 1rem;
 }
 .dropdown-menu-left {
@@ -9545,7 +9545,7 @@ a:focus {
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 800;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1rem;
   text-align: center;
   /* text-transform: uppercase; */
   letter-spacing: 0.05rem;
@@ -10379,7 +10379,7 @@ body.sidebar-toggled footer.sticky-footer {
   margin-top: 0;
 }
 .fieldbar{
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   background-clip: border-box;
   border: 1px solid #e3e6f0;
   border-radius: 0.4rem;
@@ -10392,4 +10392,15 @@ body.sidebar-toggled footer.sticky-footer {
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;  
+}
+/* [data-edit] {
+  float:left;
+  border:0;
+  font: 12px/1 monospace;
+  background:#ddd;
+  padding:4px 8px;
+} */
+.draggable{
+  touch-action: none;
+  user-select: none;
 }

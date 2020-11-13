@@ -85,18 +85,65 @@
     <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion" id="sidebar">
 
       <!-- Sidebar Title -->
-      <div class="sidebar-title d-flex align-items-center justify-content-center">
+      <div class="sidebar-title align-items-center justify-content-center">
         <span class="sidebar-title-text">Tool Board</span>
       </div>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider">
 
-      <!-- Nav Item - Dashboard -->
+      <!-- Nav Item - Button -->
+      <div class="sidebar-heading">
+        Style
+      </div>
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <div class="nav-link">
+          <!-- <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Dashboard</span></a> -->
+          <span title="Bold">
+            <button data-edit="bold"><b>B</b></button>
+          </span>
+          <span title="Italic">
+            <button data-edit="italic"><i>I</i></button>
+          </span>
+          <span title="Underline">
+            <button data-edit="underline"><u>U</u></button>
+          </span>
+          <span title="Strikethrough">
+            <button data-edit="strikeThrough"><s>S</s></button>
+          </span>
+          <!-- <button data-edit="formatBlock:p">P</button>
+          <button data-edit="formatBlock:H1">H1</button>
+          <div class="my-1"></div>
+          <button data-edit="formatBlock:H2">H2</button>
+          <button data-edit="formatBlock:H3">H3</button>
+
+          <button data-edit="fontSize:1">&#8613;s</button>
+          <button data-edit="fontSize:3">&#8613;M</button>
+          <button data-edit="fontSize:5">&#8613;L</button> -->
+          <span title="Unordered list">
+            <button data-edit="insertUnorderedList">UL</button>
+          </span>
+          <span title="Ordered list">
+            <button data-edit="insertOrderedList">OL</button>
+          </span>
+
+          <span title="Left alignment">
+            <button data-edit="justifyLeft">&#8676;</button>
+          </span>
+          <span title="Align to center">
+            <button data-edit="justifyCenter">&#8596;</button>
+          </span>
+          <span title="Right alignment">
+            <button data-edit="justifyRight">&#8677;</button>
+          </span>
+          <span title="Remove format">
+            <button data-edit="removeFormat">&times;</button>
+          </span>
+
+          <!-- Haven't finished: Font foreColor, Text font, Text style(?) -->
+        </div>
       </li>
 
       <!-- Divider -->
@@ -195,12 +242,12 @@
 
                 <!-- Fieldbar -->
                 <div class="col-sm-2">
-                  <ul class="fieldbar ul-noBullet">
+                  <ul id="fieldbar" class="fieldbar ul-noBullet">
                     <div class="my-3"></div>
                     <!-- Nav Item - Dashboard -->
                     <li class="nav-item mx-1">
                       <button class="btn">
-                       Basic Information
+                        Basic Information
                       </button>
                     </li>
                     <hr>
@@ -208,7 +255,7 @@
                     <li class="nav-item mx-1">
                       <button class="btn">
                         Education
-                       </button>
+                      </button>
                     </li>
                     <hr>
                     <li class="nav-item mx-1">
@@ -219,27 +266,35 @@
                     <li class="nav-item mx-1">
                       <button class="btn">
                         Skill
-                       </button>
+                      </button>
                     </li>
                     <hr>
                     <li class="nav-item mx-1">
                       <button class="btn">
                         Education
-                       </button>
+                      </button>
                     </li>
 
-                   <div class="my-3"></div>
+                    <div class="my-3"></div>
                   </ul>
                 </div>
 
                 <!-- Content -->
-                <div class="col-sm-10 card shadow mb-4 resize-only">
-
-                  <p>jhjhjhjh</p>
+                <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only">
 
 
-
-
+                  <div class="container">
+                    <div class="row resize-drag" contenteditable>
+                      <div class="card col-sm-3">
+                      </div>
+                      <div class="card col-sm-1">
+                        <p>hello</p>
+                      </div>
+                      <div class="card col-sm-8">
+                        <p>hello all of you</p>
+                      </div>
+                    </div>
+                  </div>
 
 
 
@@ -307,13 +362,28 @@
 
 
   <script>
+    ////////for change text style
+    document.querySelectorAll("[data-edit]").forEach(btn =>
+      btn.addEventListener("click", changeStyle)
+    );
 
+    function changeStyle(event) {
+      event.preventDefault();
+      const changeValue = this.getAttribute("data-edit").split(":");
+      document.execCommand(changeValue[0], false, changeValue[1]);
+    }
+    ////////
+
+
+    //////// for create innerHTML to db  **Later
     function createContent() {
       document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
       alert(document.getElementById('formInput').value)
     }
+    ////////
 
 
+    ////////for showing toolbar  **Later
     function showUserToolbar() {
       var toolbar = document.getElementById('userToolbar');
       if (toolbar.style.display == '') {
@@ -322,15 +392,17 @@
         toolbar.style.display = ''
       }
     }
-
-    function setColor() {
-      document.execCommand('styleWithCSS', false, true);
-      document.execCommand('foreColor', false, "rgba(0,0,0,0.5)");
-    }
+    ////////
 
 
+    // function setColor() {
+    //   document.execCommand('styleWithCSS', false, true);
+    //   document.execCommand('foreColor', false, "rgba(0,0,0,0.5)");
+    // }
 
-    //for class resize-only
+
+
+    ////////for class resize-only: resize div (textfield)
     interact('.resize-only')
       .resizable({
         // resize from all edges and corners
@@ -371,8 +443,9 @@
         ],
         inertia: true
       })
+    ////////
 
-    // for class resize-drag
+    //////// for class resize-drag: for resize and drag div (textfield)
     interact('.resize-drag')
       .resizable({
         // resize from all edges and corners
@@ -403,7 +476,7 @@
         modifiers: [
           // keep the edges inside the parent
           interact.modifiers.restrictEdges({
-            outer: 'parent'
+            outer: '#mainContent'
           }),
 
           // minimum size
@@ -414,19 +487,43 @@
 
         inertia: true
       })
+
+      //// drag
       .draggable({
-        listeners: { move: window.dragMoveListener },
-        inertia: true,
-        autoScroll: true,
-        modifiers: [
-          interact.modifiers.restrictRect({
-            restriction: 'parent',
-            endOnly: true
-          })
-        ]
+        manualStart: true,
+      })
+      .on('hold', function (event) {
+        var interaction = event.interaction;
+
+        if (!interaction.interacting()) {
+          interaction.start(
+            { name: 'drag' },
+            event.interactable,
+            event.currentTarget,
+            interact(".resize-drag")
+              .draggable({
+                listeners: { move: window.dragMoveListener },
+                modifiers: [
+                  interact.modifiers.restrictRect({
+                    restriction: '#mainContent',
+                    endOnly: true
+                  })
+                ]
+              })
+          );
+        }
       })
 
 
+    // .draggable({
+    //   listeners: { move: window.dragMoveListener },
+    //   modifiers: [
+    //     interact.modifiers.restrictRect({
+    //       restriction: '#mainContent',
+    //       endOnly: true
+    //     })
+    //   ]
+    // })
     function dragMoveListener(event) {
       var target = event.target
       // keep the dragged position in the data-x/data-y attributes
@@ -442,4 +539,6 @@
     }
     // this function is used later in the resizing and gesture demos
     window.dragMoveListener = dragMoveListener
+    ////////
+
   </script>
