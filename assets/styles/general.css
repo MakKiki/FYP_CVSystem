@@ -3023,7 +3023,7 @@ input[type="submit"].btn-block {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #3a3b45;
+  color: #6e6f80;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
@@ -3031,7 +3031,7 @@ input[type="submit"].btn-block {
 }
 .dropdown-item:focus,
 .dropdown-item:hover {
-  color: #2e2f37;
+  color: #9e687d;
   text-decoration: none;
   background-color: #f8f9fc;
 }
@@ -10284,6 +10284,11 @@ body.sidebar-toggled footer.sticky-footer {
   color: #727272;
   font-family: "Poppins", sans-serif;
 }
+.header-href:focus,
+.header-href:hover,
+.header-href.active{
+  color: #9e687d;
+}
 .signup-bg {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff008c+0,ff6357+100 */
   /* FF3.6-15 */
@@ -10348,9 +10353,6 @@ body.sidebar-toggled footer.sticky-footer {
   background: #e93d9c;
   color: #ffffff;
 }
-.header-href:hover .login-btn:hover {
-  color: #ff008c;
-}
 .sidebar-bg {
   background: linear-gradient(to right, #f556ad 0%, #fa5a44 100%);
   padding: 12px 15px;
@@ -10403,4 +10405,21 @@ body.sidebar-toggled footer.sticky-footer {
 .draggable{
   touch-action: none;
   user-select: none;
+}
+.main-create-btn{
+  margin-top: 10px;
+  width: 20%;
+  background: linear-gradient(to right, #f556ad 0%, #fa5a44 100%);
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #ff008c;
+  color: #ffffff;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
 }

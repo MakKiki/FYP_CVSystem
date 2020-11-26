@@ -1,0 +1,91 @@
+<!-- Topbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+
+    <!-- Nav Item - My CV -->
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a class="nav-link dropdown-toggle" href="/main" id="alertsDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline header-href text-left active">My CV</span>
+        <!-- Counter - Alerts -->
+        <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+      </a>
+    </li>
+
+    <!-- Nav Item - Create CV -->
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a class="nav-link dropdown-toggle" href="/create" id="alertsDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline header-href text-left">Create CV</span>
+        <!-- Counter - Alerts -->
+        <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" onclick="showUserToolbar()" id="userDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-3 d-none d-lg-inline header-href">Hello, Valerie Luna</span>
+        <img class="img-profile rounded-circle" src="/images/avatar.png">
+      </a>
+
+      <!-- Dropdown - User Information -->
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" id="userToolbar" style="display: none;">
+        <!-- <a class="dropdown-item" href="#">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Profile
+        </a> -->
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+          Settings
+        </a>
+        <!-- <div class="dropdown-divider"></div> -->
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Logout
+        </a>
+      </div>
+    </li>
+
+
+  </ul>
+</nav>
+<!-- End of Topbar -->
+
+<div class="header py-7 py-lg-8">
+  <div class="py-4"></div>
+  <!-- Welcome message -->
+  <div class="container my-5">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+          <h1>You have not had your own CV :(</h1>
+          <h1>Create it NOW!!!!</h1>
+          <div class="py-3"></div>
+          <button class="btn main-create-btn" onclick="location.href='/create';">Start Creating</button>
+          <div class="py-5"></div>
+          <img src="/images/develop_main_pic.svg" style="width: 90%; height: 50%;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  ////////for showing toolbar
+  function showUserToolbar() {
+    var toolbar = document.getElementById('userToolbar');
+    if (toolbar.style.display == '') {
+      toolbar.style.display = 'none';
+    } else {
+      toolbar.style.display = ''
+    }
+  }
+    ////////
+</script>
