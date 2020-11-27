@@ -2210,7 +2210,7 @@ textarea.form-control.is-invalid {
   }
 }
 .btn {
-  width:135px;
+  width: 135px;
   /* display: inline-block; */
   font-weight: 400;
   color: #858796;
@@ -2465,9 +2465,10 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(235, 101, 88, 0.5);
 }
 .btn-light {
-  color: #3a3b45;
+  color: #453c3a;
   background-color: #f8f9fc;
   border-color: #f8f9fc;
+  margin-bottom: 8%;
 }
 .btn-light:hover {
   color: #3a3b45;
@@ -2479,7 +2480,7 @@ fieldset:disabled a.btn {
   color: #3a3b45;
   background-color: #dde2f1;
   border-color: #d4daed;
-  box-shadow: 0 0 0 0.2rem rgba(220, 221, 225, 0.5);
+  box-shadow: 0 0 0 0.1rem rgba(220, 221, 225, 0.5);
 }
 .btn-light.disabled,
 .btn-light:disabled {
@@ -2497,7 +2498,7 @@ fieldset:disabled a.btn {
 .btn-light:not(:disabled):not(.disabled).active:focus,
 .btn-light:not(:disabled):not(.disabled):active:focus,
 .show > .btn-light.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(220, 221, 225, 0.5);
+  box-shadow: 0 0 0 0.1rem rgba(220, 221, 225, 0.5);
 }
 .btn-dark {
   color: #fff;
@@ -10279,14 +10280,13 @@ body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
 
-
 .header-href {
   color: #727272;
   font-family: "Poppins", sans-serif;
 }
 .header-href:focus,
 .header-href:hover,
-.header-href.active{
+.header-href.active {
   color: #9e687d;
 }
 .signup-bg {
@@ -10371,29 +10371,32 @@ body.sidebar-toggled footer.sticky-footer {
 .nav-link-inner--text {
   font-size: 18px;
 }
+.nav-link-inner--text.active {
+  color: #ffffff;
+}
 .CV-field-title {
   color: #690c86;
   font-size: 20px;
 }
-.ul-noBullet{
-  list-style-type:none;
+.ul-noBullet {
+  list-style-type: none;
   padding: 0;
   margin-top: 0;
 }
-.fieldbar{
+.fieldbar {
   background-color: rgb(255, 255, 255);
   background-clip: border-box;
   border: 1px solid #e3e6f0;
   border-radius: 0.4rem;
   font-size: 15px;
   font-weight: 500;
- /* color: */
+  /* color: */
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
-  transition: 0.2s;  
+  transition: 0.2s;
 }
 /* [data-edit] {
   float:left;
@@ -10402,11 +10405,11 @@ body.sidebar-toggled footer.sticky-footer {
   background:#ddd;
   padding:4px 8px;
 } */
-.draggable{
+.draggable {
   touch-action: none;
   user-select: none;
 }
-.main-create-btn{
+.main-create-btn {
   margin-top: 10px;
   width: 20%;
   background: linear-gradient(to right, #f556ad 0%, #fa5a44 100%);
