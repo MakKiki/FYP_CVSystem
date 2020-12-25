@@ -18,11 +18,11 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  "/": { view: "pages/homepage" },
+  // "/": { view: "pages/homepage" },
   "/login": { view: "pages/login" },
   "/signup": { view: "pages/signup" },
-  "/create": { view: "pages/applicants/create" },
-  "/main": { view: "pages/applicants/main" },
+  "/create": { view: "pages/users/create" },
+  "/main": { view: "pages/users/main" },
 
   /***************************************************************************
    *                                                                          *
@@ -34,4 +34,8 @@ module.exports.routes = {
    * not match any of those, it is matched against static assets.             *
    *                                                                          *
    ***************************************************************************/
-};
+  'GET /login': 'PersonController.login',
+  'POST /login': 'PersonController.login',
+  'POST /logout': 'PersonController.logout',
+
+  };

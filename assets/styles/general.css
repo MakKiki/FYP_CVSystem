@@ -2241,7 +2241,6 @@ textarea.form-control.is-invalid {
 .btn.focus,
 .btn:focus {
   outline: 0;
-  /* box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25); */
 }
 .btn.disabled,
 .btn:disabled {
@@ -3019,6 +3018,7 @@ input[type="submit"].btn-block {
   border-top: 1px solid #eaecf4;
 }
 .dropdown-item {
+  font-size: 14px;
   display: block;
   width: 100%;
   padding: 0.25rem 1.5rem;
@@ -3038,9 +3038,9 @@ input[type="submit"].btn-block {
 }
 .dropdown-item.active,
 .dropdown-item:active {
-  color: #fff;
+  color: #9e687d;
   text-decoration: none;
-  background-color: #4e73df;
+  background-color: #f8f9fc;
 }
 .dropdown-item.disabled,
 .dropdown-item:disabled {
