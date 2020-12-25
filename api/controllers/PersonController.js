@@ -16,9 +16,8 @@ module.exports = {
 
     if (!person) return res.status(401).send("Account not found");
 
-    const match = await sails.bcrypt.compare(req.body.password, person.password);
-
-    if (!match) return res.status(401).send("Wrong Password");
+    if (person.password != req.body.password) 
+        return res.status(401).send("Wrong Password");
 
     req.session.regenerate(function (err) {
       if (err) return res.serverError(err);
@@ -31,7 +30,7 @@ module.exports = {
       sails.log("[Session] ", req.session);
 
       if (req.wantsJSON) {
-        return res.json({ message: "Sucessfully login.", url: "/main" }); // for ajax request
+        return res.json({ message: "Sucessfully login", url: "/main" }); // for ajax request
       } else {
         return res.redirect("/main"); // for normal request
       }
@@ -45,5 +44,18 @@ module.exports = {
 
       return res.redirect("/login"); // for normal request
     });
+  },
+
+  //signup
+  signup: async function (req, res) {
+    if (req.method == "GET") return res.view("pages/signup");
+
+    if (!req.body.Person) return res.badRequest("Form-data not received.");
+
+    req.body.Person.role = "user";
+
+    await Person.create(req.body.Person);
+
+    return res.redirect("/signup/success");;
   },
 };

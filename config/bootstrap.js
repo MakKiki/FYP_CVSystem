@@ -10,27 +10,24 @@
  */
 
 module.exports.bootstrap = async function () {
-  sails.bcrypt = require("bcryptjs");
-  const saltRounds = 10;
-  const hash = await sails.bcrypt.hash("123456", saltRounds);
 
   if ((await Person.count()) == 0) {
     await Person.createEach([
       {
         email: "susan@gmail.com",
-        password: hash,
+        password: "123456",
         firstName: "Chan",
         lastName: "Su San",
         role: "user",
       },
       {
         email: "tony@gmail.com",
-        password: hash,
+        password: "123456",
         firstName: "Wong",
         lastName: "Tong Lee",
         role: "user",
       },
-      { email: "admin@gmail.com", password: hash, role: "admin" },
+      { email: "admin@gmail.com", password: "123456", role: "admin" },
       // etc.
     ]);
   }

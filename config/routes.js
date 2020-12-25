@@ -21,6 +21,7 @@ module.exports.routes = {
   // "/": { view: "pages/homepage" },
   "/login": { view: "pages/login" },
   "/signup": { view: "pages/signup" },
+  "/signup/success": { view: "pages/signupSuccess" },
   "/create": { view: "pages/users/create" },
   "/main": { view: "pages/users/main" },
 
@@ -37,5 +38,5 @@ module.exports.routes = {
   'GET /login': 'PersonController.login',
   'POST /login': 'PersonController.login',
   'POST /logout': 'PersonController.logout',
-
+  'POST /signup': 'PersonController.signup',
   };
