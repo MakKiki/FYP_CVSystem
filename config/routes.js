@@ -39,4 +39,5 @@ module.exports.routes = {
   'POST /login': 'PersonController.login',
   'POST /logout': 'PersonController.logout',
   'POST /signup': 'PersonController.signup',
+  'POST /save': 'PersonController.save',
   };

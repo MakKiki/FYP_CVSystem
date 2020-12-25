@@ -232,7 +232,7 @@
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <button onclick="saveContent('<%= req.session.userID %>')" class="btn">Save</button>
       </div>
 
     </ul>
@@ -248,76 +248,80 @@
         <!--  Due to sidebar, cannot use col *height is useless but cannot without it -->
 
         <form>
-          <input id="formInput" type="hidden">
+          <input name="Person[CV]" id="formInput" type="hidden">
 
           <div id="CVContent">
-            <div class="cotainer">
-              <div class="row">
+            <% if (req.session.CV == '' ){ %>
+              <div class="cotainer">
+                <div class="row">
 
-                <!-- Fieldbar -->
-                <div class="col-sm-2">
-                  <ul id="fieldbar" class="fieldbar ul-noBullet">
-                    <div class="my-3"></div>
-                    <!-- Nav Item - Dashboard -->
-                    <li class="nav-item mx-1">
-                      <button class="btn">
-                        Basic Information
-                      </button>
-                    </li>
-                    <hr>
-                    <!-- Nav Item - Charts -->
-                    <li class="nav-item mx-1">
-                      <button class="btn">
-                        Education
-                      </button>
-                    </li>
-                    <hr>
-                    <li class="nav-item mx-1">
-                      <button class="btn">
-                        Work Experience
-                    </li>
-                    <hr>
-                    <li class="nav-item mx-1">
-                      <button class="btn">
-                        Skill
-                      </button>
-                    </li>
-                    <!-- <hr>
+                  <!-- Fieldbar -->
+                  <div class="col-sm-2">
+                    <ul id="fieldbar" class="fieldbar ul-noBullet">
+                      <div class="my-3"></div>
+                      <!-- Nav Item - Dashboard -->
+                      <li class="nav-item mx-1">
+                        <button class="btn">
+                          Basic Information
+                        </button>
+                      </li>
+                      <hr>
+                      <!-- Nav Item - Charts -->
+                      <li class="nav-item mx-1">
+                        <button class="btn">
+                          Education
+                        </button>
+                      </li>
+                      <hr>
+                      <li class="nav-item mx-1">
+                        <button class="btn">
+                          Work Experience
+                      </li>
+                      <hr>
+                      <li class="nav-item mx-1">
+                        <button class="btn">
+                          Skill
+                        </button>
+                      </li>
+                      <!-- <hr>
                     <li class="nav-item mx-1">
                       <button class="btn">
                         Education
                       </button>
                     </li> -->
 
-                    <div class="my-3"></div>
-                  </ul>
-                </div>
-
-                <!-- Content -->
-                <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only">
-
-
-                  <div class="container">
-                    <div class="row resize-drag" contenteditable>
-                      <div class="card col-sm-3">
-                      </div>
-                      <div class="card col-sm-1">
-                        <p>hello</p>
-                      </div>
-                      <div class="card col-sm-8">
-                        <p>hello all of you</p>
-                      </div>
-                    </div>
+                      <div class="my-3"></div>
+                    </ul>
                   </div>
 
+                  <!-- Content -->
+                  <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only">
 
 
+                    <div class="container">
+                      <div class="row resize-drag" contenteditable>
+                        <div class="card col-sm-3">
+                        </div>
+                        <div class="card col-sm-1">
+                          <p>hello</p>
+                        </div>
+                        <div class="card col-sm-8">
+                          <p>hello all of you</p>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
-            <!-- End of container -->
+              <!-- End of container -->
+              <% } else{ %>
+                <%- req.session.CV %>
+                  <% } %>
           </div>
         </form>
       </div>
@@ -390,9 +394,37 @@
 
 
     //////// for create innerHTML to db  **Later
-    function createContent() {
+
+    ////////
+
+
+    /////// for save innerHTML to session
+    async function saveContent() {
+
       document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
       alert(document.getElementById('formInput').value)
+
+      var data = JSON.stringify({
+        CV: document.getElementById('formInput').value,
+      });
+
+      var response = await fetch("/save", {
+        method: "POST",
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+
+      if (response.ok) {
+        var data = await response.json();
+        alert(data.message);
+        window.location = data.url;
+      } else {
+        alert(response.statusText);
+      }
     }
     ////////
 

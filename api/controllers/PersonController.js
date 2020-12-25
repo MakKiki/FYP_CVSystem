@@ -16,8 +16,8 @@ module.exports = {
 
     if (!person) return res.status(401).send("Account not found");
 
-    if (person.password != req.body.password) 
-        return res.status(401).send("Wrong Password");
+    if (person.password != req.body.password)
+      return res.status(401).send("Wrong Password");
 
     req.session.regenerate(function (err) {
       if (err) return res.serverError(err);
@@ -26,6 +26,8 @@ module.exports = {
       req.session.firstName = person.firstName;
       req.session.lastName = person.lastName;
       req.session.role = person.role;
+      req.session.userID = person.id;
+      req.session.CV = person.CV;
 
       sails.log("[Session] ", req.session);
 
@@ -56,6 +58,28 @@ module.exports = {
 
     await Person.create(req.body.Person);
 
-    return res.redirect("/signup/success");;
+    return res.redirect("/signup/success");
+  },
+
+  // save CV
+  save: async function (req, res) {
+    if (req.method == "GET") return res.forbidden();
+
+    req.session.CV = req.body.CV;
+
+    var user = await Person.update(req.session.userID)
+      .set({
+        CV: req.body.CV,
+      })
+      .fetch();
+
+    if (user.length == 0) return res.notFound();
+
+    if (req.wantsJSON) {
+      sails.log("[Session] ", req.session);
+      return res.json({ message: "Successfully saved", url: "/create" }); // for ajax request
+    } else {
+      return res.redirect("/create"); // for normal request
+    }
   },
 };
