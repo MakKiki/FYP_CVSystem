@@ -96,6 +96,7 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+ 
 }
 abbr[data-original-title],
 abbr[title] {
@@ -2397,6 +2398,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #f6c23e;
   border-color: #f6c23e;
+  width: 100%;
 }
 .btn-warning:hover {
   color: #fff;
@@ -2432,6 +2434,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #e74a3b;
   border-color: #e74a3b;
+  width: 100%;
 }
 .btn-danger:hover {
   color: #fff;
@@ -2503,6 +2506,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #5a5c69;
   border-color: #5a5c69;
+  width: 100%;
 }
 .btn-dark:hover {
   color: #fff;
@@ -10425,4 +10429,38 @@ body.sidebar-toggled footer.sticky-footer {
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+}
+.main-btn {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 500;
+  height: 10%;
+  color: #fa7693;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.createCV-btn {
+  background: hsl(0, 0%, 90%);
+  width: 100%;
+
+  font-size: 18px;
+  font-weight: 500;
+  border: 1px solid #dafbff;
+  color: #fca7ff;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.login-btn:hover {
+  background: #e93d9c;
+  color: #ffffff;
 }

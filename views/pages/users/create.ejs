@@ -163,9 +163,9 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
+      <!-- Nav Item - Text field -->
       <div class="sidebar-heading">
-        Interface
+        Text field
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -231,8 +231,12 @@
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button onclick="saveContent('<%= req.session.userID %>')" class="btn">Save</button>
+      <div>
+        <button onclick="saveContent('<%= req.session.userID %>')" class="btn btn-danger">Save</button>
+      </div>
+
+      <div class="py-2">
+        <button onclick="" class="btn btn-warning">Submit</button>
       </div>
 
     </ul>
@@ -251,7 +255,8 @@
           <input name="Person[CV]" id="formInput" type="hidden">
 
           <div id="CVContent">
-            <% if (req.session.CV == '' ){ %>
+            <!-- if the user has not created any CV yet -->
+            <% if (req.session.CV=='' ){ %>
               <div class="cotainer">
                 <div class="row">
 
@@ -300,7 +305,8 @@
 
                     <div class="container">
                       <div class="row resize-drag" contenteditable>
-                        <div class="card col-sm-3">
+
+                        <!-- <div class="card col-sm-3">
                         </div>
                         <div class="card col-sm-1">
                           <p>hello</p>
@@ -308,9 +314,15 @@
                         <div class="card col-sm-8">
                           <p>hello all of you</p>
                         </div>
+                        <div class="card col-sm-8">
+                          <p>hello all of you</p>
+                        </div> -->
+                        <div class="card col-sm-12">
+                          <p>hello</p>
+                        </div>
+
                       </div>
                     </div>
-
 
 
 
@@ -318,10 +330,11 @@
 
                 </div>
               </div>
-              <!-- End of container -->
+              <!-- if the user has created CV -->
               <% } else{ %>
                 <%- req.session.CV %>
                   <% } %>
+                    <!-- End of CV body -->
           </div>
         </form>
       </div>
@@ -380,25 +393,12 @@
 
 
   <script>
-    ////////for change text style
-    document.querySelectorAll("[data-edit]").forEach(btn =>
-      btn.addEventListener("click", changeStyle)
-    );
-
-    function changeStyle(event) {
-      event.preventDefault();
-      const changeValue = this.getAttribute("data-edit").split(":");
-      document.execCommand(changeValue[0], false, changeValue[1]);
-    }
-    ////////
-
-
     //////// for create innerHTML to db  **Later
 
     ////////
 
 
-    /////// for save innerHTML to session
+    /////// for save innerHTML to session and db
     async function saveContent() {
 
       document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
@@ -408,7 +408,7 @@
         CV: document.getElementById('formInput').value,
       });
 
-      var response = await fetch("/save", {
+      var response = await fetch("/user/saveCV", {
         method: "POST",
         credentials: 'same-origin',
         headers: {
@@ -441,11 +441,26 @@
     ////////
 
 
+    ////////for change text style
+    document.querySelectorAll("[data-edit]").forEach(btn =>
+      btn.addEventListener("click", changeStyle)
+    );
+
+    function changeStyle(event) {
+      event.preventDefault();
+      const changeValue = this.getAttribute("data-edit").split(":");
+      document.execCommand(changeValue[0], false, changeValue[1]);
+    }
+    ////////
+
+
     // function setColor() {
     //   document.execCommand('styleWithCSS', false, true);
     //   document.execCommand('foreColor', false, "rgba(0,0,0,0.5)");
     // }
 
+
+    ////////
 
 
     ////////for class resize-only: resize div (textfield)
@@ -530,8 +545,7 @@
             min: { width: 100, height: 50 }
           })
         ],
-
-        inertia: true
+        inertia: true,
       })
 
       //// drag
@@ -559,7 +573,6 @@
           );
         }
       })
-
 
     // .draggable({
     //   listeners: { move: window.dragMoveListener },

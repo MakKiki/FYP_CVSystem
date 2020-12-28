@@ -1,31 +1,106 @@
 <div class="header py-7 py-lg-8">
   <div class="py-4"></div>
-  <!-- Message -->
-  <div class="container my-5">
-    <div class="header-body text-center mb-7">
-      <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
-          <h1>You haven't created your own CV yet :(</h1>
-          <h1>Create it NOW!!!!</h1>
-          <div class="py-3"></div>
-          <button class="btn main-create-btn" onclick="location.href='/create';">Start Creating</button>
-          <div class="py-3"></div>
-          <img src="/images/develop_main_pic2.svg" style="width: 90%; height: 50%;" />
+
+  <!-- if the user has no CV -->
+  <% if(req.session.CV=='' ){ %>
+    <!-- Message -->
+    <div class="container my-5">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-12 col-md-9">
+            <h1>You haven't created your own CV yet :(</h1>
+            <h1>Create it NOW!!!!</h1>
+            <div class="py-3"></div>
+            <button class="btn main-create-btn" onclick="location.href='/create';">Start Creating</button>
+            <div class="py-3"></div>
+            <img src="/images/develop_main_pic2.svg" style="width: 90%; height: 50%;" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    <% } else { %>
 
-<script>
-  ////////for showing toolbar
-  function showUserToolbar() {
-    var toolbar = document.getElementById('userToolbar');
-    if (toolbar.style.display == '') {
-      toolbar.style.display = 'none';
-    } else {
-      toolbar.style.display = ''
+      <!-- if the user has CV -->
+      <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 py-3">
+              <div class="row">
+
+                <!-- Left part of the card -->
+                <div class="col-lg-6 d-none d-lg-block">
+                  <img src="/images/resume.svg" style="width: 90%; height: 90%;" />
+                </div>
+
+                <!-- Right part of the card -->
+                <div class="col-lg-6 py-5">
+                  <!-- Edit -->
+                  <button class="btn main-btn" onclick="window.location.href='/create'">
+                    Edit
+                  </button>
+                  <br>
+                  <!-- Delete -->
+                  <button class="btn main-btn py-5" onclick="deleteCV()">
+                    Delete
+                  </button>
+                  <!-- Publish link -->
+                  <div class="py-4" style="padding: 12px 12px">
+                    <span class="main-btn">Publicated link of your CV</span>
+                    <br>
+                    <p class="py-2">You have not published your CV yet.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<% } %>
+
+  </div>
+
+  <script>
+    ////////for showing toolbar
+    function showUserToolbar() {
+      var toolbar = document.getElementById('userToolbar');
+      if (toolbar.style.display == '') {
+        toolbar.style.display = 'none';
+      } else {
+        toolbar.style.display = ''
+      }
+    };
+    ////////
+
+    /////// for delete user's CV
+    async function deleteCV() {
+
+      var r = confirm("Confirm Delete?");
+
+      if (r) {
+        var response = await fetch("/user/deleteCV", {
+          method: "POST",
+          credentials: 'same-origin',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: data
+        });
+
+        if (response.ok) {
+          var data = await response.json();
+          alert(data.message);
+          window.location = data.url;
+        } else {
+          alert(response.statusText);
+        }
+
+      } else {
+        alert("Cancelled");
+      }
     }
-  };
-  ////////
-</script>
+    ////////
+  </script>

@@ -39,5 +39,6 @@ module.exports.routes = {
   'POST /login': 'PersonController.login',
   'POST /logout': 'PersonController.logout',
   'POST /signup': 'PersonController.signup',
-  'POST /save': 'PersonController.save',
+  'POST /user/saveCV': 'UserController.saveCV',
+  'POST /user/deleteCV': 'UserController.deleteCV',
   };
