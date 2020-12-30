@@ -28,6 +28,7 @@ module.exports = {
       req.session.role = person.role;
       req.session.userID = person.id;
       req.session.CV = person.CV;
+      req.session.reloadCV = '';
 
       sails.log("[Session] ", req.session);
 
@@ -60,6 +61,4 @@ module.exports = {
 
     return res.redirect("/signup/success");
   },
-
-  
 };

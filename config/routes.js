@@ -35,10 +35,11 @@ module.exports.routes = {
    * not match any of those, it is matched against static assets.             *
    *                                                                          *
    ***************************************************************************/
-  'GET /login': 'PersonController.login',
-  'POST /login': 'PersonController.login',
-  'POST /logout': 'PersonController.logout',
-  'POST /signup': 'PersonController.signup',
-  'POST /user/saveCV': 'UserController.saveCV',
-  'POST /user/deleteCV': 'UserController.deleteCV',
-  };
+  "GET /login": "PersonController.login",
+  "POST /login": "PersonController.login",
+  "POST /logout": "PersonController.logout",
+  "POST /signup": "PersonController.signup",
+  "POST /user/saveCV": "UserController.saveCV",
+  "POST /user/deleteCV": "UserController.deleteCV",
+  "POST /user/reloadCV": "UserController.reloadCV",
+};

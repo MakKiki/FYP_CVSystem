@@ -170,18 +170,22 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <!-- <i class="fas fa-fw fa-cog"></i> -->
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="py-2">
+          <button class="btn nav-link" onclick="addField()" style="padding: 2px 2px; padding-left: 1.05rem;">
+            <span>+ Add Field</span>
+          </button>
+        </div>
+        <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
+          style="padding: 2px 2px; padding-left: 1.05rem;">
+          <span>- Delete Field</span>
+        </button>
+        <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="buttons.html">Buttons</a>
             <a class="collapse-item" href="cards.html">Cards</a>
           </div>
-        </div>
+        </div> -->
       </li>
 
       <!-- Divider -->
@@ -230,7 +234,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
+      <!-- Buttton -->
       <div>
         <button onclick="saveContent('<%= req.session.userID %>')" class="btn btn-danger">Save</button>
       </div>
@@ -239,6 +243,11 @@
         <button onclick="" class="btn btn-warning">Submit</button>
       </div>
 
+      <% if (req.session.CV !='' ){ %>
+        <div>
+          <button onclick="deleteCV()" class="btn btn-dark">Delete</button>
+        </div>
+        <% } %>
     </ul>
   </div>
   <!-- End of Sidebar -->
@@ -256,7 +265,7 @@
 
           <div id="CVContent">
             <!-- if the user has not created any CV yet -->
-            <% if (req.session.CV=='' ){ %>
+            <% if (req.session.CV=='' && req.session.reloadCV=='' ){ %>
               <div class="cotainer">
                 <div class="row">
 
@@ -302,39 +311,27 @@
                   <!-- Content -->
                   <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only">
 
-
-                    <div class="container">
+                    <div id="field1" class="container textfield">
                       <div class="row resize-drag" contenteditable>
 
-                        <!-- <div class="card col-sm-3">
-                        </div>
-                        <div class="card col-sm-1">
-                          <p>hello</p>
-                        </div>
-                        <div class="card col-sm-8">
-                          <p>hello all of you</p>
-                        </div>
-                        <div class="card col-sm-8">
-                          <p>hello all of you</p>
-                        </div> -->
                         <div class="card col-sm-12">
                           <p>hello</p>
                         </div>
 
                       </div>
+
                     </div>
 
-
-
                   </div>
-
                 </div>
               </div>
-              <!-- if the user has created CV -->
-              <% } else{ %>
-                <%- req.session.CV %>
-                  <% } %>
-                    <!-- End of CV body -->
+              <% } else if (req.session.CV=='' && req.session.reloadCV!='' ){ %>
+                <%- req.session.reloadCV %>
+                  <!-- if the user has created CV -->
+                  <% } else{ %>
+                    <%- req.session.CV %>
+                      <% } %>
+                        <!-- End of CV body -->
           </div>
         </form>
       </div>
@@ -356,7 +353,6 @@
     <!-- <button onclick="createContent()">Sumbit</button> -->
 
     <!-- End of Content Wrapper -->
-
   </div>
   <!-- End of Page Wrapper -->
 
@@ -429,6 +425,37 @@
     ////////
 
 
+    /////// for delete user's CV
+    async function deleteCV() {
+
+      var r = confirm("Confirm Delete?");
+
+      if (r) {
+        var response = await fetch("/user/deleteCV", {
+          method: "POST",
+          credentials: 'same-origin',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: data
+        });
+
+        if (response.ok) {
+          var data = await response.json();
+          alert(data.message);
+          window.location = data.url;
+        } else {
+          alert(response.statusText);
+        }
+
+      } else {
+        alert("Cancelled");
+      }
+    }
+    ////////
+
+
     ////////for showing toolbar
     function showUserToolbar() {
       var toolbar = document.getElementById('userToolbar');
@@ -442,14 +469,14 @@
 
 
     ////////for change text style
-    document.querySelectorAll("[data-edit]").forEach(btn =>
-      btn.addEventListener("click", changeStyle)
+    document.querySelectorAll("[data-edit]").forEach(styleBtn =>
+      styleBtn.addEventListener("click", changeTextStyle)
     );
 
-    function changeStyle(event) {
+    function changeTextStyle(event) {
       event.preventDefault();
-      const changeValue = this.getAttribute("data-edit").split(":");
-      document.execCommand(changeValue[0], false, changeValue[1]);
+      const newValue = this.getAttribute("data-edit").split(":");
+      document.execCommand(newValue[0], false, newValue[1]);
     }
     ////////
 
@@ -460,6 +487,132 @@
     // }
 
 
+    ////////for add field
+    async function addField() {
+      let fieldArr = document.getElementsByClassName("textfield");
+      let num = fieldArr.length + 1;
+      document.getElementById("mainContent").innerHTML += "<div id='field" + num + "' class='container textfield'> <div class='row resize-drag' contenteditable> <div class='card col-sm-12'> <p></p> </div> </div> </div>";
+
+      //Reload the page for update the code
+      document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
+      var data = JSON.stringify({
+        CV: document.getElementById('formInput').value,
+      });
+      var response = await fetch("/user/reloadCV", {
+        method: "POST",
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+      sessionStorage.setItem('addField', 'true');
+      location.reload();
+    }
+    ////////
+
+    ////////check whether the reload is due to add field
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+      // due to add field
+      if (sessionStorage.getItem("addField") == "true") {
+        sessionStorage.setItem('addField', 'false');
+      }
+      // not due to add field
+      else {
+        console.log("click refresh to reload")
+        updateReloadCVSession();
+        window.location.href = "/create";
+      }
+    }
+    //leave page and enter again
+    else {
+      console.log("leave the page and enter again")
+      updateReloadCVSession();
+      if (sessionStorage.getItem("addField") == "false") {
+      }
+    }
+    ///////
+
+    ///////update the reloadCV to ''
+    async function updateReloadCVSession() {
+      var data = JSON.stringify({
+        CV: '',
+      });
+      var response = await fetch("/user/reloadCV", {
+        method: "POST",
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+    }
+    //////
+
+    ///////reload once before enter to the page to ensure the CV content is the most updated
+    window.onload = function () {
+      if (window.location.href.substr(-1) !== '?') {
+        window.location = window.location.href + '?';
+      }
+    }
+    ///////
+
+
+    // document.querySelectorAll("[contenteditable]").forEach(field =>
+    //   field.addEventListener("click", findField)
+    // );
+
+    // function findField(event) {
+    //   alert(event.target.name);
+    //   event.preventDefault();
+    //   var targetField = event.target.parentNode.parentNode.id;
+    //   deleteField(targetField);
+    // }
+
+    // function deleteField(targetField) {
+    //   document.getElementById("deleteField-btn").addEventListener("click", function () {
+    //     alert(targetField);
+    //     document.getElementById(targetField).innerHTML = '';
+    //     targetField = '';
+    //   });
+    // }
+
+
+    ////////for delete button's style
+    function deleteBtn(element) {
+      if (element.classList.contains("active")) {
+        element.setAttribute("class", "btn nav-link");
+        element.style.color = "#dddfeb";
+      } else {
+        element.setAttribute("class", "btn nav-link active");
+        element.style.color = "black";
+      }
+    }
+    ///////
+
+    //////when textfield is being clicked
+    document.querySelectorAll("[contenteditable]").forEach(field => {
+      field.addEventListener("click", deleteField);
+    });
+
+    function deleteField(event) {
+      const element = document.getElementById("deleteField-btn");
+
+      // if delete button is clicked - delete field
+      if (element.classList.contains("active")) {
+        event.preventDefault();
+        var targetField = event.target.parentNode.parentNode.id;
+        console.info(targetField)
+        document.getElementById(targetField).innerHTML = '';
+        targetField = '';
+      }
+      //Otherwise
+      else {
+        return;
+      }
+    }
     ////////
 
 

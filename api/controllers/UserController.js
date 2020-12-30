@@ -49,4 +49,11 @@ module.exports = {
       return res.redirect("/main"); // for normal request
     }
   },
+
+  // reloadCV
+  reloadCV: async function (req, res) {
+    req.session.reloadCV = req.body.CV;
+    sails.log("[Session] ", req.session);
+    return res.redirect("/create");
+  },
 };
