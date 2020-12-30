@@ -10446,7 +10446,6 @@ body.sidebar-toggled footer.sticky-footer {
 .createCV-btn {
   background: hsl(0, 0%, 90%);
   width: 100%;
-
   font-size: 18px;
   font-weight: 500;
   border: 1px solid #dafbff;
@@ -10459,7 +10458,21 @@ body.sidebar-toggled footer.sticky-footer {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-.login-btn:hover {
-  background: #e93d9c;
-  color: #ffffff;
+.alert-btn{
+ color: #fff;
+  background-color: #d84e6e;
+  border-color: #d84e6e;
 }
+.alert-btn:hover {
+  color: #fff;
+  background-color: #C74060;
+  border-color: #C74060;
+}
+.alert-btn.focus,
+.alert-btn:focus {
+  color: #fff;
+  background-color: #C74060;
+  border-color: #C74060;
+  box-shadow: 0 0 0 0.2rem rgba(253, 26, 82, 0.5);
+}
+

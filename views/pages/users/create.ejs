@@ -245,7 +245,7 @@
 
       <% if (req.session.CV !='' ){ %>
         <div>
-          <button onclick="deleteCV()" class="btn btn-dark">Delete</button>
+          <button onclick="showDeleteAlert()" class="btn btn-dark">Delete</button>
         </div>
         <% } %>
     </ul>
@@ -261,8 +261,10 @@
         <!--  Due to sidebar, cannot use col *height is useless but cannot without it -->
 
         <form>
+          <!-- A hidden input for storing CV content and send to db -->
           <input name="Person[CV]" id="formInput" type="hidden">
 
+          <!-- The CV content -->
           <div id="CVContent">
             <!-- if the user has not created any CV yet -->
             <% if (req.session.CV=='' && req.session.reloadCV=='' ){ %>
@@ -333,53 +335,41 @@
                       <% } %>
                         <!-- End of CV body -->
           </div>
+          <!-- End of the CV content -->
         </form>
       </div>
+      <!-- End of content position -->
     </div>
-
-
     <!-- End of Main Content -->
 
-    <!-- Copyright -->
-    <!-- <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+
+    <!-- Delete Modal-->
+    <div class="animated--fade-in" style="display:none" id="deleteModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete?</h5>
+          </div>
+          <div class="modal-body">Once you have deleted your CV, you cannot retrieve it back.</div>
+          <div class="modal-footer">
+            <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showDeleteAlert()"
+              data-dismiss="modal">Cancel</button>
+            <button id="alert-delete" class="btn alert-btn" type="button" onclick="deleteCV()"
+              data-dismiss="modal">Delete</button>
           </div>
         </div>
-      </footer> -->
-    <!-- End of Copyright -->
-
-    <!-- <button onclick="createContent()">Sumbit</button> -->
-
-    <!-- End of Content Wrapper -->
+      </div>
+    </div>
   </div>
-  <!-- End of Page Wrapper -->
+  <!-- End of Delete Modal -->
 
   <!-- Scroll to Top Button-->
   <!-- <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a> -->
 
-  <!-- Logout Modal-->
-  <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
+
 
 
 
@@ -416,7 +406,6 @@
 
       if (response.ok) {
         var data = await response.json();
-        alert(data.message);
         window.location = data.url;
       } else {
         alert(response.statusText);
@@ -425,32 +414,34 @@
     ////////
 
 
-    /////// for delete user's CV
-    async function deleteCV() {
-
-      var r = confirm("Confirm Delete?");
-
-      if (r) {
-        var response = await fetch("/user/deleteCV", {
-          method: "POST",
-          credentials: 'same-origin',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: data
-        });
-
-        if (response.ok) {
-          var data = await response.json();
-          alert(data.message);
-          window.location = data.url;
-        } else {
-          alert(response.statusText);
-        }
-
+    ///////for showing delete alert
+    function showDeleteAlert() {
+      var deleteAlert = document.getElementById('deleteModal');
+      if (deleteAlert.style.display == '') {
+        deleteAlert.style.display = 'none';
       } else {
-        alert("Cancelled");
+        deleteAlert.style.display = ''
+      }
+    }
+    ///////
+
+    ///////for delete CV
+    async function deleteCV() {
+      var response = await fetch("/user/deleteCV", {
+        method: "POST",
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+
+      if (response.ok) {
+        var data = await response.json();
+        window.location = data.url;
+      } else {
+        alert(response.statusText);
       }
     }
     ////////
@@ -580,7 +571,7 @@
     // }
 
 
-    ////////for delete button's style
+    ////////for delete field button's style
     function deleteBtn(element) {
       if (element.classList.contains("active")) {
         element.setAttribute("class", "btn nav-link");
@@ -600,7 +591,7 @@
     function deleteField(event) {
       const element = document.getElementById("deleteField-btn");
 
-      // if delete button is clicked - delete field
+      // if delete button is already clicked - delete field
       if (element.classList.contains("active")) {
         event.preventDefault();
         var targetField = event.target.parentNode.parentNode.id;

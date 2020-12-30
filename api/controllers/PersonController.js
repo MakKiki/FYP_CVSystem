@@ -33,7 +33,7 @@ module.exports = {
       sails.log("[Session] ", req.session);
 
       if (req.wantsJSON) {
-        return res.json({ message: "Sucessfully login", url: "/main" }); // for ajax request
+        return res.json({ url: "/main" }); // for ajax request
       } else {
         return res.redirect("/main"); // for normal request
       }
@@ -54,11 +54,14 @@ module.exports = {
     if (req.method == "GET") return res.view("pages/signup");
 
     if (!req.body.Person) return res.badRequest("Form-data not received.");
+   
+    var person = await Person.findOne({ email: req.body.Person.email });
+    if (person) return res.view('pages/signupResult', { result: "fail" });
 
     req.body.Person.role = "user";
 
     await Person.create(req.body.Person);
 
-    return res.redirect("/signup/success");
+    return res.view('pages/signupResult', { result: "success" });
   },
 };

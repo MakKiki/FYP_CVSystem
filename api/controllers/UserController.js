@@ -22,7 +22,7 @@ module.exports = {
 
     if (req.wantsJSON) {
       sails.log("[Session] ", req.session);
-      return res.json({ message: "Successfully saved", url: "/create" }); // for ajax request
+      return res.json({ url: "/create" }); // for ajax request
     } else {
       return res.redirect("/create"); // for normal request
     }
@@ -44,7 +44,7 @@ module.exports = {
 
     if (req.wantsJSON) {
       sails.log("[Session] ", req.session);
-      return res.json({ message: "Successfully deleted", url: "/main" }); // for ajax request
+      return res.json({ url: "/main" }); // for ajax request
     } else {
       return res.redirect("/main"); // for normal request
     }

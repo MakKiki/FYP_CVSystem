@@ -21,7 +21,7 @@ module.exports.routes = {
   // "/": { view: "pages/homepage" },
   "/login": { view: "pages/login" },
   "/signup": { view: "pages/signup" },
-  "/signup/success": { view: "pages/signupSuccess" },
+  "/signup/result": { view: "pages/signupResult" },
   "/create": { view: "pages/users/create" },
   "/main": { view: "pages/users/main" },
 
