@@ -16,7 +16,7 @@
   <br><br><br><br>
 
   <!-- Welcome message -->
-  <div class="container">
+  <div class="container animate__animated animate__fadeInDown">
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-  
+
 </div>
 
 <script>
@@ -100,9 +100,9 @@
       window.location = data.url;
     } else if (response.status == 401) {
       var data = await response.text();   // for res.send()
-      alert(data);
+      alert("⚠️ " + data + " ⚠️");
     } else {
-      alert(response.statusText);
+      alert("⚠️ " + response.statusText+ " ⚠️");
     }
 
   };
