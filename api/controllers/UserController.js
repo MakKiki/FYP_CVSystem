@@ -22,7 +22,7 @@ module.exports = {
 
     if (req.wantsJSON) {
       sails.log("[Session] ", req.session);
-      return res.json({ url: "/create" }); // for ajax request
+      return res.json({ message: "✔️ Successfully saved ✔️", url: "/create" }); // for ajax request
     } else {
       return res.redirect("/create"); // for normal request
     }

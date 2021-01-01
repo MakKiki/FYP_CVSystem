@@ -312,13 +312,27 @@
                   </div>
 
                   <!-- Main Content -->
-                  <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only">
+                  <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only" style="height: 350px;">
 
                     <div id="field1" class="container textfield">
-                      <div class="row resize-drag" contenteditable>
+                      <div class="row resize-drag" contenteditable=""
+                        style="width: 505.323px; height: 314px; transform: translate(283.333px, 14.6667px);"
+                        data-x="283.3333435058594" data-y="14.666656494140625">
 
                         <div class="card col-sm-12">
-                          <p>hello</p>
+                          <p>
+                          <h6>Name: Chan Ting</h6>
+                          <br>
+                          <h6>Birth Date: 30/08/1998</h6>
+                          <br>
+                          <h6>Sex: Female</h6>
+                          <br>
+                          <h6>Mobile Phone: 1234 5678</h6>
+                          <br>
+                          <h6>Email: ting@gmail.com</h6>
+                          <br>
+                          <h6>Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong Kong</h6>
+                          </p>
                         </div>
 
                       </div>
@@ -328,11 +342,12 @@
                   </div>
                 </div>
               </div>
-              <% } else if (req.session.CV=='' && req.session.reloadCV!='' ){ %>
-                <%- req.session.reloadCV %>
-                  <!-- if the user has created CV -->
-                  <% } else{ %>
-                    <%- req.session.CV %>
+              <!-- if the user has created CV and not adding new field-->
+              <% } else if (req.session.CV!='' && req.session.reloadCV=='' ){ %>
+                <%- req.session.CV %>
+                  <!-- add field -->
+                  <% } else { %>
+                    <%- req.session.reloadCV %>
                       <% } %>
                         <!-- End of CV body -->
           </div>
@@ -408,6 +423,7 @@
 
       if (response.ok) {
         var data = await response.json();
+        alert(data.message);
         window.location = data.url;
       } else {
         alert(response.statusText);
@@ -491,6 +507,12 @@
 
     ////////for add field
     async function addField() {
+      //add mainContent height
+      var mainContentHeight = document.getElementById("mainContent").style.height
+      var newHeight = parseInt(mainContentHeight, 10) + 40;
+      document.getElementById("mainContent").style.height = newHeight.toString() + "px";
+
+      //add new text field
       let fieldArr = document.getElementsByClassName("textfield");
       let num = fieldArr.length + 1;
       document.getElementById("mainContent").innerHTML += "<div id='field" + num + "' class='container textfield'> <div class='row resize-drag' contenteditable> <div class='card col-sm-12'> <p></p> </div> </div> </div>";
