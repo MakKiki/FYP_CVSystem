@@ -77,7 +77,7 @@
     /////// for delete user's CV
     async function deleteCV() {
 
-      var r = confirm("Confirm Delete?");
+      var r = confirm("⚠️ Confirm to Delete? ⚠️");
 
       if (r) {
         var response = await fetch("/user/deleteCV", {
@@ -92,14 +92,10 @@
 
         if (response.ok) {
           var data = await response.json();
-          alert(data.message);
           window.location = data.url;
         } else {
           alert(response.statusText);
         }
-
-      } else {
-        alert("Cancelled");
       }
     }
     ////////

@@ -163,21 +163,20 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Nav Item - Text field -->
+      <!-- Nav Item - Addons -->
       <div class="sidebar-heading">
-        Text field
+        Addons
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <div class="py-2">
           <button class="btn nav-link" onclick="addField()" style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>+ Add Field</span>
+            <span>+ Text Field</span>
           </button>
         </div>
-        <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
+        <button type="button" class="btn nav-link" onclick="showAddPageWindow()"
           style="padding: 2px 2px; padding-left: 1.05rem;">
-          <span>- Delete Field</span>
+          <span>+ Page</span>
         </button>
         <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -191,19 +190,21 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
+      <!-- Nav Item - Upload -->
       <div class="sidebar-heading">
-        Addons
+        Upload
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="py-2">
+          <button class="btn nav-link" onclick="addField()" style="padding: 2px 2px; padding-left: 1.05rem;">
+            <span>+ Files</span>
+          </button>
+        </div>
+        <button class="btn nav-link" onclick="addField()" style="padding: 2px 2px; padding-left: 1.05rem;">
+          <span>+ Hyperlink</span>
+        </button>
+        <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
@@ -214,21 +215,25 @@
             <a class="collapse-item" href="404.html">404 Page</a>
             <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
+        </div> -->
+      </li>
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Nav Item - Delete -->
+      <div class="sidebar-heading">
+        Delete
+      </div>
+
+      <li class="nav-item">
+        <div class="py-2">
+          <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
+            style="padding: 2px 2px; padding-left: 1.05rem;">
+            <span>- Delete Field</span>
+          </button>
         </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
       </li>
 
       <!-- Divider -->
@@ -270,55 +275,77 @@
             <!-- if the user has not created any CV yet -->
             <% if (req.session.CV=='' && req.session.reloadCV=='' ){ %>
               <div class="cotainer">
-                <div class="row">
+                <div id="mainContent" class="row">
 
                   <!-- Fieldbar -->
                   <div class="col-sm-2">
-                    <ul id="fieldbar" class="fieldbar ul-noBullet">
-                      <div class="my-3"></div>
+                    <ul id="fieldbar" class="fieldbar ul-noBullet py-3">
                       <!-- Nav Item - Dashboard -->
                       <li class="nav-item mx-1">
-                        <button class="btn">
+                        <button type="button" value="Basic Information" class="btn content-btn"
+                          onclick="showContent(this.value)">
                           Basic Information
                         </button>
                       </li>
                       <hr>
                       <!-- Nav Item - Charts -->
                       <li class="nav-item mx-1">
-                        <button class="btn">
+                        <button type="button" value="Education" class="btn content-btn"
+                          onclick="showContent(this.value)">
                           Education
                         </button>
                       </li>
                       <hr>
                       <li class="nav-item mx-1">
-                        <button class="btn">
+                        <button type="button" value="Work Experience" class="btn content-btn"
+                          onclick="showContent(this.value)">
                           Work Experience
                       </li>
                       <hr>
                       <li class="nav-item mx-1">
-                        <button class="btn">
+                        <button type="button" value="Skill" class="btn content-btn"
+                          onclick="showContent(this.value)">
                           Skill
                         </button>
                       </li>
-                      <!-- <hr>
-                    <li class="nav-item mx-1">
-                      <button class="btn">
-                        Education
-                      </button>
-                    </li> -->
-
-                      <div class="my-3"></div>
                     </ul>
                   </div>
+                  <!-- End of Fieldbar -->
 
                   <!-- Main Content -->
-                  <div id="mainContent" class="col-sm-10 card shadow mb-4 resize-only" style="height: 350px;">
-
+                  <div style="width: 836px; height: 360px; transform: translate(0px, 0px);" id="Basic Information"
+                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only" data-x="0"
+                    data-y="0">
                     <div id="field1" class="container textfield">
                       <div class="row resize-drag" contenteditable=""
-                        style="width: 505.323px; height: 314px; transform: translate(283.333px, 14.6667px);"
-                        data-x="283.3333435058594" data-y="14.666656494140625">
+                        style="width: 539px; height: 283px; transform: translate(259px, 18px);" data-x="259"
+                        data-y="19">
+                        <div class="card col-sm-12">
+                          <p>
+                          <h1>Hello,</h1>
+                          <br>
+                          I am Mimi. I am a fresh graduate student who is looking for jobs in an IT company.
+                          Hope I will have a chance to work with you!!!:)
+                          <h6><br></h6>
+                          <h6><br></h6>
+                          <h6>Full name: Chan Ting, Mimi&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            Sex: Female</h6>
+                          <h6>Birth Date: 30/08/1998&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mobile Phone: 1234 5678</h6>
+                          <h6>Email: ting@gmail.com</h6>
+                          <h6><span style="font-size: 1rem;">Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong
+                              Kong</span><br></h6>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
+
+                  <div style="display: none;" id="Education"
+                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only">
+                    <div id="field2" class="container textfield">
+                      <div class="row resize-drag" contenteditable>
                         <div class="card col-sm-12">
                           <p>
                           <h6>Name: Chan Ting</h6>
@@ -334,12 +361,21 @@
                           <h6>Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong Kong</h6>
                           </p>
                         </div>
-
                       </div>
-
                     </div>
-
                   </div>
+
+
+                  <div style="display: none;" id="Work Experience"
+                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only">
+                  </div>
+
+
+                  <div style="display: none;" id="Skill"
+                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only">
+                  </div>
+
+
                 </div>
               </div>
               <!-- if the user has created CV and not adding new field-->
@@ -360,8 +396,8 @@
 
 
     <!-- Delete Modal-->
-    <div class="animate__animated animate__fadeIn" style="display:none" id="deleteModal" tabindex="-1" role="dialog"
-      aria-labelledby="exampleModalLabel">
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="deleteModal" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -378,6 +414,31 @@
       </div>
     </div>
     <!-- End of Delete Modal -->
+
+
+    <!-- Add Page Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h6>Please input the name of your new page:</h6><br>
+            <input type="text" id="newPageName" name="" class="form-control form-control-user">
+            <p id="existed" style="display: none; padding: 1em 1em; color: red; font-size: 10px;"> **The page has
+              already existed</p>
+          </div>
+          <div class="modal-footer">
+            <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
+              data-dismiss="modal">Cancel</button>
+            <button id="alert-addPage" class="btn alert-btn" type="button" onclick="addPage()"
+              data-dismiss="modal">Sumbit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Add Page Modal -->
+
+
   </div>
   <!-- End of Content Wrapper-->
 
@@ -507,15 +568,16 @@
 
     ////////for add field
     async function addField() {
-      //add mainContent height
-      var mainContentHeight = document.getElementById("mainContent").style.height
-      var newHeight = parseInt(mainContentHeight, 10) + 40;
-      document.getElementById("mainContent").style.height = newHeight.toString() + "px";
+      //add content height
+      var contentid = sessionStorage.getItem('currentPage');
+      var contentHeight = document.getElementById(contentid).style.height
+      var newHeight = parseInt(contentHeight, 10) + 40;
+      document.getElementById(contentid).style.height = newHeight.toString() + "px";
 
       //add new text field
       let fieldArr = document.getElementsByClassName("textfield");
       let num = fieldArr.length + 1;
-      document.getElementById("mainContent").innerHTML += "<div id='field" + num + "' class='container textfield'> <div class='row resize-drag' contenteditable> <div class='card col-sm-12'> <p></p> </div> </div> </div>";
+      document.getElementById(contentid).innerHTML += "<div id='field" + num + "' class='container textfield'> <div class='row resize-drag' contenteditable> <div class='card col-sm-12'> <p></p> </div> </div> </div>";
 
       //Reload the page for update the code
       document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
@@ -532,6 +594,7 @@
         body: data
       });
       sessionStorage.setItem('addField', 'true');
+
       location.reload();
     }
     ////////
@@ -540,6 +603,9 @@
     if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
       // due to add field
       if (sessionStorage.getItem("addField") == "true") {
+        //no need to have effect when enter
+        document.getElementById(sessionStorage.getItem("currentPage")).setAttribute("class", "col-sm-10 card shadow mb-4 resize-only");
+        //keep page layout
         sessionStorage.setItem('addField', 'false');
       }
       // not due to add field
@@ -579,29 +645,60 @@
     window.onload = function () {
       if (window.location.href.substr(-1) !== '?') {
         window.location = window.location.href + '?';
+        sessionStorage.setItem('currentPage', 'Basic Information');
+        sessionStorage.setItem('addField', 'false');
+        console.log(sessionStorage)
       }
     }
     ///////
 
 
-    // document.querySelectorAll("[contenteditable]").forEach(field =>
-    //   field.addEventListener("click", findField)
-    // );
+    ////////for showing content page
+    function showContent(targetPage) {
+      var contentBtnArray = document.getElementsByClassName("content-btn");
+      var i;
+      for (i = 0; i < contentBtnArray.length; i++) {
+        if (contentBtnArray[i].value == targetPage) {
+          document.getElementById(targetPage).style.display = '';
+        } else {
+          id = contentBtnArray[i].value;
+          document.getElementById(id).style.display = 'none';
+        }
+      }
+      sessionStorage.setItem('currentPage', targetPage);
+      document.getElementById(sessionStorage.getItem("currentPage")).setAttribute("class", "animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only");
+    }
+    ////////
 
-    // function findField(event) {
-    //   alert(event.target.name);
-    //   event.preventDefault();
-    //   var targetField = event.target.parentNode.parentNode.id;
-    //   deleteField(targetField);
-    // }
 
-    // function deleteField(targetField) {
-    //   document.getElementById("deleteField-btn").addEventListener("click", function () {
-    //     alert(targetField);
-    //     document.getElementById(targetField).innerHTML = '';
-    //     targetField = '';
-    //   });
-    // }
+    ///////for showing add page window
+    function showAddPageWindow() {
+      var addPageWindow = document.getElementById('addPageModal');
+      if (addPageWindow.style.display == '') {
+        addPageWindow.style.display = 'none';
+      } else {
+        addPageWindow.style.display = ''
+      }
+    }
+    ////////
+
+    ///////for add page
+    function addPage() {
+      var contentBtnArray = document.getElementsByClassName("content-btn");
+      var newPage = document.getElementById("newPageName").value
+      var i;
+      for (i = 0; i < contentBtnArray.length; i++) {
+        if (contentBtnArray[i].value == newPage) {
+          document.getElementById("existed").style.display = '';
+          return;
+        }
+      }
+      document.getElementById("existed").style.display = 'none';
+      document.getElementById("fieldbar").innerHTML += "<hr> <li class='nav-item mx-1'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <div class='text-break'>" + newPage + "<div> </button> </li>";
+      document.getElementById("mainContent").innerHTML += " <div style='display: none;' id='" + newPage + "' class='animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only'> </div>";
+      document.getElementById("newPageName").value = "";
+    }
+    ////////
 
 
     ////////for delete field button's style
@@ -609,9 +706,11 @@
       if (element.classList.contains("active")) {
         element.setAttribute("class", "btn nav-link");
         element.style.color = "#dddfeb";
+        sessionStorage.setItem("deleteBtn", "off")
       } else {
         element.setAttribute("class", "btn nav-link active");
         element.style.color = "black";
+        sessionStorage.setItem("deleteBtn", "on")
       }
     }
     ///////
@@ -622,10 +721,8 @@
     });
 
     function deleteField(event) {
-      const element = document.getElementById("deleteField-btn");
-
       // if delete button is already clicked - delete field
-      if (element.classList.contains("active")) {
+      if (sessionStorage.getItem("deleteBtn") == "on") {
         event.preventDefault();
         var targetField = event.target.parentNode.parentNode.id;
         console.info(targetField)
@@ -714,7 +811,7 @@
         modifiers: [
           // keep the edges inside the parent
           interact.modifiers.restrictEdges({
-            outer: '#mainContent'
+            outer: '#' + sessionStorage.getItem("currentPage")
           }),
 
           // minimum size
@@ -742,7 +839,7 @@
                 listeners: { move: window.dragMoveListener },
                 modifiers: [
                   interact.modifiers.restrictRect({
-                    restriction: '#mainContent',
+                    restriction: '#' + + sessionStorage.getItem("currentPage"),
                     endOnly: true
                   })
                 ]

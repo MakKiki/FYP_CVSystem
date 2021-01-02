@@ -10458,21 +10458,27 @@ body.sidebar-toggled footer.sticky-footer {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-.alert-btn{
- color: #fff;
+.alert-btn {
+  color: #fff;
   background-color: #d84e6e;
   border-color: #d84e6e;
 }
 .alert-btn:hover {
   color: #fff;
-  background-color: #C74060;
-  border-color: #C74060;
+  background-color: #c74060;
+  border-color: #c74060;
 }
 .alert-btn.focus,
 .alert-btn:focus {
   color: #fff;
-  background-color: #C74060;
-  border-color: #C74060;
+  background-color: #c74060;
+  border-color: #c74060;
   box-shadow: 0 0 0 0.2rem rgba(253, 26, 82, 0.5);
 }
-
+.center {
+  position: fixed;
+  top: 45%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
