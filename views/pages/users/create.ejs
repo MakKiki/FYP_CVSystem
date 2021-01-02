@@ -197,12 +197,47 @@
 
       <li class="nav-item">
         <div class="py-2">
-          <button class="btn nav-link" onclick="addField()" style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>+ Files</span>
+          <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+              <path
+                d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z" />
+              <path
+                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+            </svg>
+            <span>Document</span>
           </button>
         </div>
-        <button class="btn nav-link" onclick="addField()" style="padding: 2px 2px; padding-left: 1.05rem;">
-          <span>+ Hyperlink</span>
+        <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image"
+            viewBox="0 0 16 16">
+            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+            <path
+              d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+          </svg>
+          <span>Image</span>
+        </button>
+        <div class="py-2">
+          <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-camera-reels" viewBox="0 0 16 16">
+              <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
+              <path
+                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+              <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+            </svg>
+            <span>Video</span>
+          </button>
+        </div>
+        <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link"
+            viewBox="0 0 16 16">
+            <path
+              d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+            <path
+              d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+          </svg>
+          <span>Hyperlink</span>
         </button>
         <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -231,9 +266,13 @@
         <div class="py-2">
           <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
             style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>- Delete Field</span>
+            <span>- Field</span>
           </button>
         </div>
+        <button type="button" class="btn nav-link" onclick="showDeletePageWindow()"
+          style="padding: 2px 2px; padding-left: 1.05rem;">
+          <span>- Page</span>
+        </button>
       </li>
 
       <!-- Divider -->
@@ -279,31 +318,34 @@
 
                   <!-- Fieldbar -->
                   <div class="col-sm-2">
-                    <ul id="fieldbar" class="fieldbar ul-noBullet py-3">
-                      <!-- Nav Item - Dashboard -->
-                      <li class="nav-item mx-1">
-                        <button type="button" value="Basic Information" class="btn content-btn"
+                    <ul id="fieldbar" class="ul-noBullet py-3">
+                      <!-- Basic Info Button -->
+                      <li id="Basic Informationbtn" class="nav-item mx-1">
+                        <button type="button" value="Basic Information" class="btn content-btn fieldbar"
                           onclick="showContent(this.value)">
                           Basic Information
                         </button>
                       </li>
-                      <hr>
-                      <!-- Nav Item - Charts -->
-                      <li class="nav-item mx-1">
-                        <button type="button" value="Education" class="btn content-btn"
+
+                      <!-- Education Button -->
+                      <li id="Educationbtn" class="nav-item mx-1">
+                        <button type="button" value="Education" class="btn content-btn fieldbar"
                           onclick="showContent(this.value)">
                           Education
                         </button>
                       </li>
-                      <hr>
-                      <li class="nav-item mx-1">
-                        <button type="button" value="Work Experience" class="btn content-btn"
+
+                      <!-- Work experience -->
+                      <li id="Work Experiencebtn" class="nav-item mx-1">
+                        <button type="button" value="Work Experience" class="btn content-btn fieldbar"
                           onclick="showContent(this.value)">
                           Work Experience
+                        </button>
                       </li>
-                      <hr>
-                      <li class="nav-item mx-1">
-                        <button type="button" value="Skill" class="btn content-btn"
+
+                      <!-- Skill -->
+                      <li id="Skillbtn" class="nav-item mx-1">
+                        <button type="button" value="Skill" class="btn content-btn fieldbar"
                           onclick="showContent(this.value)">
                           Skill
                         </button>
@@ -432,6 +474,24 @@
               data-dismiss="modal">Cancel</button>
             <button id="alert-addPage" class="btn alert-btn" type="button" onclick="addPage()"
               data-dismiss="modal">Sumbit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Add Page Modal -->
+
+
+    <!-- Delete Page Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none;" id="deletePageModal" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div id="deletePageModalBody" class="modal-body">
+            <h6>Please choose the page(s) you want to delete.</h6><br>
+          </div>
+          <div class="modal-footer">
+            <button id="alert-cancel" class="btn alert-btn" type="button" onclick="showDeletePageWindow()"
+              data-dismiss="modal">Finish</button>
           </div>
         </div>
       </div>
@@ -618,6 +678,7 @@
     //leave page and enter again
     else {
       console.log("leave the page and enter again")
+      console.log(sessionStorage)
       updateReloadCVSession();
       if (sessionStorage.getItem("addField") == "false") {
       }
@@ -676,6 +737,9 @@
       var addPageWindow = document.getElementById('addPageModal');
       if (addPageWindow.style.display == '') {
         addPageWindow.style.display = 'none';
+        //when cancel is clicked, clear all inputted value in the add page window
+        document.getElementById("newPageName").value = "";
+        document.getElementById("existed").style.display = 'none';
       } else {
         addPageWindow.style.display = ''
       }
@@ -694,7 +758,7 @@
         }
       }
       document.getElementById("existed").style.display = 'none';
-      document.getElementById("fieldbar").innerHTML += "<hr> <li class='nav-item mx-1'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <div class='text-break'>" + newPage + "<div> </button> </li>";
+      document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)'> <div class='text-break'>" + newPage + "<div> </button> </li>";
       document.getElementById("mainContent").innerHTML += " <div style='display: none;' id='" + newPage + "' class='animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only'> </div>";
       document.getElementById("newPageName").value = "";
     }
@@ -732,6 +796,42 @@
       //Otherwise
       else {
         return;
+      }
+    }
+    ////////
+
+
+    //////for showing delete page window
+    function showDeletePageWindow() {
+      var deletePageWindow = document.getElementById('deletePageModal');
+      // if cancel is clicked
+      if (deletePageWindow.style.display == '') {
+        deletePageWindow.style.display = 'none';
+        document.getElementById("deletePageModalBody").innerHTML = '<h6>Please choose the page(s) you want to delete.</h6><br>';
+      } else {
+        deletePageWindow.style.display = '';
+        var allPageArray = document.getElementsByClassName("content-btn");
+        var body = document.getElementById("deletePageModalBody");
+        var i;
+        for (i = 0; i < allPageArray.length; i++) {
+          document.getElementById("deletePageModalBody").innerHTML += "<button type='button' class='btn btn-secondary' onclick='deletePage()' value='" + allPageArray[i].value + "' id='" + allPageArray[i].value + "page'> x " + allPageArray[i].value + " </button>";
+        }
+      }
+    }
+    ////////
+
+    //////delete page
+    function deletePage() {
+      var page = event.target.value;
+      var pageid = event.target.id;
+      var contentBtnArray = document.getElementsByClassName("content-btn");
+      var i;
+      for (i = 0; i < contentBtnArray.length; i++) {
+        if (contentBtnArray[i].value == page) {
+          document.getElementById(contentBtnArray[i].value).remove();
+          document.getElementById(contentBtnArray[i].value + "btn").remove();
+          document.getElementById(pageid).remove();
+        }
       }
     }
     ////////

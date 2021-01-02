@@ -2210,7 +2210,6 @@ textarea.form-control.is-invalid {
   }
 }
 .btn {
-  width: 135px;
   /* display: inline-block; */
   font-weight: 400;
   color: #858796;
@@ -10387,15 +10386,13 @@ body.sidebar-toggled footer.sticky-footer {
   margin-top: 0;
 }
 .fieldbar {
+  min-height: 90px;
+  min-width: 135px;
   background-color: rgb(255, 255, 255);
-  background-clip: border-box;
   border: 1px solid #e3e6f0;
-  border-radius: 0.4rem;
   font-size: 15px;
   font-weight: 500;
   /* color: */
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
@@ -10481,4 +10478,8 @@ body.sidebar-toggled footer.sticky-footer {
   left: 55%;
   transform: translate(-50%, -50%);
   width: 50%;
+}
+.deletePage-btn {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
