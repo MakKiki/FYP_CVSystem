@@ -24,6 +24,7 @@ module.exports.routes = {
   "/signup/result": { view: "pages/signupResult" },
   "/create": { view: "pages/users/create" },
   "/main": { view: "pages/users/main" },
+  "/CV": { view: "pages/users/CV" },
 
   /***************************************************************************
    *                                                                          *
@@ -39,6 +40,7 @@ module.exports.routes = {
   "POST /login": "PersonController.login",
   "POST /logout": "PersonController.logout",
   "POST /signup": "PersonController.signup",
+  "POST /user/submitCV": "UserController.submitCV",
   "POST /user/saveCV": "UserController.saveCV",
   "POST /user/deleteCV": "UserController.deleteCV",
   "POST /user/reloadCV": "UserController.reloadCV",

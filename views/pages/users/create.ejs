@@ -73,14 +73,9 @@
               </svg>
             </button>
           </span>
-          <!-- <button data-edit="formatBlock:p">P</button>
-          <button data-edit="formatBlock:H1">H1</button>
-          <div class="my-1"></div>
-          <button data-edit="formatBlock:H2">H2</button>
-          <button data-edit="formatBlock:H3">H3</button> -->
 
           <span title="Small size">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:1">&#8613;S</button>
+            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:10">&#8613;S</button>
           </span>
 
           <span title="Middle size">
@@ -88,9 +83,24 @@
           </span>
 
           <span title="Large size">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:5">&#8613;L</button>
+            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:4">&#8613;L</button>
           </span>
 
+          <span title="Heading1">
+            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:7">H1</button>
+          </span>
+
+          <span title="Heading2">
+            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:6">H2</button>
+          </span>
+
+          <span title="Heading3">
+            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:5">H3</button>
+          </span>
+
+          <span title="Paragraph">
+            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3">P</button>
+          </span>
           <!-- Haven't finished: Font foreColor, Text font, Text style(?) -->
         </div>
       </li>
@@ -218,7 +228,12 @@
           <span>Image</span>
         </button>
         <div class="py-2">
-          <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+          <!-- <label class="file">
+            <input type="file" id="file" aria-label="File browser example">
+            <span class="file-custom"></span>
+          </label> -->
+          <button type="button" class="btn nav-link" onclick="uploadVideo()"
+            style="padding: 2px 2px; padding-left: 1.05rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-camera-reels" viewBox="0 0 16 16">
               <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
@@ -284,7 +299,7 @@
       </div>
 
       <div class="py-2">
-        <button onclick="" class="btn btn-warning">Submit</button>
+        <button onclick="showSubmitAlert()" class="btn btn-warning">Submit</button>
       </div>
 
       <% if (req.session.CV !='' ){ %>
@@ -314,7 +329,7 @@
             <!-- if the user has not created any CV yet -->
             <% if (req.session.CV=='' && req.session.reloadCV=='' ){ %>
               <div class="cotainer">
-                <div id="mainContent" class="row">
+                <div class="row">
 
                   <!-- Fieldbar -->
                   <div class="col-sm-2">
@@ -355,69 +370,71 @@
                   <!-- End of Fieldbar -->
 
                   <!-- Main Content -->
-                  <div style="width: 836px; height: 360px; transform: translate(0px, 0px);" id="Basic Information"
-                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only" data-x="0"
-                    data-y="0">
-                    <div id="field1" class="container textfield">
-                      <div class="row resize-drag" contenteditable=""
-                        style="width: 539px; height: 283px; transform: translate(259px, 18px);" data-x="259"
-                        data-y="19">
-                        <div class="card col-sm-12">
-                          <p>
-                          <h1>Hello,</h1>
-                          <br>
-                          I am Mimi. I am a fresh graduate student who is looking for jobs in an IT company.
-                          Hope I will have a chance to work with you!!!:)
-                          <h6><br></h6>
-                          <h6><br></h6>
-                          <h6>Full name: Chan Ting, Mimi&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            Sex: Female</h6>
-                          <h6>Birth Date: 30/08/1998&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mobile Phone: 1234 5678</h6>
-                          <h6>Email: ting@gmail.com</h6>
-                          <h6><span style="font-size: 1rem;">Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong
-                              Kong</span><br></h6>
-                          </p>
+                  <div id="main" class="col-sm-10">
+                    <div style="width: 836px; height: 360px; transform: translate(0px, 0px);" id="Basic Information"
+                      class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only" data-x="0"
+                      data-y="0">
+                      <div id="field1" class="container textfield">
+                        <div class="row resize-drag" contenteditable=""
+                          style="width: 539px; height: 283px; transform: translate(259px, 18px);" data-x="259"
+                          data-y="19">
+                          <div class="card col-sm-12">
+                            <p>
+                            <h1>Hello,</h1>
+                            <br>
+                            I am Mimi. I am a fresh graduate student who is looking for jobs in an IT company.
+                            Hope I will have a chance to work with you!!!:)
+                            <h6><br></h6>
+                            <h6><br></h6>
+                            <h6>Full name: Chan Ting, Mimi&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                              Sex: Female</h6>
+                            <h6>Birth Date: 30/08/1998&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mobile Phone: 1234 5678</h6>
+                            <h6>Email: ting@gmail.com</h6>
+                            <h6><span style="font-size: 1rem;">Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong
+                                Kong</span><br></h6>
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
 
-                  <div style="display: none;" id="Education"
-                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only">
-                    <div id="field2" class="container textfield">
-                      <div class="row resize-drag" contenteditable>
-                        <div class="card col-sm-12">
-                          <p>
-                          <h6>Name: Chan Ting</h6>
-                          <br>
-                          <h6>Birth Date: 30/08/1998</h6>
-                          <br>
-                          <h6>Sex: Female</h6>
-                          <br>
-                          <h6>Mobile Phone: 1234 5678</h6>
-                          <br>
-                          <h6>Email: ting@gmail.com</h6>
-                          <br>
-                          <h6>Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong Kong</h6>
-                          </p>
+                    <div style="display: none;" id="Education"
+                      class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+                      <div id="field2" class="container textfield">
+                        <div class="row resize-drag" contenteditable>
+                          <div class="card col-sm-12">
+                            <p>
+                            <h6>Name: Chan Ting</h6>
+                            <br>
+                            <h6>Birth Date: 30/08/1998</h6>
+                            <br>
+                            <h6>Sex: Female</h6>
+                            <br>
+                            <h6>Mobile Phone: 1234 5678</h6>
+                            <br>
+                            <h6>Email: ting@gmail.com</h6>
+                            <br>
+                            <h6>Address: 8 Fl., Block 1, Happy Estate, Causeway Bay. Hong Kong</h6>
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
+
+
+                    <div style="display: none;" id="Work Experience"
+                      class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+                    </div>
+
+
+                    <div style="display: none;" id="Skill"
+                      class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+                    </div>
+
                   </div>
-
-
-                  <div style="display: none;" id="Work Experience"
-                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only">
-                  </div>
-
-
-                  <div style="display: none;" id="Skill"
-                    class="animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only">
-                  </div>
-
-
+                  <!-- End of main Content -->
                 </div>
               </div>
               <!-- if the user has created CV and not adding new field-->
@@ -458,6 +475,28 @@
     <!-- End of Delete Modal -->
 
 
+    <!-- Submit Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="submitModal" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirm to Submit?</h5>
+          </div>
+          <div class="modal-body">Your CV will be published as a hyperlink soon.</div>
+          <div class="modal-footer">
+            <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showSubmitAlert()"
+              data-dismiss="modal">Cancel</button>
+            <button id="alert-delete" class="btn alert-btn" type="button"
+              onclick="submitCV('<%= req.session.firstName %>', '<%= req.session.lastName %>', '<%= req.session.userID %>')"
+              data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Submit Modal -->
+
+
     <!-- Add Page Modal-->
     <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
       role="dialog" aria-labelledby="exampleModalLabel">
@@ -473,7 +512,7 @@
             <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
               data-dismiss="modal">Cancel</button>
             <button id="alert-addPage" class="btn alert-btn" type="button" onclick="addPage()"
-              data-dismiss="modal">Sumbit</button>
+              data-dismiss="modal">Submit</button>
           </div>
         </div>
       </div>
@@ -517,16 +556,60 @@
 
 
   <script>
-    //////// for create innerHTML to db  **Later
+    ///////for showing submit alert
+    function showSubmitAlert() {
+      var submitAlert = document.getElementById('submitModal');
+      var content = document.getElementById("content");
+      var sidebar = document.getElementById("sidebar");
+      var topbar = document.getElementById("topbar");
+      if (submitAlert.style.display == '') {
+        submitAlert.style.display = 'none';
+        content.style.opacity = '';
+        sidebar.style.opacity = '';
+        topbar.style.opacity = '';
+      } else {
+        submitAlert.style.display = ''
+        content.style.opacity = '.4';
+        sidebar.style.opacity = '.4';
+        topbar.style.opacity = '.4';
+      }
+    }
+    ///////
 
+    //////// for submit
+    async function submitCV(firstName, lastName, userID) {
+      //add the innerHTML of the CV to the input value for submittion
+      document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
+
+      var data = JSON.stringify({
+        CV: document.getElementById('formInput').value,
+        link: 'http://' + firstName + '_' + lastName + '_' + userID + '_CV.com',
+      });
+
+      var response = await fetch("/user/submitCV", {
+        method: "POST",
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+
+      if (response.ok) {
+        var data = await response.json();
+        alert(data.message);
+        window.location = data.url;
+      } else {
+        alert(response.statusText);
+      }
+    }
     ////////
 
 
     /////// for save innerHTML to session and db
     async function saveContent() {
-
       document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
-      alert(document.getElementById('formInput').value)
 
       var data = JSON.stringify({
         CV: document.getElementById('formInput').value,
@@ -664,7 +747,7 @@
       // due to add field
       if (sessionStorage.getItem("addField") == "true") {
         //no need to have effect when enter
-        document.getElementById(sessionStorage.getItem("currentPage")).setAttribute("class", "col-sm-10 card shadow mb-4 resize-only");
+        document.getElementById(sessionStorage.getItem("currentPage")).setAttribute("class", "new-page card shadow mb-4 resize-only");
         //keep page layout
         sessionStorage.setItem('addField', 'false');
       }
@@ -727,7 +810,7 @@
         }
       }
       sessionStorage.setItem('currentPage', targetPage);
-      document.getElementById(sessionStorage.getItem("currentPage")).setAttribute("class", "animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only");
+      document.getElementById(sessionStorage.getItem("currentPage")).setAttribute("class", "animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only");
     }
     ////////
 
@@ -759,10 +842,41 @@
       }
       document.getElementById("existed").style.display = 'none';
       document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)'> <div class='text-break'>" + newPage + "<div> </button> </li>";
-      document.getElementById("mainContent").innerHTML += " <div style='display: none;' id='" + newPage + "' class='animate__animated animate__fadeInRight col-sm-10 card shadow mb-4 resize-only'> </div>";
+      document.getElementById("main").innerHTML += " <div style='display: none;' id='" + newPage + "' class='animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only'> </div>";
       document.getElementById("newPageName").value = "";
     }
     ////////
+
+    // function uploadVideo(files) {
+
+    //   const file = files[0];
+    //   if (!file.type.startsWith('image/')) return;
+
+    //   if (file.size > 4194304) {
+    //     alert("請重新上載4MB相片");
+    //     return;
+    //   }
+
+    //   var reader = new FileReader();
+    //   reader.onload = function (e) {
+    //     var preview = document.getElementById('preview' + p);
+    //     preview.innerHTML = "";
+    //     var img = document.createElement('img');
+    //     img.src = e.target.result;
+    //     preview.appendChild(img);
+
+    //     var input = document.createElement('input');
+    //     input.type = 'hidden';
+    //     input.name = 'GRGP[imgIDCard' + p + ']';
+    //     input.value = e.target.result;
+
+    //     img.style.width = "auto";
+    //     img.style.height = "150px";
+    //     document.getElementById('Admin_GRGP_form').appendChild(input);
+    //   }
+    //   reader.readAsDataURL(file);
+
+    // }
 
 
     ////////for delete field button's style
@@ -868,7 +982,7 @@
         modifiers: [
           // keep the edges inside the parent
           // interact.modifiers.restrictEdges({
-          //   outer: 'parent'
+          //   outer: '#mainContent'
           // }),
 
           // minimum size
@@ -911,7 +1025,7 @@
         modifiers: [
           // keep the edges inside the parent
           interact.modifiers.restrictEdges({
-            outer: '#' + sessionStorage.getItem("currentPage")
+            outer: '#main'
           }),
 
           // minimum size
@@ -939,7 +1053,7 @@
                 listeners: { move: window.dragMoveListener },
                 modifiers: [
                   interact.modifiers.restrictRect({
-                    restriction: '#' + + sessionStorage.getItem("currentPage"),
+                    restriction: '#main',
                     endOnly: true
                   })
                 ]

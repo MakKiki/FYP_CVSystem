@@ -13,12 +13,12 @@ module.exports = {
     email: {
       type: "string",
       unique: true,
-      required: true
+      required: true,
     },
 
     password: {
       type: "string",
-      required: true
+      required: true,
     },
 
     firstName: {
@@ -35,7 +35,11 @@ module.exports = {
 
     CV: {
       type: "string",
-    }
+    },
+
+    link: {
+      type: "string",
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

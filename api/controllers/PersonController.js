@@ -22,12 +22,12 @@ module.exports = {
     req.session.regenerate(function (err) {
       if (err) return res.serverError(err);
 
-      req.session.email = person.email;
       req.session.firstName = person.firstName;
       req.session.lastName = person.lastName;
       req.session.role = person.role;
       req.session.userID = person.id;
       req.session.CV = person.CV;
+      req.session.link = person.link;
       req.session.reloadCV = '';
 
       sails.log("[Session] ", req.session);

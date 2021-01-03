@@ -48,7 +48,13 @@
                   <div class="py-4" style="padding: 12px 12px">
                     <span class="main-btn">Publicated link of your CV</span>
                     <br>
-                    <p class="py-2">You have not published your CV yet.</p>
+                    <% if (req.session.link=='' ){ %>
+                      <p class="py-2">You have not published your CV yet.</p>
+                      <% } else{ %>
+                        <button type="button" class="btn btn-link" onclick="goToCVPage()">
+                          <%= req.session.link %>
+                        </button>
+                        <% } %>
                   </div>
                 </div>
               </div>
@@ -63,6 +69,12 @@
   </div>
 
   <script>
+    ////////for open CV page in new window
+    function goToCVPage() {
+      window.open("/CV");
+    }
+    ////////
+
     ////////for showing toolbar
     function showUserToolbar() {
       var toolbar = document.getElementById('userToolbar');

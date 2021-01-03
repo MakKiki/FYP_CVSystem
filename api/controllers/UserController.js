@@ -22,9 +22,33 @@ module.exports = {
 
     if (req.wantsJSON) {
       sails.log("[Session] ", req.session);
-      return res.json({ message: "✔️ Successfully saved ✔️", url: "/create" }); // for ajax request
+      return res.json({ message: "✔️ Successfully Saved ✔️", url: "/create" }); // for ajax request
     } else {
       return res.redirect("/create"); // for normal request
+    }
+  },
+
+  // submit CV
+  submitCV: async function (req, res) {
+    if (req.method == "GET") return res.forbidden();
+
+    req.session.CV = req.body.CV;
+    req.session.link = req.body.link;
+
+    var user = await Person.update(req.session.userID)
+      .set({
+        CV: req.body.CV,
+        link: req.body.link,
+      })
+      .fetch();
+
+    if (user.length == 0) return res.notFound();
+
+    if (req.wantsJSON) {
+      sails.log("[Session] ", req.session);
+      return res.json({ message: "✔️ Successfully Submited ✔️", url: "/main" }); // for ajax request
+    } else {
+      return res.redirect("/main"); // for normal request
     }
   },
 
@@ -33,10 +57,12 @@ module.exports = {
     if (req.method == "GET") return res.forbidden();
 
     req.session.CV = "";
+    req.session.link = "";
 
     var user = await Person.update(req.session.userID)
       .set({
         CV: "",
+        link: "",
       })
       .fetch();
 

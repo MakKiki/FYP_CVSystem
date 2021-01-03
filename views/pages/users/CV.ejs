@@ -1,0 +1,50 @@
+<!-- Content Wrapper-->
+
+<div id="content-wrapper" class="d-flex flex-column">
+    <!-- Content -->
+    <div id="content" class="container-fluid container">
+
+        <!-- Content position -->
+        <div style="position:absolute; left:150px; top:70px; height: 400px; width:980px;">
+            <!-- Welcome message -->
+            <div class="container animate__animated animate__fadeInDown">
+                <div class="header-body text-center mb-7">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10 col-lg-12 col-md-9">
+                            <h1 class="text-white">👋 Welcome To My 3D CV! 👋</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Show CV -->
+            <div class="py-5">
+                <%- req.session.CV %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    ////////for showing content page
+    function showContent(targetPage) {
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        var i;
+        for (i = 0; i < contentBtnArray.length; i++) {
+            if (contentBtnArray[i].value == targetPage) {
+                document.getElementById(targetPage).style.display = '';
+            } else {
+                id = contentBtnArray[i].value;
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+    }
+    ////////
+
+    /////// disable editable of the textfield before the page
+    window.onload = function () {
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.removeAttribute("contenteditable")
+        });
+    }
+    ///////
+</script>
