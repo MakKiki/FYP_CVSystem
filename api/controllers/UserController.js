@@ -12,7 +12,7 @@ module.exports = {
 
     req.session.CV = req.body.CV;
 
-    var user = await Person.update(req.session.userID)
+    var user = await User.update(req.session.userID)
       .set({
         CV: req.body.CV,
       })
@@ -35,7 +35,7 @@ module.exports = {
     req.session.CV = req.body.CV;
     req.session.link = req.body.link;
 
-    var user = await Person.update(req.session.userID)
+    var user = await User.update(req.session.userID)
       .set({
         CV: req.body.CV,
         link: req.body.link,
@@ -59,7 +59,7 @@ module.exports = {
     req.session.CV = "";
     req.session.link = "";
 
-    var user = await Person.update(req.session.userID)
+    var user = await User.update(req.session.userID)
       .set({
         CV: "",
         link: "",

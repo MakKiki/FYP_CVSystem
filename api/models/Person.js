@@ -33,14 +33,6 @@ module.exports = {
       type: "string",
     },
 
-    CV: {
-      type: "string",
-    },
-
-    link: {
-      type: "string",
-    },
-
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

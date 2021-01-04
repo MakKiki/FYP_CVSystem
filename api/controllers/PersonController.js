@@ -12,9 +12,14 @@ module.exports = {
 
     if (!req.body.email || !req.body.password) return res.badRequest();
 
-    var person = await Person.findOne({ email: req.body.email });
+    var person = await User.findOne({ email: req.body.email });
 
-    if (!person) return res.status(401).send("Account not found");
+    if (!person) {
+      person = await Admin.findOne({ email: req.body.email });
+      if (!person) {
+        return res.status(401).send("Account not found");
+      }
+    }
 
     if (person.password != req.body.password)
       return res.status(401).send("Wrong Password");
@@ -25,10 +30,13 @@ module.exports = {
       req.session.firstName = person.firstName;
       req.session.lastName = person.lastName;
       req.session.role = person.role;
-      req.session.userID = person.id;
-      req.session.CV = person.CV;
-      req.session.link = person.link;
-      req.session.reloadCV = '';
+
+      if (person.role == "user") {
+        req.session.userID = person.id;
+        req.session.CV = person.CV;
+        req.session.link = person.link;
+        req.session.reloadCV = "";
+      }
 
       sails.log("[Session] ", req.session);
 
@@ -53,15 +61,15 @@ module.exports = {
   signup: async function (req, res) {
     if (req.method == "GET") return res.view("pages/signup");
 
-    if (!req.body.Person) return res.badRequest("Form-data not received.");
-   
-    var person = await Person.findOne({ email: req.body.Person.email });
-    if (person) return res.view('pages/signupResult', { result: "fail" });
+    if (!req.body.User) return res.badRequest("Form-data not received.");
 
-    req.body.Person.role = "user";
+    var user = await User.findOne({ email: req.body.User.email });
+    if (user) return res.view("pages/signupResult", { result: "fail" });
 
-    await Person.create(req.body.Person);
+    req.body.User.role = "user";
 
-    return res.view('pages/signupResult', { result: "success" });
+    await User.create(req.body.User);
+
+    return res.view("pages/signupResult", { result: "success" });
   },
 };

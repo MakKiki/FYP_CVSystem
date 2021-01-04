@@ -10,9 +10,8 @@
  */
 
 module.exports.bootstrap = async function () {
-
-  if ((await Person.count()) == 0) {
-    await Person.createEach([
+  if ((await User.count()) == 0) {
+    await User.createEach([
       {
         email: "susan@gmail.com",
         password: "123456",
@@ -27,8 +26,14 @@ module.exports.bootstrap = async function () {
         lastName: "Wong",
         role: "user",
       },
-      { email: "admin@gmail.com", password: "123456", role: "admin" },
+
       // etc.
+    ]);
+  }
+
+  if ((await Admin.count()) == 0) {
+    await Admin.createEach([
+      { email: "admin@gmail.com", password: "123456", role: "admin" },
     ]);
   }
 
