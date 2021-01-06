@@ -379,9 +379,7 @@
                       class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only" data-x="0"
                       data-y="0">
                       <div id="field1" class="container textfield">
-                        <div class="row resize-drag" contenteditable=""
-                          style="width: 539px; height: 283px; transform: translate(259px, 18px);" data-x="259"
-                          data-y="19">
+                        <div class="row resize-drag" contenteditable="">
                           <div class="card col-sm-12">
                             <p>
                             <h1>Hello,</h1>
@@ -470,7 +468,7 @@
           <div class="modal-footer">
             <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showDeleteAlert()"
               data-dismiss="modal">Cancel</button>
-            <button id="alert-delete" class="btn alert-btn" type="button" onclick="deleteCV()"
+            <button id="alert-delete" class="btn pink-btn" type="button" onclick="deleteCV()"
               data-dismiss="modal">Delete</button>
           </div>
         </div>
@@ -491,7 +489,7 @@
           <div class="modal-footer">
             <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showSubmitAlert()"
               data-dismiss="modal">Cancel</button>
-            <button id="alert-delete" class="btn alert-btn" type="button"
+            <button id="alert-delete" class="btn pink-btn" type="button"
               onclick="submitCV('<%= req.session.firstName %>', '<%= req.session.lastName %>', '<%= req.session.userID %>')"
               data-dismiss="modal">Submit</button>
           </div>
@@ -515,7 +513,7 @@
           <div class="modal-footer">
             <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
               data-dismiss="modal">Cancel</button>
-            <button id="alert-addPage" class="btn alert-btn" type="button" onclick="addPage()"
+            <button id="alert-addPage" class="btn pink-btn" type="button" onclick="addPage()"
               data-dismiss="modal">Submit</button>
           </div>
         </div>
@@ -533,7 +531,7 @@
             <h6>Please choose the page(s) you want to delete.</h6><br>
           </div>
           <div class="modal-footer">
-            <button id="alert-cancel" class="btn alert-btn" type="button" onclick="showDeletePageWindow()"
+            <button id="alert-cancel" class="btn pink-btn" type="button" onclick="showDeletePageWindow()"
               data-dismiss="modal">Finish</button>
           </div>
         </div>
@@ -767,8 +765,6 @@
       console.log("leave the page and enter again")
       console.log(sessionStorage)
       updateReloadCVSession();
-      if (sessionStorage.getItem("addField") == "false") {
-      }
     }
     ///////
 
@@ -942,15 +938,9 @@
     function deletePage() {
       var page = event.target.value;
       var pageid = event.target.id;
-      var contentBtnArray = document.getElementsByClassName("content-btn");
-      var i;
-      for (i = 0; i < contentBtnArray.length; i++) {
-        if (contentBtnArray[i].value == page) {
-          document.getElementById(contentBtnArray[i].value).remove();
-          document.getElementById(contentBtnArray[i].value + "btn").remove();
-          document.getElementById(pageid).remove();
-        }
-      }
+      document.getElementById(page).remove();
+      document.getElementById(page + "btn").remove();
+      document.getElementById(pageid).remove();
     }
     ////////
 

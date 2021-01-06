@@ -22,6 +22,7 @@ module.exports.routes = {
   "/login": { view: "pages/login" },
   "/signup": { view: "pages/signup" },
   "/signup/result": { view: "pages/signupResult" },
+  "/input": { view: "pages/users/inputData" },
   "/create": { view: "pages/users/create" },
   "/main": { view: "pages/users/main" },
   "/CV": { view: "pages/users/CV" },
@@ -36,6 +37,9 @@ module.exports.routes = {
    * not match any of those, it is matched against static assets.             *
    *                                                                          *
    ***************************************************************************/
+  "GET /user/:id/have": "UserController.populate",
+  "GET /cv/:id/include": "CVController.populate",
+  "GET /basicInfo/:id/inside": "BasicInfo.populate",
   "GET /login": "PersonController.login",
   "POST /login": "PersonController.login",
   "POST /logout": "PersonController.logout",

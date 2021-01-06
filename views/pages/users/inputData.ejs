@@ -1,0 +1,347 @@
+<br>
+<div class="container card shadow">
+    <div class="header py-7 py-lg-8">
+        <div class="container my-5">
+            <div class="header-body text-center mb-7">
+                <div class="justify-content-center">
+                    <div class="col-lg-12 col-md-9"></div>
+                    <h1 style="color: #f1869f">📝 Step 1 - Inputting Data 📝</h1><br>
+                    <h3 style="color: #a570a7"> Please input your data in the following fields.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!-- Basic Info -->
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <h3 style="color: #a570a7">🧍 Basic Information</h3>
+                <br>
+                <div class="row">
+
+                    <div class="col-sm-12 col-lg-12">
+                        Profile Image (If any)
+                        <input type="file" id="profile" name="BasicInfo[profile]"
+                            class="form-control form-control-user">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4 py-4">
+                        Full Name In English
+                        <input type="text" id="engName" name="BasicInfo[engName]" class="form-control form-control-user"
+                            onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4 py-4">
+                        Full Name In Chinese (If any)
+                        <input type="text" id="chiName" name="BasicInfo[chiName]" class="form-control form-control-user"
+                            onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4 py-4">
+                        Nick Name (If any)
+                        <input type="text" id="nickname" name="BasicInfo[nickname]"
+                            class="form-control form-control-user">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-2">
+                        Sex
+                        <select class="form-control" name="BasicInfo[sex]" value="" required>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3">
+                        Birth Date
+                        <input type="date" id="birth" name="BasicInfo[birth]" class="form-control form-control-user"
+                            required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-3">
+                        Country Code
+                        <input type="number" id="countryCode" name="BasicInfo[countryCode]"
+                            class="form-control form-control-user" placeholder="E.g. 852" required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+                        Phone
+                        <input type="tel" id="phone" name="BasicInfo[phone]" class="form-control form-control-user"
+                            required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 py-4">
+                        Email Address
+                        <input type="email" id="email" name="BasicInfo[email]" class="form-control form-control-user"
+                            required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 py-4">
+                        Personal website (If any)
+                        <input type="url" id="personWebLink" name="BasicInfo[personWebLink]"
+                            class="form-control form-control-user" required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12">
+                        Address
+                        <input type="text" id="address" name="BasicInfo[address]" class="form-control form-control-user"
+                            required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 py-4">
+                        Targeted Occupation
+                        <input type="text" id="occupation" name="BasicInfo[occupation]"
+                            class="form-control form-control-user" placeholder="E.g. Programmar" required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 py-4">
+                        Job Area
+                        <input type="text" id="jobArea" name="BasicInfo[jobArea]" class="form-control form-control-user"
+                            placeholder="E.g. Information Technology" required>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12">
+                        Objective (If any)
+                        <input type="text" id="objective" name="BasicInfo[objective]"
+                            class="form-control form-control-user">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Education -->
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0">
+                    <div class="py-5"></div>
+                    <h3 style="color: #a570a7">🎓 Education</h3>
+                    <div id="educationData" class="row py-4">
+
+                        <div class="col-sm-12 col-lg-12 educationField">
+                            Name Of The School / Institution
+                            <input type="text" id="school1" name="Education[school]"
+                                class="form-control form-control-user" required>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 py-4">
+                            Start Date
+                            <input type="date" id="EDstartDate1" name="Education[startDate]"
+                                class="form-control form-control-user" required>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 py-4">
+                            End Date
+                            <input type="date" id="EDendDate1" name="Education[endDate]"
+                                class="form-control form-control-user" required>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6 py-4">
+                            Degree / School Result
+                            <input type="text" id="degree1" name="Education[degree]"
+                                class="form-control form-control-user" required>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-12">
+                            Others About The School / Institution (If any)
+                            <input type="text" id="EDdescription1" name="Education[description]"
+                                class="form-control form-control-user">
+                        </div>
+
+                        <br> <br> <br> <br>
+                        <div class="col-sm-12 col-lg-12">
+                            Certificate (If any)
+                            <input type="file" id="EDcertificate1" name="Education[certificate]"
+                                class="form-control form-control-user">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <button class="btn btn-link">+ More Educations
+            </div>
+
+
+            <!-- Work Expereience -->
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0">
+                    <div class="py-5"></div>
+                    <h3 style="color: #a570a7">💼 Work Experience (If any)</h3>
+                    <div id="workData" class="row py-4">
+
+                        <div class="col-sm-12 col-lg-6 workField">
+                            Company
+                            <input type="text" id="comapny1" name="Work[comapny]"
+                                class="form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6">
+                            Title / Position
+                            <input type="text" id="position1" name="Work[position]"
+                                class="form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 py-4">
+                            Start Date
+                            <input type="date" id="WKstartDate1" name="Work[startDate]"
+                                class="form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 py-4">
+                            End Date
+                            <input type="date" id="WKendDate1" name="Work[endDate]"
+                                class="form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3 py-5">
+                            <input type="checkbox" id="inJob1" name="Work[inJob]">
+                            <span>Still in this job right now?</span>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-12">
+                            Description About The Job
+                            <input type="text" id="WKdescription1" name="Work[description]"
+                                class="form-control form-control-user">
+                        </div>
+
+                        <br> <br> <br> <br>
+                        <div class="col-sm-12 col-lg-12k">
+                            Reference Letter
+                            <input type="file" id="reference1" name="Work[reference]"
+                                class="form-control form-control-user">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <button class="btn btn-link">+ More Work Experiences
+            </div>
+
+
+            <!-- Skill -->
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0">
+                    <div class="py-5"></div>
+                    <h3 style="color: #a570a7">🔧 Skill</h3>
+                    <div class="row py-4">
+
+                        <div class="col-sm-12 col-lg-12">
+                            Typing (If any)
+                            <br>
+                            <span style="color: red; font-size: 3px;">**Please use the "," to separate each of the skill
+                            </span>
+                            <input type="text" id="typingSkill" name="Skill[typingSkill]"
+                                class="form-control form-control-user" placeholder="E.g. Chinese Typing,Engish Typing">
+                        </div>
+
+                        <div class="col-sm-12 col-lg-12 py-4">
+                            Coding (If any)
+                            <br>
+                            <span style="color: red; font-size: 3px;">**Please use the "," to separate each of the skill
+                            </span>
+                            <input type="text" id="codingSkill" name="Skill[codingSkill]"
+                                class="form-control form-control-user" placeholder="E.g. HTML,Javascript">
+                        </div>
+
+                        <div class="col-sm-12 col-lg-12">
+                            Software (If any)
+                            <br>
+                            <span style="color: red; font-size: 3px;">**Please use the "," to separate each of the skill
+                            </span>
+                            <input type="text" id="softwareSkill" name="Skill[softwareSkill]"
+                                class="form-control form-control-user" placeholder="E.g. MS Office,Photoshop">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Language -->
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0">
+                    <div class="py-5"></div>
+                    <h3 style="color: #a570a7">🌎 Language</h3>
+                    <div class="row py-4">
+
+                        <div class="col-sm-12 col-lg-4 languageField">
+                            Name
+                            <input type="text" id="name1" name="Language[name]" class="form-control form-control-user"
+                                required>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-3">
+                            Level
+                            <select class="form-control" id="level1" name="Language[level]" value="" required>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-5">
+                            Certificates (If any)
+                            <input type="file" id="LANcertificate1" name="Language[certificate]"
+                                class="form-control form-control-user">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                <button class="btn btn-link">+ More Languages
+            </div>
+
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9 py-4"></div>
+            <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9"></div>
+            <button type="button" class="btn btn-danger" style="float: left;">SAVE</button>
+            &nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="button" class="btn pink-btn" style="float: left;">NEXT</button>
+        </div>
+        <br>
+    </div>
+</div>
+<br>
+
+
+<script>
+    //////// for submit
+    async function submitData() {
+
+        var data = JSON.stringify({
+            CV: document.getElementById('formInput').value,
+            link: 'http://' + firstName + '_' + lastName + '_' + userID + '_CV.com',
+        });
+
+        var response = await fetch("/user/submitCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+
+    ////////for showing toolbar
+    function showUserToolbar() {
+        var toolbar = document.getElementById('userToolbar');
+        if (toolbar.style.display == '') {
+            toolbar.style.display = 'none';
+        } else {
+            toolbar.style.display = ''
+        }
+    };
+    ////////
+</script>

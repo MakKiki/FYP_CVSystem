@@ -6,6 +6,15 @@
  */
 
 module.exports = {
+  // check association
+  populate: async function (req, res) {
+    var model = await User.findOne(req.params.id).populate("have");
+
+    if (!model) return res.notFound();
+
+    return res.json(model);
+  },
+
   // save CV
   saveCV: async function (req, res) {
     if (req.method == "GET") return res.forbidden();

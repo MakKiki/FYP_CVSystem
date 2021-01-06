@@ -10,7 +10,7 @@ module.exports = {
   login: async function (req, res) {
     if (req.method == "GET") return res.view("pages/login");
 
-    if (!req.body.email || !req.body.password) return res.badRequest();
+    if (!req.body.email || !req.body.password) return res.status(401).send("Please input the email address and the password");
 
     var person = await User.findOne({ email: req.body.email });
 

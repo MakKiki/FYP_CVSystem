@@ -2432,7 +2432,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #e74a3b;
   border-color: #e74a3b;
-  width: 100%;
 }
 .btn-danger:hover {
   color: #fff;
@@ -10456,18 +10455,18 @@ body.sidebar-toggled footer.sticky-footer {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-.alert-btn {
+.pink-btn {
   color: #fff;
   background-color: #d84e6e;
   border-color: #d84e6e;
 }
-.alert-btn:hover {
+.pink-btn:hover {
   color: #fff;
   background-color: #c74060;
   border-color: #c74060;
 }
-.alert-btn.focus,
-.alert-btn:focus {
+.pink-btn.focus,
+.pink-btn:focus {
   color: #fff;
   background-color: #c74060;
   border-color: #c74060;
@@ -10476,7 +10475,7 @@ body.sidebar-toggled footer.sticky-footer {
 .center {
   position: fixed;
   top: 45%;
-  left: 55%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
 }
