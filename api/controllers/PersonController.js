@@ -33,12 +33,13 @@ module.exports = {
 
       if (person.role == "user") {
         req.session.userID = person.id;
+        req.session.progressingCV = person.progressingCV;
         req.session.CV = person.CV;
         req.session.link = person.link;
         req.session.reloadCV = "";
       }
 
-      sails.log("[Session] ", req.session);
+      // sails.log("[Session] ", req.session);
 
       if (req.wantsJSON) {
         return res.json({ url: "/main" }); // for ajax request

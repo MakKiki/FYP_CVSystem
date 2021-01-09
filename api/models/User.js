@@ -34,6 +34,10 @@ module.exports = {
       type: "string",
     },
 
+    progressingCV: {
+      type: "json",
+    },
+
     CV: {
       type: "string",
     },
