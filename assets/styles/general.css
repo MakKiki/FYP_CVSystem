@@ -2396,7 +2396,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #f6c23e;
   border-color: #f6c23e;
-  width: 100%;
 }
 .btn-warning:hover {
   color: #fff;
@@ -2503,7 +2502,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #5a5c69;
   border-color: #5a5c69;
-  width: 100%;
 }
 .btn-dark:hover {
   color: #fff;
@@ -3356,8 +3354,8 @@ input[type="submit"].btn-block {
 }
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  border-color: #ff008c;
-  background-color: #ff008c;
+  background-color: #d84e6e;
+  border-color: #d84e6e;
 }
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(223, 78, 175, 0.25);
@@ -3441,7 +3439,7 @@ input[type="submit"].btn-block {
 .custom-radio
   .custom-control-input:disabled:checked
   ~ .custom-control-label::before {
-  background-color: rgba(223, 78, 175, 0.25);
+  background-color: rgba(247, 109, 155, 0.25);
 }
 .custom-switch {
   padding-left: 2.25rem;
@@ -6059,6 +6057,9 @@ button.bg-dark:hover {
 }
 .rounded-lg {
   border-radius: 0.3rem !important;
+}
+.rounded-xl {
+  border-radius: 1rem !important;
 }
 .rounded-circle {
   border-radius: 50% !important;
@@ -10487,16 +10488,20 @@ body.sidebar-toggled footer.sticky-footer {
   min-height: 400px;
   min-width: 830px;
 }
+.divBorder {
+  width: 200px;
+}
+.divBorder:active {
+  border-color: black;
+  border: 1.7px solid #000;
+}
 
-/*
- * File
- */
-
+/* File */
 .file {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  height: 2.5rem;
+  width: 100%;
 }
 .file input {
   min-width: 14rem;
@@ -10513,7 +10518,7 @@ body.sidebar-toggled footer.sticky-footer {
   height: 2.5rem;
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  color: #555;
+  color: rgb(145, 145, 145);
   background-color: #fff;
   border: 0.075rem solid #ddd;
   border-radius: 0.25rem;
@@ -10522,9 +10527,6 @@ body.sidebar-toggled footer.sticky-footer {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.file-custom:after {
-  content: "Choose file...";
 }
 .file-custom:before {
   position: absolute;
@@ -10542,12 +10544,9 @@ body.sidebar-toggled footer.sticky-footer {
   border: 0.075rem solid #ddd;
   border-radius: 0 0.25rem 0.25rem 0;
 }
-
-/* Focus */
 .file input:focus ~ .file-custom {
-  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #c45190;
+  box-shadow: 0 0 0 0.2rem rgba(134, 106, 189, 0.267);
 }
-
 
 /* step progress bar */
 .progressbar {
@@ -10593,6 +10592,6 @@ body.sidebar-toggled footer.sticky-footer {
 .progressbar li.active:before {
   border-color: #f1869f;
 }
-.progressbar li.active + li:after{
+.progressbar li.active + li:after {
   background-color: #f1869f;
 }

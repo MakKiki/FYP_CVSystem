@@ -30,7 +30,7 @@ module.exports = {
     if (user.length == 0) return res.notFound();
 
     if (req.wantsJSON) {
-      sails.log("[Session] ", req.session);
+     // sails.log("[Session] ", req.session);
       return res.json({ message: "✔️ Successfully Saved ✔️", url: "/create" }); // for ajax request
     } else {
       return res.redirect("/create"); // for normal request
@@ -54,7 +54,7 @@ module.exports = {
     if (user.length == 0) return res.notFound();
 
     if (req.wantsJSON) {
-      sails.log("[Session] ", req.session);
+     // sails.log("[Session] ", req.session);
       return res.json({ message: "✔️ Successfully Submited ✔️", url: "/main" }); // for ajax request
     } else {
       return res.redirect("/main"); // for normal request
@@ -78,7 +78,7 @@ module.exports = {
     if (user.length == 0) return res.notFound();
 
     if (req.wantsJSON) {
-      sails.log("[Session] ", req.session);
+    //  sails.log("[Session] ", req.session);
       return res.json({ url: "/main" }); // for ajax request
     } else {
       return res.redirect("/main"); // for normal request
@@ -88,7 +88,7 @@ module.exports = {
   // reloadCV
   reloadCV: async function (req, res) {
     req.session.reloadCV = req.body.CV;
-    sails.log("[Session] ", req.session);
+   // sails.log("[Session] ", req.session);
     return res.redirect("/create");
   },
 };

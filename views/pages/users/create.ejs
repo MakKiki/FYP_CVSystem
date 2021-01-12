@@ -211,7 +211,8 @@
 
       <li class="nav-item">
         <div class="py-2">
-          <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+          <button class="btn nav-link" onclick="showUploadModal('uploadDocModal')"
+            style="padding: 2px 2px; padding-left: 1.05rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
               <path
@@ -222,7 +223,8 @@
             <span>Document</span>
           </button>
         </div>
-        <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
+        <button class="btn nav-link" onclick="showUploadModal('uploadImgModal')"
+          style="padding: 2px 2px; padding-left: 1.05rem;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image"
             viewBox="0 0 16 16">
             <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
@@ -232,11 +234,8 @@
           <span>Image</span>
         </button>
         <div class="py-2">
-          <!-- <label class="file">
-            <input type="file" id="file" aria-label="File browser example">
-            <span class="file-custom"></span>
-          </label> -->
-          <button type="button" class="btn nav-link" onclick="uploadVideo()"
+
+          <!-- <button type="button" class="btn nav-link" onclick="uploadVideo()"
             style="padding: 2px 2px; padding-left: 1.05rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-camera-reels" viewBox="0 0 16 16">
@@ -257,19 +256,7 @@
               d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
           </svg>
           <span>Hyperlink</span>
-        </button>
-        <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div> -->
+        </button> -->
       </li>
 
 
@@ -285,7 +272,7 @@
         <div class="py-2">
           <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
             style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>- Field</span>
+            <span>- Textfield / Document / Image</span>
           </button>
         </div>
         <button type="button" class="btn nav-link" onclick="showDeletePageWindow()"
@@ -299,16 +286,17 @@
 
       <!-- Buttton -->
       <div>
-        <button onclick="saveContent('<%= req.session.userID %>')" class="btn btn-danger">Save</button>
+        <button onclick="saveContent('<%= req.session.userID %>')" class="btn btn-danger"
+          style="width: 100%">Save</button>
       </div>
 
       <div class="py-2">
-        <button onclick="showSubmitAlert()" class="btn btn-warning">Submit</button>
+        <button onclick="showSubmitAlert()" class="btn btn-warning" style="width: 100%">Submit</button>
       </div>
 
       <% if (req.session.CV !='' ){ %>
         <div>
-          <button onclick="showDeleteAlert()" class="btn btn-dark">Delete</button>
+          <button onclick="showDeleteAlert()" class="btn btn-dark" style="width: 100%">Delete</button>
         </div>
         <% } %>
     </ul>
@@ -378,9 +366,10 @@
                     <div style="width: 836px; height: 360px; transform: translate(0px, 0px);" id="Basic Information"
                       class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only" data-x="0"
                       data-y="0">
-                      <div id="field1" class="container textfield">
-                        <div class="row resize-drag" contenteditable="">
-                          <div class="card col-sm-12">
+
+                      <div class="container field">
+                        <div class="row resize-drag">
+                          <div class="card col-sm-12" contenteditable>
                             <p>
                             <h1>Hello,</h1>
                             <br>
@@ -399,14 +388,16 @@
                           </div>
                         </div>
                       </div>
+
                     </div>
 
 
                     <div style="display: none;" id="Education"
                       class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
-                      <div id="field2" class="container textfield">
-                        <div class="row resize-drag" contenteditable>
-                          <div class="card col-sm-12">
+
+                      <div class="container field">
+                        <div class="row resize-drag">
+                          <div class="card col-sm-12" contenteditable>
                             <p>
                             <h6>Name: Chan Ting</h6>
                             <br>
@@ -454,6 +445,102 @@
       <!-- End of content position -->
     </div>
     <!-- End of Content -->
+
+
+    <!-- UploadDoc Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadDocModal" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <h6 class="py-3">Please select the file you want to upload:</h6>
+            <label class="file">
+              <input id='doc' type="file" accept="application/pdf, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+              text/plain, .zip,.rar,.7zip" onchange="uploadFile(this.files, 'documentFile')">
+              <span id='documentFileContent' class="file-custom">Choose a file...</span>
+              <input type="hidden" id="documentFile">
+            </label>
+            <span style="font-size: 2px;">**Flie type: .doc, .docx, .pdf, .xlsx, .xls, .ppt, .txt, .zip,
+              .rar, .7zip<br></span>
+            <span id='documentFileAlert' style="font-size: 2px; color: red;"></span>
+          </div>
+          <div class="modal-footer">
+            <button id="alert-cancel" class="btn btn-secondary" type="button"
+              onclick="showUploadModal('uploadDocModal')" data-dismiss="modal">Cancel</button>
+            <button id="alert-delete" class="btn pink-btn" type="button" onclick="addFile('documentFile')"
+              data-dismiss="modal">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of UploadDoc Modal -->
+
+
+    <!-- UploadImg Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadImgModal" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <h6 class="py-3">Please select the file you want to upload:</h6>
+            <label class="file">
+              <!-- input for upload file -->
+              <input id='img' type="file" accept="image/*" onchange="uploadFile(this.files, 'imageFile')">
+              <span id='imageFileContent' class="file-custom">Choose a file...</span>
+              <!-- input for store file -->
+              <input type="hidden" id="imageFile">
+            </label>
+
+            <!-- annouce the user to upload file -->
+            <span id='imageFileAlert' style="font-size: 2px; color: red;"></span>
+
+            <!-- ask for choosing frame -->
+            <h6 class="imageFrame" style="display: none"><br><br>Please choose the frame you want to upload:<br></h6>
+            <!-- annouce the user to choose frame -->
+            <span id='imageFileUploadAlert' style="font-size: 2px; color: red;"></span>
+
+            <!-- radio -->
+            <div class="row imageFrame" style="display: none;">
+              <div class="col-lg-4 d-none d-lg-block">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="frameRadio custom-control-input" name="radio" value="rounded-circle"
+                    id="frame1">
+                  <label class="custom-control-label" for="frame1">Frame 1</label>
+                </div>
+              </div>
+              <div class="col-lg-4 d-none d-lg-block">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="frameRadio custom-control-input" name="radio" value="rounded-xl"
+                    id="frame2">
+                  <label class="custom-control-label" for="frame2">Frame 2</label>
+                </div>
+              </div>
+              <div class="col-lg-4 d-none d-lg-block">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="frameRadio custom-control-input" name="radio" value="" id="frame3">
+                  <label class="custom-control-label" for="frame3">Frame 3</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- image -->
+            <img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-circle">
+            &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-xl mx-5">
+            &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame">
+
+          </div>
+          <div class="modal-footer">
+            <button id="alert-cancel" class="btn btn-secondary" type="button"
+              onclick="showUploadModal('uploadImgModal')" data-dismiss="modal">Cancel</button>
+            <button id="alert-delete" class="btn pink-btn" type="button" onclick="addFile('imageFile')"
+              data-dismiss="modal">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of UploadImg Modal -->
 
 
     <!-- Delete Modal-->
@@ -558,6 +645,18 @@
 
 
   <script>
+    ////////for showing toolbar
+    function showUserToolbar() {
+      var toolbar = document.getElementById('userToolbar');
+      if (toolbar.style.display == '') {
+        toolbar.style.display = 'none';
+      } else {
+        toolbar.style.display = ''
+      }
+    }
+    ////////
+
+
     ///////for showing submit alert
     function showSubmitAlert() {
       var submitAlert = document.getElementById('submitModal');
@@ -680,18 +779,6 @@
     ////////
 
 
-    ////////for showing toolbar
-    function showUserToolbar() {
-      var toolbar = document.getElementById('userToolbar');
-      if (toolbar.style.display == '') {
-        toolbar.style.display = 'none';
-      } else {
-        toolbar.style.display = ''
-      }
-    }
-    ////////
-
-
     ////////for change text style
     document.querySelectorAll("[data-edit]").forEach(styleBtn =>
       styleBtn.addEventListener("click", changeTextStyle)
@@ -720,9 +807,7 @@
       document.getElementById(contentid).style.height = newHeight.toString() + "px";
 
       //add new text field
-      let fieldArr = document.getElementsByClassName("textfield");
-      let num = fieldArr.length + 1;
-      document.getElementById(contentid).innerHTML += "<div id='field" + num + "' class='container textfield'> <div class='row resize-drag' contenteditable> <div class='card col-sm-12'> <p></p> </div> </div> </div>";
+      document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='card col-sm-12' contenteditable> <p></p> </div> </div> </div>";
 
       //Reload the page for update the code
       document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
@@ -847,36 +932,128 @@
     }
     ////////
 
-    // function uploadVideo(files) {
 
-    //   const file = files[0];
-    //   if (!file.type.startsWith('image/')) return;
+    ///////for showing upload file window
+    function showUploadModal(modalType) {
+      var modal = document.getElementById(modalType);
+      if (modal.style.display == '') {
+        modal.style.display = 'none';
+        //when cancel is clicked, clear all file in the modal
+        if (modalType == 'uploadDocModal') {
+          document.getElementById('doc').value = "";
+          document.getElementById('documentFileContent').innerHTML = 'Choose a file...'
+          document.getElementById('documentFile').value = "";
+          document.getElementById('documentFileAlert').innerHTML = '';
+        }
+        else if (modalType == 'uploadImgModal') {
+          document.getElementById('img').value = "";
+          document.getElementById('imageFileContent').innerHTML = 'Choose a file...'
+          document.getElementById('imageFile').value = "";
+          document.getElementById('imageFileAlert').innerHTML = '';
+          document.querySelectorAll('.imageFrame').forEach(img => {
+            img.style.display = 'none';
+            img.src = '';
+          })
+          document.querySelectorAll('.frameRadio').forEach(radio => {
+            radio.checked = false;
+          })
+          document.getElementById('imageFileUploadAlert').innerHTML = '';
+        }
+      } else {
+        modal.style.display = ''
+      }
+    }
+    ////////
 
-    //   if (file.size > 4194304) {
-    //     alert("請重新上載4MB相片");
-    //     return;
-    //   }
+    ///////for upload file
+    function uploadFile(files, fileInput) {
+      const file = files[0];
+      alert(file.name)
+      if (fileInput == 'documentFile' && !file.type == 'application/pdf' && !file.type == 'application/msword' && !file.type == 'application/vnd.ms-excel' && !file.type == 'application/vnd.ms-powerpoint' &&
+        !file.type == 'text/plain' && !file.type == '.zip' && !file.type == '.rar' && !file.type == '.7zip') return;
 
-    //   var reader = new FileReader();
-    //   reader.onload = function (e) {
-    //     var preview = document.getElementById('preview' + p);
-    //     preview.innerHTML = "";
-    //     var img = document.createElement('img');
-    //     img.src = e.target.result;
-    //     preview.appendChild(img);
+      if (fileInput == 'imageFile' && !file.type.startsWith('image/')) return;
 
-    //     var input = document.createElement('input');
-    //     input.type = 'hidden';
-    //     input.name = 'GRGP[imgIDCard' + p + ']';
-    //     input.value = e.target.result;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        alert(e.target.result)
+        document.getElementById(fileInput).value = e.target.result;
+        if (fileInput == 'imageFile') {
+          document.querySelectorAll('.imageFrame').forEach(img => {
+            img.style.display = '';
+            img.src = e.target.result;
+          })
+        }
+      }
+      reader.readAsDataURL(file);
+      document.getElementById(fileInput + 'Content').innerHTML = file.name;
+    }
+    ///////
 
-    //     img.style.width = "auto";
-    //     img.style.height = "150px";
-    //     document.getElementById('Admin_GRGP_form').appendChild(input);
-    //   }
-    //   reader.readAsDataURL(file);
+    //////add file into page
+    async function addFile(fileElement) {
+      if (document.getElementById(fileElement).value == '') {
+        document.getElementById(fileElement + 'Alert').innerHTML = 'Please choose a file before upload';
+        return;
+      }
+      if (fileElement == 'documentFile') {
+        //upload document
+        //add content height
+        var contentid = sessionStorage.getItem('currentPage');
+        var contentHeight = document.getElementById(contentid).style.height
+        var newHeight = parseInt(contentHeight, 10) + 10;
+        document.getElementById(contentid).style.height = newHeight.toString() + "px";
 
-    // }
+        //add new document
+        var file = document.getElementById('documentFile').value;
+        document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag divBorder'> <a download='' href='" + file + "' target='_blank'> Download the document </a> </div> </div>";
+      } else {
+        //upload image
+        //get the image frame class
+        var frameClass = null;
+        document.querySelectorAll('.frameRadio').forEach(radio => {
+          if (radio.checked == true) {
+            frameClass = radio.value;
+          }
+        })
+
+        alert(frameClass)
+        //if user hasn't selected a frame yet 
+        if (frameClass == null) {
+          document.getElementById(fileElement + 'UploadAlert').innerHTML = 'Please select a frame before upload';
+          return;
+        }
+
+        //add content height
+        var contentid = sessionStorage.getItem('currentPage');
+        var contentHeight = document.getElementById(contentid).style.height
+        var newHeight = parseInt(contentHeight, 10) + 150;
+        document.getElementById(contentid).style.height = newHeight.toString() + "px";
+
+        //add new image
+        var file = document.getElementById('imageFile').value;
+        document.getElementById(contentid).innerHTML += "<div class='field'> <img src='" + file + "' style='height: 150px; width: auto;' class='resize-drag " + frameClass + "' /> </div>";
+      }
+
+      //Reload the page for update the code
+      document.getElementById('formInput').value = document.getElementById('CVContent').innerHTML;
+      var data = JSON.stringify({
+        CV: document.getElementById('formInput').value,
+      });
+      var response = await fetch("/user/reloadCV", {
+        method: "POST",
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: data
+      });
+      sessionStorage.setItem('addField', 'true');
+
+      location.reload();
+    }
+    ////////
 
 
     ////////for delete field button's style
@@ -893,8 +1070,9 @@
     }
     ///////
 
-    //////when textfield is being clicked
-    document.querySelectorAll("[contenteditable]").forEach(field => {
+
+    //////when field is being clicked
+    document.querySelectorAll(".field").forEach(field => {
       field.addEventListener("click", deleteField);
     });
 
@@ -902,10 +1080,8 @@
       // if delete button is already clicked - delete field
       if (sessionStorage.getItem("deleteBtn") == "on") {
         event.preventDefault();
-        var targetField = event.target.parentNode.parentNode.id;
-        console.info(targetField)
-        document.getElementById(targetField).innerHTML = '';
-        targetField = '';
+        console.info(event.target)
+        event.target.remove();
       }
       //Otherwise
       else {

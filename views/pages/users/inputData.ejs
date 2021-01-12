@@ -51,7 +51,7 @@
 
                             <div class="col-sm-12 col-lg-12">
                                 Profile Image (If any)
-                                <input type="file" accept="image/*" class="form-control form-control-user" onchange="uploadProfile(this.files)">
+                                <input type="file" accept="image/*" class="form-control form-control-user py-1" onchange="uploadProfile(this.files)">
                                     <input type="hidden" id="profile" name="CV[profile]"
                                      <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.profile%>" <%}%>>
                                      <% if(req.session.progressingCV !=null && req.session.progressingCV.profile != '') {%>
@@ -212,7 +212,7 @@
                                 <div class="col-sm-12 col-lg-12">
                                     <br>
                                     Certificate (If any)
-                                    <input type="file" accept="image/*,application/pdf" class="form-control form-control-user" onchange="uploadFile()">
+                                    <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                     <input type="hidden" id="eduCertificate1" name="CV[eduCertificate]"
                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.eduCertificate[0]%>" <%}%>>
                                     <% if(req.session.progressingCV !=null && req.session.progressingCV.eduCertificate[0] !='') {%>
@@ -254,7 +254,7 @@
                                                 class='form-control form-control-user' value="<%=req.session.progressingCV.eduDescription[i]%>">
                                         </div>
                                         <div class='col-sm-12 col-lg-12'> <br> Certificate (If any)
-                                            <input type="file" accept="image/*,application/pdf" class="form-control form-control-user" onchange="uploadFile()">
+                                            <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                            <input type="hidden" id="eduCertificate<%=i+1%>" name="CV[eduCertificate]"
                                             value="<%=req.session.progressingCV.eduCertificate[i]%>"> 
                                             <% if(req.session.progressingCV.eduCertificate[i] !='') { %>
@@ -336,7 +336,7 @@
                                             <div class="col-sm-12 col-lg-12k">
                                                 <br>
                                                 Reference Letter
-                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user" onchange="uploadFile()">
+                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="reference1" name="CV[reference]"
                                                 <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.reference[0]%>" <%}%>>
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.reference[0] !='') {%>
@@ -389,7 +389,7 @@
                                             </div>
                                             <div class='col-sm-12 col-lg-12'>
                                                 <br> Reference Letter
-                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user" onchange="uploadFile()">
+                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="reference<%=i+1%>" name="CV[reference]"
                                                 value="<%=req.session.progressingCV.reference[i]%>"> 
                                                 <% if(req.session.progressingCV.reference[i] !='') { %>
@@ -504,8 +504,8 @@
                                             </div>
 
                                             <div class="col-sm-12 col-lg-5">
-                                                Certificates (If any)
-                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user" onchange="uploadFile()">
+                                                Certificate (If any)
+                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="lanCertificate1" name="CV[lanCertificate]"
                                                 <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.lanCertificate[0]%>" <%}%>>
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.lanCertificate[0] !='') {%>
@@ -542,8 +542,8 @@
                                                 </select>
                                             </div>
                                             <div class='col-sm-12 col-lg-5'>
-                                                <br> Certificates (If any)
-                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user" onchange="uploadFile()">
+                                                <br> Certificate (If any)
+                                                <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="lanCertificate<%=i+1%>" name="CV[lanCertificate]"
                                                 value="<%=req.session.progressingCV.lanCertificate[i]%>"> 
                                                 <% if(req.session.progressingCV.lanCertificate[i] !='') { %>
@@ -655,17 +655,17 @@
             var currentEduField = parseInt(sessionStorage.getItem('numEduField'), 10);
             var idnumForNewField = currentEduField + 1;
             sessionStorage.setItem('numEduField', idnumForNewField);
-            document.getElementById('eduBtn').insertAdjacentHTML('beforebegin', "<div id='eduData" + idnumForNewField + "' class='container eduField'> <div class='row justify-content-center'>  <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-12'> <br> <br> Name Of The School / Institution <input type='text' name='CV[school]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3 py-4'> Start Date <input type='date' name='CV[eduStartDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3 py-4'> End Date <input type='date' name='CV[eduEndDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-6 py-4'> Degree / School Result <input type='text' name='CV[degree]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-12'> Others About The School / Institution (If any) <input type='text' name='CV[eduDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <br> Certificate (If any)  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user' onchange='uploadFile()'> <input type='hidden' id='eduCertificate" + idnumForNewField + "' name='CV[eduCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='eduData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right;' onclick='deleteData()'> - Remove this field </button> </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
+            document.getElementById('eduBtn').insertAdjacentHTML('beforebegin', "<div id='eduData" + idnumForNewField + "' class='container eduField'> <div class='row justify-content-center'>  <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-12'> <br> <br> Name Of The School / Institution <input type='text' name='CV[school]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3 py-4'> Start Date <input type='date' name='CV[eduStartDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3 py-4'> End Date <input type='date' name='CV[eduEndDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-6 py-4'> Degree / School Result <input type='text' name='CV[degree]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-12'> Others About The School / Institution (If any) <input type='text' name='CV[eduDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <br> Certificate (If any)  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='eduCertificate" + idnumForNewField + "' name='CV[eduCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='eduData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right;' onclick='deleteData()'> - Remove this field </button> </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
         } else if (data == "work") {
             var currentWorkField = parseInt(sessionStorage.getItem('numWorkField'), 10);
             var idnumForNewField = currentWorkField + 1;
             sessionStorage.setItem('numWorkField', idnumForNewField);
-            document.getElementById('workBtn').insertAdjacentHTML('beforebegin', "<div id='workData" + idnumForNewField + "' class='container workField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-6'> <br> <br> Company <input type='text' name='CV[company]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-6'> <br> <br> Title / Position <input type='text' name='CV[position]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-4'> Start Date <input type='date' name='CV[workStartDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-4'> End Date <input id='workEndDate" + idnumForNewField + "' type='date' name='CV[workEndDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-5'> <input value='workEndDate" + idnumForNewField + "' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'> <span>Still in this job right now?</span> </div> <div class='col-sm-12 col-lg-12'> Description About The Job <input type='text' name='CV[workDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <br> Reference Letter  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user' onchange='uploadFile()'> <input type='hidden' id='reference" + idnumForNewField + "' name='CV[reference]'> </div> <div class='col-lg-12 col-sm-12'> <button value='workData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button>  </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
+            document.getElementById('workBtn').insertAdjacentHTML('beforebegin', "<div id='workData" + idnumForNewField + "' class='container workField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-6'> <br> <br> Company <input type='text' name='CV[company]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-6'> <br> <br> Title / Position <input type='text' name='CV[position]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-4'> Start Date <input type='date' name='CV[workStartDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-4'> End Date <input id='workEndDate" + idnumForNewField + "' type='date' name='CV[workEndDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-5'> <input value='workEndDate" + idnumForNewField + "' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'> <span>Still in this job right now?</span> </div> <div class='col-sm-12 col-lg-12'> Description About The Job <input type='text' name='CV[workDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <br> Reference Letter  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='reference" + idnumForNewField + "' name='CV[reference]'> </div> <div class='col-lg-12 col-sm-12'> <button value='workData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button>  </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
         } else if (data == "language") {
             var currentLanField = parseInt(sessionStorage.getItem('numLanField'), 10);
             var idnumForNewField = currentLanField + 1;
             sessionStorage.setItem('numLanField', idnumForNewField);
-            document.getElementById('lanBtn').insertAdjacentHTML('beforebegin', "<div id='languageData" + idnumForNewField + "' class='container languageField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-4'> <br> Name <input type='text' name='CV[name]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3'> <br> Level <select class='form-control' name='CV[level]' value='' required> <option value='Advance'>Advance</option> <option value='Good'>Good</option> <option value='Intermediate'>Intermediate</option> <option value='Basic'>Basic</option> </select> </div> <div class='col-sm-12 col-lg-5'> <br> Certificates (If any) <input type='file' accept='image/*,application/pdf' class='form-control form-control-user' onchange='uploadFile()'> <input type='hidden' id='lanCertificate" + idnumForNewField + "' name='CV[lanCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='languageData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button> </div> </div> </div> </div> </div> </div>")
+            document.getElementById('lanBtn').insertAdjacentHTML('beforebegin', "<div id='languageData" + idnumForNewField + "' class='container languageField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-4'> <br> Name <input type='text' name='CV[name]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3'> <br> Level <select class='form-control' name='CV[level]' value='' required> <option value='Advance'>Advance</option> <option value='Good'>Good</option> <option value='Intermediate'>Intermediate</option> <option value='Basic'>Basic</option> </select> </div> <div class='col-sm-12 col-lg-5'> <br> Certificate (If any) <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='lanCertificate" + idnumForNewField + "' name='CV[lanCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='languageData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button> </div> </div> </div> </div> </div> </div>")
         }
     }
     ////////
