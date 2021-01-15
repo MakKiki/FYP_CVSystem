@@ -7110,6 +7110,9 @@ button.bg-dark:hover {
 .mx-5 {
   margin-left: 3rem !important;
 }
+.ml-xl {
+  margin-left: 8rem;
+}
 .p-0 {
   padding: 0 !important;
 }
@@ -10419,6 +10422,25 @@ body.sidebar-toggled footer.sticky-footer {
   font-weight: 500;
   border: 1px solid #ff008c;
   color: #ffffff;
+  height: 60px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.main-create-btn2 {
+  margin-top: 10px;
+  width: 20%;
+  background: linear-gradient(to right, #929292 0%, #838383 100%);
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #7a7a7a;
+  color: #ffffff;
+  height: 60px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;

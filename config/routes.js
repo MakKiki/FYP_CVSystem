@@ -23,7 +23,10 @@ module.exports.routes = {
   "/signup": { view: "pages/signup" },
   "/signup/result": { view: "pages/signupResult" },
   "/input": { view: "pages/users/inputData" },
-  "/create": { view: "pages/users/create" },
+  "/template1": { view: "pages/users/template1" },
+  "/step3": { view: "pages/users/step3" },
+  "/customize": { view: "pages/users/customize" },
+  "/step4": { view: "pages/users/step4" },
   "/main": { view: "pages/users/main" },
   "/CV": { view: "pages/users/CV" },
 

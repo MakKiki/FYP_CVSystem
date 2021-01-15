@@ -31,9 +31,9 @@ module.exports = {
 
     if (req.wantsJSON) {
      // sails.log("[Session] ", req.session);
-      return res.json({ message: "✔️ Successfully Saved ✔️", url: "/create" }); // for ajax request
+      return res.json({ message: "✔️ Successfully Saved ✔️", url: "/customize" }); // for ajax request
     } else {
-      return res.redirect("/create"); // for normal request
+      return res.redirect("/customize"); // for normal request
     }
   },
 
@@ -89,6 +89,6 @@ module.exports = {
   reloadCV: async function (req, res) {
     req.session.reloadCV = req.body.CV;
    // sails.log("[Session] ", req.session);
-    return res.redirect("/create");
+    return res.redirect("/customize");
   },
 };
