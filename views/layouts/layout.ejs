@@ -40,8 +40,8 @@
       <!--STYLES END-->
 </head>
 
-<body <% if (req.path=='/CV' ) {%> class="login-bg" <% } %> >
-    <% if (req.session.role=="user" && req.path !='/CV' ){ %>
+<body>
+    <% if (req.session.role=="user" && req.path !='/CV' && req.path !='/template1'){ %>
       <!-- Topbar for user after login -->
       <nav id="topbar" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow" <% if
         (req.path=='/input' && req.session.progressingCV == null ) {%> style="opacity: .4;" <%}%>>
@@ -132,7 +132,7 @@
       </nav>
       <!-- End of Topbar -->
 
-      <% } else if (req.path !='/CV' ){ %>
+      <% } else if (req.path !='/CV' && req.path !='/template1' ){ %>
         <!-- Navbar for person before login -->
         <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
           <div class="container px-4">

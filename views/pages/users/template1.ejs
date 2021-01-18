@@ -1,0 +1,575 @@
+<div class="row py-2">
+    <div class="col-sm-3">
+        <div class="custom-control custom-radio">
+            <span>Main Theme</span>
+            <select class="form-control" id="mainTheme" name="" value="" required>
+                <option value="Light">Light</option>
+                <option value="Dark">Dark</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="col-sm-3">
+        <div class="custom-control custom-radio">
+            <span>Text Color</span>
+            <select class="form-control" id="textColor" name="" value="" required>
+                <option value="Blue" style="color: #4e73df;">Blue</option>
+                <option value="Pink">Pink</option>
+                <option value="Purple">Purple</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Green">Green</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <br>
+        <button type="button" class="btn pink-btn">Confirm</button>
+    </div>
+</div>
+<br>
+
+
+<!-- Content Wrapper-->
+<div id="content-wrapper" class="d-flex flex-column py-3">
+    <!-- Content -->
+    <div id="content" class="container-fluid container">
+
+        <!-- innerHTML for CV -->
+        <body id="CVContent" style="background-color: rgb(248, 248, 248);">
+            <!-- if the user has not created any CV yet -->
+            <% if (req.session.CV=='' && req.session.reloadCV=='' ){ %>
+                <div class="cotainer">
+                    <div class="row">
+
+                        <!-- Fieldbar -->
+                        <div class="col-sm-2">
+                            <ul id="fieldbar" class="ul-noBullet py-3">
+                                <!-- Basic Info Button -->
+                                <li id="Basic Informationbtn" class="nav-item mx-1 py-1">
+                                    <button type="button" value="Basic Information" class="btn content-btn fieldbar"
+                                        onclick="showContent(this.value)">
+                                        <b style="color: navy">Basic Information</b>
+                                    </button>
+                                </li>
+
+                                <!-- Education Button -->
+                                <li id="Educationbtn" class="nav-item mx-1 py-1">
+                                    <button type="button" value="Education" class="btn content-btn fieldbar"
+                                        onclick="showContent(this.value)">
+                                        <b style="color: navy">Education</b>
+                                    </button>
+                                </li>
+
+                                <!-- Work experience -->
+                                <li id="Work Experiencebtn" class="nav-item mx-1 py-1">
+                                    <button type="button" value="Work Experience" class="btn content-btn fieldbar"
+                                        onclick="showContent(this.value)">
+                                        <b style="color: navy">Work Experience</b>
+                                    </button>
+                                </li>
+
+                                <!-- Skill -->
+                                <li id="Skillbtn" class="nav-item mx-1 py-1">
+                                    <button type="button" value="Skill" class="btn content-btn fieldbar"
+                                        onclick="showContent(this.value)">
+                                        <b style="color: navy">Skill</b>
+                                    </button>
+                                </li>
+
+                                <!-- Language -->
+                                <li id="Languagebtn" class="nav-item mx-1 py-1">
+                                    <button type="button" value="Language" class="btn content-btn fieldbar"
+                                        onclick="showContent(this.value)">
+                                        <b style="color: navy">Language</b>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End of Fieldbar -->
+
+                        <!-- Main Content -->
+                        <div id="main" class="col-sm-10">
+                            <div style="transform: translate(0px, 0px);" id="Basic Information"
+                                class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+
+                                <div class="container field py-3 resize-drag"
+                                    style="font-size: 2rem; color: rgb(0, 0, 0);" contenteditable="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                    <b>About Me</b>
+                                </div>
+
+                                <div class="container field animate__animated animate__zoomIn">
+                                    <div class="row resize-drag">
+                                        <div class="py-2"></div>
+                                        <div class="col-sm-4 py-5">
+                                            <img class="rounded-circle resize-drag" style="height: auto; width: 230px;"
+                                                src="/images/avatar.png" contenteditable="">
+                                        </div>
+
+                                        <div class="col-sm-8" contenteditable style="color: black;">
+
+                                            <h1>Hello,</h1>
+                                            <p>I am Mimi. I am an applicant who is looking for a job related to
+                                                the
+                                                area of <b style="color: navy;">Information Technology</b>.
+                                                I want to work as a <b style="color: navy">Programmer</b>. Hope
+                                                I
+                                                will have a chance to work with you!!!:)
+                                            </p><br>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>English Full Name: </b>Chan Ting
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color: rgb(0, 4, 255);" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Nick Name: </b>Mimi<br>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Chinese Full Name: </b>陳婷
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Sex: </b>Female<br>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Birth Date: </b>30/08/1998
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            &nbsp; &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Email: </b>ting@gmail.com<br>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Country Code: </b>852
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Mobile Phone: </b>1234 5678<br>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Personal website: </b><a href="https://www.w3schools.com/"
+                                                style="color:#4e73df">Visit W3Schools.com!</a><br>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                            </svg>
+                                            <b>Address: </b>8 Fl., Block 1, Happy Estate, Causeway Bay. Hong
+                                            Kong<br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="py-4"></div>
+                            </div>
+
+
+                            <div style="display: none;" id="Education"
+                                class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+
+                                <div class="container field py-3 resize-drag" style="font-size: 2rem; color: black;"
+                                    contenteditable="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-book" viewBox="0 0 16 16">
+                                        <path
+                                            d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                                    </svg>
+                                    <b>Education</b>
+                                </div>
+
+                                <div class="container field">
+                                    <div class="row resize-drag">
+                                        <div class="col-sm-12" contenteditable>
+
+                                            <div class="timeline ml-2" style="color: black;">
+                                                <div class="timeline__group">
+                                                    <span class="timeline__date time" aria-hidden="true">
+                                                        2008/2 - 2009/3
+                                                    </span>
+                                                    <div class="timeline__cards animate__animated animate__fadeInUp">
+                                                        <div class="timeline__card timelineCard">
+                                                            <header class="card__header">
+                                                                <span class="time" style="font-size:medium">
+                                                                    ABC Secondary School
+                                                                </span>
+                                                            </header>
+                                                            <div class="py-2"></div>
+                                                            <div class="card__content">
+                                                                <p><b>Degree / School Result: </b>
+                                                                    chinese: 4, english: 4, mathmatics: 4
+                                                                </p>
+                                                                <p> <b>Others About The School / Institution:
+                                                                    </b>
+                                                                    Attends the Philadelphia Museum School
+                                                                    of Industrial Art. Studies design with
+                                                                    Alexey Brodovitch, art director at Harper's
+                                                                    Bazaar, and works as his assistant.
+                                                                </p>
+                                                                <p><b>Certificate: </b>
+                                                                    <a download="" href="" target="_blank">Download
+                                                                        my certificate
+                                                                        here</a>
+                                                                    <br><br>
+                                                                    <img style="height: auto; width: 300px;"
+                                                                        src="/images/resume.svg">
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="timeline__group animate__animated animate__fadeInUp">
+                                                    <span class="timeline__date time" aria-hidden="true">2014</span>
+                                                    <div class="timeline__cards">
+                                                        <div class="timeline__card timelineCard">
+                                                            <header class="card__header">
+                                                                <time class="time" datetime="2008-07-14">
+                                                                    <span class="time__day">14</span>
+                                                                    <span class="time__month">Jul</span>
+                                                                </time>
+                                                            </header>
+                                                            <div class="card__content">
+                                                                <p>Travels to France, Italy, Spain, and Peru.
+                                                                    After completing fashion editorial in Lima,
+                                                                    prolongs stay to make portraits of local
+                                                                    people in a daylight studio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="py-4"></div>
+                            </div>
+
+
+                            <div style="display: none;" id="Work Experience"
+                                class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+
+                                <div class="container field py-3 resize-drag" style="font-size: 2rem; color: black;"
+                                    contenteditable="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-briefcase-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z" />
+                                        <path
+                                            d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z" />
+                                    </svg>
+                                    <b>Work Experience</b>
+                                </div>
+
+                                <div class="container field">
+                                    <div class="row resize-drag">
+                                        <div class="col-sm-12">
+
+                                            <div class="slider">
+
+                                                <a href="#slide-1">1</a>
+                                                <a href="#slide-2">2</a>
+                                                <a href="#slide-3">3</a>
+                                                <a href="#slide-4">4</a>
+                                                <a href="#slide-5">5</a>
+
+                                                <div class="slides" style="color: black;" contenteditable>
+
+                                                    <div id="slide-1">
+                                                        <div class="container field">
+                                                            <div class="row">
+                                                                <!-- <div class="col-sm-4 py-4" contenteditable> -->
+                                                                <div class="col-sm-4 py-5" contenteditable>
+                                                                    <span><b>From: </b><br>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="15" height="15"
+                                                                            style="color: rgb(0, 4, 255)"
+                                                                            fill="currentColor" class="bi bi-calendar"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                        </svg>
+                                                                        2012/08/30<br>
+                                                                        | <br>
+                                                                        <b>To: </b><br>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="16" height="16"
+                                                                            style="color: rgb(0, 4, 255)"
+                                                                            fill="currentColor" class="bi bi-calendar"
+                                                                            viewBox="0 0 16 16">
+                                                                            <path
+                                                                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                        </svg>
+                                                                        2021/05/24
+                                                                    </span>
+                                                                </div>
+
+                                                                <!-- <div class="col-sm-8 py-5" contenteditable> -->
+                                                                <div class="col-sm-8 py-4" contenteditable>
+                                                                    <span style="float: left;"><b>Company: </b>
+                                                                        ABC Company
+                                                                    </span>
+                                                                    <br><br>
+                                                                    <span style="float: left;"><b>Title /
+                                                                            Position: </b>
+                                                                        Programmar<br><br>
+                                                                    </span>
+                                                                    <span style="float: left;"><b>About The Job:
+                                                                        </b>
+                                                                        Work as a backend developer.<br><br>
+                                                                    </span>
+                                                                    <span style="float: left;"><b>Reference
+                                                                            Letter: </b>
+                                                                        <a download="" href="" target="_blank">Download
+                                                                            my
+                                                                            Reference Letter here</a>
+                                                                        <br><br>
+                                                                        <img style="height: auto; width: 300px;"
+                                                                            src="/images/resume.svg">
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="slide-2">
+                                                        2
+                                                    </div>
+                                                    <div id="slide-3">
+                                                        3
+                                                    </div>
+                                                    <div id="slide-4">
+                                                        4
+                                                    </div>
+                                                    <div id="slide-5">
+                                                        5
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="py-4"></div>
+                                </div>
+                            </div>
+
+                            <div style="display: none;" id="Skill"
+                                class="animate__animated animate__fadeInRight new-page card shadow mb-4">
+
+                                <div class="container field py-3 resize-drag" style="font-size: 2rem; color: black;"
+                                    contenteditable="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-screwdriver" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                                    </svg>
+                                    <b>Skill</b>
+                                </div>
+
+                                <div class="container field">
+                                    <div class="row justify-content-center">
+                                        <div class="col-sm-4">
+                                            <div class="single-chart resize-drag" contenteditable>
+                                                <svg viewBox="0 0 36 36" class="circular-chart blue">
+                                                    <path class="circle-bg" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <text x="18" y="20.35" class="percentage">JavaScript</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="single-chart resize-drag" contenteditable>
+                                                <svg viewBox="0 0 36 36" class="circular-chart blue">
+                                                    <path class="circle-bg" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <text x="18" y="20.35" class="percentage">Good</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="single-chart resize-drag" contenteditable>
+                                                <svg viewBox="0 0 36 36" class="circular-chart blue">
+                                                    <path class="circle-bg" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <path class="circle" stroke-dasharray="50, 100" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <text x="18" y="20.35" class="percentage">Chinese
+                                                        Typing</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="single-chart resize-drag" contenteditable>
+                                                <svg viewBox="0 0 36 36" class="circular-chart blue">
+                                                    <path class="circle-bg" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <path class="circle" stroke-dasharray="25, 100" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                    <text x="18" y="20.35" class="percentage">Basic</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="py-4"></div>
+                            </div>
+
+
+                            <div style="display: none;" id="Language"
+                                class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
+
+                                <div class="container field py-3 resize-drag" style="font-size: 2rem; color: black;"
+                                    contenteditable="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-globe" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+                                    </svg>
+                                    <b>Language</b>
+                                </div>
+
+
+                                <div class="container field">
+                                    <div class="row">
+                                        <div class="col-sm-12 resize-drag" contenteditable="">
+                                            <div class="mb-1" style="color: black;">Normal Progress Bar
+                                            </div>
+                                            <div class="progress progress-sm mb-2">
+                                                <div class="progress-bar progress-sm mb-2" role="progressbar"
+                                                    style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container field">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-12 resize-drag" contenteditable="">
+                                            <div class="mb-1" style="color: black;">Normal Progress Bar
+                                                <span style="float: right;">50%</span>
+                                            </div>
+                                            <div class="progress progress-sm mb-2">
+                                                <div class="progress-bar" role="progressbar" style="width: 75%"
+                                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="py-4"></div>
+                            </div>
+
+                        </div>
+                        <!-- End of main Content -->
+                    </div>
+                </div>
+                <!-- For customize -->
+                <!-- if the user has created CV and not adding new field-->
+                <% } else if (req.session.CV!='' && req.session.reloadCV=='' ){ %>
+                    <%- req.session.CV %>
+                        <!-- add field -->
+                        <% } else { %>
+                            <%- req.session.reloadCV %>
+                                <% } %>
+                                    <!-- End of CV body -->
+        </body>
+        <!-- End of the CV content -->
+    </div>
+</div>
+
+
+<script>
+    ////////for showing content page
+    function showContent(targetPage) {
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        var i;
+        for (i = 0; i < contentBtnArray.length; i++) {
+            if (contentBtnArray[i].value == targetPage) {
+                document.getElementById(targetPage).style.display = '';
+            } else {
+                id = contentBtnArray[i].value;
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+    }
+    ////////
+
+    /////// disable editable of the textfield before the page
+    window.onload = function () {
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.removeAttribute("contenteditable")
+        });
+    }
+    ///////
+</script>
