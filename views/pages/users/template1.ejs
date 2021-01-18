@@ -1,10 +1,16 @@
 <div class="row py-2">
     <div class="col-sm-3">
         <div class="custom-control custom-radio">
-            <span>Main Theme</span>
-            <select class="form-control" id="mainTheme" name="" value="" required>
-                <option value="Light">Light</option>
-                <option value="Dark">Dark</option>
+            <span style="color:#81828b;"><b>Background Color</b></span>
+            <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
+                <option value="Original">Original</option>
+                <option value="bg-gradient-light">Light</option>
+                <option value="bg-gradient-dark">Dark</option>
+                <option value="bg-gradient-pink">Pink</option>
+                <option value="bg-gradient-purple">Purple</option>
+                <option value="bg-gradient-danger">Red</option>
+                <option value="bg-gradient-primary">Blue</option>
+                <option value="bg-gradient-warning">Yellow</option>
             </select>
         </div>
     </div>
@@ -12,20 +18,20 @@
 
     <div class="col-sm-3">
         <div class="custom-control custom-radio">
-            <span>Text Color</span>
-            <select class="form-control" id="textColor" name="" value="" required>
-                <option value="Blue" style="color: #4e73df;">Blue</option>
-                <option value="Pink">Pink</option>
-                <option value="Purple">Purple</option>
-                <option value="Yellow">Yellow</option>
-                <option value="Green">Green</option>
+            <span style="color: #81828b;"><b>Theme Color</b></span>
+            <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
+                <option value="navy/rgb(0, 4, 255)/#4e73df/blue">Blue</option>
+                <option value="#c4415f/mediumvioletred/rgb(235, 155, 182)/pink">Pink</option>
+                <option value="#700061/#9954ad/#a570a7/purple">Purple</option>
+                <option value="#ce4100/#ff5100/#df7f31/orange">Orange</option>
+                <option value="#01502d/#027c45/#4fb487/green">Green</option>
             </select>
         </div>
     </div>
 
     <div class="col-sm-3">
         <br>
-        <button type="button" class="btn pink-btn">Confirm</button>
+        <button type="button" class="btn pink-btn">I want to choose this template</button>
     </div>
 </div>
 <br>
@@ -37,6 +43,7 @@
     <div id="content" class="container-fluid container">
 
         <!-- innerHTML for CV -->
+
         <body id="CVContent" style="background-color: rgb(248, 248, 248);">
             <!-- if the user has not created any CV yet -->
             <% if (req.session.CV=='' && req.session.reloadCV=='' ){ %>
@@ -50,7 +57,7 @@
                                 <li id="Basic Informationbtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Basic Information" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
-                                        <b style="color: navy">Basic Information</b>
+                                        <b class="darkerColor" style="color: navy">Basic Information</b>
                                     </button>
                                 </li>
 
@@ -58,7 +65,7 @@
                                 <li id="Educationbtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Education" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
-                                        <b style="color: navy">Education</b>
+                                        <b class="darkerColor" style="color: navy">Education</b>
                                     </button>
                                 </li>
 
@@ -66,7 +73,7 @@
                                 <li id="Work Experiencebtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Work Experience" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
-                                        <b style="color: navy">Work Experience</b>
+                                        <b class="darkerColor" style="color: navy">Work Experience</b>
                                     </button>
                                 </li>
 
@@ -74,7 +81,7 @@
                                 <li id="Skillbtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Skill" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
-                                        <b style="color: navy">Skill</b>
+                                        <b class="darkerColor" style="color: navy">Skill</b>
                                     </button>
                                 </li>
 
@@ -82,7 +89,7 @@
                                 <li id="Languagebtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Language" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
-                                        <b style="color: navy">Language</b>
+                                        <b class="darkerColor" style="color: navy">Language</b>
                                     </button>
                                 </li>
                             </ul>
@@ -117,15 +124,17 @@
                                             <h1>Hello,</h1>
                                             <p>I am Mimi. I am an applicant who is looking for a job related to
                                                 the
-                                                area of <b style="color: navy;">Information Technology</b>.
-                                                I want to work as a <b style="color: navy">Programmer</b>. Hope
+                                                area of <b class="darkerColor" style="color: navy;">Information
+                                                    Technology</b>.
+                                                I want to work as a <b class="darkerColor"
+                                                    style="color: navy">Programmer</b>. Hope
                                                 I
                                                 will have a chance to work with you!!!:)
                                             </p><br>
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -133,7 +142,7 @@
                                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color: rgb(0, 4, 255);" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -141,7 +150,7 @@
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -150,7 +159,7 @@
                                             &nbsp;
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -158,7 +167,7 @@
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -167,7 +176,7 @@
                                             &nbsp; &nbsp;
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -175,7 +184,7 @@
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -184,7 +193,7 @@
                                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -192,7 +201,7 @@
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -201,7 +210,7 @@
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                             </svg>
@@ -318,11 +327,11 @@
 
                                             <div class="slider">
 
-                                                <a href="#slide-1">1</a>
-                                                <a href="#slide-2">2</a>
-                                                <a href="#slide-3">3</a>
-                                                <a href="#slide-4">4</a>
-                                                <a href="#slide-5">5</a>
+                                                <a class="slider-btn" href="#slide-1">1</a>
+                                                <a class="slider-btn" href="#slide-2">2</a>
+                                                <a class="slider-btn" href="#slide-3">3</a>
+                                                <a class="slider-btn" href="#slide-4">4</a>
+                                                <a class="slider-btn" href="#slide-5">5</a>
 
                                                 <div class="slides" style="color: black;" contenteditable>
 
@@ -335,7 +344,8 @@
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                                             width="15" height="15"
                                                                             style="color: rgb(0, 4, 255)"
-                                                                            fill="currentColor" class="bi bi-calendar"
+                                                                            fill="currentColor"
+                                                                            class="bi bi-calendar svgColor"
                                                                             viewBox="0 0 16 16">
                                                                             <path
                                                                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
@@ -346,7 +356,8 @@
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                                             width="16" height="16"
                                                                             style="color: rgb(0, 4, 255)"
-                                                                            fill="currentColor" class="bi bi-calendar"
+                                                                            fill="currentColor"
+                                                                            class="bi bi-calendar svgColor"
                                                                             viewBox="0 0 16 16">
                                                                             <path
                                                                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
@@ -498,7 +509,7 @@
                                 </div>
 
 
-                                <div class="container field">
+                                <div class="container field animate__animated animate__flipInX">
                                     <div class="row">
                                         <div class="col-sm-12 resize-drag" contenteditable="">
                                             <div class="mb-1" style="color: black;">Normal Progress Bar
@@ -512,7 +523,7 @@
                                     </div>
                                 </div>
 
-                                <div class="container field">
+                                <div class="container field animate__animated animate__flipInX">
                                     <br>
                                     <div class="row">
                                         <div class="col-sm-12 resize-drag" contenteditable="">
@@ -534,7 +545,7 @@
                         <!-- End of main Content -->
                     </div>
                 </div>
-                <!-- For customize -->
+                <!-- reloadCV: For customize -->
                 <!-- if the user has created CV and not adding new field-->
                 <% } else if (req.session.CV!='' && req.session.reloadCV=='' ){ %>
                     <%- req.session.CV %>
@@ -572,4 +583,45 @@
         });
     }
     ///////
+
+
+    /////// change background color
+    function changeBackground(newBackground) {
+        var color = document.getElementById('background').value;
+        if (newBackground == "Original") {
+            document.getElementById('CVContent').setAttribute("class", "");
+            document.getElementById('CVContent').style.backgroundColor = rgb(248, 248, 248);
+        } else {
+            document.getElementById('CVContent').setAttribute("class", newBackground);
+        }
+    }
+    ///////
+
+
+    /////// change text color
+    function changeColor(newColor) {
+        var colorArray = newColor.split("/");
+        document.querySelectorAll(".darkerColor").forEach(ele => {
+            ele.style.color = colorArray[0];
+        })
+        document.querySelectorAll(".svgColor").forEach(ele => {
+            ele.style.color = colorArray[1];
+        })
+        document.querySelectorAll(".timelineCard").forEach(ele => {
+            ele.style.borderLeft = "var(--timelineCardBorderLeftWidth, 3px) solid " + colorArray[2];
+        })
+        document.querySelectorAll(".timeline").forEach(ele => {
+            ele.style.setProperty('--uiTimelineMainColor', 'var(--timelineMainColor, ' + colorArray[2] + ')');
+        })
+        document.querySelectorAll(".circular-chart").forEach(ele => {
+            ele.setAttribute("class", "circular-chart "+ colorArray[3]);
+        })
+        document.querySelectorAll(".slider-btn").forEach(ele => {
+            ele.style.background = colorArray[2];
+        })
+        document.querySelectorAll(".progress-bar").forEach(ele => {
+            ele.style.backgroundColor = colorArray[2];
+        })
+    }
+     ///////
 </script>
