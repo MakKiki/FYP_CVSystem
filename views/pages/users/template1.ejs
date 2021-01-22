@@ -1,7 +1,7 @@
 <div class="row py-2">
     <div class="col-sm-3">
         <div class="custom-control custom-radio">
-            <span style="color:#81828b;"><b>Background Color</b></span>
+            <span style="color:#81828b;"><b>Webpage Background Color</b></span>
             <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
                 <option value="Original">Original</option>
                 <option value="bg-gradient-light">Light</option>
@@ -28,6 +28,25 @@
             </select>
         </div>
     </div>
+
+    <!-- <div class="col-sm-3">
+        <label for="colorWell">Color:</label>
+        <input type="color" value="#fff" id="colorWell">
+
+        <div class="custom-control custom-radio">
+            <span style="color:#81828b;"><b>Card Color</b></span>
+            <select class="form-control" id="card" name="" value="" onchange="changeCard(this.value)">
+                <option value="Original">Original</option>
+                <option value="bg-gradient-light">Light</option>
+                <option value="bg-gradient-dark">Dark</option>
+                <option value="bg-gradient-pink">Pink</option>
+                <option value="bg-gradient-purple">Purple</option>
+                <option value="bg-gradient-danger">Red</option>
+                <option value="bg-gradient-primary">Blue</option>
+                <option value="bg-gradient-warning">Yellow</option>
+            </select>
+        </div>
+    </div> -->
 
     <div class="col-sm-3">
         <br>
@@ -70,20 +89,24 @@
                                 </li>
 
                                 <!-- Work experience -->
+                                <% if(cv.company != '') { %>
                                 <li id="Work Experiencebtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Work Experience" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
                                         <b class="darkerColor" style="color: navy">Work Experience</b>
                                     </button>
                                 </li>
+                                <% } %>
 
                                 <!-- Skill -->
+                                <% if(cv.codingSkill != '' || cv.typingSkill != '' || cv.softwareSkill != '') { %>
                                 <li id="Skillbtn" class="nav-item mx-1 py-1">
                                     <button type="button" value="Skill" class="btn content-btn fieldbar"
                                         onclick="showContent(this.value)">
                                         <b class="darkerColor" style="color: navy">Skill</b>
                                     </button>
                                 </li>
+                                <% } %>
 
                                 <!-- Language -->
                                 <li id="Languagebtn" class="nav-item mx-1 py-1">
@@ -111,112 +134,140 @@
                                     <b>About Me</b>
                                 </div>
 
-                                <div class="container field animate__animated animate__zoomIn">
+                                <div class="container field">
                                     <div class="row resize-drag">
-                                        <div class="py-2"></div>
-                                        <div class="col-sm-4 py-5">
-                                            <img class="rounded-circle resize-drag" style="height: auto; width: 230px;"
-                                                src="/images/avatar.png" contenteditable="">
+                                        <div class="col-sm-4 py-4">
+                                            <% if (cv.profile != ''){ %>
+                                            <img class="rounded-circle resize-drag" style="height: auto; width: 270px;"
+                                                src='<%= cv.profile %>' contenteditable="">
+                                            <% } else { %>
+                                            <img class="rounded-circle resize-drag" style="height: auto; width: 270px;"
+                                                src='/images/about_me.jpg' contenteditable="">
+                                            <% } %>
                                         </div>
 
                                         <div class="col-sm-8" contenteditable style="color: black;">
 
                                             <h1>Hello,</h1>
-                                            <p>I am Mimi. I am an applicant who is looking for a job related to
-                                                the
-                                                area of <b class="darkerColor" style="color: navy;">Information
-                                                    Technology</b>.
-                                                I want to work as a <b class="darkerColor"
-                                                    style="color: navy">Programmer</b>. Hope
-                                                I
-                                                will have a chance to work with you!!!:)
+                                            <p>I am <%= cv.engName %><% if(cv.nickname !='' ) {%>, <%= cv.nickname %><%}%>.
+                                                I am an applicant who is searching for a job related to
+                                                <b class="darkerColor" style="color: navy;"> <%= cv.jobArea %></b>.             
+                                                Working as a <b class="darkerColor" style="color: navy"><%= cv.occupation %></b>                
+                                                is my target.<% if(cv.objective !='' ) {%> <%= cv.objective %><%}%> Hope we will have                  
+                                                chances to meet each other!!! :)                                                
                                             </p><br>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>English Full Name: </b>Chan Ting
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color: rgb(0, 4, 255);" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Nick Name: </b>Mimi<br>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>English Full Name: </b>
+                                                    <%= cv.engName %>
+                                                </div>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Chinese Full Name: </b>陳婷
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                            &nbsp;
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Sex: </b>Female<br>
+                                                <% if (cv.nickname != ''){ %>
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color: rgb(0, 4, 255);" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Nick Name: </b>
+                                                    <%= cv.nickname %><br>
+                                                </div>
+                                                <% } %>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Birth Date: </b>30/08/1998
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                            &nbsp; &nbsp;
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Email: </b>ting@gmail.com<br>
+                                                <% if (cv.chiName != ''){ %>
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Chinese Full Name: </b><%= cv.chiName %>
+                                                </div>
+                                                <% } %>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Country Code: </b>852
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Mobile Phone: </b>1234 5678<br>
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Sex: </b><%= cv.sex %><br>
+                                                </div>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Personal website: </b><a href="https://www.w3schools.com/"
-                                                style="color:#4e73df">Visit W3Schools.com!</a><br>
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Birth Date: </b><%= cv.birth %>
+                                                </div>
 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                style="color:rgb(0, 4, 255)" fill="currentColor"
-                                                class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                            </svg>
-                                            <b>Address: </b>8 Fl., Block 1, Happy Estate, Causeway Bay. Hong
-                                            Kong<br>
+                                                <div class="col-sm-6"e>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Email: </b><%= cv.email %><br>
+                                                </div>
 
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Country Code: </b><%= cv.countryCode %>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Mobile Phone: </b><%= cv.phone %><br>
+                                                </div>
+
+                                                <% if (cv.personWebLink != ''){ %>
+                                                <div class="col-sm-12">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Personal website: </b><a href="<%= cv.personWebLink %>">
+                                                    <%= cv.personWebLink %></a><br>
+                                                </div>
+                                                <% } %>
+
+                                                <div class="col-sm-12">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        style="color:rgb(0, 4, 255)" fill="currentColor"
+                                                        class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                    <b>Address: </b><%= cv.address %><br>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -242,62 +293,96 @@
                                         <div class="col-sm-12" contenteditable>
 
                                             <div class="timeline ml-2" style="color: black;">
-                                                <div class="timeline__group">
-                                                    <span class="timeline__date time" aria-hidden="true">
-                                                        2008/2 - 2009/3
-                                                    </span>
-                                                    <div class="timeline__cards animate__animated animate__fadeInUp">
-                                                        <div class="timeline__card timelineCard">
-                                                            <header class="card__header">
-                                                                <span class="time" style="font-size:medium">
-                                                                    ABC Secondary School
-                                                                </span>
-                                                            </header>
-                                                            <div class="py-2"></div>
-                                                            <div class="card__content">
-                                                                <p><b>Degree / School Result: </b>
-                                                                    chinese: 4, english: 4, mathmatics: 4
-                                                                </p>
-                                                                <p> <b>Others About The School / Institution:
-                                                                    </b>
-                                                                    Attends the Philadelphia Museum School
-                                                                    of Industrial Art. Studies design with
-                                                                    Alexey Brodovitch, art director at Harper's
-                                                                    Bazaar, and works as his assistant.
-                                                                </p>
-                                                                <p><b>Certificate: </b>
-                                                                    <a download="" href="" target="_blank">Download
-                                                                        my certificate
-                                                                        here</a>
-                                                                    <br><br>
-                                                                    <img style="height: auto; width: 300px;"
-                                                                        src="/images/resume.svg">
-                                                                </p>
+                                                <% var edu = cv.eduStartDate + '';
+                                                var eduData = edu.split(",");
+                                                if(eduData[1] != null){
+                                                var i; 
+                                                for (i = 0; i < eduData.length; i++) { %>
+                                                    <div class="timeline__group">
+                                                        <span class="timeline__date time" aria-hidden="true">
+                                                          <%= cv.eduStartDate[i] %> ~ <%= cv.eduEndDate[i] %>
+                                                        </span>
+                                                        <div class="timeline__cards animate__animated animate__fadeInUp">
+                                                            <div class="timeline__card timelineCard">
+                                                                <header class="card__header">
+                                                                    <span class="time" style="font-size:medium">
+                                                                        <%= cv.school[i] %>
+                                                                    </span>
+                                                                </header>
+                                                                <div class="py-2"></div>
+                                                                <div class="card__content">
+                                                                    <p><b>Major: </b>
+                                                                        <%= cv.major[i] %>
+                                                                    </p>
+                                                                    <p><b>Degree / Level: </b>
+                                                                        <%= cv.degree[i] %>
+                                                                    </p>
+                                                                    <p><b>CGPA / Result: </b>
+                                                                        <%= cv.mark[i] %>
+                                                                    </p>
+                                                                    <% if(cv.eduDescription[i] != ''){ %>
+                                                                    <p> <b>Others About The School / Institution:
+                                                                        </b>
+                                                                        <%= cv.eduDescription[i] %>
+                                                                    </p>
+                                                                    <% } %>
+                                                                    <% if(cv.eduCertificate[i] != ''){ %>
+                                                                    <p><b>Certificate: </b>
+                                                                        <a download="education_<%=i+1%>_certificate" href="<%= cv.eduCertificate[i] %>" target="_blank">
+                                                                            Download my certificate here</a>
+                                                                        <br><br>
+                                                                        <img style="height: auto; width: 300px;"
+                                                                            src="<%= cv.eduCertificate[i] %>">
+                                                                    </p>
+                                                                    <% } %>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="timeline__group animate__animated animate__fadeInUp">
-                                                    <span class="timeline__date time" aria-hidden="true">2014</span>
-                                                    <div class="timeline__cards">
-                                                        <div class="timeline__card timelineCard">
-                                                            <header class="card__header">
-                                                                <time class="time" datetime="2008-07-14">
-                                                                    <span class="time__day">14</span>
-                                                                    <span class="time__month">Jul</span>
-                                                                </time>
-                                                            </header>
-                                                            <div class="card__content">
-                                                                <p>Travels to France, Italy, Spain, and Peru.
-                                                                    After completing fashion editorial in Lima,
-                                                                    prolongs stay to make portraits of local
-                                                                    people in a daylight studio</p>
+                                                <% }} else { %>
+                                                    <div class="timeline__group">
+                                                        <span class="timeline__date time" aria-hidden="true">
+                                                          <%= cv.eduStartDate %> ~ <%= cv.eduEndDate %>
+                                                        </span>
+                                                        <div class="timeline__cards animate__animated animate__fadeInUp">
+                                                            <div class="timeline__card timelineCard">
+                                                                <header class="card__header">
+                                                                    <span class="time" style="font-size:medium">
+                                                                        <%= cv.school %>
+                                                                    </span>
+                                                                </header>
+                                                                <div class="py-2"></div>
+                                                                <div class="card__content">
+                                                                    <p><b>Major: </b>
+                                                                        <%= cv.major %>
+                                                                    </p>
+                                                                    <p><b>Degree / Level: </b>
+                                                                        <%= cv.degree %>
+                                                                    </p>
+                                                                    <p><b>CGPA / Result: </b>
+                                                                        <%= cv.mark %>
+                                                                    </p>
+                                                                    <% if(cv.eduDescription != ''){ %>
+                                                                    <p> <b>Others About The School / Institution:
+                                                                        </b>
+                                                                        <%= cv.eduDescription %>
+                                                                    </p>
+                                                                    <% } %>
+                                                                    <% if(cv.eduCertificate != ''){ %>
+                                                                    <p><b>Certificate: </b>
+                                                                        <a download="education_<%=i+1%>_certificate" href="<%= cv.eduCertificate[i] %>" target="_blank">
+                                                                            Download my certificate here</a>
+                                                                        <br><br>
+                                                                        <img style="height: auto; width: 300px;"
+                                                                            src="<%= cv.eduCertificate[i] %>">
+                                                                    </p>
+                                                                    <% } %>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-
+                                                <% } %>
+             
                                             </div>
                                         </div>
                                     </div>
@@ -306,6 +391,7 @@
                             </div>
 
 
+                            <% if (cv.company !=''){ %>
                             <div style="display: none;" id="Work Experience"
                                 class="animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
 
@@ -327,19 +413,22 @@
 
                                             <div class="slider">
 
-                                                <a class="slider-btn" href="#slide-1">1</a>
-                                                <a class="slider-btn" href="#slide-2">2</a>
-                                                <a class="slider-btn" href="#slide-3">3</a>
-                                                <a class="slider-btn" href="#slide-4">4</a>
-                                                <a class="slider-btn" href="#slide-5">5</a>
+                                                <% var work = cv.workStartDate + '';
+                                                var workData = work.split(",");
+                                                if (workData[1] != null){
+                                                var i; 
+                                                for (i = 1; i <= workData.length + 1; i++) { %>
+                                                <a class="slider-btn" href="#slide-<%=i%>"><%=i%></a>
+                                                <% } %>
 
                                                 <div class="slides" style="color: black;" contenteditable>
-
-                                                    <div id="slide-1">
+                                                    <% var p;
+                                                    for (p = 0; p < workData.length; p++) { %>
+                                                    <div id="slide-<%=p+1%>">
                                                         <div class="container field">
                                                             <div class="row">
-                                                                <!-- <div class="col-sm-4 py-4" contenteditable> -->
-                                                                <div class="col-sm-4 py-5" contenteditable>
+                                                                <div class="col-sm-4 py-4"
+                                                                    contenteditable>
                                                                     <span><b>From: </b><br>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                                             width="15" height="15"
@@ -350,7 +439,7 @@
                                                                             <path
                                                                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                                                                         </svg>
-                                                                        2012/08/30<br>
+                                                                        <%= cv.workStartDate[p] %><br>
                                                                         | <br>
                                                                         <b>To: </b><br>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -362,53 +451,153 @@
                                                                             <path
                                                                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                                                                         </svg>
-                                                                        2021/05/24
+                                                                        <%= cv.workEndDate[p] %>
                                                                     </span>
                                                                 </div>
 
-                                                                <!-- <div class="col-sm-8 py-5" contenteditable> -->
-                                                                <div class="col-sm-8 py-4" contenteditable>
-                                                                    <span style="float: left;"><b>Company: </b>
-                                                                        ABC Company
-                                                                    </span>
+                                                                <div class="col-sm-8 py-4"
+                                                                    contenteditable>
+                                                                    <span style="float: left;"><b>Company: </b></span> 
+                                                                    <br>
+                                                                    <p style="text-align: left;">
+                                                                        <%= cv.company[p] %>
+                                                                    </p>        
                                                                     <br><br>
-                                                                    <span style="float: left;"><b>Title /
-                                                                            Position: </b>
-                                                                        Programmar<br><br>
-                                                                    </span>
-                                                                    <span style="float: left;"><b>About The Job:
-                                                                        </b>
-                                                                        Work as a backend developer.<br><br>
-                                                                    </span>
-                                                                    <span style="float: left;"><b>Reference
-                                                                            Letter: </b>
-                                                                        <a download="" href="" target="_blank">Download
-                                                                            my
-                                                                            Reference Letter here</a>
-                                                                        <br><br>
-                                                                        <img style="height: auto; width: 300px;"
-                                                                            src="/images/resume.svg">
-                                                                    </span>
+
+                                                                    <span style="float: left;"><b>Title / Position: </b></span>
+                                                                    <br>
+                                                                    <p style="text-align: left;">
+                                                                        <%= cv.position[p] %>
+                                                                    </p>        
+                                                                    <br><br>
+                                                                    
+                                                                    <span style="float: left;"><b>About The Job: </b></span>
+                                                                    <br>
+                                                                    <p style="text-align: left;">
+                                                                        <%= cv.workDescription[p] %>
+                                                                    </p>
+                                                                    <br>
+                                                                    
+                                                                    <% if(cv.reference[p] != ''){ %>
+                                                                    <br>
+                                                                    <span style="float: left;"><b>Reference Letter: </b></span>
+                                                                    <br>        
+                                                                    <a style="float: left;" download="reference_<%=p+1%>" href="<%= cv.reference[p] %>" target="_blank">
+                                                                        Download my Reference Letter here</a>
+                                                                    <br><br>
+                                                                    <img style="float: left; height: auto; width: 300px;" src="<%= cv.reference[p] %>">
+                                                                    <% }else{ %>
+                                                                    <img style="float: right; height: auto; width: 300px;" src="/images/work_pic.svg">
+                                                                    <% } %>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-                                                    <div id="slide-2">
-                                                        2
+                                                    <% } %>
+                                                    <div id="slide-<%=p+1%>">
+                                                        <div class="container field">
+                                                            <div class="row">
+                                                                <div class="col-sm-12" contenteditable>
+                                                                    <div class="py-4"></div>
+                                                                    <h3>Hope I can include the working experience in your company in my CV in the future :) </h3>
+                                                                </div>
+                                                                <div class="col-sm-12 py-4">
+                                                                    <img class="resize-drag" style="height: auto; width: 500px;"
+                                                                    src='/images/work.jpg' contenteditable="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div id="slide-3">
-                                                        3
-                                                    </div>
-                                                    <div id="slide-4">
-                                                        4
-                                                    </div>
-                                                    <div id="slide-5">
-                                                        5
-                                                    </div>
-
                                                 </div>
+                                                <% } else { %>
+                                                    <a class="slider-btn" href="#slide-1">1</a>
+                                                    <a class="slider-btn" href="#slide-2">2</a>
+                                                      
+                                                    <div class="slides" style="color: black;" contenteditable>
+                                                        <div id="slide-1">
+                                                            <div class="container field">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 py-4">
+                                                                        <span><b>From: </b><br>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="15" height="15"
+                                                                                style="color: rgb(0, 4, 255)"
+                                                                                fill="currentColor"
+                                                                                class="bi bi-calendar svgColor"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                            </svg>
+                                                                            <%= cv.workStartDate %><br>
+                                                                            | <br>
+                                                                            <b>To: </b><br>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="16" height="16"
+                                                                                style="color: rgb(0, 4, 255)"
+                                                                                fill="currentColor"
+                                                                                class="bi bi-calendar svgColor"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                            </svg>
+                                                                            <%= cv.workEndDate %>
+                                                                        </span>
+                                                                    </div>
+    
+                                                                    <div class="col-sm-8 py-4">
+                                                                        <span style="float: left;"><b>Company: </b></span> 
+                                                                        <br>
+                                                                        <p style="text-align: left;">
+                                                                            <%= cv.company %>
+                                                                        </p>        
+                                                                        <br><br>
+
+                                                                        <span style="float: left;"><b>Title / Position: </b></span>
+                                                                        <br>
+                                                                        <p style="text-align: left;">
+                                                                            <%= cv.position %>
+                                                                        </p>        
+                                                                       <br><br>
+
+                                                                        <span style="float: left;"><b>About The Job: </b></span>
+                                                                        <br>
+                                                                        <p style="text-align: left;">
+                                                                            <%= cv.workDescription %>
+                                                                        </p>
+                                                                       <br>
+
+                                                                       <% if(cv.reference != ''){ %>
+                                                                        <br>
+                                                                        <span style="float: left;"><b>Reference Letter: </b></span>
+                                                                        <br>        
+                                                                        <a style="float: left;" download="reference_1" href="<%= cv.reference %>" target="_blank">
+                                                                            Download my Reference Letter here</a>
+                                                                        <br><br>
+                                                                        <img style="float: left; height: auto; width: 300px;" src="<%= cv.reference %>">
+                                                                        <% }else{ %>
+                                                                        <img style="float: right; height: auto; width: 300px;" src="/images/work_pic.svg">
+                                                                        <% } %>
+                                                                    </div>  
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="slide-2">
+                                                            <div class="container field">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="py-4"></div>
+                                                                        <h3>Hope I can include the working experience in your company in my CV in the future :) </h3>
+                                                                    </div>
+                                                                    <div class="col-sm-12 py-4">
+                                                                        <img class="resize-drag" style="height: auto; width: 500px;"
+                                                                        src='/images/work.jpg' contenteditable="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                                        
                                             </div>
                                         </div>
                                     </div>
@@ -416,7 +605,10 @@
                                     <div class="py-4"></div>
                                 </div>
                             </div>
+                            <% } %>
 
+
+                            <% if (cv.typingSkill !='' || cv.codingSkill != '' || cv.softwareSkill != ''){ %>
                             <div style="display: none;" id="Skill"
                                 class="animate__animated animate__fadeInRight new-page card shadow mb-4">
 
@@ -432,67 +624,72 @@
 
                                 <div class="container field">
                                     <div class="row justify-content-center">
+                                        <% var i;
+                                        
+                                        if (cv.typingSkill != ''){
+                                            var skill1 = cv.typingSkill.split(",");
+                                        for (i = 0; i < skill1.length; i++) { 
+                                            var detail = skill1[i].split(":");
+                                            var percent = detail[1].split("%");%>
                                         <div class="col-sm-4">
                                             <div class="single-chart resize-drag" contenteditable>
                                                 <svg viewBox="0 0 36 36" class="circular-chart blue">
                                                     <path class="circle-bg" d="M18 2.0845
                                               a 15.9155 15.9155 0 0 1 0 31.831
                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845
+                                                    <path class="circle" stroke-dasharray="<%= percent[0] %>, 100" d="M18 2.0845
                                               a 15.9155 15.9155 0 0 1 0 31.831
                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <text x="18" y="20.35" class="percentage">JavaScript</text>
+                                                    <text x="18" y="20.35" class="percentage"><%= detail[0] %></text>
                                                 </svg>
                                             </div>
                                         </div>
+                                        <% }}
 
+                                        if (cv.codingSkill != ''){
+                                            var skill2 = cv.codingSkill.split(",");
+                                        for (i = 0; i < skill2.length; i++) { 
+                                            var detail = skill2[i].split(":");
+                                            var percent = detail[1].split("%");%>
                                         <div class="col-sm-4">
                                             <div class="single-chart resize-drag" contenteditable>
                                                 <svg viewBox="0 0 36 36" class="circular-chart blue">
                                                     <path class="circle-bg" d="M18 2.0845
                                               a 15.9155 15.9155 0 0 1 0 31.831
                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845
+                                                    <path class="circle" stroke-dasharray="<%= percent[0] %>, 100" d="M18 2.0845
                                               a 15.9155 15.9155 0 0 1 0 31.831
                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <text x="18" y="20.35" class="percentage">Good</text>
+                                                    <text x="18" y="20.35" class="percentage"><%= detail[0] %></text>
                                                 </svg>
                                             </div>
                                         </div>
+                                        <% }}
 
+                                        if (cv.softwareSkill != ''){
+                                            var skill3 = cv.softwareSkill.split(",");
+                                        for (i = 0; i < skill3.length; i++) { 
+                                            var detail = skill3[i].split(":");
+                                            var percent = detail[1].split("%");%>
                                         <div class="col-sm-4">
                                             <div class="single-chart resize-drag" contenteditable>
                                                 <svg viewBox="0 0 36 36" class="circular-chart blue">
                                                     <path class="circle-bg" d="M18 2.0845
                                               a 15.9155 15.9155 0 0 1 0 31.831
                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <path class="circle" stroke-dasharray="50, 100" d="M18 2.0845
+                                                    <path class="circle" stroke-dasharray="<%= percent[0] %>, 100" d="M18 2.0845
                                               a 15.9155 15.9155 0 0 1 0 31.831
                                               a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <text x="18" y="20.35" class="percentage">Chinese
-                                                        Typing</text>
+                                                    <text x="18" y="20.35" class="percentage"><%= detail[0] %></text>
                                                 </svg>
                                             </div>
                                         </div>
-
-                                        <div class="col-sm-4">
-                                            <div class="single-chart resize-drag" contenteditable>
-                                                <svg viewBox="0 0 36 36" class="circular-chart blue">
-                                                    <path class="circle-bg" d="M18 2.0845
-                                              a 15.9155 15.9155 0 0 1 0 31.831
-                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <path class="circle" stroke-dasharray="25, 100" d="M18 2.0845
-                                              a 15.9155 15.9155 0 0 1 0 31.831
-                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                    <text x="18" y="20.35" class="percentage">Basic</text>
-                                                </svg>
-                                            </div>
-                                        </div>
+                                        <% }} %>
                                     </div>
                                 </div>
-
                                 <div class="py-4"></div>
                             </div>
+                            <% } %>
 
 
                             <div style="display: none;" id="Language"
@@ -508,36 +705,75 @@
                                     <b>Language</b>
                                 </div>
 
-
-                                <div class="container field animate__animated animate__flipInX">
-                                    <div class="row">
-                                        <div class="col-sm-12 resize-drag" contenteditable="">
-                                            <div class="mb-1" style="color: black;">Normal Progress Bar
-                                            </div>
-                                            <div class="progress progress-sm mb-2">
-                                                <div class="progress-bar progress-sm mb-2" role="progressbar"
-                                                    style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <% var language = cv.level + '';
+                                var languageData = language.split(",");
+                                if (languageData[1] != null){
+                                var i; 
+                                for (i = 0; i < languageData.length; i++) { %>
                                 <div class="container field animate__animated animate__flipInX">
                                     <br>
                                     <div class="row">
                                         <div class="col-sm-12 resize-drag" contenteditable="">
-                                            <div class="mb-1" style="color: black;">Normal Progress Bar
-                                                <span style="float: right;">50%</span>
+                                            <div class="mb-1" style="color: black;"><%= cv.name[i] %>
+                                                <span style="float: right;"><%= cv.level[i] %></span>
                                             </div>
-                                            <div class="progress progress-sm mb-2">
-                                                <div class="progress-bar" role="progressbar" style="width: 75%"
-                                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress progress mb-2">
+                                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                <% if(cv.level[i] == 'Basic') { %>style="width: 20%" aria-valuenow="20" Basic <% } 
+                                                     else if(cv.level[i] == 'Intermediate') { %>style="width: 40%" aria-valuenow="40" Intermediate <% } 
+                                                     else if(cv.level[i] == 'Good') { %>style="width: 60%" aria-valuenow="60" Good <% } 
+                                                     else if(cv.level[i] == 'Advance') { %>style="width: 80%" aria-valuenow="80" Advance <% }
+                                                     else if(cv.level[i] == 'Native') { %>style="width: 100%" aria-valuenow="100" Native <% } %>>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <% if(cv.lanCertificate[i] != '') {%>
+                                <div class="container field animate__animated animate__flipInX">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a download="language_<%=i+1%>_certificate" href="<%= cv.lanCertificate[i] %>" target="_blank">
+                                                Download my <%= cv.name[i] %> certificate here</a>
+                                            <br>
+                                            <img class="resize-drag" style="height: auto; width: 200px;"
+                                            src='<%= cv.lanCertificate[i] %>' contenteditable="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }}} else { %>
+                                    <div class="container field animate__animated animate__flipInX">
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-sm-12 resize-drag" contenteditable="">
+                                                <div class="mb-1" style="color: black;"><%= cv.name %>
+                                                    <span style="float: right;"><%= cv.level %></span>
+                                                </div>
+                                                <div class="progress progress mb-2">
+                                                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                    <% if(cv.level == 'Basic') { %>style="width: 20%" aria-valuenow="20" Basic <% } 
+                                                         else if(cv.level == 'Intermediate') { %>style="width: 40%" aria-valuenow="40" Intermediate <% } 
+                                                         else if(cv.level == 'Good') { %>style="width: 60%" aria-valuenow="60" Good <% } 
+                                                         else if(cv.level == 'Advance') { %>style="width: 80%" aria-valuenow="80" Advance <% }
+                                                         else if(cv.level == 'Native') { %>style="width: 100%" aria-valuenow="100" Native <% } %>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% if(cv.lanCertificate != '') {%>
+                                    <div class="container field animate__animated animate__flipInX">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <a download="language_<%=i+1%>_certificate" href="<%= cv.lanCertificate %>" target="_blank">
+                                                    Download my <%= cv.name %> certificate here</a>
+                                                <br>
+                                                <img class="resize-drag" style="height: auto; width: 200px;"
+                                                    src='<%= cv.lanCertificate %>' contenteditable="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }} %>
                                 <div class="py-4"></div>
                             </div>
 
@@ -561,6 +797,15 @@
 
 
 <script>
+    /////// disable editable of the textfield before the page
+    window.onload = function () {
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.removeAttribute("contenteditable")
+        });
+    }
+    ///////
+
+
     ////////for showing content page
     function showContent(targetPage) {
         var contentBtnArray = document.getElementsByClassName("content-btn");
@@ -576,18 +821,9 @@
     }
     ////////
 
-    /////// disable editable of the textfield before the page
-    window.onload = function () {
-        document.querySelectorAll("[contenteditable]").forEach(field => {
-            field.removeAttribute("contenteditable")
-        });
-    }
-    ///////
-
 
     /////// change background color
     function changeBackground(newBackground) {
-        var color = document.getElementById('background').value;
         if (newBackground == "Original") {
             document.getElementById('CVContent').setAttribute("class", "");
             document.getElementById('CVContent').style.backgroundColor = rgb(248, 248, 248);
@@ -598,9 +834,18 @@
     ///////
 
 
-    /////// change text color
-    function changeColor(newColor) {
-        var colorArray = newColor.split("/");
+    /////// change background color
+    // function changeCard(newCard) {
+    //     document.querySelectorAll(".new-page").forEach(ele => {
+    //         ele.setAttribute("class", "animate__animated animate__fadeInRight new-page " + newCard + " card shadow mb-4 resize-only");
+    //     })
+    // }
+    ///////
+
+
+    /////// change theme color
+    function changeColor(newTheme) {
+        var colorArray = newTheme.split("/");
         document.querySelectorAll(".darkerColor").forEach(ele => {
             ele.style.color = colorArray[0];
         })
@@ -614,7 +859,7 @@
             ele.style.setProperty('--uiTimelineMainColor', 'var(--timelineMainColor, ' + colorArray[2] + ')');
         })
         document.querySelectorAll(".circular-chart").forEach(ele => {
-            ele.setAttribute("class", "circular-chart "+ colorArray[3]);
+            ele.setAttribute("class", "circular-chart " + colorArray[3]);
         })
         document.querySelectorAll(".slider-btn").forEach(ele => {
             ele.style.background = colorArray[2];

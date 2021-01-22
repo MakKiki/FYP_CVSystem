@@ -49,7 +49,16 @@ module.exports = {
     req.body.CV.belongTo = req.session.userID;
     await CV.create(req.body.CV);
 
-    //sails.log("[Session] ", req.session);
-    return res.view("pages/users/inputData");
+    // sails.log("[Session] ", req.session);
+    return res.view("pages/users/step2");
+  },
+
+  //show template1
+  showTemplate1: async function (req, res) {
+    var model = await CV.findOne(req.session.progressingCV.id);
+
+    if (!model) return res.notFound();
+
+    return res.view("pages/users/template1", { cv: model });
   },
 };

@@ -101,6 +101,16 @@ module.exports = {
       columnType: "array",
     },
 
+    major: {
+      type: "json",
+      columnType: "array",
+    },
+
+    mark: {
+      type: "json",
+      columnType: "array",
+    },
+
     eduDescription: {
       type: "json",
       columnType: "array",
@@ -183,31 +193,6 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
-    // include: {
-    //   collection: "BasicInfo",
-    //   via: "inside",
-    // },
-
-    // include: {
-    //   collection: "Education",
-    //   via: "inside",
-    // },
-
-    // include: {
-    //   collection: "Work",
-    //   via: "inside",
-    // },
-
-    // include: {
-    //   collection: "Skill",
-    //   via: "inside",
-    // },
-
-    // include: {
-    //   collection: "Language",
-    //   via: "inside",
-    // },
 
     belongTo: {
       model: "User",

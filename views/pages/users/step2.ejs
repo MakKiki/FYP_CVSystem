@@ -1,0 +1,73 @@
+<!-- step2 Modal-->
+<div class="animate__animated animate__fadeIn center" style='z-index: 1;' id="step2Modal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel" style="color: #f1869f">Step 2 - 🎨 Choosing Theme 🎨
+                </h4>
+            </div>
+            <div class="modal-body">
+                <br>
+                You can choose one of the default template below. After you have determined a theme, please press the
+                "NEXT"
+                button for the next step.
+                <br><br>
+            </div>
+            <div class="modal-footer">
+                <button id="alert-delete" class="btn pink-btn" type="button" onclick="closeStep2Modal()"
+                    data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End of step2 Modal -->
+
+<div id="content" style="opacity: .4;">
+    <!-- progress bar -->
+    <div class="py-4"></div>
+    <ul class="progressbar">
+        <li class="active">Inputting Data</li>
+        <li>Choosing Theme</li>
+        <li>Customizing your CV</li>
+        <li>Making your CV into 3D</li>
+    </ul>
+    <div class="py-3"></div>
+    <!-- End of progress bar -->
+
+
+    <!-- content -->
+    <div class="container my-5">
+        <div class="header-body text-center mb-7">
+            <div class="row justify-content-center">
+
+
+                <div class="col-lg-6 col-sm-12">
+                   <span>Template 1 </span>
+                   <a href='/template1'>Start Creating</a>
+                </div>
+
+
+                <div class="col-lg-6 col-sm-12">
+                    <span>Template 2 </span>
+                 </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    ///////for close step1 modal
+    function closeStep2Modal() {
+        var modal = document.getElementById('step2Modal');
+        var content = document.getElementById("content");
+        var topbar = document.getElementById("topbar");
+        modal.style.display = 'none';
+        content.style.opacity = '';
+        topbar.style.opacity = '';
+    }
+    ///////
+</script>

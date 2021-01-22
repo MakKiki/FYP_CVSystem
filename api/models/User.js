@@ -38,6 +38,10 @@ module.exports = {
       type: "json",
     },
 
+    step: {
+      type: "string",
+    },
+
     CV: {
       type: "string",
     },
