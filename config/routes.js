@@ -25,7 +25,7 @@ module.exports.routes = {
   "/input": { view: "pages/users/inputData" },
   "/step2": { view: "pages/users/step2" },
   "/step3": { view: "pages/users/step3" },
-  "/customize": { view: "pages/users/customize" },
+  // "/customize": { view: "pages/users/customize" },
   "/step4": { view: "pages/users/step4" },
   "/main": { view: "pages/users/main" },
   "/CV": { view: "pages/users/CV" },
@@ -47,11 +47,20 @@ module.exports.routes = {
   "POST /login": "PersonController.login",
   "POST /logout": "PersonController.logout",
   "POST /signup": "PersonController.signup",
+
   "POST /cv/saveData": "CVController.saveData",
   "POST /cv/submitData": "CVController.submitData",
+
   "GET /template1": "CVController.showTemplate1",
+  "POST /cv/submitTemplate": "CVController.submitTemplate",
+
+  "GET /customize": "CVController.customize",
+  "POST /cv/saveCV": "CVController.saveCV",
+  "POST /cv/submitCVCode": "CVController.submitCVCode",
+  "POST /cv/passStep": "CVController.passStep",
+  "POST /cv/reloadCV": "CVController.reloadCV",
+
   "POST /user/submitCV": "UserController.submitCV",
-  "POST /user/saveCV": "UserController.saveCV",
   "POST /user/deleteCV": "UserController.deleteCV",
-  "POST /user/reloadCV": "UserController.reloadCV",
+
 };

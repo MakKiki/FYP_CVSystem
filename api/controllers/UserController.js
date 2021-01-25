@@ -15,27 +15,7 @@ module.exports = {
     return res.json(model);
   },
 
-  // save CV
-  saveCV: async function (req, res) {
-    if (req.method == "GET") return res.forbidden();
-
-    req.session.CV = req.body.CV;
-
-    var user = await User.update(req.session.userID)
-      .set({
-        CV: req.body.CV,
-      })
-      .fetch();
-
-    if (user.length == 0) return res.notFound();
-
-    if (req.wantsJSON) {
-     // sails.log("[Session] ", req.session);
-      return res.json({ message: "✔️ Successfully Saved ✔️", url: "/customize" }); // for ajax request
-    } else {
-      return res.redirect("/customize"); // for normal request
-    }
-  },
+ 
 
   // submit CV
   submitCV: async function (req, res) {
@@ -87,8 +67,10 @@ module.exports = {
 
   // reloadCV
   reloadCV: async function (req, res) {
+    sails.log("[heloo] ");
     req.session.reloadCV = req.body.CV;
-   // sails.log("[Session] ", req.session);
+    req.session.reloadStatus = req.body.status;
+   sails.log("[Session] ", req.session.reloadCV);
     return res.redirect("/customize");
   },
 };

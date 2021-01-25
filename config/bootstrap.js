@@ -37,14 +37,14 @@ module.exports.bootstrap = async function () {
     ]);
   }
 
-  if ((await CV.count()) == 0) {
-    await CV.createEach([{ CVcode: "", CVlink: "123456", owner: "Su San Chan" }]);
-  }
+  // if ((await CV.count()) == 0) {
+  //   await CV.createEach([{ CVcode: "", CVlink: "123456", owner: "Su San Chan" }]);
+  // }
 
-  const susan = await User.findOne({ email: "susan@gmail.com" });
-  const susanCV = await CV.findOne({ owner: "Su San Chan" });
+  // const susan = await User.findOne({ email: "susan@gmail.com" });
+  // const susanCV = await CV.findOne({ owner: "Su San Chan" });
 
-  await User.addToCollection(susan.id, "have").members(susanCV.id);
+  // await User.addToCollection(susan.id, "have").members(susanCV.id);
 
   return;
 };

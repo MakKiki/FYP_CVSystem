@@ -36,10 +36,7 @@ module.exports = {
 
     progressingCV: {
       type: "json",
-    },
-
-    step: {
-      type: "string",
+      columnType: "array",
     },
 
     CV: {

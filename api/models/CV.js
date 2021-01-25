@@ -19,7 +19,15 @@ module.exports = {
       type: "string",
     },
 
+    CVdefaultCode: {
+      type: "string",
+    },
+
     CVlink: {
+      type: "string",
+    },
+
+    step: {
       type: "string",
     },
 
@@ -45,11 +53,11 @@ module.exports = {
     },
 
     countryCode: {
-      type: "number",
+      type: "string",
     },
 
     phone: {
-      type: "number",
+      type: "string",
     },
 
     email: {

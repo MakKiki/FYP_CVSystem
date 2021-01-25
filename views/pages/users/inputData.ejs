@@ -103,7 +103,7 @@
                             <div class="col-sm-12 col-lg-3">
                                 Country Code
                                 <input type="number" id="countryCode" name="CV[countryCode]"
-                                    class="form-control form-control-user" placeholder="E.g. 852" 
+                                    class="form-control form-control-user" placeholder="E.g. 852"
                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.countryCode%>" <%}%>
                                     required>
                             </div>
@@ -620,7 +620,7 @@
                             <div class="row justify-content-center py-4">
                                 <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9"></div>
                                 <button type="button" class="btn btn-danger" style="float: left;"
-                                    onclick='saveData()'>SAVE</button>
+                                    onclick="saveData()">SAVE</button>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp
                                 <button type="submit" class="btn pink-btn" style="float: left;">NEXT</button>
                                 <br>

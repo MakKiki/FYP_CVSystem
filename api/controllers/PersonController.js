@@ -24,7 +24,7 @@ module.exports = {
     if (person.password != req.body.password)
       return res.status(401).send("Wrong Password");
 
-    req.session.regenerate(function (err) {
+    req.session.regenerate(async function (err) {
       if (err) return res.serverError(err);
 
       req.session.firstName = person.firstName;
@@ -32,14 +32,18 @@ module.exports = {
       req.session.role = person.role;
 
       if (person.role == "user") {
+        var cv = await CV.findOne({ belongTo: person.id });
+        if (!cv) cv = null;
+
         req.session.userID = person.id;
-        req.session.progressingCV = person.progressingCV;
+        req.session.progressingCV = cv;
         req.session.CV = person.CV;
         req.session.link = person.link;
         req.session.reloadCV = "";
+        req.session.reloadStatus = "false";
       }
 
-      // sails.log("[Session] ", req.session);
+      sails.log("[Session] ", req.session);
 
       if (req.wantsJSON) {
         return res.json({ url: "/main" }); // for ajax request
