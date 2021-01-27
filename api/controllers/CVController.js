@@ -62,14 +62,14 @@ module.exports = {
         level: req.body.level,
         lanCertificate: req.body.lanCertificate,
         belongTo: req.body.belongTo,
-        step: req.body.step
+        step: req.body.step,
       });
       req.body.id = req.session.progressingCV.id;
     }
 
     req.session.progressingCV = req.body;
 
-    sails.log("[Session] ", req.session);
+    //sails.log("[Session] ", req.session);
     if (req.wantsJSON) {
       return res.json({ message: "✔️ Successfully Saved ✔️", url: "/input" }); // for ajax request
     } else {
@@ -126,14 +126,14 @@ module.exports = {
         level: req.body.CV.level,
         lanCertificate: req.body.CV.lanCertificate,
         belongTo: req.body.CV.belongTo,
-        step: req.body.CV.step
+        step: req.body.CV.step,
       });
       req.body.CV.id = req.session.progressingCV.id;
     }
 
     req.session.progressingCV = req.body.CV;
 
-    sails.log("[Session] ", req.session);
+    //sails.log("[Session] ", req.session);
     return res.view("pages/users/step2");
   },
 
@@ -148,12 +148,35 @@ module.exports = {
     }
   },
 
+  //show template2
+  showTemplate2: async function (req, res) {
+    if (req.method == "GET") {
+      var model = await CV.findOne(req.session.progressingCV.id);
+
+      if (!model) return res.notFound();
+
+      return res.view("pages/users/template2", { cv: model });
+    }
+  },
+
+  //show template3
+  showTemplate3: async function (req, res) {
+    if (req.method == "GET") {
+      var model = await CV.findOne(req.session.progressingCV.id);
+
+      if (!model) return res.notFound();
+
+      return res.view("pages/users/template3", { cv: model });
+    }
+  },
+
   //submit template (save in CVcode & CVdefaultCode)
-  submitTemplate:  async function (req, res) {
+  submitTemplate: async function (req, res) {
     var model = await CV.update(req.session.progressingCV.id)
       .set({
         CVcode: req.body.CV,
         CVdefaultCode: req.body.CV,
+        template: req.body.template
       })
       .fetch();
 
@@ -173,9 +196,6 @@ module.exports = {
       var model = await CV.findOne(req.session.progressingCV.id);
 
       if (!model) return res.notFound();
-
-      req.session.reloadCV = "";
-      req.session.reloadStatus = "false";
 
       return res.view("pages/users/customize", { cv: model });
     }
@@ -239,13 +259,13 @@ module.exports = {
     req.session.reloadCV = "";
     req.session.reloadStatus = "false";
 
-    var cv = await CV.findOne(req.session.progressingCV.id)
+    var cv = await CV.findOne(req.session.progressingCV.id);
 
     if (cv.length == 0) return res.notFound();
 
     var model = await CV.update(req.session.progressingCV.id)
       .set({
-        CVcode: cv.CVdefaultCode
+        CVcode: cv.CVdefaultCode,
       })
       .fetch();
 
@@ -263,7 +283,7 @@ module.exports = {
   reloadCV: async function (req, res) {
     req.session.reloadCV = req.body.CV;
     req.session.reloadStatus = req.body.status;
-    //sails.log("[Session] ", req.session.reloadCV);
+    // sails.log("[Session] ", req.session);
     return res.redirect("/customize");
   },
 };

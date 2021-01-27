@@ -181,21 +181,29 @@
 
       <li class="nav-item">
         <div class="py-2">
-          <label style="padding: 2px 2px; padding-left: 1.05rem; font-size: 3px; color: #e7e7eb" for="textColor">
-            Text Color: </label>
+          <label
+            style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
+            for="textColor">
+            Text </label>
           <input type="color" value="#00000" id="textColor" onmouseup="setColor(this.value)">
         </div>
 
         <div>
-          <label style="padding: 2px 2px; padding-left: 1.05rem; font-size: 3px; color: #e7e7eb" for="cardColor">
-            Card Color: </label>
-          <input type="color" value="#ffffff" id="cardColor" onmouseup="setCardColor('.newpage', this.value)">
+          <label
+            style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
+            for="cardColor">
+            Card </label>
+          <input type="color" value="#ffffff" id="cardColor" onmouseup="setCardColor('.new-page', this.value)">
         </div>
 
         <div class="py-2">
-          <label style="padding: 2px 2px; padding-left: 1.05rem; font-size: 3px; color: #e7e7eb" for="btnColor">
-            Card Button Color: </label>
-          <input type="color" value="#ffffff" id="btnColor" onmouseup="setCardColor('.content-btn', this.value)">
+          <label
+            style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
+            for="btnColor">
+            Button Card </label>
+          <input type="color" value="#ffffff" id="btnColor" <% if(cv.template == 'template3') { %>
+            onmouseup="setCardColor('.fieldbarCard', this.value)" <% }else{ %>
+            onmouseup="setCardColor('.content-btn', this.value)" <% } %>>
         </div>
       </li>
 
@@ -454,7 +462,7 @@
         <div class="modal-footer">
           <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
             data-dismiss="modal">Cancel</button>
-          <button id="alert-addPage" class="btn pink-btn" type="button" onclick="addPage()"
+          <button id="alert-addPage" class="btn pink-btn" type="button" onclick="addPage('<%=cv.template%>')"
             data-dismiss="modal">Submit</button>
         </div>
       </div>
@@ -740,7 +748,6 @@
 
     //add new text field
     document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='card col-sm-12' contenteditable> <p></p> </div> </div> </div>";
-
     //Reload the page for update the code
     //Check whether the page has been reloaded before 
     if (reloadStatus == "true") {
@@ -1015,7 +1022,7 @@
   ////////
 
   ///////for add page
-  function addPage() {
+  function addPage(template) {
     var contentBtnArray = document.getElementsByClassName("content-btn");
     //get the inputted value
     var newPage = document.getElementById("newPageName").value;
@@ -1038,7 +1045,11 @@
     document.querySelectorAll(".darkerColor").forEach(ele => {
       themeColor = ele.style.color;
     })
-    document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+    if (template == "template1" || template == "template2") {
+      document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+    } else if (template == "template3") {
+      document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+    }
     document.getElementById("main").innerHTML += " <div style='display: none;' id='" + newPage + "' class='animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only'> </div>";
     document.getElementById("newPageName").value = "";
   }
@@ -1149,7 +1160,7 @@
       modifiers: [
         // keep the edges inside the parent
         interact.modifiers.restrictEdges({
-          outer: '#main'
+          outer: '#CVbody'
         }),
 
         // minimum size
@@ -1177,7 +1188,7 @@
               listeners: { move: window.dragMoveListener },
               modifiers: [
                 interact.modifiers.restrictRect({
-                  restriction: '#main',
+                  restriction: '#CVbody',
                   endOnly: true
                 })
               ]

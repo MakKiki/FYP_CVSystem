@@ -51,6 +51,7 @@
 
                             <div class="col-sm-12 col-lg-12">
                                 Profile Image (If any)
+                                <div style="color: red; font-size: 3px;">**Suggested Picture: Image in <b>Rectangle</b> form</div>
                                 <input type="file" accept="image/*" class="form-control form-control-user py-1" onchange="uploadProfile(this.files)">
                                     <input type="hidden" id="profile" name="CV[profile]"
                                      <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.profile%>" <%}%>>

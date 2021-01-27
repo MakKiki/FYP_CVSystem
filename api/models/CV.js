@@ -11,10 +11,6 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    owner: {
-      type: "string",
-    },
-
     CVcode: {
       type: "string",
     },
@@ -24,6 +20,10 @@ module.exports = {
     },
 
     CVlink: {
+      type: "string",
+    },
+
+    template: {
       type: "string",
     },
 

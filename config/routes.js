@@ -52,6 +52,8 @@ module.exports.routes = {
   "POST /cv/submitData": "CVController.submitData",
 
   "GET /template1": "CVController.showTemplate1",
+  "GET /template2": "CVController.showTemplate2",
+  "GET /template3": "CVController.showTemplate3",
   "POST /cv/submitTemplate": "CVController.submitTemplate",
 
   "GET /customize": "CVController.customize",
