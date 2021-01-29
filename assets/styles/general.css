@@ -10432,7 +10432,6 @@ body.sidebar-toggled footer.sticky-footer {
   user-select: none;
 }
 .main-create-btn {
-  margin-top: 10px;
   width: 20%;
   background: linear-gradient(to right, #f556ad 0%, #fa5a44 100%);
   padding: 12px 26px;
@@ -10450,7 +10449,6 @@ body.sidebar-toggled footer.sticky-footer {
   transition: 0.3s;
 }
 .main-create-btn2 {
-  margin-top: 10px;
   width: 20%;
   background: linear-gradient(to right, #929292 0%, #838383 100%);
   padding: 12px 26px;

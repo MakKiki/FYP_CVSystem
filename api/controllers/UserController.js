@@ -15,62 +15,15 @@ module.exports = {
     return res.json(model);
   },
 
- 
+  //main page
+  main: async function (req, res) {
+    if (req.method == "GET") {
+      var models = await CV.find({ where: { belongTo: req.session.userID } });
 
-  // submit CV
-  submitCV: async function (req, res) {
-    if (req.method == "GET") return res.forbidden();
+      if (!models) models = null;
 
-    req.session.CV = req.body.CV;
-    req.session.link = req.body.link;
-
-    var user = await User.update(req.session.userID)
-      .set({
-        CV: req.body.CV,
-        link: req.body.link,
-      })
-      .fetch();
-
-    if (user.length == 0) return res.notFound();
-
-    if (req.wantsJSON) {
-     // sails.log("[Session] ", req.session);
-      return res.json({ message: "✔️ Successfully Submited ✔️", url: "/main" }); // for ajax request
-    } else {
-      return res.redirect("/main"); // for normal request
+      return res.view("pages/users/main", { cv: models });
     }
   },
 
-  //deleteCV
-  deleteCV: async function (req, res) {
-    if (req.method == "GET") return res.forbidden();
-
-    req.session.CV = "";
-    req.session.link = "";
-
-    var user = await User.update(req.session.userID)
-      .set({
-        CV: "",
-        link: "",
-      })
-      .fetch();
-
-    if (user.length == 0) return res.notFound();
-
-    if (req.wantsJSON) {
-    //  sails.log("[Session] ", req.session);
-      return res.json({ url: "/main" }); // for ajax request
-    } else {
-      return res.redirect("/main"); // for normal request
-    }
-  },
-
-  // reloadCV
-  reloadCV: async function (req, res) {
-    sails.log("[heloo] ");
-    req.session.reloadCV = req.body.CV;
-    req.session.reloadStatus = req.body.status;
-   sails.log("[Session] ", req.session.reloadCV);
-    return res.redirect("/customize");
-  },
 };

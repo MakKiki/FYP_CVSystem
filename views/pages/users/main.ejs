@@ -2,7 +2,7 @@
   <div class="py-4"></div>
 
   <!-- if the user has no CV -->
-  <% if(req.session.CV=='' ){ %>
+  <% if(cv=='' ){ %>
     <!-- Message -->
     <div class="container my-5">
       <div class="header-body text-center mb-7">
@@ -11,7 +11,7 @@
             <h1>You haven't had any CV 🙁</h1>
             <h1 class="py-4">Create your own <span style="color: deeppink;">3D CV</span> by just FOUR steps.</h1>
             <div class="py-2"></div>
-            <button class="btn main-create-btn" onclick="location.href='/input';">Start Creating</button>
+            <button class="btn main-create-btn" onclick="window.location.href='/editCV/null'">Start Creating</button>
             <div class="py-3"></div>
             <img src="/images/develop_main_pic2.svg" style="width: 90%; height: 50%;" />
           </div>
@@ -22,103 +22,186 @@
 
       <!-- if the user has CV -->
       <div class="container">
+
+        <span class="h1">My CV</span>
+        <button type="btn" class="btn main-create-btn" style="float: right; height: 50px; width: 180px;">+ Create New
+          CV</button>
+        <hr class="sidebar-divider">
+        <div class="py-2"></div>
+
         <!-- Outer Row -->
         <div class="row justify-content-center">
-          <div class="col-xl-10 col-lg-12 col-md-9">
-            <div class="card o-hidden border-0 py-3">
-              <div class="row">
 
-                <!-- Left part of the card -->
-                <div class="col-lg-6 d-none d-lg-block">
-                  <img src="/images/resume.svg" style="width: 90%; height: 90%;" />
+          <!-- Loop the cv for shown -->
+          <% var i=0; cv.forEach( function(model) { i++; %>
+            <div class="col-lg-6 col-sm-12">
+
+              <div class="row">
+                <!-- Left part of the card: Img -->
+                <div class="col-lg-6 col-sm-12 card shadow" style="height: 400px">
+                  <div class="py-2"></div>
+
+                  <div class="row" style="color: #a570a7">
+                    <div class="col-sm-12 py-3">
+                      <h5 class="text-center">Resume <%=i%>
+                      </h5>
+                    </div>
+
+                    <div class="col-sm-12 py-3 ml-2">
+                      Status: <% if(model.status !='finish' ) { %>Progressing - <span
+                          style="text-transform: uppercase;">
+                          <%=model.step%>
+                        </span>
+                        <% }else{ %>Finish<% } %>
+                    </div>
+
+                    <div class="col-sm-12 py-3 ml-2">
+                      <span>Job Area: <%=model.jobArea%></span>
+                    </div>
+
+                    <div class="col-sm-12 py-3 ml-2">
+                      <span>Targeted Occupation: <%=model.occupation%></span>
+                    </div>
+
+
+                  </div>
+
                 </div>
 
-                <!-- Right part of the card -->
-                <div class="col-lg-6 py-5">
-                  <!-- Edit -->
-                  <button class="btn main-btn" onclick="window.location.href='/customize'">
-                    Edit
-                  </button>
-                  <br>
-                  <!-- Delete -->
-                  <button class="btn main-btn py-5" onclick="deleteCV()">
-                    Delete
-                  </button>
-                  <!-- Publish link -->
-                  <div class="py-4" style="padding: 12px 12px">
-                    <span class="main-btn">Publicated link of your CV</span>
-                    <br>
-                    <% if (req.session.link=='' ){ %>
-                      <p class="py-2">You have not published your CV yet.</p>
-                      <% } else{ %>
-                        <button type="button" class="btn btn-link" onclick="goToCVPage()">
-                          <%= req.session.link %>
-                        </button>
-                        <% } %>
+                <!-- Right part of the card: Info -->
+                <div class="col-lg-6 col-sm-12">
+                  <div class="row">
+
+                    <div class="col-sm-12 py-1">
+                      <!-- Continue / Edit -->
+                      <button class="btn main-btn" onclick="window.location.href='/editCV/<%= model.id %>'">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"
+                          class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                          <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                        <% if (model.step !='finish' ) { %><span class="ml-1">Continue</span>
+                          <% } else { %><span class="ml-1">Edit</span>
+                            <% } %>
+                      </button>
+                    </div>
+
+                    <div class="col-sm-12 py-1">
+                      <!-- Delete -->
+                      <button type="button" class="btn main-btn" onclick="showDeleteAlert()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-trash" viewBox="0 0 16 16">
+                          <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                          <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg>
+                        <span class="ml-1">Delete</span>
+                      </button>
+                    </div>
+
+                    <!-- Delete Modal-->
+                    <div class="animate__animated animate__fadeIn center" style="display:none; z-index: 1;"
+                      id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete?</h5>
+                          </div>
+                          <div class="modal-body">Once you delete your CV, you cannot retrieve it back.</div>
+                          <div class="modal-footer">
+                            <button id="alert-cancel" class="btn btn-secondary" type="button"
+                              onclick="showDeleteAlert()" data-dismiss="modal">Cancel</button>
+                            <button id="alert-delete" class="btn btn-danger" type="button"
+                              onclick="deleteCV('<%=model.id%>')" data-dismiss="modal">Delete</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End of Delete Modal -->
+
+                    <div class="col-sm-12 py-1">
+                      <!-- Publish link -->
+                      <div style="padding: 12px 12px">
+                        <span class="main-btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-link-45deg" viewBox="0 0 16 16">
+                            <path
+                              d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.001 1.001 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                            <path
+                              d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z" />
+                          </svg>
+                          Publicated Link</span>
+                        <br>
+                        <% if (model.CVlink=='' ){ %>
+                          <div style="font-size:small">You have not published this CV yet.</div>
+                          <% } else{ %>
+                            <button type="button" class="btn btn-link" onclick="window.open('<%=model.CVlink%>')">
+                              <%= model.CVlink %>
+                            </button>
+                            <% } %>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 py-1">
+                      <div style="padding: 0px 12px">
+                        <div class="main-btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-calendar2-event" viewBox="0 0 16 16">
+                            <path
+                              d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                            <path
+                              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                            <path
+                              d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                          </svg>
+                          <span class="ml-1">Updated At </span>
+                        </div>
+                        <div style="font-size:small"> The most updated date is <%= new Date(model.updatedAt).getDate()
+                            +"/"+ new Date(model.updatedAt).getMonth()+1 +"/"+ new Date(model.updatedAt).getFullYear()
+                            %>.</div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
+                <!-- End of the right part -->
               </div>
 
+              <div class="py-4"></div>
             </div>
-          </div>
+
+            <% }); %>
+              <!-- End of the loop -->
+
+
+              <!-- Add new CV -->
+              <div class="col-lg-6 col-sm-12">
+
+                <div class="row">
+                  <!-- Left part of the card: img -->
+                  <div class="col-lg-6 col-sm-12 card shadow" style="height: 400px">
+                    <button type="button" class="btn main-btn" onclick="window.location.href='/editCV/null'">
+                      <h4 class="text-center" style="margin-top: 170px;"><b>+ Create New CV</b></h4>
+                    </button>
+                  </div>
+
+                </div>
+                <div class="py-4"></div>
+              </div>
+              <!-- End of create new CV -->
+
         </div>
       </div>
 </div>
 <% } %>
-
   </div>
 
-
-
-
-  <!-- <div class="container">
-  <div class="col-lg-12">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="row">
-          <div class="col-lg-6">
-            <img src="/images/resume.svg" style="width: 100%; height: 100%;" />
-          </div>
-          <div class="col-lg-6">
-            Edit
-            <button class="btn main-btn" onclick="window.location.href='/create'">
-              Edit
-            </button>
-            <br>
-            Delete
-            <button class="btn main-btn py-5" onclick="deleteCV()">
-              Delete
-            </button>
-            Publish link
-            <div class="py-4" style="padding: 12px 12px">
-              <span class="main-btn">Publicated link of your CV</span>
-              <br>
-              <% if (req.session.link=='' ){ %>
-                <p class="py-2">You have not published your CV yet.</p>
-                <% } else{ %>
-                  <button type="button" class="btn btn-link" onclick="goToCVPage()">
-                    <%= req.session.link %>
-                  </button>
-                  <% } %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <h1>HELLO</h1>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 
   <script>
-    ////////for open CV page in new window
-    function goToCVPage() {
-      window.open("/CV");
-    }
-    ////////
-
     ////////for showing toolbar
     function showUserToolbar() {
       var toolbar = document.getElementById('userToolbar');
@@ -130,28 +213,30 @@
     };
     ////////
 
+
+    ///////for showing delete alert
+    function showDeleteAlert() {
+      var deleteAlert = document.getElementById('deleteModal');
+      if (deleteAlert.style.display == '') {
+        deleteAlert.style.display = 'none';
+      } else {
+        deleteAlert.style.display = '';
+      }
+    }
+    ///////
+
     /////// for delete user's CV
-    async function deleteCV() {
+    async function deleteCV(id) {
+      var response = await fetch("/deleteCV/" + id, {
+        method: "DELETE",
+        credentials: 'same-origin',
+      });
 
-      var r = confirm("⚠️ Confirm to Delete? ⚠️");
-
-      if (r) {
-        var response = await fetch("/user/deleteCV", {
-          method: "POST",
-          credentials: 'same-origin',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: data
-        });
-
-        if (response.ok) {
-          var data = await response.json();
-          window.location = data.url;
-        } else {
-          alert(response.statusText);
-        }
+      if (response.ok) {
+        var data = await response.json();
+        window.location = data.url;
+      } else {
+        alert(response.statusText);
       }
     }
     ////////

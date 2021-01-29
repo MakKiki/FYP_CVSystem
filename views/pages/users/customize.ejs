@@ -489,27 +489,6 @@
   <!-- End of Delete Page Modal -->
 
 
-  <!-- Delete Modal-->
-  <div class="animate__animated animate__fadeIn center" style="display:none" id="deleteModal" tabindex="-1"
-    role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete?</h5>
-        </div>
-        <div class="modal-body">Once you have deleted your CV, you cannot retrieve it back.</div>
-        <div class="modal-footer">
-          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showDeleteAlert()"
-            data-dismiss="modal">Cancel</button>
-          <button id="alert-delete" class="btn pink-btn" type="button" onclick="deleteCV()"
-            data-dismiss="modal">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Delete Modal -->
-
-
   <!-- Submit Modal-->
   <div class="animate__animated animate__fadeIn center" style="display:none" id="submitModal" tabindex="-1"
     role="dialog" aria-labelledby="exampleModalLabel">
@@ -651,48 +630,6 @@
     });
 
     var response = await fetch("/cv/passStep", {
-      method: "POST",
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: data
-    });
-
-    if (response.ok) {
-      var data = await response.json();
-      window.location = data.url;
-    } else {
-      alert(response.statusText);
-    }
-  }
-  ////////
-
-
-  ///////for showing delete alert
-  function showDeleteAlert() {
-    var deleteAlert = document.getElementById('deleteModal');
-    var content = document.getElementById("content");
-    var sidebar = document.getElementById("sidebar");
-    var topbar = document.getElementById("topbar");
-    if (deleteAlert.style.display == '') {
-      deleteAlert.style.display = 'none';
-      content.style.opacity = '';
-      sidebar.style.opacity = '';
-      topbar.style.opacity = '';
-    } else {
-      deleteAlert.style.display = ''
-      content.style.opacity = '.4';
-      sidebar.style.opacity = '.4';
-      topbar.style.opacity = '.4';
-    }
-  }
-  ///////
-
-  ///////for delete CV
-  async function deleteCV() {
-    var response = await fetch("/user/deleteCV", {
       method: "POST",
       credentials: 'same-origin',
       headers: {

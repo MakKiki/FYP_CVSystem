@@ -15,6 +15,43 @@ module.exports = {
     return res.json(model);
   },
 
+  //click edit CV in main page
+  editCV: async function (req, res) {
+    if (req.method == "GET") {
+      if (req.params.id == "null") {
+        req.session.progressingCV = null;
+        return res.view("pages/users/inputData");
+      }
+
+      var model = await CV.findOne(req.params.id);
+      if (!model) return res.notFound();
+
+      req.session.progressingCV = model;
+
+      if (model.step == "step1") {
+        return res.view("pages/users/inputData");
+      } else {
+        return res.view("pages/users/" + model.step);
+      }
+    }
+  },
+
+  //delete CV
+  deleteCV: async function (req, res) {
+    if (req.method == "GET") return res.forbidden();
+
+    var model = await CV.destroy(req.params.id).fetch();
+
+    if (model.length == 0) return res.notFound();
+
+    if (req.wantsJSON) {
+      //  sails.log("[Session] ", req.session);
+      return res.json({ url: "/main" }); // for ajax request
+    } else {
+      return res.redirect("/main"); // for normal request
+    }
+  },
+
   //save cv data
   saveData: async function (req, res) {
     if (req.method == "GET") return res.view("pages/users/inputData");
@@ -176,7 +213,7 @@ module.exports = {
       .set({
         CVcode: req.body.CV,
         CVdefaultCode: req.body.CV,
-        template: req.body.template
+        template: req.body.template,
       })
       .fetch();
 

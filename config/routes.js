@@ -27,7 +27,7 @@ module.exports.routes = {
   "/step3": { view: "pages/users/step3" },
   // "/customize": { view: "pages/users/customize" },
   "/step4": { view: "pages/users/step4" },
-  "/main": { view: "pages/users/main" },
+  // "/main": { view: "pages/users/main" },
   "/CV": { view: "pages/users/CV" },
 
   /***************************************************************************
@@ -42,11 +42,14 @@ module.exports.routes = {
    ***************************************************************************/
   "GET /user/:id/have": "UserController.populate",
   "GET /cv/:id/include": "CVController.populate",
-  // "GET /basicInfo/:id/inside": "BasicInfo.populate",
   "GET /login": "PersonController.login",
   "POST /login": "PersonController.login",
   "POST /logout": "PersonController.logout",
   "POST /signup": "PersonController.signup",
+
+  "GET /main": "UserController.main",
+  "GET /editCV/:id": "CVController.editCV",
+  "DELETE /deleteCV/:id": "CVController.deleteCV",
 
   "POST /cv/saveData": "CVController.saveData",
   "POST /cv/submitData": "CVController.submitData",
@@ -61,8 +64,4 @@ module.exports.routes = {
   "POST /cv/submitCVCode": "CVController.submitCVCode",
   "POST /cv/passStep": "CVController.passStep",
   "POST /cv/reloadCV": "CVController.reloadCV",
-
-  "POST /user/submitCV": "UserController.submitCV",
-  "POST /user/deleteCV": "UserController.deleteCV",
-
-};
+}

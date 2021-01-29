@@ -32,13 +32,8 @@ module.exports = {
       req.session.role = person.role;
 
       if (person.role == "user") {
-        var cv = await CV.findOne({ belongTo: person.id });
-        if (!cv) cv = null;
-
         req.session.userID = person.id;
-        req.session.progressingCV = cv;
-        req.session.CV = person.CV;
-        req.session.link = person.link;
+        req.session.progressingCV = null;
         req.session.reloadCV = "";
         req.session.reloadStatus = "false";
       }
