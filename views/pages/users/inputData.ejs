@@ -184,55 +184,85 @@
                                 <div class="col-sm-12 col-lg-12">
                                     Name Of The School / Institution
                                     <input type="text" name="CV[school]" class="form-control form-control-user" 
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.school[0]%>" <%}%>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.school!= null) { 
+                                        var school = req.session.progressingCV.school  + '';
+                                        var schoolData = school.split(",");
+                                        if(schoolData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.school[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.school%>" <% } } %>
                                     required>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-4 py-4">
                                     Start Date
                                     <input type="date" name="CV[eduStartDate]" class="form-control form-control-user"
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.eduStartDate[0]%>" <%}%>
-                                        required>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.eduStartDate!= null) { 
+                                        var eduStartDate = req.session.progressingCV.eduStartDate  + '';
+                                        var eduStartDateData = eduStartDate.split(",");
+                                        if(eduStartDateData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.eduStartDate[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.eduStartDate%>" <% } } %>
+                                    required>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-4 py-4">
                                     End Date (or Expected End Date)
                                     <input type="date" name="CV[eduEndDate]" class="form-control form-control-user"
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.eduEndDate[0]%>" <%}%>
-                                        required>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.eduEndDate!= null) { 
+                                        var eduEndDate = req.session.progressingCV.eduEndDate  + '';
+                                        var eduEndDateData = eduEndDate.split(",");
+                                        if(eduEndDateData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.eduEndDate[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.eduEndDate%>" <% } } %>
+                                    required>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-4 py-4">
                                     Major
                                     <input type="text" name="CV[major]" class="form-control form-control-user"
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.major[0]%>" <%}%>
-                                        required>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.major!= null) { 
+                                        var major = req.session.progressingCV.major  + '';
+                                        var majorData = major.split(",");
+                                        if(majorData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.major[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.major%>" <% } } %>
+                                    required>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-6">
                                     Degree / Level
                                     <select class="form-control" name="CV[degree]" required>
-                                        <option value='Professional Degree' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'Professional Degree') {%> selected <%}%>>Professional Degree</option>
-                                        <option value='Doctoral Degree' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'Doctoral Degree') {%> selected <%}%>>Doctoral Degree</option>
-                                        <option value='Master Degree' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'Master Degree') {%> selected <%}%>>Master Degree</option>
-                                        <option value='Bachelor Degree' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'Bachelor Degree') {%> selected <%}%>>Bachelor Degree</option>
-                                        <option value='Associate Degree' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'Associate Degree') {%> selected <%}%>>Associate Degree</option>
-                                        <option value='Graduate' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'Graduate') {%> selected <%}%>>Graduate</option>
-                                        <option value='In Progress' <% if(req.session.progressingCV !=null && req.session.progressingCV.degree[0] == 'In Progress') {%> selected <%}%>>In Progress</option>
+                                        <option value='Professional Degree' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Professional Degree' || req.session.progressingCV.degree == 'Professional Degree') {%> selected <%}}%>>Professional Degree</option>
+                                        <option value='Doctoral Degree' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Doctoral Degree' || req.session.progressingCV.degree == 'Doctoral Degree') {%> selected <%}}%>>Doctoral Degree</option>
+                                        <option value='Master Degree' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Master Degree' || req.session.progressingCV.degree == 'Master Degree') {%> selected <%}}%>>Master Degree</option>
+                                        <option value='Bachelor Degree' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Bachelor Degree' || req.session.progressingCV.degree == 'Bachelor Degree') {%> selected <%}}%>>Bachelor Degree</option>
+                                        <option value='Associate Degree' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Associate Degree' || req.session.progressingCV.degree == 'Associate Degree') {%> selected <%}}%>>Associate Degree</option>
+                                        <option value='Graduate' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Graduate' || req.session.progressingCV.degree == 'Graduate') {%> selected <%}}%>>Graduate</option>
+                                        <option value='In Progress' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'In Progress' || req.session.progressingCV.degree == 'In Progress') {%> selected <%}}%>>In Progress</option>
                                     </select>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-6">
                                     CGPA / Result
                                     <input type="text" name="CV[mark]" class="form-control form-control-user"
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.mark[0]%>" <%}%>
-                                        required>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.mark!= null) { 
+                                        var mark = req.session.progressingCV.mark  + '';
+                                        var markData = mark.split(",");
+                                        if(markData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.mark[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.mark%>" <% } } %>
+                                    required>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
                                     <br>Others About The School / Institution (If any)
                                     <input type="text" name="CV[eduDescription]" class="form-control form-control-user"
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.eduDescription[0]%>" <%}%>>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.mark!= null) { 
+                                        var eduDescription = req.session.progressingCV.eduDescription  + '';
+                                        var eduDescriptionData = eduDescription.split(",");
+                                        if(eduDescriptionData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.eduDescription[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.eduDescription%>" <% } } %>>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -240,11 +270,18 @@
                                     Certificate (If any)
                                     <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                     <input type="hidden" id="eduCertificate1" name="CV[eduCertificate]"
-                                    <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.eduCertificate[0]%>" <%}%>>
-                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.eduCertificate[0] !='') {%>
-                                    <a style="color: #4ab6a4" download="education_1_certificate" href="<%=req.session.progressingCV.eduCertificate[0]%>" target="_blank">
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.eduCertificate[0]!='' && req.session.progressingCV.eduCertificate!='') {
+                                        var eduCertificate = req.session.progressingCV.eduCertificate  + '';
+                                        var eduCertificateData = eduCertificate.split(",");
+                                        if(eduCertificateData[1] != null) {%>
+                                        value="<%=req.session.progressingCV.eduCertificate[0]%>" <%} else {%>
+                                        value="<%=req.session.progressingCV.eduCertificate%>" <% } } %>>
+                                    <% if(req.session.progressingCV !=null && req.session.progressingCV.eduCertificate!='' && req.session.progressingCV.eduCertificate[0]!='') {%>
+                                    <a style="color: #4ab6a4" download="education_1_certificate" <% if(eduCertificateData[1] != null) {%>
+                                        href="<%=req.session.progressingCV.eduCertificate[0]%>"<% } else {%> 
+                                        href="<%=req.session.progressingCV.eduCertificate%>" <% } %> target="_blank">
                                         Click here to download the previous Certificate you uploaded</a>
-                                        <% } %>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +289,7 @@
                 </div>
             </div>
 
-            <% if (req.session.progressingCV !=null && req.session.progressingCV.school.length>0) {%>
+            <% if (req.session.progressingCV !=null && req.session.progressingCV.school.length>0 && eduStartDateData[1] != null) {%>
                 <% var i; for(i=1; i<req.session.progressingCV.school.length; i++ ) { %>
                     <div id='eduData<%=i+1%>' class='container eduField'>
                         <div class='row justify-content-center'>
@@ -271,7 +308,7 @@
                                             <input type='date' name='CV[eduEndDate]' class='form-control form-control-user'
                                             value="<%=req.session.progressingCV.eduEndDate[i]%>" required>
                                         </div>
-                                        <div class="col-sm-12 col-lg-4"> Major <input type='text'
+                                        <div class="col-sm-12 col-lg-4 py-4"> Major <input type='text'
                                             name='CV[major]' class='form-control form-control-user'
                                             value="<%=req.session.progressingCV.major[i]%>" required>
                                         </div>
@@ -346,39 +383,64 @@
                                             <div class="col-sm-12 col-lg-6">
                                                 Company
                                                 <input type="text" name="CV[company]" class="form-control form-control-user"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.company[0]%>" <%}%>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.company!= null) { 
+                                                    var company = req.session.progressingCV.company  + '';
+                                                    var companyData = company.split(",");
+                                                    if(companyData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.company[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.company%>" <% } } %>>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-6">
                                                 Title / Position
                                                 <input type="text" name="CV[position]" class="form-control form-control-user"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.position[0]%>" <%}%>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.position!= null) { 
+                                                    var position = req.session.progressingCV.position  + '';
+                                                    var positionData = position.split(",");
+                                                    if(positionData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.position[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.position%>" <% } } %>>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3 py-4">
                                                 Start Date
                                                 <input type="date" name="CV[workStartDate]" class="form-control form-control-user"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.workStartDate[0]%>" <%}%>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.workStartDate!= null) { 
+                                                    var workStartDate = req.session.progressingCV.workStartDate  + '';
+                                                    var workStartDateData = workStartDate.split(",");
+                                                    if(workStartDateData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.workStartDate[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.workStartDate%>" <% } } %>>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3 py-4">
                                                 End Date
                                                 <input id="workEndDate1" name="CV[workEndDate]" class="form-control form-control-user"
-                                                type="<% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null && req.session.progressingCV.inJob[0] == true){ %>text<% }else{ %>date<% } %>" 
-                                                <% if(req.session.progressingCV !=null){ %>value="<%=req.session.progressingCV.workEndDate[0]%>" <%}%>
-                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null && req.session.progressingCV.inJob[0] == true){ %> readOnly <% } %>>
+                                                type="<% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %>text<% }else{ %>date<% }} %>" 
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.workEndDate!= null) { 
+                                                    var workEndDate = req.session.progressingCV.workEndDate  + '';
+                                                    var workEndDateData = workEndDate.split(",");
+                                                    if(workEndDateData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.workEndDate[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.workEndDate%>" <% } } %>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %> readOnly <% }} %>>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3 py-5">
                                                 <input value="workEndDate1" type="checkbox" name="CV[inJob]" onclick='checkEndDateBox()'
-                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null && req.session.progressingCV.inJob[0] == true){ %> checked <% } %>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %> checked <% }} %>>
                                                 <span>Still in this job right now?</span>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-12">
                                                 Description About The Job
                                                 <input type="text" name="CV[workDescription]" class="form-control form-control-user"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.workDescription[0]%>" <%}%>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.workDescription!= null) { 
+                                                    var workDescription = req.session.progressingCV.workDescription + '';
+                                                    var workDescriptionData = workDescription.split(",");
+                                                    if(workDescriptionData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.workDescription[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.workDescription%>" <% } } %>>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-12k">
@@ -386,11 +448,18 @@
                                                 Reference Letter
                                                 <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="reference1" name="CV[reference]"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.reference[0]%>" <%}%>>
-                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.reference[0] !='') {%>
-                                                <a style="color: #4ab6a4" download="reference_1" href="<%=req.session.progressingCV.reference[0]%>" target="_blank">
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.reference[0]!='' && req.session.progressingCV.reference!='') {
+                                                    var reference = req.session.progressingCV.reference  + '';
+                                                    var referenceData = reference.split(",");
+                                                    if(referenceData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.reference[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.reference%>" <% } } %>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.reference!='' && req.session.progressingCV.reference[0]!='') {%>
+                                                <a style="color: #4ab6a4" download="reference_1" <% if(referenceData[1] != null) {%>
+                                                    href="<%=req.session.progressingCV.reference[0]%>"<% } else {%> 
+                                                    href="<%=req.session.progressingCV.reference%>" <% } %> target="_blank">
                                                     Click here to download the previous Reference you uploaded</a>
-                                                    <% } %>
+                                                <% } %>
                                             </div>
                                         </div>
                                     </div>
@@ -398,7 +467,7 @@
                             </div>
                         </div>
 
-                        <% if (req.session.progressingCV !=null && req.session.progressingCV.company.length>0) {%>
+                        <% if (req.session.progressingCV !=null && req.session.progressingCV.company.length>0 && workStartDateData[1]!=null) {%>
                             <% var i; for(i=1; i<req.session.progressingCV.company.length; i++ ) { %>
                         <div id='workData<%=i+1%>' class='container workField'>
                             <div class='row justify-content-center'>
@@ -423,12 +492,12 @@
                                             <div class='col-sm-12 col-lg-3 py-4'>
                                                 End Date
                                                 <input id='workEndDate<%=i+1%>' name='CV[workEndDate]' class='form-control form-control-user'
-                                                type="<% if(req.session.progressingCV.inJob[i] == true){ %>text<% }else{ %>date<% } %>" 
-                                                value="<%=req.session.progressingCV.workEndDate[i]%>" <% if (req.session.progressingCV.inJob[i] == true){ %> readOnly <% } %>>
+                                                type="<% if(req.session.progressingCV.inJob[i] == true || req.session.progressingCV.workEndDate[i] == 'Until NOW'){ %>text<% }else{ %>date<% } %>" 
+                                                value="<%=req.session.progressingCV.workEndDate[i]%>" <% if (req.session.progressingCV.inJob[i] == true || req.session.progressingCV.workEndDate[i] == 'Until NOW'){ %> readOnly <% } %>>
                                             </div>
                                             <div class='col-sm-12 col-lg-3 py-5'>
                                                 <input value='workEndDate<%=i+1%>' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'
-                                                <% if (req.session.progressingCV.inJob[i] != null && req.session.progressingCV.inJob != null && req.session.progressingCV.inJob[i] == true){ %> checked <% } %>>
+                                                <% if(req.session.progressingCV.inJob[i] == true || req.session.progressingCV.workEndDate[i] == 'Until NOW'){ %> checked <% } %>>
                                                 <span>Still in this job right now?</span>
                                             </div>
                                             <div class='col-sm-12 col-lg-12'>
@@ -532,18 +601,23 @@
                                             <div class="col-sm-12 col-lg-4">
                                                 Name
                                                 <input type="text" name="CV[name]" class="form-control form-control-user"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.name[0]%>" <%}%>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.name!= null) { 
+                                                    var name = req.session.progressingCV.name + '';
+                                                    var nameData = name.split(",");
+                                                    if(nameData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.name[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.name%>" <% } } %>
                                                 required>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3">
                                                 Level
                                                 <select class="form-control" name="CV[level]" required>
-                                                    <option value='Native' <% if(req.session.progressingCV !=null && req.session.progressingCV.level[0] == 'Native') {%> selected <%}%>>Native</option>
-                                                    <option value='Advance' <% if(req.session.progressingCV !=null && req.session.progressingCV.level[0] == 'Advance') {%> selected <%}%>>Advance</option>
-                                                    <option value='Good' <% if(req.session.progressingCV !=null && req.session.progressingCV.level[0] == 'Good') {%> selected <%}%>>Good</option>
-                                                    <option value='Intermediate' <% if(req.session.progressingCV !=null && req.session.progressingCV.level[0] == 'Intermediate') {%> selected <%}%>>Intermediate</option>
-                                                    <option value='Basic' <% if(req.session.progressingCV !=null && req.session.progressingCV.level[0] == 'Basic') {%> selected <%}%>>Basic</option>
+                                                    <option value='Native' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.level[0] == 'Native' || req.session.progressingCV.level == 'Native') {%> selected <%}}%>>Native</option>
+                                                    <option value='Advance' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.level[0] == 'Advance' || req.session.progressingCV.level == 'Advance') {%> selected <%}}%>>Advance</option>
+                                                    <option value='Good' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.level[0] == 'Good' || req.session.progressingCV.level == 'Good') {%> selected <%}}%>>Good</option>
+                                                    <option value='Intermediate' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.level[0] == 'Intermediate' || req.session.progressingCV.level == 'Intermediate') {%> selected <%}}%>>Intermediate</option>
+                                                    <option value='Basic' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.level[0] == 'Basic' || req.session.progressingCV.level == 'Basic') {%> selected <%}}%>>Basic</option>
                                                 </select>
                                             </div>
 
@@ -551,11 +625,18 @@
                                                 Certificate (If any)
                                                 <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="lanCertificate1" name="CV[lanCertificate]"
-                                                <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.lanCertificate[0]%>" <%}%>>
-                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.lanCertificate[0] !='') {%>
-                                                <a style="color: #4ab6a4" download="language_1_certificate" href="<%=req.session.progressingCV.lanCertificate[0]%>" target="_blank">
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.lanCertificate[0]!='' && req.session.progressingCV.lanCertificate!='') {
+                                                    var lanCertificate = req.session.progressingCV.lanCertificate  + '';
+                                                    var lanCertificateData = lanCertificate.split(",");
+                                                    if(lanCertificateData[1] != null) {%>
+                                                    value="<%=req.session.progressingCV.lanCertificate[0]%>" <%} else {%>
+                                                    value="<%=req.session.progressingCV.lanCertificate%>" <% } } %>>
+                                                <% if(req.session.progressingCV !=null && req.session.progressingCV.lanCertificate!='' && req.session.progressingCV.lanCertificate[0]!='') {%>
+                                                <a style="color: #4ab6a4" download="language_1_certificate" <% if(lanCertificateData[1] != null) {%>
+                                                    href="<%=req.session.progressingCV.lanCertificate[0]%>"<% } else {%> 
+                                                    href="<%=req.session.progressingCV.lanCertificate%>" <% } %> target="_blank">
                                                     Click here to download the previous Certificate you uploaded</a>
-                                                    <% } %>
+                                                <% } %>
                                             </div>
                                         </div>
                                     </div>
@@ -563,7 +644,7 @@
                             </div>
                         </div>
 
-                        <% if (req.session.progressingCV !=null && req.session.progressingCV.name.length>0) {%>
+                        <% if (req.session.progressingCV !=null && req.session.progressingCV.name.length>0 && nameData[1] != null) {%>
                             <% var i; for(i=1; i<req.session.progressingCV.name.length; i++ ) { %>
                         <div id='languageData<%=i+1%>' class='container languageField'>
                             <div class='row justify-content-center'>

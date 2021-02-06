@@ -41,15 +41,15 @@
     <div class="py-3"></div>
     
     <!-- Content -->
-    <div id="content1" class="container-fluid container">
-        <div id="content2">
-            <div id="content3">
+    <div id="content" class="container-fluid container">
                 
                 <!-- innerHTML for CV -->
                 <div id="CVbody">
                 <!-- for storing background color of the web page -->
                 <input type="hidden" id="webpageColor" style="background-color: rgb(248, 248, 248);"></input> 
-                
+                <input type="hidden" id="darkerColor" value="navy"></input>
+                <input type="hidden" id="themeColor" style="color: #4e73df"></input>
+
                         <div class="cotainer">
                             <div class="row">
         
@@ -761,9 +761,7 @@
                     </div>
                 <!-- End of the CV content -->
 
-            </div>
-        </div>
-        <!-- End of the content1 -->
+        <!-- End of the content -->
     </div>
 </div>
 
@@ -805,6 +803,7 @@
         document.querySelectorAll(".darkerColor").forEach(ele => {
             ele.style.color = colorArray[0];
         })
+        document.getElementById("darkerColor").value = colorArray[0];
         document.querySelectorAll(".svgColor").forEach(ele => {
             ele.style.color = colorArray[1];
         })
@@ -823,6 +822,7 @@
         document.querySelectorAll(".progress-bar").forEach(ele => {
             ele.style.backgroundColor = colorArray[2];
         })
+        document.getElementById("themeColor").style.color = colorArray[2];
     }
     ///////
 
@@ -833,7 +833,7 @@
             field.contentEditable = "true";
         });
         var data = JSON.stringify({
-            CV: document.getElementById('content1').innerHTML,
+            CV: document.getElementById('content').innerHTML,
             template: "template1"
         });
 

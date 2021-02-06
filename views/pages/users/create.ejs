@@ -1,0 +1,1543 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- 3D Sidebar -->
+    <div class="scroll" style="display: none;" id="3Dsidebar">
+        <ul class="navbar-nav sidebar2-bg sidebar sidebar-dark accordion">
+
+            <!-- button for changing toolbar to customize -->
+            <button type="button" class="btn btn-link text-left" style="color: white;"
+                onclick="showSidebar('3Dsidebar','custSidebar')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-hand-index-thumb" viewBox="0 0 16 16">
+                    <path
+                        d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z" />
+                </svg>
+                Click Here To Change Into <b>CUSTOMIZE ToolBoard</b>
+            </button>
+
+            <!-- Sidebar Title -->
+            <div class="sidebar-title align-items-center justify-content-center">
+                <span class="sidebar-title-text">Tool Board</span>
+            </div>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Upload -->
+            <div class="sidebar-heading">
+                Upload
+            </div>
+
+            <li class="nav-item">
+                <!-- document -->
+                <div class="py-2">
+                    <button class="btn nav-link" onclick="showUploadModal('uploadDocModal')"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+                            <path
+                                d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z" />
+                            <path
+                                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                        </svg>
+                        <span>Document</span>
+                    </button>
+                </div>
+
+                <!-- image -->
+                <button class="btn nav-link" onclick="showUploadModal('uploadImgModal')"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-card-image" viewBox="0 0 16 16">
+                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                        <path
+                            d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+                    </svg>
+                    <span>Image</span>
+                </button>
+
+                <!-- video -->
+                <div class="py-2">
+                    <button type="button" class="btn nav-link" onclick="showUploadModal('uploadVideoModal')"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-camera-reels" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
+                            <path
+                                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                        <span>Video</span>
+                    </button>
+                </div>
+
+                <!-- Hyperlink -->
+                <button class="btn nav-link" onclick="showUploadModal('uploadLinkModal')"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-link" viewBox="0 0 16 16">
+                        <path
+                            d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+                        <path
+                            d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+                    </svg>
+                    <span>Hyperlink</span>
+                </button>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Nav Item - Delete -->
+            <div class="sidebar-heading">
+                Delete
+            </div>
+
+            <li class="nav-item">
+                <div class="py-2">
+                    <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                            <path fill-rule="evenodd"
+                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg>
+                        <span>Element (File, TextField...)</span>
+                    </button>
+                </div>
+                <div class="py-1"></div>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Buttton -->
+            <div>
+                <button onclick="saveContent('<%=req.session.reloadStatus%>')" class="btn btn-warning"
+                    style="width: 100%">Save</button>
+            </div>
+
+            <div class="py-2">
+                <button onclick="showAlert('submitModal')" class="btn btn-danger" style="width: 100%">Finish</button>
+            </div>
+
+            <div>
+                <button onclick="showAlert('passModal')" class="btn btn-dark" style="width: 100%">Pass This
+                    Step</button>
+            </div>
+
+        </ul>
+    </div>
+    <!-- End of 3D sidebar -->
+
+    <!-- Customize Sidebar -->
+    <div class="scroll" style="display: none;" id="custSidebar">
+        <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion">
+
+            <!-- button for changing toolbar to customize -->
+            <button type="button" class="btn btn-link text-left" style="color: white;"
+                onclick="showSidebar('custSidebar','3Dsidebar')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-hand-index-thumb" viewBox="0 0 16 16">
+                    <path
+                        d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z" />
+                </svg>
+                Click Here To Change Into <b>3D ToolBoard</b>
+            </button>
+
+            <!-- Sidebar Title -->
+            <div class="sidebar-title align-items-center justify-content-center">
+                <span class="sidebar-title-text">Tool Board</span>
+            </div>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Text Style -->
+            <div class="sidebar-heading">
+                Text Style
+            </div>
+            <li class="nav-item active">
+                <div style="padding: 0.5rem 1rem; display: block;">
+                    <span title="Bold">
+                        <button class="btn-light" data-edit="bold">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-bold"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Italic">
+                        <button class="btn-light" data-edit="italic">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-italic"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.991 11.674L9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Underline">
+                        <button class="btn-light" data-edit="underline">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-underline"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136z" />
+                                <path fill-rule="evenodd" d="M12.5 15h-9v-1h9v1z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Strikethrough">
+                        <button class="btn-light" data-edit="strikeThrough">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-strikethrough"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.527 13.164c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675L8.046 8.5h3.45c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967zM6.602 6.5H5.167a2.776 2.776 0 0 1-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607 0 .31.083.581.27.814z" />
+                                <path fill-rule="evenodd" d="M15 8.5H1v-1h14v1z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Remove format">
+                        <button class="btn-light" data-edit="removeFormat">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Extra Small size">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:1">XS</button>
+                    </span>
+
+                    <span title="Small size">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:2">S</button>
+                    </span>
+
+                    <span title="Middle size">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3">M</button>
+                    </span>
+
+                    <span title="Large size">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:4">L</button>
+                    </span>
+
+                    <span title="Heading1">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:7">H1</button>
+                    </span>
+
+                    <span title="Heading2">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:6">H2</button>
+                    </span>
+
+                    <span title="Heading3">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:5">H3</button>
+                    </span>
+
+                    <span title="Paragraph">
+                        <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3">P</button>
+                    </span>
+                    <!-- Haven't finished: Text font -->
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Paragraph Style -->
+            <div class="sidebar-heading">
+                Paragraph
+            </div>
+            <li class="nav-item active">
+                <div style="padding: 0.5rem 1rem; display: block;">
+
+                    <span title="Unordered list">
+                        <button class="btn-light" data-edit="insertUnorderedList">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ul" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Ordered list">
+                        <button class="btn-light" data-edit="insertOrderedList">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ol" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
+                                <path
+                                    d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Left alignment">
+                        <button class="btn-light" data-edit="justifyLeft">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-text-left"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Align to center">
+                        <button class="btn-light" data-edit="justifyCenter">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-text-center"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                    <span title="Right alignment">
+                        <button class="btn-light" data-edit="justifyRight">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-text-right"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </button>
+                    </span>
+
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Color Style -->
+            <div class="sidebar-heading">
+                Color
+            </div>
+
+            <li class="nav-item">
+                <div class="py-2">
+                    <label
+                        style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
+                        for="textColor">
+                        Text </label>
+                    <input type="color" value="#00000" id="textColor" onmouseup="setColor(this.value)">
+                </div>
+
+                <div>
+                    <label
+                        style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
+                        for="cardColor">
+                        Card </label>
+                    <input type="color" value="#ffffff" id="cardColor"
+                        onmouseup="setCardColor('.new-page', this.value)">
+                </div>
+
+                <div class="py-2">
+                    <label
+                        style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
+                        for="btnColor">
+                        Button Card </label>
+                    <input type="color" value="#ffffff" id="btnColor" <% if(cv.template=='template3' ) { %>
+                    onmouseup="setCardColor('.fieldbarCard', this.value)" <% }else{ %>
+                        onmouseup="setCardColor('.content-btn', this.value)" <% } %>>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Addons -->
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+            <li class="nav-item">
+                <div class="py-2">
+                    <button class="btn nav-link" onclick="addField('<%=req.session.reloadStatus%>')"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <span>+ Text Field</span>
+                    </button>
+                </div>
+                <button type="button" class="btn nav-link" onclick="showAddPageWindow()"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <span>+ Page</span>
+                </button>
+                <div class="py-1"></div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Nav Item - Delete -->
+            <div class="sidebar-heading">
+                Delete
+            </div>
+
+            <li class="nav-item">
+                <div class="py-2">
+                    <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <span>- Textfield</span>
+                    </button>
+                </div>
+                <button type="button" class="btn nav-link" onclick="showDeletePageWindow()"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <span>- Page</span>
+                </button>
+                <div class="py-1"></div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Buttton -->
+            <div>
+                <button onclick="saveContent('<%=req.session.reloadStatus%>')" class="btn btn-warning"
+                    style="width: 100%">Save</button>
+            </div>
+
+            <div class="py-2">
+                <button onclick="showAlert('submitModal')" class="btn btn-danger" style="width: 100%">Finish</button>
+            </div>
+
+            <div>
+                <button onclick="showAlert('passModal')" class="btn btn-dark" style="width: 100%">Pass This
+                    Step</button>
+            </div>
+        </ul>
+    </div>
+    <!-- End of Customize Sidebar -->
+
+
+    <!-- Content position -->
+    <div style="position:absolute; left:268px; top:90px; height: 400px; width:980px;">
+
+        <% if (req.session.reloadCV=='' ){ %>
+            <div id="whole">
+                <%- cv.CVcode %>
+            </div>
+            <!-- when add field/img/doc -->
+            <% } else { %>
+                <div id="reloadWhole">
+                    <%- req.session.reloadCV %>
+                </div>
+                <% } %>
+
+    </div>
+    <!-- End of content position -->
+
+
+    <!-- UploadDoc Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadDocModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <h6 class="py-3">Please select the file you want to upload:</h6>
+
+                    <label class="file">
+                        <!-- input for upload file -->
+                        <input id='doc' type="file" accept="application/pdf, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                text/plain, .zip,.rar,.7zip" onchange="uploadFile(this.files, 'documentFile')">
+                        <span id='documentFileContent' class="file-custom">Choose a file...</span>
+                        <!-- input for store file -->
+                        <input type="hidden" id="documentFile">
+                    </label>
+
+                    <span style="font-size: 2px;">**Flie type: .doc, .docx, .pdf, .xlsx, .xls, .ppt, .txt, .zip,
+                        .rar, .7zip<br></span>
+                    <!-- annouce the user to upload file -->
+                    <span id='documentFileAlert' style="font-size: 2px; color: red;"></span>
+
+                    <!-- ask for choosing button -->
+                    <h6 class="docBtn" style="display: none"><br><br>Please choose the style of the downloaded
+                        button:<br>
+                    </h6>
+                    <!-- annouce the user to choose style of btn -->
+                    <span id='documentFileUploadAlert' style="font-size: 2px; color: red;"></span>
+
+                    <div class="row docBtn" style="display: none;">
+                        <!-- radio of docBtn1 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="docBtnRadio custom-control-input" name="radio"
+                                    value="btn-link" id="docBtn1">
+                                <label class="custom-control-label" for="docBtn1">Link</label>
+                            </div>
+                        </div>
+                        <!-- radio of docBtn2 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="docBtnRadio custom-control-input" name="radio"
+                                    value="filled-rectangle-btn" id="docBtn2">
+                                <label class="custom-control-label" for="docBtn2">Filled Rectangle</label>
+                            </div>
+                        </div>
+                        <!-- docBtn1 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button id="btn-link" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-download"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                </svg><span class="ml-1">Download the document here</span></button>
+                        </div>
+                        <!-- docBtn2 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button id="filled-rectangle-btn" class="btn filled-rectangle-btn"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-download" viewBox="0 0 16 16">
+                                    <path
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                </svg><span class="ml-1">Download the document here</span></button>
+                        </div>
+                        <!-- radio of docBtn3 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="py-1"></div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="docBtnRadio custom-control-input" name="radio"
+                                    value="rectangle-btn" id="docBtn3">
+                                <label class="custom-control-label" for="docBtn3">Border Rectangle</label>
+                            </div>
+                        </div>
+                        <!-- radio of docBtn4 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="py-1"></div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="docBtnRadio custom-control-input" name="radio" value=""
+                                    id="docBtn4">
+                                <label class="custom-control-label" for="docBtn4">Default</label>
+                            </div>
+                        </div>
+                        <!-- docBtn3 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button id="rectangle-btn" class="btn rectangle-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-download"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                </svg><span class="ml-1">Download the document here</span></button>
+                        </div>
+                        <!-- docBtn4 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <path
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                </svg><span class="ml-1">Download the document here</span></button>
+                        </div>
+                        <!-- button for changing docBtn color -->
+                        <div class="col-lg-12 d-none d-lg-block">
+                            <div class="py-3"></div>
+                            <label for="docBtnColor">
+                                Button Color
+                            </label>
+                            <input type="color" value="#e7e7eb" id="docBtnColor">
+                            <button type="button" class="btn purple-btn ml-3"
+                                style="padding: 0rem 0.75rem; height: 30px;"
+                                onclick="setDocBtnColor('docBtnColor')"><span style="font-size: 2px;">Select This
+                                    Color</span></button>
+                            <button type="button" class="btn btn-secondary ml-1"
+                                style="padding: 0rem 0.75rem; height: 30px;"
+                                onclick="setDocBtnColor('darkerColor')"><span style="font-size: 2px;">Default
+                                    Color</span></button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button"
+                        onclick="showUploadModal('uploadDocModal')" data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="addFile('documentFile','<%=req.session.reloadStatus%>')"
+                        data-dismiss="modal">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of UploadDoc Modal -->
+
+
+    <!-- UploadImg Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadImgModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <h6 class="py-3">Please select the file you want to upload:</h6>
+                    <label class="file">
+                        <!-- input for upload file -->
+                        <input id='img' type="file" accept="image/*" onchange="uploadFile(this.files, 'imageFile')">
+                        <span id='imageFileContent' class="file-custom">Choose a file...</span>
+                        <!-- input for store file -->
+                        <input type="hidden" id="imageFile">
+                    </label>
+
+                    <!-- annouce the user to upload file -->
+                    <span id='imageFileAlert' style="font-size: 2px; color: red;"></span>
+
+                    <!-- ask for choosing frame -->
+                    <h6 class="imageFrame" style="display: none"><br><br>Please choose the frame you want to upload:<br>
+                    </h6>
+                    <!-- annouce the user to choose frame -->
+                    <span id='imageFileUploadAlert' style="font-size: 2px; color: red;"></span>
+
+                    <!-- radio -->
+                    <div class="row imageFrame" style="display: none;">
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="frameRadio custom-control-input" name="radio"
+                                    value="rounded-circle" id="frame1">
+                                <label class="custom-control-label" for="frame1">Rounded Circle</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="frameRadio custom-control-input" name="radio"
+                                    value="rounded-xl" id="frame2">
+                                <label class="custom-control-label" for="frame2">Rounded Rectangle</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="frameRadio custom-control-input" name="radio" value=""
+                                    id="frame3">
+                                <label class="custom-control-label" for="frame3">Default</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- image -->
+                    &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-circle">
+                    &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-xl mx-5">
+                    &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame">
+
+                </div>
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button"
+                        onclick="showUploadModal('uploadImgModal')" data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="addFile('imageFile','<%=req.session.reloadStatus%>')"
+                        data-dismiss="modal">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of UploadImg Modal -->
+
+
+    <!-- UploadVideo Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadVideoModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <h6 class="py-3">Please select the video you want to upload:</h6>
+                    <label class="file">
+                        <input id='video' type="file" accept="video/*" onchange="uploadFile(this.files, 'videoFile')">
+                        <span id='videoFileContent' class="file-custom">Choose a file...</span>
+                        <input type="hidden" id="videoFile">
+                    </label>
+                    <span id='videoFileAlert' style="font-size: 2px; color: red;"></span>
+                    <div class="py-1"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button"
+                        onclick="showUploadModal('uploadVideoModal')" data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="addFile('videoFile','<%=req.session.reloadStatus%>')"
+                        data-dismiss="modal">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of UploadVideo Modal -->
+
+
+    <!-- UploadLink Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadLinkModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <h6 class="py-3">Please enter the hyperlink you want to upload:</h6>
+                    <input id="link" type="url" class="form-control form-control-user">
+
+                    <span id='linkAlert' style="font-size: 2px; color: red;"></span>
+                    <div class="py-1"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button"
+                        onclick="showUploadModal('uploadLinkModal')" data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="addLink('link','<%=req.session.reloadStatus%>')" data-dismiss="modal">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of UploadVideo Modal -->
+
+
+    <!-- Add Page Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h6>Please input the name of your new page:</h6><br>
+                    <input type="text" id="newPageName" name="" class="form-control form-control-user">
+                    <span id='pageAlert' style="font-size: 2px; color: red;"></span>
+                </div>
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
+                        data-dismiss="modal">Cancel</button>
+                    <button id="alert-addPage" class="btn pink-btn" type="button"
+                        onclick="addPage('<%=cv.template%>', '<%=req.session.reloadStatus%>')"
+                        data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Add Page Modal -->
+
+
+    <!-- Delete Page Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none;" id="deletePageModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="deletePageModalBody" class="modal-body">
+                    <h6>Please choose the page(s) you want to delete.</h6><br>
+                </div>
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn pink-btn" type="button" onclick="showDeletePageWindow()"
+                        data-dismiss="modal">Finish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Delete Page Modal -->
+</div>
+
+<!-- Submit Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none" id="submitModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to publish your CV?</h5>
+            </div>
+            <div class="modal-body">Are you sure you have finished the creation? Your CV will then be published as a
+                hyperlink.
+            </div>
+            <div class="modal-footer">
+                <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAlert('submitModal')"
+                    data-dismiss="modal">No</button>
+                <button id="alert-delete" class="btn pink-btn" type="button"
+                    onclick="submitCV('<%= req.session.reloadStatus %>')" data-dismiss="modal">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Submit Modal -->
+
+<!-- Pass Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none" id="passModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to publish your CV?</h5>
+            </div>
+            <div class="modal-body">After you have passed this step, your CV will be published as a
+                hyperlink.
+            </div>
+            <div class="modal-footer">
+                <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAlert('passModal')"
+                    data-dismiss="modal">Cancel</button>
+                <button id="alert-delete" class="btn pink-btn" type="button" onclick="pass()"
+                    data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Pass Modal -->
+
+
+<!-- Scroll to Top Button-->
+<!-- <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a> -->
+
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+
+<script>
+    ////////for showing toolbar
+    function showUserToolbar() {
+        var toolbar = document.getElementById('userToolbar');
+        if (toolbar.style.display == '') {
+            toolbar.style.display = 'none';
+        } else {
+            toolbar.style.display = ''
+        }
+    }
+    ////////
+
+
+    ////////for showing different toolboard(sidebar)
+    function showSidebar(current, requestBar) {
+        document.getElementById(requestBar).style.display = '';
+        document.getElementById(current).style.display = 'none';
+        sessionStorage.setItem('toolbar', requestBar)
+    }
+    ////////
+
+
+    ///////for showing submit & pass alert
+    function showAlert(modal) {
+        var modalAlert = document.getElementById(modal);
+        var content = document.getElementById("wrapper");
+        var topbar = document.getElementById("topbar");
+        if (modalAlert.style.display == '') {
+            modalAlert.style.display = 'none';
+            content.style.opacity = '';
+            topbar.style.opacity = '';
+        } else {
+            modalAlert.style.display = ''
+            content.style.opacity = '.4';
+            topbar.style.opacity = '.4';
+        }
+    }
+    ///////
+
+    //////// for submit cv code
+    async function submitCV(reloadStatus) {
+        //confirm the cv is at the first page at the beginning
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        document.getElementById(contentBtnArray[0].value).style.display = '';
+        var i;
+        for (i = 1; i < contentBtnArray.length; i++) {
+            id = contentBtnArray[i].value;
+            document.getElementById(id).style.display = 'none';
+        }
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+
+        //Check whether the page has been reloaded before 
+        if (reloadStatus == "true") {
+            var cvContent = document.getElementById('reloadWhole').innerHTML
+        } else {
+            var cvContent = document.getElementById('whole').innerHTML
+        }
+
+        var data = JSON.stringify({
+            CV: cvContent,
+            step: "finish",
+        });
+
+        var response = await fetch("/cv/submitCVCode", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+
+
+    /////// for save innerHTML to session and db
+    async function saveContent(reloadStatus) {
+        //Check whether the page has been reloaded before 
+        if (reloadStatus == "true") {
+            var cvContent = document.getElementById('reloadWhole').innerHTML
+        } else {
+            var cvContent = document.getElementById('whole').innerHTML
+        }
+
+        var data = JSON.stringify({
+            CV: cvContent,
+            page: '/create'
+        });
+
+        var response = await fetch("/cv/saveCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+
+
+    ////////pass this step (save defaultcode to cvcode)
+    async function pass() {
+        var data = JSON.stringify({
+            step: "finish"
+        });
+
+        var response = await fetch("/cv/passStep", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+
+
+    ///////for showing upload file window
+    function showUploadModal(modalType) {
+        var modal = document.getElementById(modalType);
+        if (modal.style.display == '') {
+            modal.style.display = 'none';
+            //when cancel is clicked, clear all file in the modal
+            if (modalType == 'uploadDocModal') {
+                document.getElementById('doc').value = "";
+                document.getElementById('documentFileContent').innerHTML = 'Choose a file...'
+                document.getElementById('documentFile').value = "";
+                document.getElementById('documentFileAlert').innerHTML = '';
+                document.querySelectorAll('.docBtn').forEach(btn => {
+                    btn.style.display = 'none';
+                })
+                document.querySelectorAll('.docBtnRadio').forEach(radio => {
+                    radio.checked = false;
+                })
+                document.getElementById('documentFileUploadAlert').innerHTML = '';
+                document.getElementById('docBtnColor').value = '';
+            }
+            else if (modalType == 'uploadImgModal') {
+                document.getElementById('img').value = "";
+                document.getElementById('imageFileContent').innerHTML = 'Choose a file...'
+                document.getElementById('imageFile').value = "";
+                document.getElementById('imageFileAlert').innerHTML = '';
+                document.querySelectorAll('.imageFrame').forEach(img => {
+                    img.style.display = 'none';
+                    img.src = '';
+                })
+                document.querySelectorAll('.frameRadio').forEach(radio => {
+                    radio.checked = false;
+                })
+                document.getElementById('imageFileUploadAlert').innerHTML = '';
+            }
+            else if (modalType == 'uploadVideoModal') {
+                document.getElementById('video').value = "";
+                document.getElementById('videoFileContent').innerHTML = 'Choose a file...'
+                document.getElementById('videoFile').value = "";
+                document.getElementById('videoFileAlert').innerHTML = '';
+            }
+            else if (modalType == 'uploadLinkModal') {
+                document.getElementById('link').value = "";
+                document.getElementById('linkAlert').innerHTML = '';
+            }
+        } else {
+            modal.style.display = ''
+        }
+    }
+    ////////
+
+    ///////for upload file
+    function uploadFile(files, fileInput) {
+        const file = files[0];
+        alert(file.name)
+        if (fileInput == 'documentFile' && !file.type == 'application/pdf' && !file.type == 'application/msword' && !file.type == 'application/vnd.ms-excel' && !file.type == 'application/vnd.ms-powerpoint' &&
+            !file.type == 'text/plain' && !file.type == '.zip' && !file.type == '.rar' && !file.type == '.7zip') return;
+
+        if (fileInput == 'imageFile' && !file.type.startsWith('image/')) return;
+
+        if (fileInput == 'videoFile' && !file.type.startsWith('video/')) return;
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            alert(e.target.result)
+            document.getElementById(fileInput).value = e.target.result;
+            if (fileInput == 'imageFile') {
+                document.querySelectorAll('.imageFrame').forEach(img => {
+                    img.style.display = '';
+                    img.src = e.target.result;
+                })
+            } else if (fileInput == 'documentFile') {
+                setDocBtnColor('darkerColor');
+                document.querySelectorAll('.docBtn').forEach(btn => {
+                    btn.style.display = '';
+                })
+            }
+        }
+        reader.readAsDataURL(file);
+        document.getElementById(fileInput + 'Content').innerHTML = file.name;
+    }
+    ///////
+
+    ///////change downloaded document button color
+    function setDocBtnColor(color) {
+        var currentColor = document.getElementById(color).value;
+        document.getElementById('btn-link').style.color = currentColor;
+        document.getElementById('filled-rectangle-btn').style.backgroundColor = currentColor;
+        document.getElementById('filled-rectangle-btn').style.borderColor = currentColor;
+        document.getElementById('rectangle-btn').style.borderColor = currentColor;
+        document.getElementById('rectangle-btn').style.color = currentColor;
+    }
+    ///////
+
+    //////add file into page
+    function addFile(fileElement, reloadStatus) {
+        //ensure the input have file
+        if (document.getElementById(fileElement).value == '') {
+            document.getElementById(fileElement + 'Alert').innerHTML = 'Please choose a file before upload';
+            return;
+        }
+
+        if (fileElement == 'documentFile') {
+            //upload document   
+            //get the class of the button
+            var docBtnClass = null;
+            document.querySelectorAll('.docBtnRadio').forEach(radio => {
+                if (radio.checked == true) {
+                    docBtnClass = radio.value;
+                }
+            })
+
+            //if user hasn't selected a button yet 
+            if (docBtnClass == null) {
+                document.getElementById(fileElement + 'UploadAlert').innerHTML = 'Please select a downloaded button before upload';
+                return;
+            }
+
+            var contentid = sessionStorage.getItem('currentPage');
+            var file = document.getElementById('documentFile').value;
+            //get the btn color
+            var btnColor;
+            //if the btn color hasn't changed
+            if (document.getElementById('rectangle-btn').style.color == document.getElementById('darkerColor').value) {
+                btnColor = document.getElementById('darkerColor').value;
+            } else {
+                // if the btn color has changed
+                btnColor = document.getElementById('docBtnColor').value;
+            }
+            //add btn html
+            if (docBtnClass == 'filled-rectangle-btn') {
+                document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <a role='button' style='background-color: " + btnColor + "; border-color: " + btnColor + ";' class='btn " + docBtnClass + "' href='" + file + "' download=''><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-download' viewBox='0 0 16 16'> <path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z' /> <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z' /> </svg><span class='ml-1'>Download the document here</span></a> </div></div>";
+            } else if (docBtnClass == '') {
+                document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <a role='button' class='btn " + docBtnClass + "' href='" + file + "' download=''><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-download' viewBox='0 0 16 16'> <path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z' /> <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z' /> </svg><span class='ml-1'>Download the document here</span></a> </div></div>";
+            } else if (docBtnClass == 'rectangle-btn') {
+                document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <a role='button' class='btn " + docBtnClass + "' style='color: " + btnColor + "; border-color: " + btnColor + ";' href='" + file + "' download=''><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-download' viewBox='0 0 16 16'> <path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z' /> <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z' /> </svg><span class='ml-1'>Download the document here</span></a> </div></div>";
+            } else if (docBtnClass == 'btn-link') {
+                document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <a role='button' class='btn " + docBtnClass + "' href='" + file + "' download='' style='color: " + btnColor + ";'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-download' viewBox='0 0 16 16'> <path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z' /> <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z' /> </svg><span class='ml-1'>Download the document here</span></a> </div></div>";
+            }
+        } else if (fileElement == 'imageFile') {
+            //upload image
+            //get the image frame class
+            var frameClass = null;
+            document.querySelectorAll('.frameRadio').forEach(radio => {
+                if (radio.checked == true) {
+                    frameClass = radio.value;
+                }
+            })
+
+            //if user hasn't selected a frame yet 
+            if (frameClass == null) {
+                document.getElementById(fileElement + 'UploadAlert').innerHTML = 'Please select a frame before upload';
+                return;
+            }
+
+            var contentid = sessionStorage.getItem('currentPage');
+
+            //add new image
+            var file = document.getElementById('imageFile').value;
+            document.getElementById(contentid).innerHTML += "<div class='field'> <img src='" + file + "' style='height: 150px; width: auto;' class='resize-drag " + frameClass + "' /> </div>";
+        } else if (fileElement == 'videoFile') {
+            //upload video  
+            var contentid = sessionStorage.getItem('currentPage');
+
+            //add new document
+            var file = document.getElementById('videoFile').value;
+            document.getElementById(contentid).innerHTML += "<div class='field'> <video class='resize-drag' width='600' controls> <source src='" + file + "'> </video> </div>";
+        }
+
+        //reload CV for updated code
+        reload(reloadStatus);
+    }
+    ////////
+
+
+    //////add link into page
+    function addLink(linkElement, reloadStatus) {
+        //ensure the input have link
+        if (document.getElementById(linkElement).value == '') {
+            document.getElementById(linkElement + 'Alert').innerHTML = 'Please enter a link before upload';
+            return;
+        }
+
+        //upload document   
+        var contentid = sessionStorage.getItem('currentPage');
+
+        //add new document
+        var link = document.getElementById('link').value;
+        document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag divBorder'> <a href='" + link + "' target='_blank'>" + link + "</a> </div> </div>";
+
+        //reload CV for updated code
+        reload(reloadStatus);
+    }
+    ////////
+
+
+    ////////for change text style
+    document.querySelectorAll("[data-edit]").forEach(styleBtn =>
+        styleBtn.addEventListener("click", changeTextStyle)
+    );
+
+    function changeTextStyle(event) {
+        event.preventDefault();
+        const newValue = this.getAttribute("data-edit").split(":");
+        document.execCommand(newValue[0], false, newValue[1]);
+    }
+    ////////
+
+
+    ////////for change text color
+    function setColor(color) {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('foreColor', false, color);
+    }
+    ////////
+
+
+    ////////for change card & button color
+    function setCardColor(classItem, color) {
+        document.querySelectorAll(classItem).forEach(item => {
+            item.style.backgroundColor = color;
+        })
+    }
+    ////////
+
+
+    ////////for add field
+    function addField(reloadStatus) {
+        var contentid = sessionStorage.getItem('currentPage');
+
+        //add new text field
+        document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' contenteditable> <p style='color:black'>You can edit any text here</p> </div> </div> </div>";
+        reload(reloadStatus);
+    }
+    ////////
+
+    ////////Reload the page for update the code
+    async function reload(reloadStatus) {
+        //Check whether the page has been reloaded before 
+        if (reloadStatus == "true") {
+            var cvContent = document.getElementById('reloadWhole').innerHTML
+        } else {
+            var cvContent = document.getElementById('whole').innerHTML
+        }
+        var data = JSON.stringify({
+            CV: cvContent,
+            status: "true"
+        });
+        var response = await fetch("/cv/reloadCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+        sessionStorage.setItem('addField', 'true');
+
+        location.reload();
+    }
+    ////////
+
+    ////////check whether the reload is due to add field
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        // due to add field
+        if (sessionStorage.getItem("addField") == "true") {
+            //no need to have effect when enter
+            document.querySelectorAll(".animate").forEach(ele => {
+                ele.classList.remove("animate__animated");
+            })
+            //keep page layout
+            sessionStorage.setItem('addField', 'false');
+            //keep the sidebar
+            if (!document.getElementById(sessionStorage.getItem('toolbar'))) {
+                document.getElementById('3Dsidebar').style.display = '';
+            } else {
+                document.getElementById(sessionStorage.getItem('toolbar')).style.display = '';
+            }
+        }
+        // not due to add field
+        else {
+            console.log("click refresh to reload")
+            updateReloadCVSession();
+            document.getElementById('3Dsidebar').style.display = '';
+            window.location.href = "/create";
+        }
+    }
+    //leave page and enter again
+    else {
+        console.log("leave the page and enter again")
+        console.log(sessionStorage)
+        updateReloadCVSession();
+        document.getElementById('3Dsidebar').style.display = '';
+
+    }
+    ///////
+
+    ///////update the reloadCV to ''
+    async function updateReloadCVSession() {
+        var data = JSON.stringify({
+            CV: '',
+            status: 'false'
+        });
+        var response = await fetch("/cv/reloadCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+    }
+    //////
+
+    ///////reload once before enter to the page to ensure the CV content is the most updated
+    window.onload = function () {
+        if (window.location.href.substr(-1) !== '?') {
+            window.location = window.location.href + '?';
+            sessionStorage.setItem('currentPage', 'Basic Information');
+            sessionStorage.setItem('addField', 'false');
+            sessionStorage.setItem('deleteBtn', 'off');
+            console.log(sessionStorage)
+        }
+    }
+    ///////
+
+
+    ////////for delete field button's style
+    function deleteBtn(element) {
+        if (element.classList.contains("active")) {
+            element.setAttribute("class", "btn nav-link");
+            element.style.color = "#dddfeb";
+            sessionStorage.setItem("deleteBtn", "off")
+        } else {
+            element.setAttribute("class", "btn nav-link active");
+            element.style.color = "black";
+            sessionStorage.setItem("deleteBtn", "on")
+        }
+    }
+    ///////
+
+    //////when field is being clicked
+    document.querySelectorAll(".field").forEach(field => {
+        field.addEventListener("click", deleteField);
+    });
+
+    function deleteField(event) {
+        // if delete button is already clicked - delete field
+        if (sessionStorage.getItem("deleteBtn") == "on") {
+            event.preventDefault();
+            console.info(event.target)
+            event.target.remove();
+        }
+        //Otherwise
+        else {
+            return;
+        }
+    }
+    ////////
+
+
+    ////////for showing content page
+    function showContent(targetPage) {
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        var i;
+        for (i = 0; i < contentBtnArray.length; i++) {
+            if (contentBtnArray[i].value == targetPage) {
+                document.getElementById(targetPage).style.display = '';
+            } else {
+                id = contentBtnArray[i].value;
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+        sessionStorage.setItem('currentPage', targetPage);
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+    }
+    ////////
+
+
+    ///////for showing add page window
+    function showAddPageWindow() {
+        var addPageWindow = document.getElementById('addPageModal');
+        if (addPageWindow.style.display == '') {
+            addPageWindow.style.display = 'none';
+            //when cancel is clicked, clear all inputted value in the add page window
+            document.getElementById("newPageName").value = "";
+            document.getElementById("pageAlert").innerHTML = '';
+        } else {
+            addPageWindow.style.display = ''
+        }
+    }
+    ////////
+
+    ///////for add page
+    function addPage(template, reloadStatus) {
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        //get the inputted value
+        var newPage = document.getElementById("newPageName").value;
+        //if input nothing
+        if (newPage == '') {
+            document.getElementById("pageAlert").innerHTML = 'Please input a name';
+            return;
+        }
+        //if input repeated
+        var i;
+        for (i = 0; i < contentBtnArray.length; i++) {
+            if (contentBtnArray[i].value == newPage) {
+                document.getElementById("pageAlert").innerHTML = 'The page has already existed';
+                return;
+            }
+        }
+        //if input ok
+        document.getElementById("pageAlert").innerHTML = '';
+        //get the theme color
+        var themeColor;
+        themeColor = document.getElementById('darkerColor').style.color;
+        //get the present button & card color
+        var btnColor = document.getElementById("btnColor").value;
+        var cardColor = document.getElementById("cardColor").value;
+        //add button
+        if (template == "template1" || template == "template2") {
+            document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)' style='background-color: " + btnColor + "'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+        } else if (template == "template3") {
+            document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-2'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+            var newHeight = parseInt(document.getElementById("fieldbarCard").style.height, 10) + 25;
+            document.getElementById("fieldbarCard").style.height = newHeight.toString() + 'px';
+        }
+        //addpage
+        document.getElementById("main").innerHTML += " <div style='display: none; background-color: " + cardColor + "' id='" + newPage + "' class='animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only'> </div>";
+        //clear the input data
+        document.getElementById("newPageName").value = "";
+        //reload to ensure updated code
+        reload(reloadStatus);
+    }
+    ////////
+
+
+    //////for showing delete page window
+    function showDeletePageWindow() {
+        var deletePageWindow = document.getElementById('deletePageModal');
+        // if cancel is clicked
+        if (deletePageWindow.style.display == '') {
+            deletePageWindow.style.display = 'none';
+            document.getElementById("deletePageModalBody").innerHTML = '<h6>Please choose the page(s) you want to delete.</h6><br>';
+        } else {
+            deletePageWindow.style.display = '';
+            var allPageArray = document.getElementsByClassName("content-btn");
+            var body = document.getElementById("deletePageModalBody");
+            var i;
+            for (i = 0; i < allPageArray.length; i++) {
+                document.getElementById("deletePageModalBody").innerHTML += "<button type='button' class='btn btn-secondary' onclick='deletePage()' value='" + allPageArray[i].value + "' id='" + allPageArray[i].value + "page'> x " + allPageArray[i].value + " </button>";
+            }
+        }
+    }
+    ////////
+
+    //////delete page
+    function deletePage() {
+        var page = event.target.value;
+        var pageid = event.target.id;
+        document.getElementById(page).remove();
+        document.getElementById(page + "btn").remove();
+        document.getElementById(pageid).remove();
+    }
+    ////////
+
+
+    ////////for class resize-only
+    interact('.resize-only')
+        .resizable({
+            // resize from all edges and corners
+            edges: { bottom: true },
+
+            listeners: {
+                move(event) {
+                    var target = event.target
+                    var x = (parseFloat(target.getAttribute('data-x')) || 0)
+                    var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+                    // update the element's size
+                    target.style.width = event.rect.width + 'px'
+                    target.style.height = event.rect.height + 'px'
+
+                    // translate when resizing from top or left edges
+                    x += event.deltaRect.left
+                    y += event.deltaRect.top
+
+                    target.style.webkitTransform = target.style.transform =
+                        'translate(' + x + 'px,' + y + 'px)'
+
+                    target.setAttribute('data-x', x)
+                    target.setAttribute('data-y', y)
+                    //target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+                }
+            },
+            modifiers: [
+                // keep the edges inside the parent
+                // interact.modifiers.restrictEdges({
+                //   outer: '#mainContent'
+                // }),
+
+                // minimum size
+                interact.modifiers.restrictSize({
+                    min: { width: 980, height: 100 }
+                })
+            ],
+            inertia: true
+        })
+    ////////
+
+    //////// for class resize-drag: resize and drag
+    interact('.resize-drag')
+        .resizable({
+            // resize from all edges and corners
+            edges: { left: true, right: true, bottom: true, top: true },
+
+            listeners: {
+                move(event) {
+                    var target = event.target
+                    var x = (parseFloat(target.getAttribute('data-x')) || 0)
+                    var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+                    // update the element's size
+                    target.style.width = event.rect.width + 'px'
+                    target.style.height = event.rect.height + 'px'
+
+                    // translate when resizing from top or left edges
+                    x += event.deltaRect.left
+                    y += event.deltaRect.top
+
+                    target.style.webkitTransform = target.style.transform =
+                        'translate(' + x + 'px,' + y + 'px)'
+
+                    target.setAttribute('data-x', x)
+                    target.setAttribute('data-y', y)
+                    //target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+                }
+            },
+            modifiers: [
+                // keep the edges inside the parent
+                interact.modifiers.restrictEdges({
+                    outer: '#CVbody'
+                }),
+
+                // minimum size
+                interact.modifiers.restrictSize({
+                    min: { width: 100, height: 50 }
+                })
+            ],
+            inertia: true,
+        })
+
+        //// drag
+        .draggable({
+            manualStart: true,
+        })
+        .on('hold', function (event) {
+            var interaction = event.interaction;
+
+            if (!interaction.interacting()) {
+                interaction.start(
+                    { name: 'drag' },
+                    event.interactable,
+                    event.currentTarget,
+                    interact(".resize-drag")
+                        .draggable({
+                            listeners: { move: window.dragMoveListener },
+                            modifiers: [
+                                interact.modifiers.restrictRect({
+                                    restriction: '#CVbody',
+                                    endOnly: true
+                                })
+                            ]
+                        })
+                );
+            }
+        })
+
+    function dragMoveListener(event) {
+        var target = event.target
+        // keep the dragged position in the data-x/data-y attributes
+        var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+        var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+        // translate the element
+        target.style.webkitTransform =
+            target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)'
+        // update the posiion attributes
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
+    }
+    // this function is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener
+    ////////
+</script>

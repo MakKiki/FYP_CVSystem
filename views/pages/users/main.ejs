@@ -159,9 +159,9 @@
                           </svg>
                           <span class="ml-1">Updated At </span>
                         </div>
-                        <div style="font-size:small"> The most updated date is <%= new Date(model.updatedAt).getDate()
-                            +"/"+ new Date(model.updatedAt).getMonth()+1 +"/"+ new Date(model.updatedAt).getFullYear()
-                            %>.</div>
+                        <div style="font-size:small"> The recent updated date is 
+                            <%= new Date(model.updatedAt).toLocaleDateString()%> at <%=new Date(model.updatedAt).toLocaleTimeString()%>.
+                            </div>
                       </div>
                     </div>
 

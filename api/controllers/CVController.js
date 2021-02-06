@@ -28,7 +28,7 @@ module.exports = {
 
       req.session.progressingCV = model;
 
-      if (model.step == "step1") {
+      if (model.step == "step1" || model.step == "finish") {
         return res.view("pages/users/inputData");
       } else {
         return res.view("pages/users/" + model.step);
@@ -214,6 +214,7 @@ module.exports = {
         CVcode: req.body.CV,
         CVdefaultCode: req.body.CV,
         template: req.body.template,
+        step: "step3",
       })
       .fetch();
 
@@ -238,6 +239,17 @@ module.exports = {
     }
   },
 
+  // show create
+  create: async function (req, res) {
+    if (req.method == "GET") {
+      var model = await CV.findOne(req.session.progressingCV.id);
+
+      if (!model) return res.notFound();
+
+      return res.view("pages/users/create", { cv: model });
+    }
+  },
+
   // save CV code (page: customize)
   saveCV: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
@@ -257,10 +269,10 @@ module.exports = {
       // sails.log("[Session] ", req.session);
       return res.json({
         message: "✔️ Successfully Saved ✔️",
-        url: "/customize",
+        url: req.body.page,
       });
     } else {
-      return res.redirect("/customize");
+      return res.redirect(req.body.page);
     }
   },
 
@@ -280,6 +292,13 @@ module.exports = {
       .fetch();
 
     if (model.length == 0) return res.notFound();
+
+    if (req.body.step == "finish") {
+      await CV.update(req.session.progressingCV.id).set({
+        CVlink: "/" + model.engName + "/CV_" + model.id,
+      });
+      req.session.progressingCV = model;
+    }
 
     if (req.wantsJSON) {
       // sails.log("[Session] ", req.session);
@@ -303,10 +322,19 @@ module.exports = {
     var model = await CV.update(req.session.progressingCV.id)
       .set({
         CVcode: cv.CVdefaultCode,
+        step: req.body.step,
       })
       .fetch();
 
     if (model.length == 0) return res.notFound();
+
+    if (req.body.step == "finish") {
+      cv.CVlink = "/" + cv.engName + "/CV_" + cv.id;
+      await CV.update(req.session.progressingCV.id).set({
+        CVlink: cv.CVlink,
+      });
+      req.session.progressingCV = cv;
+    }
 
     if (req.wantsJSON) {
       // sails.log("[Session] ", req.session);

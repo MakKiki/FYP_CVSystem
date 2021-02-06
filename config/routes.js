@@ -25,9 +25,8 @@ module.exports.routes = {
   "/input": { view: "pages/users/inputData" },
   "/step2": { view: "pages/users/step2" },
   "/step3": { view: "pages/users/step3" },
-  // "/customize": { view: "pages/users/customize" },
   "/step4": { view: "pages/users/step4" },
-  // "/main": { view: "pages/users/main" },
+  "/finish": { view: "pages/users/finish" },
   "/CV": { view: "pages/users/CV" },
 
   /***************************************************************************
@@ -60,6 +59,8 @@ module.exports.routes = {
   "POST /cv/submitTemplate": "CVController.submitTemplate",
 
   "GET /customize": "CVController.customize",
+  "GET /create": "CVController.create",
+
   "POST /cv/saveCV": "CVController.saveCV",
   "POST /cv/submitCVCode": "CVController.submitCVCode",
   "POST /cv/passStep": "CVController.passStep",

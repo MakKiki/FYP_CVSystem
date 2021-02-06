@@ -201,8 +201,8 @@
             style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
             for="btnColor">
             Button Card </label>
-          <input type="color" value="#ffffff" id="btnColor" <% if(cv.template == 'template3') { %>
-            onmouseup="setCardColor('.fieldbarCard', this.value)" <% }else{ %>
+          <input type="color" value="#ffffff" id="btnColor" <% if(cv.template=='template3' ) { %>
+          onmouseup="setCardColor('.fieldbarCard', this.value)" <% }else{ %>
             onmouseup="setCardColor('.content-btn', this.value)" <% } %>>
         </div>
       </li>
@@ -230,65 +230,6 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Nav Item - Upload -->
-      <div class="sidebar-heading">
-        Upload
-      </div>
-
-      <li class="nav-item">
-        <div class="py-2">
-          <button class="btn nav-link" onclick="showUploadModal('uploadDocModal')"
-            style="padding: 2px 2px; padding-left: 1.05rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
-              <path
-                d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z" />
-              <path
-                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-            </svg>
-            <span>Document</span>
-          </button>
-        </div>
-        <button class="btn nav-link" onclick="showUploadModal('uploadImgModal')"
-          style="padding: 2px 2px; padding-left: 1.05rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image"
-            viewBox="0 0 16 16">
-            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-            <path
-              d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
-          </svg>
-          <span>Image</span>
-        </button>
-        <div class="py-2">
-
-          <!-- <button type="button" class="btn nav-link" onclick="uploadVideo()"
-            style="padding: 2px 2px; padding-left: 1.05rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-camera-reels" viewBox="0 0 16 16">
-              <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
-              <path
-                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
-              <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-            </svg>
-            <span>Video</span>
-          </button>
-        </div>
-        <button class="btn nav-link" onclick="" style="padding: 2px 2px; padding-left: 1.05rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link"
-            viewBox="0 0 16 16">
-            <path
-              d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
-            <path
-              d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
-          </svg>
-          <span>Hyperlink</span>
-        </button> -->
-      </li>
-
-
-      <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Nav Item - Delete -->
@@ -300,7 +241,7 @@
         <div class="py-2">
           <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
             style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>- Textfield / Document / Image</span>
+            <span>- Textfield</span>
           </button>
         </div>
         <button type="button" class="btn nav-link" onclick="showDeletePageWindow()"
@@ -354,101 +295,6 @@
   <!-- End of content position -->
 
 
-  <!-- UploadDoc Modal-->
-  <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadDocModal" tabindex="-1"
-    role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-        <div class="modal-body">
-          <h6 class="py-3">Please select the file you want to upload:</h6>
-          <label class="file">
-            <input id='doc' type="file" accept="application/pdf, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-              text/plain, .zip,.rar,.7zip" onchange="uploadFile(this.files, 'documentFile')">
-            <span id='documentFileContent' class="file-custom">Choose a file...</span>
-            <input type="hidden" id="documentFile">
-          </label>
-          <span style="font-size: 2px;">**Flie type: .doc, .docx, .pdf, .xlsx, .xls, .ppt, .txt, .zip,
-            .rar, .7zip<br></span>
-          <span id='documentFileAlert' style="font-size: 2px; color: red;"></span>
-        </div>
-        <div class="modal-footer">
-          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showUploadModal('uploadDocModal')"
-            data-dismiss="modal">Cancel</button>
-          <button id="alert-delete" class="btn pink-btn" type="button"
-            onclick="addFile('documentFile','<%=req.session.reloadStatus%>')" data-dismiss="modal">Upload</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of UploadDoc Modal -->
-
-
-  <!-- UploadImg Modal-->
-  <div class="animate__animated animate__fadeIn center" style="display:none" id="uploadImgModal" tabindex="-1"
-    role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-
-        <div class="modal-body">
-          <h6 class="py-3">Please select the file you want to upload:</h6>
-          <label class="file">
-            <!-- input for upload file -->
-            <input id='img' type="file" accept="image/*" onchange="uploadFile(this.files, 'imageFile')">
-            <span id='imageFileContent' class="file-custom">Choose a file...</span>
-            <!-- input for store file -->
-            <input type="hidden" id="imageFile">
-          </label>
-
-          <!-- annouce the user to upload file -->
-          <span id='imageFileAlert' style="font-size: 2px; color: red;"></span>
-
-          <!-- ask for choosing frame -->
-          <h6 class="imageFrame" style="display: none"><br><br>Please choose the frame you want to upload:<br></h6>
-          <!-- annouce the user to choose frame -->
-          <span id='imageFileUploadAlert' style="font-size: 2px; color: red;"></span>
-
-          <!-- radio -->
-          <div class="row imageFrame" style="display: none;">
-            <div class="col-lg-4 d-none d-lg-block">
-              <div class="custom-control custom-radio">
-                <input type="radio" class="frameRadio custom-control-input" name="radio" value="rounded-circle"
-                  id="frame1">
-                <label class="custom-control-label" for="frame1">Frame 1</label>
-              </div>
-            </div>
-            <div class="col-lg-4 d-none d-lg-block">
-              <div class="custom-control custom-radio">
-                <input type="radio" class="frameRadio custom-control-input" name="radio" value="rounded-xl" id="frame2">
-                <label class="custom-control-label" for="frame2">Frame 2</label>
-              </div>
-            </div>
-            <div class="col-lg-4 d-none d-lg-block">
-              <div class="custom-control custom-radio">
-                <input type="radio" class="frameRadio custom-control-input" name="radio" value="" id="frame3">
-                <label class="custom-control-label" for="frame3">Frame 3</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- image -->
-          <img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-circle">
-          &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-xl mx-5">
-          &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame">
-
-        </div>
-        <div class="modal-footer">
-          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showUploadModal('uploadImgModal')"
-            data-dismiss="modal">Cancel</button>
-          <button id="alert-delete" class="btn pink-btn" type="button"
-            onclick="addFile('imageFile','<%=req.session.reloadStatus%>')" data-dismiss="modal">Upload</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of UploadImg Modal -->
-
-
   <!-- Add Page Modal-->
   <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
     role="dialog" aria-labelledby="exampleModalLabel">
@@ -462,8 +308,8 @@
         <div class="modal-footer">
           <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
             data-dismiss="modal">Cancel</button>
-          <button id="alert-addPage" class="btn pink-btn" type="button" onclick="addPage('<%=cv.template%>')"
-            data-dismiss="modal">Submit</button>
+          <button id="alert-addPage" class="btn pink-btn" type="button"
+            onclick="addPage('<%=cv.template%>', '<%=req.session.reloadStatus%>')" data-dismiss="modal">Submit</button>
         </div>
       </div>
     </div>
@@ -488,27 +334,6 @@
   </div>
   <!-- End of Delete Page Modal -->
 
-
-  <!-- Submit Modal-->
-  <div class="animate__animated animate__fadeIn center" style="display:none" id="submitModal" tabindex="-1"
-    role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Finish customizing?</h5>
-        </div>
-        <div class="modal-body">Have you finished? You will be guided to the next step then.
-        </div>
-        <div class="modal-footer">
-          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showSubmitAlert()"
-            data-dismiss="modal">No</button>
-          <button id="alert-delete" class="btn pink-btn" type="button"
-            onclick="submitCV('<%= req.session.reloadStatus %>')" data-dismiss="modal">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Submit Modal -->
 </div>
 
 
@@ -535,28 +360,20 @@
   ////////
 
 
-  ///////for showing submit alert
-  function showSubmitAlert() {
-    var submitAlert = document.getElementById('submitModal');
-    var content = document.getElementById("content2");
-    var sidebar = document.getElementById("sidebar");
-    var topbar = document.getElementById("topbar");
-    if (submitAlert.style.display == '') {
-      submitAlert.style.display = 'none';
-      content.style.opacity = '';
-      sidebar.style.opacity = '';
-      topbar.style.opacity = '';
-    } else {
-      submitAlert.style.display = ''
-      content.style.opacity = '.4';
-      sidebar.style.opacity = '.4';
-      topbar.style.opacity = '.4';
-    }
-  }
-  ///////
-
   //////// for submit cv code
   async function submitCV(reloadStatus) {
+    //confirm the cv is at the first page at the beginning
+    var contentBtnArray = document.getElementsByClassName("content-btn");
+    document.getElementById(contentBtnArray[0].value).style.display = '';
+    var i;
+    for (i = 1; i < contentBtnArray.length; i++) {
+      id = contentBtnArray[i].value;
+      document.getElementById(id).style.display = 'none';
+    }
+    document.querySelectorAll('.animate').forEach(ele => {
+      ele.classList.add("animate__animated");
+    })
+
     //Check whether the page has been reloaded before 
     if (reloadStatus == "true") {
       var cvContent = document.getElementById('reloadWhole').innerHTML
@@ -599,7 +416,8 @@
     }
 
     var data = JSON.stringify({
-      CV: cvContent
+      CV: cvContent,
+      page: '/customize'
     });
 
     var response = await fetch("/cv/saveCV", {
@@ -680,19 +498,23 @@
 
 
   ////////for add field
-  async function addField(reloadStatus) {
+  function addField(reloadStatus) {
     var contentid = sessionStorage.getItem('currentPage');
 
     //add new text field
-    document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='card col-sm-12' contenteditable> <p></p> </div> </div> </div>";
-    //Reload the page for update the code
+    document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' contenteditable> <p style='color:black'>You can edit any text here</p> </div> </div> </div>";
+    reload(reloadStatus);
+  }
+  ////////
+
+  ////////Reload the page for update the code
+  async function reload(reloadStatus) {
     //Check whether the page has been reloaded before 
     if (reloadStatus == "true") {
       var cvContent = document.getElementById('reloadWhole').innerHTML
     } else {
       var cvContent = document.getElementById('whole').innerHTML
     }
-
     var data = JSON.stringify({
       CV: cvContent,
       status: "true"
@@ -762,131 +584,11 @@
       window.location = window.location.href + '?';
       sessionStorage.setItem('currentPage', 'Basic Information');
       sessionStorage.setItem('addField', 'false');
+      sessionStorage.setItem('deleteBtn', 'off');
       console.log(sessionStorage)
     }
   }
   ///////
-
-
-  ///////for showing upload file window
-  function showUploadModal(modalType) {
-    var modal = document.getElementById(modalType);
-    if (modal.style.display == '') {
-      modal.style.display = 'none';
-      //when cancel is clicked, clear all file in the modal
-      if (modalType == 'uploadDocModal') {
-        document.getElementById('doc').value = "";
-        document.getElementById('documentFileContent').innerHTML = 'Choose a file...'
-        document.getElementById('documentFile').value = "";
-        document.getElementById('documentFileAlert').innerHTML = '';
-      }
-      else if (modalType == 'uploadImgModal') {
-        document.getElementById('img').value = "";
-        document.getElementById('imageFileContent').innerHTML = 'Choose a file...'
-        document.getElementById('imageFile').value = "";
-        document.getElementById('imageFileAlert').innerHTML = '';
-        document.querySelectorAll('.imageFrame').forEach(img => {
-          img.style.display = 'none';
-          img.src = '';
-        })
-        document.querySelectorAll('.frameRadio').forEach(radio => {
-          radio.checked = false;
-        })
-        document.getElementById('imageFileUploadAlert').innerHTML = '';
-      }
-    } else {
-      modal.style.display = ''
-    }
-  }
-  ////////
-
-  ///////for upload file
-  function uploadFile(files, fileInput) {
-    const file = files[0];
-    alert(file.name)
-    if (fileInput == 'documentFile' && !file.type == 'application/pdf' && !file.type == 'application/msword' && !file.type == 'application/vnd.ms-excel' && !file.type == 'application/vnd.ms-powerpoint' &&
-      !file.type == 'text/plain' && !file.type == '.zip' && !file.type == '.rar' && !file.type == '.7zip') return;
-
-    if (fileInput == 'imageFile' && !file.type.startsWith('image/')) return;
-
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      alert(e.target.result)
-      document.getElementById(fileInput).value = e.target.result;
-      if (fileInput == 'imageFile') {
-        document.querySelectorAll('.imageFrame').forEach(img => {
-          img.style.display = '';
-          img.src = e.target.result;
-        })
-      }
-    }
-    reader.readAsDataURL(file);
-    document.getElementById(fileInput + 'Content').innerHTML = file.name;
-  }
-  ///////
-
-  //////add file into page
-  async function addFile(fileElement, reloadStatus) {
-    if (document.getElementById(fileElement).value == '') {
-      document.getElementById(fileElement + 'Alert').innerHTML = 'Please choose a file before upload';
-      return;
-    }
-    if (fileElement == 'documentFile') {
-      //upload document   
-      var contentid = sessionStorage.getItem('currentPage');
-
-      //add new document
-      var file = document.getElementById('documentFile').value;
-      document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag divBorder'> <a download='' href='" + file + "' target='_blank'> Download the document </a> </div> </div>";
-    } else {
-      //upload image
-      //get the image frame class
-      var frameClass = null;
-      document.querySelectorAll('.frameRadio').forEach(radio => {
-        if (radio.checked == true) {
-          frameClass = radio.value;
-        }
-      })
-
-      //if user hasn't selected a frame yet 
-      if (frameClass == null) {
-        document.getElementById(fileElement + 'UploadAlert').innerHTML = 'Please select a frame before upload';
-        return;
-      }
-
-      var contentid = sessionStorage.getItem('currentPage');
-
-      //add new image
-      var file = document.getElementById('imageFile').value;
-      document.getElementById(contentid).innerHTML += "<div class='field'> <img src='" + file + "' style='height: 150px; width: auto;' class='resize-drag " + frameClass + "' /> </div>";
-    }
-
-    //Reload the page for update the code
-    //Check whether the page has been reloaded before 
-    if (reloadStatus == "true") {
-      var cvContent = document.getElementById('reloadWhole').innerHTML
-    } else {
-      var cvContent = document.getElementById('whole').innerHTML
-    }
-
-    var data = JSON.stringify({
-      CV: cvContent,
-      status: "true"
-    });
-    var response = await fetch("/cv/reloadCV", {
-      method: "POST",
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: data
-    });
-    sessionStorage.setItem('addField', 'true');
-
-    location.reload();
-  }
-  ////////
 
 
   ////////for delete field button's style
@@ -902,7 +604,6 @@
     }
   }
   ///////
-
 
   //////when field is being clicked
   document.querySelectorAll(".field").forEach(field => {
@@ -959,7 +660,7 @@
   ////////
 
   ///////for add page
-  function addPage(template) {
+  function addPage(template, reloadStatus) {
     var contentBtnArray = document.getElementsByClassName("content-btn");
     //get the inputted value
     var newPage = document.getElementById("newPageName").value;
@@ -978,17 +679,28 @@
     }
     //if input ok
     document.getElementById("pageAlert").innerHTML = '';
+    //get the theme color
     var themeColor;
     document.querySelectorAll(".darkerColor").forEach(ele => {
       themeColor = ele.style.color;
     })
+    //get the present button & card color
+    var btnColor = document.getElementById("btnColor").value;
+    var cardColor = document.getElementById("cardColor").value;
+    //add button
     if (template == "template1" || template == "template2") {
-      document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+      document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)' style='background-color: " + btnColor + "'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
     } else if (template == "template3") {
       document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+      var newHeight = parseInt(document.getElementById("fieldbarCard").style.height, 10) + 25;
+      document.getElementById("fieldbarCard").style.height = newHeight.toString() + 'px';
     }
-    document.getElementById("main").innerHTML += " <div style='display: none;' id='" + newPage + "' class='animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only'> </div>";
+    //addpage
+    document.getElementById("main").innerHTML += " <div style='display: none; background-color: " + cardColor + "' id='" + newPage + "' class='animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only'> </div>";
+    //clear the input data
     document.getElementById("newPageName").value = "";
+    //reload to ensure updated code
+    reload(reloadStatus);
   }
   ////////
 
