@@ -40,6 +40,19 @@
       <!--STYLES END-->
 </head>
 
+<script>
+  ////////for showing toolbar
+  function showUserToolbar() {
+    var toolbar = document.getElementById('userToolbar');
+    if (toolbar.style.display == '') {
+      toolbar.style.display = 'none';
+    } else {
+      toolbar.style.display = ''
+    }
+  }
+  ////////
+</script>
+
 <body>
   <% if (req.session.role=="user" && req.path !='/CV' && req.path !='/template1' && req.path !='/template2' && req.path
     !='/template3' ){ %>
@@ -223,6 +236,8 @@
 
           <!--SCRIPTS-->
           <script src="/dependencies/sails.io.js"></script>
+          <script src="/js/webcam.min.js"></script>
+          <script src="/js/whammy.js"></script>
           <!--SCRIPTS END-->
 </body>
 

@@ -26,6 +26,10 @@ module.exports.routes = {
   "/step2": { view: "pages/users/step2" },
   "/step3": { view: "pages/users/step3" },
   "/step4": { view: "pages/users/step4" },
+  "/edit_image": { view: "pages/users/editImage" },
+  "/merge_image": { view: "pages/users/mergeImage" },
+  "/webcam_record": { view: "pages/users/webcamRecord" },
+  "/webcam_capture": { view: "pages/users/webcamCapture" },
   "/finish": { view: "pages/users/finish" },
   "/CV": { view: "pages/users/CV" },
 

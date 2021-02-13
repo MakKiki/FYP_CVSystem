@@ -10492,6 +10492,24 @@ body.sidebar-toggled footer.sticky-footer {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+.back-btn {
+  text-align: left;
+  font-size: 17px;
+  font-weight: 400;
+  height: 10%;
+  color: #a3a2a2;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.back-btn:hover,
+.back-btn.hover{
+  color: #616161;
+}
 .createCV-btn {
   background: hsl(0, 0%, 90%);
   width: 100%;

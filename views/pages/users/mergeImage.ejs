@@ -1,0 +1,212 @@
+<a class="btn back-btn" type="button" href='/create'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+        <path fill-rule="evenodd"
+            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+    </svg>
+    Back To The 3D Customize Page
+</a>
+
+<div class="container">
+    <div class="py-4"></div>
+    <div class="row justify-content-center">
+
+        <div class="col-sm-12 text-center">
+            <h1 style='color: #a570a7'>🖼️ Merge Your Image(s) To A Viedo 🎞️</h1>
+            <div class="py-3"></div>
+        </div>
+
+        <div class="col-sm-12 text-center py-3">
+            <label>This tool can only be used to merge image(s) into a video.
+                There is an <a href="/edit_image">Image Editior</a> for you to edit your image(s) before the
+                upload!</label>
+        </div>
+
+        <div class="col-lg-10 col-sm-12 py-3">
+            <label>File Selection
+                <div style="font-size: 2px; color: red;">**Only jpeg, jpg & png are supported</div>
+            </label>
+            <label class="file">
+                <input id='filesinput' type="file" accept=".jpg,.jpeg,.png" multiple>
+                <span id='imageFileContent' class="file-custom">Choose some image(s)...</span>
+            </label>
+        </div>
+
+        <div class="col-sm-12 py-4">
+            <span id="status"></span>
+            <a id="downloadBtn" type="button" class="btn purple-btn ml-1"
+                style="width:180px; height: 45px; display:none;" download="" href="">
+                <div style='padding: 0.1rem 0rem;'></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                    <path
+                        d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z" />
+                    <path
+                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                </svg>
+                Download Video
+            </a>
+        </div>
+
+        <div class="col-sm-12">
+            <button type="button" id="mergeBtn" class="btn pink-btn" style="float: right; width:180px; height: 45px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
+                </svg>
+                Create Video</button>
+        </div>
+
+        <canvas id="canvas" style="display:none;"></canvas>
+    </div>
+    <div class="py-3"></div>
+</div>
+
+
+<script src="/js/whammy.js"></script>
+
+<script>
+    var mergeBtn = document.getElementById("mergeBtn");
+    var files = document.getElementById("filesinput");
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    //for counting the number of files
+    var num = 0;
+    var filesarr = [];
+
+
+    //listening to the files input
+    files.addEventListener("change", function (event) {
+        filesarr = event.target.files;
+        document.getElementById("imageFileContent").innerHTML = "Total <b>" + event.target.files.length + "</b> File(s)";
+        document.getElementById("status").innerHTML = "Sucessfully uploaded. Please click the 'Create Video' button to continue.";
+    }, false);
+
+
+    //when merge button is clicked
+    mergeBtn.addEventListener("click", function () {
+        //UI
+        document.getElementById('downloadBtn').style.display = 'none';
+        document.getElementById('status').innerHTML = "Proccessing... Please wait...";
+
+        //set the number to zero again
+        num = 0;
+
+        // create new whammy video
+        video = new Whammy.Video(5);
+
+        //To ensure image(s) is/are uploaded
+        if (filesarr.length > 0) {
+            for (i = 0; i < filesarr.length; i++) {
+                var file = filesarr[i];
+                if (file.type.match(/image.*/)) {
+                    //go to process function for video creation
+                    process(file);
+                } else {
+                    //wrong file
+                    document.getElementById('status').innerHTML = "Only image file(s) is / are accepted.";
+                }
+            }
+        } else {
+            document.getElementById('status').innerHTML = "Please select some image(s).";
+        }
+    }, false);
+
+    //proccess the file and make video
+    function process(file) {
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            var dataUri = event.target.result;
+            var img = new Image();
+
+            img.onload = function () {
+                //get the img width and height
+                var width = this.width;
+                var height = this.height;
+
+                //if too large, resize t to smaller
+                while (width > 1000 && height > 1000) {
+                    width = width * 0.5;
+                    height = height * 0.5;
+                }
+
+                //canvas.width/height = img.width/height
+                canvas.width = width;
+                canvas.height = height;
+
+                //code for using whammy to have a custom fade in and out slideshow
+                context.globalAlpha = 0.2;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+                context.globalAlpha = 0.4;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+                context.globalAlpha = 0.6;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+                context.globalAlpha = 0.8;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+                context.globalAlpha = 1;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                //this should be a loop based on some user input
+                video.add(context);
+                video.add(context);
+                video.add(context);
+                video.add(context);
+                video.add(context);
+                video.add(context);
+                video.add(context);
+
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+                context.globalAlpha = 0.8;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+                context.globalAlpha = 0.6;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+                context.globalAlpha = 0.4;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                video.add(context);
+
+                num++;
+                finalizeVideo();
+            };
+            img.src = dataUri;
+        };
+        reader.onerror = function (event) {
+            console.error("File could not be rendered! Code: " + event.target.error.code);
+        };
+        reader.readAsDataURL(file);
+    }
+
+
+    function finalizeVideo() {
+        //check if all the image(s) is/are added to the context
+        if (num == filesarr.length) {
+            //if yes, generate the result
+            var start_time = +new Date;
+            var output = video.compile();
+            var end_time = +new Date;
+            var videoUrl = webkitURL.createObjectURL(output);
+
+            document.getElementById('downloadBtn').style.display = '';
+            document.getElementById('downloadBtn').href = videoUrl;
+            document.getElementById('status').innerHTML = "Compiled Video in " + (end_time - start_time) + "ms, file size: " + Math.ceil(output.size / 1024) + "KB ⟶";
+        }
+    }
+</script>
