@@ -87,6 +87,43 @@
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Create -->
+            <div class="sidebar-heading">
+                Create
+            </div>
+
+            <li class="nav-item">
+                <!-- Video -->
+                <div class="py-2">
+                    <button class="btn nav-link" onclick="showCreateVideoModal()"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-camera-reels" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
+                            <path
+                                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                        <span>Video</span>
+                    </button>
+                </div>
+
+                <!-- Profile -->
+                <button class="btn nav-link" onclick="window.open('/webcam_capture')"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-file-person" viewBox="0 0 16 16">
+                        <path
+                            d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                        <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                    <span>Profile</span>
+                </button>
+            </li>
+
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Nav Item - Delete -->
@@ -701,6 +738,50 @@
     <!-- End of UploadVideo Modal -->
 
 
+    <!-- CreateVideo Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="createVideoModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h6 class="py-3 text-center">Please choose a method to create the video:</h6>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-sm-12">
+                            <button class="btn pink-btn" style="float: right; width: 130px;"
+                                onclick="window.open('/webcam_record')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-camera-video" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
+                                </svg><br><span style="font-size: smaller">Webcam</span>
+                            </button>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12">
+                            <button class="btn pink-btn" style="width: 130px;" onclick="window.open('/merge_image')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-images" viewBox="0 0 16 16">
+                                    <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                                    <path
+                                        d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
+                                </svg><br><span style="font-size: smaller">Merge Image(s)</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="py-1"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showCreateVideoModal()"
+                        data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of CreateVideo Modal -->
+
+
     <!-- Add Page Modal-->
     <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel">
@@ -1126,6 +1207,18 @@
     ////////
 
 
+    ////////show create video modal
+    function showCreateVideoModal() {
+        var modal = document.getElementById("createVideoModal");
+        if (modal.style.display == '') {
+            modal.style.display = 'none';
+        } else {
+            modal.style.display = '';
+        }
+    }
+    ////////
+
+
     ////////for change text style
     document.querySelectorAll("[data-edit]").forEach(styleBtn =>
         styleBtn.addEventListener("click", changeTextStyle)
@@ -1224,7 +1317,6 @@
         console.log(sessionStorage)
         updateReloadCVSession();
         document.getElementById('3Dsidebar').style.display = '';
-
     }
     ///////
 
