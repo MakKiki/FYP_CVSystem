@@ -416,7 +416,7 @@
                                             <div class="col-sm-12 col-lg-3 py-4">
                                                 End Date
                                                 <input id="workEndDate1" name="CV[workEndDate]" class="form-control form-control-user"
-                                                type="<% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %>text<% }else{ %>date<% }} %>" 
+                                                type="<% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %>text<% }else{ %>date<% }}else{%>date<%} %>" 
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.workEndDate!= null) { 
                                                     var workEndDate = req.session.progressingCV.workEndDate  + '';
                                                     var workEndDateData = workEndDate.split(",");

@@ -121,6 +121,19 @@
                     </svg>
                     <span>Profile</span>
                 </button>
+
+                <!-- Chart -->
+                <div class="py-1"></div>
+                <button class="btn nav-link" onclick="showChartModal()"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+                    </svg>
+                    <span>Chart</span>
+                </button>
+
             </li>
 
             <!-- Divider -->
@@ -782,6 +795,68 @@
     <!-- End of CreateVideo Modal -->
 
 
+    <!-- Create Chart Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="chartModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="overflow: auto;">
+
+                <div class="modal-body" style="overflow: auto;">
+                    <h6>Please enter the information about the chart:</h6>
+                    <div class="py-1"></div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            Type Of Chart
+                            <select class="form-control" id="type" value="">
+                                <option value="horizontalBar">Horizontal Bar Chart</option>
+                                <option value="bar">Vertical Bar Chart</option>
+                                <option value="line">Line Chart</option>
+                                <option value="pie">Pie Chart</option>
+                                <option value="doughnut">Doughnut Chart</option>
+                                <option value="radar">Radar Chart</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 py-1">
+                            Title
+                            <input id="title" type="text" class="form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12">
+                            Label (y-axis)
+                            <input id="label" type="text" class="form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12 py-1">
+                            Category (x-axis)
+                            <br>
+                            <div style="color: red; font-size: 3px;">**Please use "," to separate each of the category
+                                (E.g. Jan,Feb)</div>
+                            <input id="category" type="text" class="barData form-control form-control-user">
+                        </div>
+
+                        <div class="col-sm-12">
+                            Data Plot
+                            <br>
+                            <div style="color: red; font-size: 3px;">**Please use "," to separate each of the data and
+                                list it according to the category (E.g. 12,25)</div>
+                            <input id="data" type="text" class="form-control form-control-user">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showChartModal()"
+                        data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="createChart('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Create Bar Chart Modal -->
+
+
     <!-- Add Page Modal-->
     <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel">
@@ -876,7 +951,7 @@
 
 <!-- JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 <script>
     ////////for showing different toolboard(sidebar)
@@ -1219,6 +1294,50 @@
     ////////
 
 
+    ////////show chart modal
+    function showChartModal() {
+        var modal = document.getElementById("chartModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+        }
+    }
+    ////////
+
+    ////////create chart
+    function createChart(reloadStatus) {
+        //get the type, title & label of the chart
+        var chartType = document.getElementById('type').value;
+        var chartTitle = document.getElementById('title').value;
+        var chartLabel = document.getElementById('label').value;
+
+        //make category into strArray & data into numArray
+        var i;
+        var categoryArr = document.getElementById('category').value.split(",");
+        var category = [];
+        for (i = 0; i < categoryArr.length; i++) {
+            category.push(categoryArr[i])
+        }
+        var dataArr = document.getElementById('data').value.split(",");
+        var chartData = [];
+        for (i = 0; i < dataArr.length; i++) {
+            chartData.push(parseInt(dataArr[i], 10))
+        }
+
+        //add chart html (canvas & input) into the page
+        var contentid = sessionStorage.getItem('currentPage');
+        var canvasNum = document.querySelectorAll('canvas').length + 1;
+        document.getElementById(contentid).innerHTML += '<div id="newChart' + canvasNum + '" class="container field"><div class="row resize-drag"><canvas></canvas><input class="chart' + canvasNum + '" type="hidden" value="' + chartType + '"><input class="chart' + canvasNum + '" type="hidden" value="' + category + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartLabel + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartData + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartTitle + '"></div></div>';
+
+        alert(document.getElementById("newChart" + canvasNum).innerHTML)
+
+        //reload for updated code
+        reload(reloadStatus);
+    }
+    ////////
+
+
     ////////for change text style
     document.querySelectorAll("[data-edit]").forEach(styleBtn =>
         styleBtn.addEventListener("click", changeTextStyle)
@@ -1302,21 +1421,40 @@
             } else {
                 document.getElementById(sessionStorage.getItem('toolbar')).style.display = '';
             }
+            chart();
         }
         // not due to add field
         else {
             console.log("click refresh to reload")
+            //clear the reload html
             updateReloadCVSession();
+            //show 3d sidebar at th beginning
             document.getElementById('3Dsidebar').style.display = '';
+            //show effect
+            document.querySelectorAll('.animate').forEach(ele => {
+                ele.classList.add("animate__animated");
+            })
             window.location.href = "/create";
         }
     }
-    //leave page and enter again
+    //new enter
     else {
-        console.log("leave the page and enter again")
-        console.log(sessionStorage)
+        console.log("new enter");
+        //clear the reload html
         updateReloadCVSession();
+        //set session storage
+        sessionStorage.setItem('currentPage', 'Basic Information');
+        sessionStorage.setItem('addField', 'false');
+        sessionStorage.setItem('deleteBtn', 'off');
+        console.log(sessionStorage)
+        //show 3d sidebar at th beginning
         document.getElementById('3Dsidebar').style.display = '';
+        //show effect
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+        //show chart
+        chart();
     }
     ///////
 
@@ -1338,17 +1476,60 @@
     }
     //////
 
-    ///////reload once before enter to the page to ensure the CV content is the most updated
-    window.onload = function () {
-        if (window.location.href.substr(-1) !== '?') {
-            window.location = window.location.href + '?';
-            sessionStorage.setItem('currentPage', 'Basic Information');
-            sessionStorage.setItem('addField', 'false');
-            sessionStorage.setItem('deleteBtn', 'off');
-            console.log(sessionStorage)
-        }
+    //////show chart after loading the page
+    function chart() {
+        var i = 0;
+        var p;
+        document.querySelectorAll('canvas').forEach(ctx => {
+            i++;
+            var input = [];
+            document.querySelectorAll('.chart' + i).forEach(ele => {
+                input.push(ele.value)
+            });
+            var categoryArr = input[1].split(",");
+            var category = [];
+            for (p = 0; p < categoryArr.length; p++) {
+                category.push(categoryArr[p])
+            }
+
+            var dataArr = input[3].split(",");
+            var chartData = [];
+            for (p = 0; p < dataArr.length; p++) {
+                chartData.push(parseInt(dataArr[p], 10))
+            }
+
+            var o = Math.round, r = Math.random, s = 255;
+            var color = document.getElementById('themeColor').style.color;
+            var colorArr = [];
+            for (p = 0; p < dataArr.length; p++) {
+                colorArr.push(color)
+            }
+
+            new Chart(ctx, {
+                type: input[0],
+                data: {
+                    labels: category,
+                    datasets: [{
+                        label: input[2],
+                        data: chartData,
+                        backgroundColor: colorArr
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    responsiveAnimationDuration: 1000,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: input[4]
+                    }
+                },
+            });
+        });
     }
-    ///////
+    //////
 
 
     ////////for delete field button's style
