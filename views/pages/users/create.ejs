@@ -161,6 +161,16 @@
                     </button>
                 </div>
 
+                <!-- Timeline -->
+                <button class="btn nav-link" onclick="createTimeline('<%=req.session.reloadStatus%>')"
+                    style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z" />
+                    </svg>
+                    <span>Timeline</span>
+                </button>
             </li>
 
             <!-- Divider -->
@@ -1681,6 +1691,25 @@
     ////////
 
 
+    ////////create timeline
+    function createTimeline(reloadStatus) {
+        // add HTML to current page
+        var contentid = sessionStorage.getItem('currentPage');
+        document.getElementById(contentid).innerHTML += '<div class="container field"><div class="row resize-drag"><div class="col-sm-12"><div class="timeline ml-2" style="color: black;"><div class="timeline__group"><span class="timeline__date time" aria-hidden="true" contenteditable></span><div class="timeline__cards animate animate__animated animate__fadeInUp"><div class="timeline__card timelineCard"><header class="card__header"><span class="time" style="font-size:medium" contenteditable></span></header><div class="py-2"></div><div class="card__content" contenteditable></div></div></div></div></div></div></div></div>';
+        //get the theme color and set to the timeline
+        var color = document.getElementById("themeColor").style.color;
+        document.querySelectorAll(".timelineCard").forEach(ele => {
+            ele.style.borderLeft = "var(--timelineCardBorderLeftWidth, 3px) solid " + color;
+        })
+        document.querySelectorAll(".timeline").forEach(ele => {
+            ele.style.setProperty('--uiTimelineMainColor', 'var(--timelineMainColor, ' + color + ')');
+        })
+        //reload CV for updated code
+        reload(reloadStatus)
+    }
+    ////////
+
+
     ////////show responsitive window
     document.querySelectorAll(".windowModalBtn").forEach(btn => {
         btn.addEventListener("click", showWindow);
@@ -1783,10 +1812,12 @@
             //keep page layout
             sessionStorage.setItem('addField', 'false');
             //keep the sidebar
-            if (!document.getElementById(sessionStorage.getItem('toolbar'))) {
+            if (sessionStorage.getItem('toolbar') == '3Dsidebar') {
                 document.getElementById('3Dsidebar').style.display = '';
+                document.getElementById('custSidebar').style.display = 'none';
             } else {
-                document.getElementById(sessionStorage.getItem('toolbar')).style.display = '';
+                document.getElementById('3Dsidebar').style.display = 'none';
+                document.getElementById('custSidebar').style.display = '';
             }
             chart();
         }
@@ -1813,6 +1844,7 @@
         sessionStorage.setItem('currentPage', 'Basic Information');
         sessionStorage.setItem('addField', 'false');
         sessionStorage.setItem('deleteBtn', 'off');
+        sessionStorage.setItem('toolbar', '3Dsidebar');
         console.log(sessionStorage)
         //show 3d sidebar at th beginning
         document.getElementById('3Dsidebar').style.display = '';
