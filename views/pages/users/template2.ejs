@@ -24,10 +24,10 @@
                 <span style="color: #81828b;"><b>Theme Color</b></span>
                 <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
                     <option value="navy/rgb(0, 4, 255)/#4e73df/blue">Blue</option>
-                    <option value="#c4415f/mediumvioletred/rgb(235, 155, 182)/pink">Pink</option>
-                    <option value="#700061/#9954ad/#a570a7/purple">Purple</option>
-                    <option value="#ce4100/#ff5100/#df7f31/orange">Orange</option>
-                    <option value="#01502d/#027c45/#4fb487/green">Green</option>
+                    <option value="rgb(196, 65, 95)/mediumvioletred/rgb(235, 155, 182)/pink">Pink</option>
+                    <option value="rgb(112, 0, 97)/#9954ad/#a570a7/purple">Purple</option>
+                    <option value="rgb(206, 65, 0)/#ff5100/#df7f31/orange">Orange</option>
+                    <option value="rgb(1, 80, 45)/#027c45/#4fb487/green">Green</option>
                 </select>
             </div>
         </div>
@@ -49,6 +49,7 @@
                     <input type="hidden" id="webpageColor" style="background-color: rgb(248, 248, 248);"></input>
                     <input type="hidden" id="darkerColor" value="navy"></input>
                     <input type="hidden" id="themeColor" style="color: #4e73df"></input>
+                    <input type="hidden" id="progressCirColor" value="blue"></input>
 
                     <div class="cotainer">
                         <div class="row">
@@ -794,9 +795,8 @@
                                                         <div
                                                             class="container field animate animate__animated animate__flipInX">
                                                             <br>
-                                                            <div class="row">
-                                                                <div class="col-sm-12 resize-drag"
-                                                                    contenteditable="false">
+                                                            <div class="row resize-drag">
+                                                                <div class="col-sm-12" contenteditable="false">
                                                                     <div class="mb-1" style="color: black;">
                                                                         <%= cv.name[i] %>
                                                                             <span style="float: right;">
@@ -847,9 +847,8 @@
                                                                 <div
                                                                     class="container field animate animate__animated animate__flipInX">
                                                                     <br>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12 resize-drag"
-                                                                            contenteditable="false">
+                                                                    <div class="row resize-drag">
+                                                                        <div class="col-sm-12" contenteditable="false">
                                                                             <div class="mb-1" style="color: black;">
                                                                                 <%= cv.name %>
                                                                                     <span style="float: right;">
@@ -973,6 +972,7 @@
             ele.style.backgroundColor = colorArray[2];
         })
         document.getElementById("themeColor").style.color = colorArray[2];
+        document.getElementById("progressCirColor").value = colorArray[3];
     }
     ///////
 

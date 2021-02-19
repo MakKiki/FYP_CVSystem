@@ -148,6 +148,19 @@
                     <span>Window</span>
                 </button>
 
+                <!-- Progress Bar -->
+                <div class="py-2">
+                    <button class="btn nav-link" onclick="showProgressModal()"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-percent" viewBox="0 0 16 16">
+                            <path
+                                d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                        </svg>
+                        <span>Progress Bar</span>
+                    </button>
+                </div>
+
             </li>
 
             <!-- Divider -->
@@ -982,6 +995,66 @@
     <!-- End of Create Window Modal -->
 
 
+    <!-- Create Progress Bar Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="progressModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- annouce the user for input -->
+                    <span id='progressAlert' style="font-size: 2px; color: red;"></span>
+                    <div class="py-2"></div>
+
+                    <!-- ask for choosing type -->
+                    <h6>Please select the type of the bar:</h6>
+                    <div class="row">
+                        <!-- radio of progressBtn1 -->
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="progressBtnRadio custom-control-input" name="radio"
+                                    value="circle" id="progressBtn1">
+                                <label class="custom-control-label" for="progressBtn1">Circle</label>
+                            </div>
+                        </div>
+                        <!-- radio of progressBtn2 -->
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="progressBtnRadio custom-control-input" name="radio"
+                                    value="bar" id="progressBtn2">
+                                <label class="custom-control-label" for="progressBtn2">Horizontal Bar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- input for the data of the bar -->
+                    <div class="py-3"></div>
+                    <h6>Please enter the data about the bar:</h6>
+                    <div class="row">
+                        <!-- input for Item -->
+                        <div class="col-lg-6 col-sm-12">
+                            Item
+                            <input type="text" id="item" class="form-control form-control-user">
+                        </div>
+                        <!-- input for Percentage -->
+                        <div class="col-lg-6 col-sm-12">
+                            Percentage
+                            <input id="percent" type="number" min=0 max=100 class="form-control form-control-user">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showProgressModal()"
+                        data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="createProgress('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Create Progress Bar Modal -->
+
+
     <!-- Add Page Modal-->
     <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel">
@@ -1513,6 +1586,7 @@
         //get the btn color
         var btnColor;
         //if the btn color hasn't changed
+        alert(document.getElementById('windowrectangle-btn').style.color)
         if (document.getElementById('windowrectangle-btn').style.color == document.getElementById('darkerColor').value) {
             btnColor = document.getElementById('darkerColor').value;
         } else {
@@ -1543,6 +1617,66 @@
 
         //reload CV for updated code
         reload(reloadStatus);
+    }
+    ////////
+
+
+    ////////show create progress bar modal
+    function showProgressModal() {
+        var modal = document.getElementById("progressModal");
+        if (modal.style.display == '') {
+            modal.style.display = 'none';
+        } else {
+            modal.style.display = '';
+            document.getElementById("item").value = '';
+            document.getElementById("percent").value = '';
+            document.getElementById("progressAlert").innerHTML = '';
+            document.querySelectorAll('.progressBtnRadio').forEach(radio => {
+                radio.checked = false;
+            })
+        }
+    }
+    ////////
+
+    ////////create progress bar
+    function createProgress(reloadStatus) {
+        var item = document.getElementById("item").value;
+        var percent = document.getElementById("percent").value;
+        //ensure the inputs have value
+        if (item == '' || percent == '') {
+            document.getElementById('progressAlert').innerHTML = 'Please enter all the data of the bar';
+            return;
+        }
+        //get the type of the bar
+        var progressBtnClass = null;
+        document.querySelectorAll('.progressBtnRadio').forEach(radio => {
+            if (radio.checked == true) {
+                progressBtnClass = radio.value;
+            }
+        })
+        //if user hasn't selected a button yet 
+        if (progressBtnClass == null) {
+            document.getElementById('progressAlert').innerHTML = 'Please select a type of the bar';
+            return;
+        }
+        var contentid = sessionStorage.getItem('currentPage');
+        //check which type of progress bar the user wants to create
+        if (progressBtnClass == 'circle') {
+            //circle
+            //get the theme color of the bar
+            var color = document.getElementById("progressCirColor").value;
+            //add html
+            document.getElementById(contentid).innerHTML += '<div class="field single-chart resize-drag" contenteditable="" style="width:200px; height:200px;"> <svg viewBox="0 0 36 36" class="circular-chart ' + color + '"> <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/><path class="circle" stroke-dasharray="' + percent + ', 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/><text x="18" y="20.35" class="percentage">' + item + '</text></svg></div>';
+        } else {
+            //bar
+            //get the theme color of the bar
+            var color = document.getElementById("themeColor").style.color;
+            //add html
+            document.getElementById(contentid).innerHTML += '<div class="field resize-drag row"><div class="col-sm-12" contenteditable=""><div class="mb-1" style="color: black;">' + item + '<span style="float: right;">' + percent + '%</span></div><div class="progress progress mb-2"><div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:' + percent + '%; background-color:' + color + '" aria-valuenow="20"></div></div></div></div>';
+        }
+
+        //reload CV for updated code
+        reload(reloadStatus)
     }
     ////////
 
@@ -1763,6 +1897,14 @@
         });
     }
     //////
+
+    ///////reload once before enter to the page to ensure the CV content is the most updated
+    window.onload = function () {
+        if (window.location.href.substr(-1) !== '?') {
+            window.location = window.location.href + '?';
+        }
+    }
+    ///////
 
 
     ////////for delete field button's style
