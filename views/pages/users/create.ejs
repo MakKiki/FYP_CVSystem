@@ -123,15 +123,29 @@
                 </button>
 
                 <!-- Chart -->
-                <div class="py-1"></div>
-                <button class="btn nav-link" onclick="showChartModal()"
+                <div class="py-2">
+                    <button class="btn nav-link" onclick="showChartModal()"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+                        </svg>
+                        <span>Chart</span>
+                    </button>
+                </div>
+
+                <!-- Window -->
+                <button class="btn nav-link" onclick="showWindowModal()"
                     style="padding: 2px 2px; padding-left: 1.05rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                        class="bi bi-window" viewBox="0 0 16 16">
                         <path
-                            d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+                            d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                        <path
+                            d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm13 2v2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zM2 14a1 1 0 0 1-1-1V6h14v7a1 1 0 0 1-1 1H2z" />
                     </svg>
-                    <span>Chart</span>
+                    <span>Window</span>
                 </button>
 
             </li>
@@ -481,7 +495,6 @@
                     <%- req.session.reloadCV %>
                 </div>
                 <% } %>
-
     </div>
     <!-- End of content position -->
 
@@ -535,7 +548,7 @@
                         </div>
                         <!-- docBtn1 -->
                         <div class="col-lg-6 d-none d-lg-block">
-                            <button id="btn-link" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg"
+                            <button id="docbtn-link" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg"
                                     width="16" height="16" fill="currentColor" class="bi bi-download"
                                     viewBox="0 0 16 16">
                                     <path
@@ -546,7 +559,7 @@
                         </div>
                         <!-- docBtn2 -->
                         <div class="col-lg-6 d-none d-lg-block">
-                            <button id="filled-rectangle-btn" class="btn filled-rectangle-btn"><svg
+                            <button id="docfilled-rectangle-btn" class="btn filled-rectangle-btn"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-download" viewBox="0 0 16 16">
                                     <path
@@ -575,9 +588,9 @@
                         </div>
                         <!-- docBtn3 -->
                         <div class="col-lg-6 d-none d-lg-block">
-                            <button id="rectangle-btn" class="btn rectangle-btn"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-download"
-                                    viewBox="0 0 16 16">
+                            <button id="docrectangle-btn" class="btn rectangle-btn"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-download" viewBox="0 0 16 16">
                                     <path
                                         d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                     <path
@@ -603,11 +616,12 @@
                             <input type="color" value="#e7e7eb" id="docBtnColor">
                             <button type="button" class="btn purple-btn ml-3"
                                 style="padding: 0rem 0.75rem; height: 30px;"
-                                onclick="setDocBtnColor('docBtnColor')"><span style="font-size: 2px;">Select This
+                                onclick="setBtnColor('doc','docBtnColor')"><span style="font-size: 2px;">Select
+                                    This
                                     Color</span></button>
                             <button type="button" class="btn btn-secondary ml-1"
                                 style="padding: 0rem 0.75rem; height: 30px;"
-                                onclick="setDocBtnColor('darkerColor')"><span style="font-size: 2px;">Default
+                                onclick="setBtnColor('doc','darkerColor')"><span style="font-size: 2px;">Default
                                     Color</span></button>
                         </div>
 
@@ -646,7 +660,8 @@
                     <span id='imageFileAlert' style="font-size: 2px; color: red;"></span>
 
                     <!-- ask for choosing frame -->
-                    <h6 class="imageFrame" style="display: none"><br><br>Please choose the frame you want to upload:<br>
+                    <h6 class="imageFrame" style="display: none"><br><br>Please choose the frame you want to
+                        upload:<br>
                     </h6>
                     <!-- annouce the user to choose frame -->
                     <span id='imageFileUploadAlert' style="font-size: 2px; color: red;"></span>
@@ -830,16 +845,16 @@
                         <div class="col-sm-12 py-1">
                             Category (x-axis)
                             <br>
-                            <div style="color: red; font-size: 3px;">**Please use "," to separate each of the category
-                                (E.g. Jan,Feb)</div>
+                            <div style="color: red; font-size: 3px;">**Please use "," to separate each of the
+                                category (E.g. Jan,Feb)</div>
                             <input id="category" type="text" class="barData form-control form-control-user">
                         </div>
 
                         <div class="col-sm-12">
                             Data Plot
                             <br>
-                            <div style="color: red; font-size: 3px;">**Please use "," to separate each of the data and
-                                list it according to the category (E.g. 12,25)</div>
+                            <div style="color: red; font-size: 3px;">**Please use "," to separate each of the
+                                data and list it according to the category (E.g. 12,25)</div>
                             <input id="data" type="text" class="form-control form-control-user">
                         </div>
                     </div>
@@ -854,7 +869,117 @@
             </div>
         </div>
     </div>
-    <!-- End of Create Bar Chart Modal -->
+    <!-- End of Create Chart Modal -->
+
+
+    <!-- Create Window Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="windowModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <!-- annouce the user for input -->
+                    <span id='windowAlert' style="font-size: 2px; color: red;"></span>
+                    <div class="py-2"></div>
+
+                    <h6>Please enter the name of the window:</h6>
+                    <!-- input for the window's name -->
+                    <input id='windowInput' type="text" class="form-control form-control-user"
+                        placeholder="E.g. Click Here To See More">
+
+
+                    <!-- ask for choosing button -->
+                    <div class="py-3"></div>
+                    <h6 class="windowBtn">Please choose the style of the window's button:</h6>
+
+                    <div class="row windowBtn">
+                        <!-- radio of windowBtn1 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="windowBtnRadio custom-control-input" name="radio"
+                                    value="btn-link" id="windowBtn1">
+                                <label class="custom-control-label" for="windowBtn1">Link</label>
+                            </div>
+                        </div>
+                        <!-- radio of windowBtn2 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="windowBtnRadio custom-control-input" name="radio"
+                                    value="filled-rectangle-btn" id="windowBtn2">
+                                <label class="custom-control-label" for="windowBtn2">Filled Rectangle</label>
+                            </div>
+                        </div>
+                        <!-- windowBtn1 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button id="windowbtn-link" class="btn btn-link">
+                                <span>Name of the button</span></button>
+                        </div>
+                        <!-- windowBtn2 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button id="windowfilled-rectangle-btn" class="btn filled-rectangle-btn">
+                                <span>Name of the button</span></button>
+                        </div>
+                        <!-- radio of windowBtn3 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="py-1"></div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="windowBtnRadio custom-control-input" name="radio"
+                                    value="rectangle-btn" id="windowBtn3">
+                                <label class="custom-control-label" for="windowBtn3">Border Rectangle</label>
+                            </div>
+                        </div>
+                        <!-- radio of windowBtn4 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="py-1"></div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="windowBtnRadio custom-control-input" name="radio" value=""
+                                    id="windowBtn4">
+                                <label class="custom-control-label" for="windowBtn4">Default</label>
+                            </div>
+                        </div>
+                        <!-- windowBtn3 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button id="windowrectangle-btn" class="btn rectangle-btn">
+                                <span>Name of the button</span></button>
+                        </div>
+                        <!-- windowBtn4 -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <button class="btn">
+                                <span>Name of the button</span></button>
+                        </div>
+                        <!-- button for changing windowBtn color -->
+                        <div class="col-lg-12 d-none d-lg-block">
+                            <div class="py-3"></div>
+                            <label for="windowBtnColor">
+                                Button Color
+                            </label>
+                            <input type="color" value="" id="windowBtnColor">
+                            <button type="button" class="btn purple-btn ml-3"
+                                style="padding: 0rem 0.75rem; height: 30px;"
+                                onclick="setBtnColor('window','windowBtnColor')"><span style="font-size: 2px;">Select
+                                    This Color</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary ml-1"
+                                style="padding: 0rem 0.75rem; height: 30px;"
+                                onclick="setBtnColor('window','darkerColor')"><span style="font-size: 2px;">Default
+                                    Color</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showWindowModal()"
+                        data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="createWindow('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Create Window Modal -->
 
 
     <!-- Add Page Modal-->
@@ -1158,7 +1283,7 @@
                     img.src = e.target.result;
                 })
             } else if (fileInput == 'documentFile') {
-                setDocBtnColor('darkerColor');
+                setBtnColor('doc', 'darkerColor');
                 document.querySelectorAll('.docBtn').forEach(btn => {
                     btn.style.display = '';
                 })
@@ -1169,14 +1294,14 @@
     }
     ///////
 
-    ///////change downloaded document button color
-    function setDocBtnColor(color) {
+    ///////change downloaded document & window button color
+    function setBtnColor(type, color) {
         var currentColor = document.getElementById(color).value;
-        document.getElementById('btn-link').style.color = currentColor;
-        document.getElementById('filled-rectangle-btn').style.backgroundColor = currentColor;
-        document.getElementById('filled-rectangle-btn').style.borderColor = currentColor;
-        document.getElementById('rectangle-btn').style.borderColor = currentColor;
-        document.getElementById('rectangle-btn').style.color = currentColor;
+        document.getElementById(type + 'btn-link').style.color = currentColor;
+        document.getElementById(type + 'filled-rectangle-btn').style.backgroundColor = currentColor;
+        document.getElementById(type + 'filled-rectangle-btn').style.borderColor = currentColor;
+        document.getElementById(type + 'rectangle-btn').style.borderColor = currentColor;
+        document.getElementById(type + 'rectangle-btn').style.color = currentColor;
     }
     ///////
 
@@ -1209,7 +1334,7 @@
             //get the btn color
             var btnColor;
             //if the btn color hasn't changed
-            if (document.getElementById('rectangle-btn').style.color == document.getElementById('darkerColor').value) {
+            if (document.getElementById('docrectangle-btn').style.color == document.getElementById('darkerColor').value) {
                 btnColor = document.getElementById('darkerColor').value;
             } else {
                 // if the btn color has changed
@@ -1301,6 +1426,11 @@
             modal.style.display = '';
         } else {
             modal.style.display = 'none';
+            document.getElementById('type').value = 'horizontalBar';
+            document.getElementById('title').value = '';
+            document.getElementById('label').value = '';
+            document.getElementById('category').value = '';
+            document.getElementById('data').value = '';
         }
     }
     ////////
@@ -1334,6 +1464,109 @@
 
         //reload for updated code
         reload(reloadStatus);
+    }
+    ////////
+
+
+    ////////show window modal
+    function showWindowModal() {
+        var modal = document.getElementById("windowModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+            setBtnColor('window', 'darkerColor')
+        } else {
+            modal.style.display = 'none';
+            document.getElementById('windowInput').value = '';
+            document.getElementById('windowAlert').innerHTML = '';
+            document.querySelectorAll('.windowBtnRadio').forEach(radio => {
+                radio.checked = false;
+            })
+            document.getElementById('windowBtnColor').value = '';
+        }
+    }
+    ////////
+
+    ////////create new window
+    function createWindow(reloadStatus) {
+        var name = document.getElementById("windowInput").value;
+        //ensure the input have value
+        if (name == '') {
+            document.getElementById('windowAlert').innerHTML = 'Please enter the name of the window';
+            return;
+        }
+
+        //get the class of the button
+        var windowBtnClass = null;
+        document.querySelectorAll('.windowBtnRadio').forEach(radio => {
+            if (radio.checked == true) {
+                windowBtnClass = radio.value;
+            }
+        })
+
+        //if user hasn't selected a button yet 
+        if (windowBtnClass == null) {
+            document.getElementById('windowAlert').innerHTML = 'Please select a button';
+            return;
+        }
+
+        var contentid = sessionStorage.getItem('currentPage');
+        //get the btn color
+        var btnColor;
+        //if the btn color hasn't changed
+        if (document.getElementById('windowrectangle-btn').style.color == document.getElementById('darkerColor').value) {
+            btnColor = document.getElementById('darkerColor').value;
+        } else {
+            // if the btn color has changed
+            btnColor = document.getElementById('windowBtnColor').value;
+        }
+
+        //prepare for the new window id
+        var windowNum = document.querySelectorAll(".window").length + 1;
+
+        //add btn html
+        if (windowBtnClass == 'filled-rectangle-btn') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button style='background-color: " + btnColor + "; border-color: " + btnColor + ";' class='btn " + windowBtnClass + " windowModalBtn' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        } else if (windowBtnClass == '') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        } else if (windowBtnClass == 'rectangle-btn') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' style='color: " + btnColor + "; border-color: " + btnColor + ";' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        } else if (windowBtnClass == 'btn-link') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' style='color: " + btnColor + ";' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        }
+
+        //add window html
+        if (reloadStatus == 'false') {
+            document.getElementById("whole").innerHTML += '<div class="center window" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
+        } else {
+            document.getElementById("reloadWhole").innerHTML += '<div class="center window" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
+        }
+
+        //reload CV for updated code
+        reload(reloadStatus);
+    }
+    ////////
+
+
+    ////////show responsitive window
+    document.querySelectorAll(".windowModalBtn").forEach(btn => {
+        btn.addEventListener("click", showWindow);
+    })
+
+    function showWindow(event) {
+        var modal = document.getElementById(event.target.value);
+        var num = event.target.value.split("window");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+            //adding html to the window
+            var previous = sessionStorage.getItem('currentPage');
+            sessionStorage.setItem('previousPage', previous)
+            sessionStorage.setItem('currentPage', 'windowBody' + num[1]);
+        } else {
+            modal.style.display = 'none';
+            //adding html back to the page
+            var previous = sessionStorage.getItem('previousPage');
+            sessionStorage.setItem('currentPage', previous)
+        }
     }
     ////////
 
