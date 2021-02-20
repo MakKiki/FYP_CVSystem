@@ -171,6 +171,19 @@
                     </svg>
                     <span>Timeline</span>
                 </button>
+
+                <!-- Slideshow -->
+                <div class="py-2">
+                    <button class="btn nav-link" onclick="showSliderModal()"
+                        style="padding: 2px 2px; padding-left: 1.05rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-collection" viewBox="0 0 16 16">
+                            <path
+                                d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
+                        </svg>
+                        <span>Slideshow</span>
+                    </button>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -1065,6 +1078,33 @@
     <!-- End of Create Progress Bar Modal -->
 
 
+    <!-- Create Progress Bar Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display: none;" id="sliderModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- annouce the user for input -->
+                    <span id='sliderAlert' style="font-size: 2px; color: red;"></span>
+                    <div class="py-2"></div>
+
+                    <!-- ask for number of page -->
+                    <label>Please enter the number of page for the slideshow:</label>
+                    <input type="number" id="pageNum" min=0 class="form-control form-control-user">
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showSliderModal()"
+                        data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="createSlider('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Create Progress Bar Modal -->
+
+
     <!-- Add Page Modal-->
     <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel">
@@ -1710,6 +1750,108 @@
     ////////
 
 
+    ////////show create slider modal
+    function showSliderModal() {
+        var modal = document.getElementById("sliderModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+            document.getElementById("pageNum").value = '';
+            document.getElementById("sliderAlert").innerHTML = '';
+        }
+    }
+    ////////
+
+    ////////create new slider
+    function createSlider(reloadStatus) {
+        //get the input for page of the slider
+        var pageNum = document.getElementById("pageNum").value;
+        //annouce user if input is null
+        if (pageNum == '') {
+            document.getElementById("sliderAlert").innerHTML = 'Please enter the number of page of the slider';
+            return;
+        }
+        //prepare for the new slider id
+        var idNum = document.querySelectorAll('.slider').length;
+        // add HTML to current page
+        var contentid = sessionStorage.getItem('currentPage');
+        document.getElementById(contentid).innerHTML += '<div id="slidemain_' + idNum + '" class="container"><div class="row resize-drag"><div class="col-sm-12"><div class="slider">' + loopForSlider(pageNum, idNum) + '<br><button id="slidebtn_' + idNum + '" class="btn" style="display: none; color: green;" onclick="leaveSlider(\'\slidebtn_' + idNum + '\'\)">✓ Finish Managing The Slideshow</button><button id="slideDelBtn_' + idNum + '" class="btn ml-xl" style="display: none; color: red;" onclick="delSlider(\'\slidemain_' + idNum + '\'\)">✕ Delete The Slideshow</button><div class="slides" style="color: black;" contenteditable>' + loopForSliderContent(pageNum, idNum) + '</div></div></div></div></div>';
+        //reload CV for updated code
+        reload(reloadStatus)
+    }
+
+    ////////html for the slider button
+    function loopForSlider(pageNum, idNum) {
+        var i;
+        var btnHTML = '';
+        //get the theme color
+        var color = document.getElementById("themeColor").style.color;
+        for (i = 1; i <= pageNum; i++) {
+            btnHTML += '<a class="slider-btn" href="#' + idNum + '_slide-' + i + '" style="background-color:' + color + ';">' + i + '</a>';
+        }
+        return btnHTML;
+    }
+
+    ////////html for the slider content
+    function loopForSliderContent(pageNum, idNum) {
+        var i;
+        var contentHTML = '';
+        for (i = 1; i <= pageNum; i++) {
+            contentHTML += '<div id="' + idNum + '_slide-' + i + '"><div id="slide-' + i + '_' + idNum + '_content" style="min-height:200px; text-align:left;" contenteditable onclick="clickSlider(\'\slide-' + i + '_' + idNum + '_content\'\, )"></div></div>';
+        }
+        return contentHTML;
+    }
+    ////////
+
+    ////////when slider is clicked
+    function clickSlider(sliderid) {
+        //previousPage for later adding html back to th main page
+        if (sessionStorage.getItem('previousPage') == '') {
+            var previous = sessionStorage.getItem('currentPage');
+            sessionStorage.setItem('previousPage', previous);
+        }
+
+        //currentPage change to sliderid for adding html to the slider
+        sessionStorage.setItem('currentPage', sliderid);
+
+        //show up the managed btn for announcing the user is editing content into the slider
+        var idNum = sliderid.split("_")[1];
+        var btn = 'slidebtn_' + idNum;
+        var delBtn = 'slideDelBtn_' + idNum;
+        document.getElementById(btn).style.display = '';
+        document.getElementById(delBtn).style.display = '';
+    }
+    ////////
+
+    ////////when finish btn is clicked
+    function leaveSlider(slidebtn) {
+        //set the currentPage back to the main page
+        var previous = sessionStorage.getItem('previousPage');
+        sessionStorage.setItem('currentPage', previous);
+        //set the previousPage back to '' for using next time
+        sessionStorage.setItem('previousPage', '')
+        //not display the finish & del btn
+        var idNum = slidebtn.split("_")[1];
+        var delBtn = 'slideDelBtn_' + idNum;
+        document.getElementById(slidebtn).style.display = 'none';
+        document.getElementById(delBtn).style.display = 'none';
+    }
+    ////////
+
+    ////////when delete btn is clicked
+    function delSlider(mainSlider) {
+        //delete the slider
+        document.getElementById(mainSlider).remove();
+        //set the currentPage back to the main page
+        var previous = sessionStorage.getItem('previousPage');
+        sessionStorage.setItem('currentPage', previous);
+        //set the previousPage back to '' for using next time
+        sessionStorage.setItem('previousPage', '');
+    }
+    ////////
+
+
     ////////show responsitive window
     document.querySelectorAll(".windowModalBtn").forEach(btn => {
         btn.addEventListener("click", showWindow);
@@ -1728,7 +1870,9 @@
             modal.style.display = 'none';
             //adding html back to the page
             var previous = sessionStorage.getItem('previousPage');
-            sessionStorage.setItem('currentPage', previous)
+            sessionStorage.setItem('currentPage', previous);
+            //set the previousPage back to '' for using next time
+            sessionStorage.setItem('previousPage', '')
         }
     }
     ////////
@@ -1842,6 +1986,7 @@
         updateReloadCVSession();
         //set session storage
         sessionStorage.setItem('currentPage', 'Basic Information');
+        sessionStorage.setItem('previousPage', '');
         sessionStorage.setItem('addField', 'false');
         sessionStorage.setItem('deleteBtn', 'off');
         sessionStorage.setItem('toolbar', '3Dsidebar');
