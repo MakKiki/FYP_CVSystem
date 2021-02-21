@@ -184,6 +184,16 @@
                         <span>Slideshow</span>
                     </button>
                 </div>
+
+                <!-- Map -->
+                <button class="btn nav-link" onclick="showMapModal()" style="padding: 2px 2px; padding-left: 1.05rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                    </svg>
+                    <span>Map</span>
+                </button>
             </li>
 
             <!-- Divider -->
@@ -1105,6 +1115,55 @@
     <!-- End of Create Progress Bar Modal -->
 
 
+    <!-- Create Map Modal-->
+    <div class="animate__animated animate__fadeIn center" style="display:none" id="mapModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="overflow: auto;">
+                <div class="modal-body" style="overflow: auto;">
+                    <!-- annouce the user for input -->
+                    <span id='mapAlert' style="font-size: 2px; color: red;"></span>
+                    <div class="py-1"></div>
+
+                    <h6>Please enter the information about the map:</h6>
+                    <div class="py-1"></div>
+
+                    <div class="row">
+                        <!-- input for X-Coordinate -->
+                        <div class="col-lg-6 col-sm-12">
+                            X-Coordinate
+                            <input id="x-coordinate" type="number" class="form-control form-control-user">
+                        </div>
+                        <!-- input for Y-Coordinate -->
+                        <div class="col-lg-6 col-sm-12">
+                            Y-Coordinate
+                            <input id="y-coordinate" type="number" class="form-control form-control-user">
+                        </div>
+                        <!-- input for Location -->
+                        <div class="col-sm-12 py-2">
+                            Name Of The Location
+                            <input id="location" type="text" class="form-control form-control-user">
+                        </div>
+                        <!-- input for Description -->
+                        <div class="col-sm-12 py-2">
+                            Description Of The Location (Optional)
+                            <input id="locationDes" type="text" class="form-control form-control-user">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showMapModal()"
+                        data-dismiss="modal">Cancel</button>
+                    <button id="alert-delete" class="btn pink-btn" type="button"
+                        onclick="createMap('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Create Map Modal -->
+
+
     <!-- Add Page Modal-->
     <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel">
@@ -1582,7 +1641,7 @@
         var contentid = sessionStorage.getItem('currentPage');
         var canvasNum = document.querySelectorAll('.canvasInput').length + 1;
         alert(canvasNum)
-        document.getElementById(contentid).innerHTML += '<div id="newChart' + canvasNum + '" class="container"><div class="row resize-drag"><canvas class="field"></canvas><input class="chart' + canvasNum + ' canvasInput" type="hidden" value="' + chartType + '"><input class="chart' + canvasNum + '" type="hidden" value="' + category + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartLabel + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartData + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartTitle + '"></div></div>';
+        document.getElementById(contentid).innerHTML += '<div id="newChart' + canvasNum + '" class="container"><canvas class="field resize-drag"></canvas><input class="chart' + canvasNum + ' canvasInput" type="hidden" value="' + chartType + '"><input class="chart' + canvasNum + '" type="hidden" value="' + category + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartLabel + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartData + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartTitle + '"></div>';
 
         //reload for updated code
         reload(reloadStatus);
@@ -1851,6 +1910,48 @@
     ////////
 
 
+    ////////show create map modal
+    function showMapModal() {
+        var modal = document.getElementById("mapModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+            document.getElementById("x-coordinate").value = '';
+            document.getElementById("y-coordinate").value = '';
+            document.getElementById("location").value = '';
+            document.getElementById("locationDes").value = '';
+            document.getElementById("locationDes").value = '';
+        }
+    }
+    ////////
+
+    ////////create the map
+    function createMap(reloadStatus) {
+        //get the coordinates, name & description of the location
+        var xCoordinate = document.getElementById('x-coordinate').value;
+        var yCoordinate = document.getElementById('y-coordinate').value;
+        var location = document.getElementById('location').value;
+        var locationDes = document.getElementById('locationDes').value;
+
+        //annouce the user if input = ''
+        if (xCoordinate == '' || yCoordinate == '' || location == '') {
+            document.getElementById('mapAlert').innerHTML = 'Please ensure the fields of X-Coordinate, Y-Coordinate & Name Of The Location are filled in.'
+            return;
+        }
+
+        //prepare for the new map id & classname
+        var mapNum = document.querySelectorAll('.mapInput').length + 1;
+        //add map html (div of map & input) into the page
+        var contentid = sessionStorage.getItem('currentPage');
+        document.getElementById(contentid).innerHTML += '<div class="container"><div id="map' + mapNum + '" style="width: 600px; height: 400px; position: relative; outline: none;" class="resize-drag field leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2046/1361?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-200px, -347px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2047/1361?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(312px, -347px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2046/1362?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-200px, 165px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2047/1362?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(312px, 165px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.04805e+06px, 697379px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a></div></div></div></div> <input class="map' + mapNum + ' mapInput" type="hidden" value="' + xCoordinate + '"><input class="map' + mapNum + '" type="hidden" value="' + yCoordinate + '"><input class="map' + mapNum + '" type="hidden" value="' + location + '"><input class="map' + mapNum + '" type="hidden" value="' + locationDes + '"></div>';
+
+        //reload for updated code
+        reload(reloadStatus);
+    }
+    ///////
+
+
     ////////show responsitive window
     document.querySelectorAll(".windowModalBtn").forEach(btn => {
         btn.addEventListener("click", showWindow);
@@ -1963,6 +2064,7 @@
                 document.getElementById('custSidebar').style.display = '';
             }
             chart();
+            map();
         }
         // not due to add field
         else {
@@ -1998,6 +2100,8 @@
         })
         //show chart
         chart();
+        //show map
+        map();
     }
     ///////
 
@@ -2021,7 +2125,6 @@
 
     //////show chart after loading the page
     function chart() {
-        var i = 0;
         var p;
         document.querySelectorAll('canvas').forEach(ctx => {
             var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
@@ -2071,6 +2174,35 @@
                 },
             });
         });
+    }
+    //////
+
+    //////show map after loading the page
+    function map() {
+        document.querySelectorAll('.leaflet-container').forEach(map => {
+            //get the present map's input's class
+            var presentMap = '.' + map.nextSibling.nextSibling.nextSibling.classList;
+            //get all the input data of that map
+            var input = [];
+            document.querySelectorAll(presentMap).forEach(ele => {
+                input.push(ele.value)
+            });
+
+            //create new map
+            var newMap = L.map(map.id).setView([input[0], input[1]], 18);
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoibWFra2lraSIsImEiOiJja2xldXcwMmExbnpvMnVxZTAyZ2VkamR5In0.fyuBDRmXfmKoFeDmgU1cUA'
+            }).addTo(newMap);
+
+            //add marker
+            var marker = L.marker([input[0], input[1]]).addTo(newMap);
+            marker.bindPopup("<b>" + input[2] + "</b><br>" + Math.round(input[0] * 1000) / 1000 + ", " + Math.round(input[1] * 1000) / 1000 + "<br>" + input[3]).openPopup();
+        })
     }
     //////
 
