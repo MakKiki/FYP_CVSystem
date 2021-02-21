@@ -1580,10 +1580,9 @@
 
         //add chart html (canvas & input) into the page
         var contentid = sessionStorage.getItem('currentPage');
-        var canvasNum = document.querySelectorAll('canvas').length + 1;
-        document.getElementById(contentid).innerHTML += '<div id="newChart' + canvasNum + '" class="container field"><div class="row resize-drag"><canvas></canvas><input class="chart' + canvasNum + '" type="hidden" value="' + chartType + '"><input class="chart' + canvasNum + '" type="hidden" value="' + category + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartLabel + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartData + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartTitle + '"></div></div>';
-
-        alert(document.getElementById("newChart" + canvasNum).innerHTML)
+        var canvasNum = document.querySelectorAll('.canvasInput').length + 1;
+        alert(canvasNum)
+        document.getElementById(contentid).innerHTML += '<div id="newChart' + canvasNum + '" class="container"><div class="row resize-drag"><canvas class="field"></canvas><input class="chart' + canvasNum + ' canvasInput" type="hidden" value="' + chartType + '"><input class="chart' + canvasNum + '" type="hidden" value="' + category + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartLabel + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartData + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartTitle + '"></div></div>';
 
         //reload for updated code
         reload(reloadStatus);
@@ -2025,9 +2024,9 @@
         var i = 0;
         var p;
         document.querySelectorAll('canvas').forEach(ctx => {
-            i++;
+            var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
             var input = [];
-            document.querySelectorAll('.chart' + i).forEach(ele => {
+            document.querySelectorAll(presentChart).forEach(ele => {
                 input.push(ele.value)
             });
             var categoryArr = input[1].split(",");
