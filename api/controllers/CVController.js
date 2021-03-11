@@ -36,6 +36,16 @@ module.exports = {
     }
   },
 
+  // show publicated CV
+  publicatedCV: async function (req, res) {
+    if (req.method == "GET") {
+      var model = await CV.findOne(req.params.id);
+      if (!model) return res.notFound();
+
+      return res.view("pages/users/CV", { cv: model });
+    }
+  },
+
   //delete CV
   deleteCV: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
@@ -283,6 +293,10 @@ module.exports = {
     req.session.reloadCV = "";
     req.session.reloadStatus = "false";
 
+    var cv = await CV.findOne(req.session.progressingCV.id);
+
+    if (cv.length == 0) return res.notFound();
+
     var model = await CV.update(req.session.progressingCV.id)
       .set({
         CVcode: req.body.CV,
@@ -294,10 +308,11 @@ module.exports = {
     if (model.length == 0) return res.notFound();
 
     if (req.body.step == "finish") {
+      cv.CVlink = "/" + cv.engName + "/CV_" + cv.id;
       await CV.update(req.session.progressingCV.id).set({
-        CVlink: "/" + model.engName + "/CV_" + model.id,
+        CVlink: cv.CVlink,
       });
-      req.session.progressingCV = model;
+      req.session.progressingCV = cv;
     }
 
     if (req.wantsJSON) {

@@ -30,14 +30,13 @@
         <div class="py-2"></div>
 
         <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div class="row">
 
           <!-- Loop the cv for shown -->
           <% var i=0; cv.forEach( function(model) { i++; %>
             <div class="col-lg-6 col-sm-12">
 
               <div class="row">
-                <!-- Left part of the card: Img -->
                 <div class="col-lg-6 col-sm-12 card shadow" style="height: 400px">
                   <div class="py-2"></div>
 
@@ -68,7 +67,6 @@
 
                 </div>
 
-                <!-- Right part of the card: Info -->
                 <div class="col-lg-6 col-sm-12">
                   <div class="row">
 
@@ -138,7 +136,7 @@
                         <% if (model.CVlink=='' ){ %>
                           <div style="font-size:small">You have not published this CV yet.</div>
                           <% } else{ %>
-                            <button type="button" class="btn btn-link" onclick="window.open('<%=model.CVlink%>')">
+                            <button type="button" class="btn btn-link" onclick="window.open('/CV/<%= model.id %>')">
                               <%= model.CVlink %>
                             </button>
                             <% } %>
@@ -181,7 +179,6 @@
               <div class="col-lg-6 col-sm-12">
 
                 <div class="row">
-                  <!-- Left part of the card: img -->
                   <div class="col-lg-6 col-sm-12 card shadow" style="height: 400px">
                     <button type="button" class="btn main-btn" onclick="window.location.href='/editCV/null'">
                       <h4 class="text-center" style="margin-top: 170px;"><b>+ Create New CV</b></h4>

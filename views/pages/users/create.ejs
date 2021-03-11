@@ -1289,6 +1289,10 @@
 
     //////// for submit cv code
     async function submitCV(reloadStatus) {
+        //confirm the cv cannot be editable in the publicated page
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.contentEditable = "false";
+        });
         //confirm the cv is at the first page at the beginning
         var contentBtnArray = document.getElementsByClassName("content-btn");
         document.getElementById(contentBtnArray[0].value).style.display = '';
@@ -1297,6 +1301,7 @@
             id = contentBtnArray[i].value;
             document.getElementById(id).style.display = 'none';
         }
+        //confirm the cv included animated
         document.querySelectorAll('.animate').forEach(ele => {
             ele.classList.add("animate__animated");
         })
@@ -1370,6 +1375,23 @@
 
     ////////pass this step (save defaultcode to cvcode)
     async function pass() {
+        //confirm the cv cannot be editable in the publicated page
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.contentEditable = "false";
+        });
+        //confirm the cv is at the first page at the beginning
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        document.getElementById(contentBtnArray[0].value).style.display = '';
+        var i;
+        for (i = 1; i < contentBtnArray.length; i++) {
+            id = contentBtnArray[i].value;
+            document.getElementById(id).style.display = 'none';
+        }
+        //confirm the cv included animated
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+
         var data = JSON.stringify({
             step: "finish"
         });
@@ -1718,9 +1740,9 @@
 
         //add window html
         if (reloadStatus == 'false') {
-            document.getElementById("whole").innerHTML += '<div class="center window" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
+            document.getElementById("whole").innerHTML += '<div class="center window animate__animated animate__fadeIn center" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
         } else {
-            document.getElementById("reloadWhole").innerHTML += '<div class="center window" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
+            document.getElementById("reloadWhole").innerHTML += '<div class="center window animate__animated animate__fadeIn center" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
         }
 
         //reload CV for updated code

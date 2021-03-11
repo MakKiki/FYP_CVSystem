@@ -1,30 +1,108 @@
-<!-- Content Wrapper-->
-
-<div id="content-wrapper" class="d-flex flex-column">
-    <!-- Content -->
-    <div id="content" class="container-fluid container">
-
-        <!-- Content position -->
-        <div style="position:absolute; left:150px; top:70px; height: 400px; width:980px;">
-            <!-- Welcome message -->
-            <div class="container animate__animated animate__fadeInDown">
-                <div class="header-body text-center mb-7">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-10 col-lg-12 col-md-9">
-                            <h1 class="text-white">👋 Welcome To My 3D CV! 👋</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Show CV -->
-            <div class="py-5">
-                <%- req.session.CV %>
-            </div>
-        </div>
-    </div>
+<div class="py-4"></div>
+<!-- Content -->
+<div id="content" class="container-fluid container">
+    <%- cv.CVcode %>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script>
+    window.onload = function () {
+        chart();
+        map();
+        setBackground();
+    };
+    //show chart after loading the page
+    function chart() {
+        var p;
+        document.querySelectorAll('canvas').forEach(ctx => {
+            var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
+            var input = [];
+            document.querySelectorAll(presentChart).forEach(ele => {
+                input.push(ele.value)
+            });
+            var categoryArr = input[1].split(",");
+            var category = [];
+            for (p = 0; p < categoryArr.length; p++) {
+                category.push(categoryArr[p])
+            }
+
+            var dataArr = input[3].split(",");
+            var chartData = [];
+            for (p = 0; p < dataArr.length; p++) {
+                chartData.push(parseInt(dataArr[p], 10))
+            }
+
+            var o = Math.round, r = Math.random, s = 255;
+            var color = document.getElementById('themeColor').style.color;
+            var colorArr = [];
+            for (p = 0; p < dataArr.length; p++) {
+                colorArr.push(color)
+            }
+
+            new Chart(ctx, {
+                type: input[0],
+                data: {
+                    labels: category,
+                    datasets: [{
+                        label: input[2],
+                        data: chartData,
+                        backgroundColor: colorArr
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    responsiveAnimationDuration: 1000,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: input[4]
+                    }
+                },
+            });
+        });
+    }
+    //////
+
+    //////show map after loading the page
+    function map() {
+        document.querySelectorAll('.leaflet-container').forEach(map => {
+            //get the present map's input's class
+            var presentMap = '.' + map.nextSibling.nextSibling.nextSibling.classList;
+            //get all the input data of that map
+            var input = [];
+            document.querySelectorAll(presentMap).forEach(ele => {
+                input.push(ele.value)
+            });
+
+            //create new map
+            var newMap = L.map(map.id).setView([input[0], input[1]], 18);
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoibWFra2lraSIsImEiOiJja2xldXcwMmExbnpvMnVxZTAyZ2VkamR5In0.fyuBDRmXfmKoFeDmgU1cUA'
+            }).addTo(newMap);
+
+            //add marker
+            var marker = L.marker([input[0], input[1]]).addTo(newMap);
+            marker.bindPopup("<b>" + input[2] + "</b><br>" + Math.round(input[0] * 1000) / 1000 + ", " + Math.round(input[1] * 1000) / 1000 + "<br>" + input[3]).openPopup();
+        })
+    }
+    //////
+
+    ///////set background color
+    function setBackground() {
+        background = document.getElementById("webpageColor").value;
+        document.body.style.backgroundColor = 'rgb(248, 248, 248)';
+        document.body.setAttribute("class", background);
+    }
+    ///////
+
+
     ////////for showing content page
     function showContent(targetPage) {
         var contentBtnArray = document.getElementsByClassName("content-btn");
@@ -40,11 +118,19 @@
     }
     ////////
 
-    /////// disable editable of the textfield before the page
-    window.onload = function () {
-        document.querySelectorAll("[contenteditable]").forEach(field => {
-            field.removeAttribute("contenteditable")
-        });
+
+    ////////show responsitive window
+    document.querySelectorAll(".windowModalBtn").forEach(btn => {
+        btn.addEventListener("click", showWindow);
+    })
+
+    function showWindow(event) {
+        var modal = document.getElementById(event.target.value);
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+        }
     }
-    ///////
+    ////////
 </script>

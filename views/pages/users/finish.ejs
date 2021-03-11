@@ -5,7 +5,7 @@
             <h1 style="color: #f1869f">🎉 You have sucessfully created & published the CV 🎉</h1>
             <div class="py-4"></div>
             <h2>Here is the link:</h2>
-            <a class="h2" href="<%=req.session.progressingCV.CVlink%>">
+            <a class="h2" href='/CV/<%=req.session.progressingCV.id%>'>
                 <%=req.session.progressingCV.CVlink%>
             </a>
             <div class="py-5"></div>

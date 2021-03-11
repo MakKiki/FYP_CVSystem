@@ -32,7 +32,6 @@ module.exports.routes = {
   "/webcam_capture": { view: "pages/users/webcamCapture" },
   "/chart": {view: "pages/users/chart"},
   "/finish": { view: "pages/users/finish" },
-  "/CV": { view: "pages/users/CV" },
 
   /***************************************************************************
    *                                                                          *
@@ -54,6 +53,7 @@ module.exports.routes = {
   "GET /main": "UserController.main",
   "GET /editCV/:id": "CVController.editCV",
   "DELETE /deleteCV/:id": "CVController.deleteCV",
+  "GET /CV/:id": "CVController.publicatedCV",
 
   "POST /cv/saveData": "CVController.saveData",
   "POST /cv/submitData": "CVController.submitData",

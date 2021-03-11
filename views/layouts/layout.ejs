@@ -60,7 +60,8 @@
 </script>
 
 <body>
-  <% if (req.session.role=="user" && req.path !='/CV' && req.path !='/template1' && req.path !='/template2' && req.path
+  <% var currentPath = req.path.split('/');
+    if (req.session.role=="user" && currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path
     !='/template3' ){ %>
     <!-- Topbar for user after login -->
     <nav id="topbar" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow" <% if

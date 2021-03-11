@@ -803,16 +803,15 @@
     ////////
 
 
-    /////// change background color
-    function changeBackground(newBackground) {
+     /////// change background color
+     function changeBackground(newBackground) {
         if (newBackground == "Original") {
-            document.getElementById('webpageColor').setAttribute("class", "");
             document.body.setAttribute("class", "");
-            document.getElementById('webpageColor').style.backgroundColor = rgb(248, 248, 248);
-            document.body.style.backgroundColor = rgb(248, 248, 248);
+            document.body.style.backgroundColor = 'rgb(248, 248, 248)';
+            document.getElementById('webpageColor').value = 'rgb(248, 248, 248)';
         } else {
-            document.getElementById('webpageColor').setAttribute("class", newBackground);
             document.body.setAttribute("class", newBackground);
+            document.getElementById('webpageColor').value = newBackground;
         }
     }
     ///////
