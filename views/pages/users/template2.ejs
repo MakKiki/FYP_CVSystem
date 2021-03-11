@@ -125,18 +125,18 @@
 
 
                             <!-- Main Content -->
-                            <div id="main" class="col-sm-7">
+                            <div id="main" class="col-sm-7" style="z-index: -1;">
                                 <div style="transform: translate(0px, 0px);" id="Basic Information"
                                     class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
 
-                                    <div class="container field py-3 resize-drag"
-                                        style="font-size: 2rem; color: rgb(0, 0, 0);" contenteditable="false">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                            fill="currentColor" class="bi bi-person-fill svgColor" style="color:rgb(0, 4, 255)" viewBox="0 0 16 16">
-                                            <path
-                                                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                        </svg>
-                                        <b>About Me</b>
+                                    <div class="py-3 ml-4 resize-drag" style="font-size: 2rem; color: rgb(0, 0, 0);"
+                                        contenteditable="false">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                           class="bi bi-person-fill svgColor" style="color:rgb(0, 4, 255)" viewBox="0 0 16 16">
+                                       <path
+                                           d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                       </svg>
+                                       <b>About Me</b>
                                     </div>
 
                                     <div class="container field">
@@ -144,13 +144,13 @@
 
                                             <div class="col-sm-12" contenteditable="false" style="color: black;">
                                                 <h1>Hello,</h1>
-                                                    <p>I am <%= cv.engName %><% if(cv.nickname !='' ) {%>, <%= cv.nickname %><%}%>.
+                                                        I am <%= cv.engName %><% if(cv.nickname !='' ) {%>, <%= cv.nickname %><%}%>.
                                                         I am an applicant who is searching for a job related to
                                                         <b class="darkerColor" style="color: navy;"> <%= cv.jobArea %></b>.             
                                                         Working as a <b class="darkerColor" style="color: navy"><%= cv.occupation %></b>                
                                                         is my target.<% if(cv.objective !='' ) {%> <%= cv.objective %><%}%> Hope we will have                  
-                                                        chances to meet each other!!! :)                                                
-                                                    </p><br>
+                                                        chances to meet each other!!! :)                                             
+                                                    <br><br>
 
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -306,7 +306,7 @@
                                 <div style="display: none;" id="Education"
                                     class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
 
-                                    <div class="container field py-3 resize-drag" style="font-size: 2rem; color: black;"
+                                    <div class="py-3 ml-4 resize-drag" style="font-size: 2rem; color: rgb(0, 0, 0);"
                                         contenteditable="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                             fill="currentColor" class="bi bi-book svgColor" style="color:rgb(0, 4, 255)" viewBox="0 0 16 16">
@@ -318,103 +318,93 @@
 
                                     <div class="container field">
                                         <div class="row resize-drag">
-                                            <div class="col-sm-12" contenteditable="false">
-
+                                            <div class="col-sm-12">
+    
                                                 <div class="timeline ml-2" style="color: black;">
-                                                    <% var edu=cv.eduStartDate + '' ; var eduData=edu.split(",");
-                                                        if(eduData[1] !=null){ var i; for (i=0; i < eduData.length; i++)
-                                                        { %>
+                                                    <% var edu = cv.eduStartDate + '';
+                                                    var eduData = edu.split(",");
+                                                    if(eduData[1] != null){
+                                                    var i; 
+                                                    for (i = 0; i < eduData.length; i++) { %>
                                                         <div class="timeline__group">
-                                                            <span class="timeline__date time" aria-hidden="true">
-                                                                <%= cv.eduStartDate[i] %> ~ <%= cv.eduEndDate[i] %>
+                                                            <span class="timeline__date time" aria-hidden="true" contenteditable="false">
+                                                              <%= cv.eduStartDate[i] %> ~ <%= cv.eduEndDate[i] %>
                                                             </span>
-                                                            <div
-                                                                class="timeline__cards animate animate__animated animate__fadeInUp">
+                                                            <div class="timeline__cards animate animate__animated animate__fadeInUp">
                                                                 <div class="timeline__card timelineCard">
                                                                     <header class="card__header">
-                                                                        <span class="time" style="font-size:medium">
+                                                                        <span class="time" style="font-size:medium" contenteditable="false">
                                                                             <%= cv.school[i] %>
                                                                         </span>
                                                                     </header>
                                                                     <div class="py-2"></div>
-                                                                    <div class="card__content">
-                                                                        <p><b>Major: </b>
+                                                                    <div class="card__content" contenteditable="false">
+                                                                        <b>Major: </b>
                                                                             <%= cv.major[i] %>
-                                                                        </p>
-                                                                        <p><b>Degree / Level: </b>
+                                                                        <br><br>
+                                                                        <b>Degree / Level: </b>
                                                                             <%= cv.degree[i] %>
-                                                                        </p>
-                                                                        <p><b>CGPA / Result: </b>
+                                                                        <br><br>
+                                                                        <b>CGPA / Result: </b>
                                                                             <%= cv.mark[i] %>
-                                                                        </p>
-                                                                        <% if(cv.eduDescription[i] !='' ){ %>
-                                                                            <p> <b>Others About The School /
-                                                                                    Institution:
-                                                                                </b>
-                                                                                <%= cv.eduDescription[i] %>
-                                                                            </p>
-                                                                            <% } %>
-                                                                                <% if(cv.eduCertificate[i] !='' ){ %>
-                                                                                    <p><b>Certificate: </b>
-                                                                                        <a download="education_<%=i+1%>_certificate"
-                                                                                            href="<%= cv.eduCertificate[i] %>"
-                                                                                            target="_blank">
-                                                                                            Download my certificate
-                                                                                            here
-                                                                                        </a>
-                                                                                    </p>
-                                                                                    <% } %>
+                                                                        <br><br>
+                                                                        <% if(cv.eduDescription[i] != ''){ %>
+                                                                         <b>Others About The School / Institution:</b>
+                                                                            <%= cv.eduDescription[i] %>
+                                                                        <br><br>
+                                                                        <% } %>
+                                                                        <% if(cv.eduCertificate[i] != ''){ %>
+                                                                        <b>Certificate: </b>
+                                                                        <a download="education_<%=i+1%>_certificate" href="<%= cv.eduCertificate[i] %>" target="_blank">
+                                                                            Download my certificate here
+                                                                        </a>
+                                                                        <br><br>
+                                                                        <% } %>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <% }} else { %>
-                                                            <div class="timeline__group">
-                                                                <span class="timeline__date time" aria-hidden="true">
-                                                                    <%= cv.eduStartDate %> ~ <%= cv.eduEndDate %>
-                                                                </span>
-                                                                <div
-                                                                    class="timeline__cards animate animate__animated animate__fadeInUp">
-                                                                    <div class="timeline__card timelineCard">
-                                                                        <header class="card__header">
-                                                                            <span class="time" style="font-size:medium">
-                                                                                <%= cv.school %>
-                                                                            </span>
-                                                                        </header>
-                                                                        <div class="py-2"></div>
-                                                                        <div class="card__content">
-                                                                            <p><b>Major: </b>
-                                                                                <%= cv.major %>
-                                                                            </p>
-                                                                            <p><b>Degree / Level: </b>
-                                                                                <%= cv.degree %>
-                                                                            </p>
-                                                                            <p><b>CGPA / Result: </b>
-                                                                                <%= cv.mark %>
-                                                                            </p>
-                                                                            <% if(cv.eduDescription !='' ){ %>
-                                                                                <p> <b>Others About The School /
-                                                                                        Institution:
-                                                                                    </b>
-                                                                                    <%= cv.eduDescription %>
-                                                                                </p>
-                                                                                <% } %>
-                                                                                    <% if(cv.eduCertificate !='' ){ %>
-                                                                                        <p><b>Certificate: </b>
-                                                                                            <a download="education_1_certificate"
-                                                                                                href="<%= cv.eduCertificate %>"
-                                                                                                target="_blank">
-                                                                                                Download my
-                                                                                                certificate here
-                                                                                            </a>
-                                                                                        </p>
-                                                                                        <% } %>
-                                                                        </div>
+                                                    <% }} else { %>
+                                                        <div class="timeline__group">
+                                                            <span class="timeline__date time" aria-hidden="true" contenteditable="false">
+                                                              <%= cv.eduStartDate %> ~ <%= cv.eduEndDate %>
+                                                            </span>
+                                                            <div class="timeline__cards animate animate__animated animate__fadeInUp">
+                                                                <div class="timeline__card timelineCard">
+                                                                    <header class="card__header">
+                                                                        <span class="time" style="font-size:medium" contenteditable="false">
+                                                                            <%= cv.school %>
+                                                                        </span>
+                                                                    </header>
+                                                                    <div class="py-2"></div>
+                                                                    <div class="card__content" contenteditable="false">
+                                                                        <b>Major: </b>
+                                                                            <%= cv.major %>
+                                                                        <br><br>
+                                                                        <b>Degree / Level: </b>
+                                                                            <%= cv.degree %>
+                                                                        <br><br>
+                                                                        <b>CGPA / Result: </b>
+                                                                            <%= cv.mark %>
+                                                                        <br><br>
+                                                                        <% if(cv.eduDescription != ''){ %>
+                                                                         <b>Others About The School / Institution:</b>
+                                                                            <%= cv.eduDescription %>
+                                                                        <br><br>
+                                                                        <% } %>
+                                                                        <% if(cv.eduCertificate != ''){ %>
+                                                                        <b>Certificate: </b>
+                                                                        <a download="education_1_certificate" href="<%= cv.eduCertificate %>" target="_blank">
+                                                                            Download my certificate here
+                                                                        </a>
+                                                                        <br><br>
+                                                                        <% } %>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <% } %>
-
+                                                        </div>
+                                                    <% } %>
+                 
                                                 </div>
                                             </div>
                                         </div>
@@ -423,14 +413,14 @@
                                 </div>
 
 
-                                <% if (cv.company !='' ){ %>
+                                <% if (cv.company !=''){ %>
                                     <div style="display: none;" id="Work Experience"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
-
-                                        <div class="container field py-3 resize-drag"
-                                            style="font-size: 2rem; color: black;" contenteditable="false">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                fill="currentColor" class="bi bi-briefcase-fill svgColor" style="color:rgb(0, 4, 255)" viewBox="0 0 16 16">
+        
+                                        <div class="py-3 ml-4 resize-drag" style="font-size: 2rem; color: rgb(0, 0, 0);"
+                                             contenteditable="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                                class="bi bi-briefcase-fill svgColor" style="color:rgb(0, 4, 255)" viewBox="0 0 16 16">
                                                 <path
                                                     d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z" />
                                                 <path
@@ -439,244 +429,219 @@
                                             <b>Work Experience</b>
                                         </div>
 
-                                        <div class="container field">
+                                        <div class="slideshow">
+                                        <div id="slidemain_1" class="container">
                                             <div class="row resize-drag">
                                                 <div class="col-sm-12">
-
+        
                                                     <div class="slider">
-
-                                                        <% var work=cv.workStartDate + '' ; var
-                                                            workData=work.split(","); if (workData[1] !=null){ var i;
-                                                            for (i=1; i <=workData.length + 1; i++) { %>
-                                                            <a class="slider-btn" href="#slide-<%=i%>">
-                                                                <%=i%>
-                                                            </a>
-                                                            <% } %>
-
-                                                                <div class="slides" style="color: black;"
-                                                                    contenteditable="false">
-                                                                    <% var p; for (p=0; p < workData.length; p++) { %>
-                                                                        <div id="slide-<%=p+1%>">
-                                                                            <div class="container field">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-4 py-4"
-                                                                                        contenteditable="false">
-                                                                                        <span><b>From: </b><br>
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                width="15" height="15"
-                                                                                                style="color: rgb(0, 4, 255)"
-                                                                                                fill="currentColor"
-                                                                                                class="bi bi-calendar svgColor"
-                                                                                                viewBox="0 0 16 16">
-                                                                                                <path
-                                                                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                                                                            </svg>
-                                                                                            <%= cv.workStartDate[p] %>
-                                                                                                <br>
-                                                                                                | <br>
-                                                                                                <b>To: </b><br>
-                                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                    width="16"
-                                                                                                    height="16"
-                                                                                                    style="color: rgb(0, 4, 255)"
-                                                                                                    fill="currentColor"
-                                                                                                    class="bi bi-calendar svgColor"
-                                                                                                    viewBox="0 0 16 16">
-                                                                                                    <path
-                                                                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                                                                                </svg>
-                                                                                                <%= cv.workEndDate[p] %>
-                                                                                        </span>
-                                                                                    </div>
-
-                                                                                    <div class="col-sm-8 py-4"
-                                                                                        contenteditable="false">
-                                                                                        <span style="float: left;"><b>Company:
-                                                                                            </b></span>
-                                                                                        <br>
-                                                                                        <p style="text-align: left;">
-                                                                                            <%= cv.company[p] %>
-                                                                                        </p>
-                                                                                        <br><br>
-
-                                                                                        <span style="float: left;"><b>Title
-                                                                                                / Position:
-                                                                                            </b></span>
-                                                                                        <br>
-                                                                                        <p style="text-align: left;">
-                                                                                            <%= cv.position[p] %>
-                                                                                        </p>
-                                                                                        <br><br>
-
-                                                                                        <span style="float: left;"><b>About
-                                                                                                The Job: </b></span>
-                                                                                        <br>
-                                                                                        <p style="text-align: left;">
-                                                                                            <%= cv.workDescription[p] %>
-                                                                                        </p>
-                                                                                        <br>
-
-                                                                                        <% if(cv.reference[p] !='' ){ %>
-                                                                                            <br>
-                                                                                            <span
-                                                                                                style="float: left;"><b>Reference
-                                                                                                    Letter:
-                                                                                                </b></span>
-                                                                                            <br>
-                                                                                            <a style="float: left;"
-                                                                                                download="reference_<%=p+1%>"
-                                                                                                href="<%= cv.reference[p] %>"
-                                                                                                target="_blank">
-                                                                                                Download my
-                                                                                                Reference Letter
-                                                                                                here
-                                                                                            </a>
-                                                                                            <% }else{ %>
-                                                                                                <img style="float: right; height: auto; width: 230px;"
-                                                                                                    src="/images/work_pic.svg">
-                                                                                                <% } %>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+        
+                                                        <% var work = cv.workStartDate + '';
+                                                        var workData = work.split(",");
+                                                        if (workData[1] != null){
+                                                        var i; 
+                                                        for (i = 1; i <= workData.length + 1; i++) { %>
+                                                        <a class="slider-btn" href="#1_slide-<%=i%>"><%=i%></a>
+                                                        <% } %>
+                                                        <br><button id="slidebtn_1" class="btn" style="display: none; color: green;" onclick="leaveSlider('slidebtn_1')">✓ Finish Managing The Slideshow</button>
+                                                        <button id="slideDelBtn_1" class="btn" style="display: none; color: red;" onclick="delSlider('slidemain_1')">✕ Delete The Slideshow</button>
+        
+                                                        <div class="slides" style="color: black;">
+                                                            <% var p;
+                                                            for (p = 0; p < workData.length; p++) { %>
+                                                            <div id="1_slide-<%=p+1%>">
+                                                                <div id="slide-<%=p+1%>_1_content" class="container" onclick="clickSlider('slide-<%=p+1%>_1_content')">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4" contenteditable="false">
+                                                                            <div class="py-4"></div>
+                                                                            <span><b>From: </b><br>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="15" height="15"
+                                                                                    style="color: rgb(0, 4, 255)"
+                                                                                    fill="currentColor"
+                                                                                    class="bi bi-calendar svgColor"
+                                                                                    viewBox="0 0 16 16">
+                                                                                    <path
+                                                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                                </svg>
+                                                                                <%= cv.workStartDate[p] %><br>
+                                                                                | <br>
+                                                                                <b>To: </b><br>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="16" height="16"
+                                                                                    style="color: rgb(0, 4, 255)"
+                                                                                    fill="currentColor"
+                                                                                    class="bi bi-calendar svgColor"
+                                                                                    viewBox="0 0 16 16">
+                                                                                    <path
+                                                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                                </svg>
+                                                                                <%= cv.workEndDate[p] %>
+                                                                            </span>
+                                                                            <div class="py-4"></div>
                                                                         </div>
-                                                                        <% } %>
-                                                                            <div id="slide-<%=p+1%>">
-                                                                                <div class="container field">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-12"
-                                                                                            contenteditable="false">
-                                                                                            <div class="py-3"></div>
-                                                                                            <h3>Hope I can include
-                                                                                                the working
-                                                                                                experience in your
-                                                                                                company in my CV in
-                                                                                                the future :) </h3>
-                                                                                        </div>
-                                                                                        <div class="col-sm-12 py-4">
-                                                                                            <img class="resize-drag"
-                                                                                                style="height: auto; width: 500px;"
-                                                                                                src='/images/work.jpg'
-                                                                                                contenteditable="false">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+
+                                                                        <div class="col-sm-8" style="float:left; text-align: left;" contenteditable="false">
+                                                                            <div class="py-4"></div> 
+                                                                            <span><b>Company: </b></span> 
+                                                                            <br>
+                                                                            <p>
+                                                                                <%= cv.company[p] %>
+                                                                            </p>        
+                                                                            <br><br>
+        
+                                                                            <span><b>Title / Position: </b></span>
+                                                                            <br>
+                                                                            <p>
+                                                                                <%= cv.position[p] %>
+                                                                            </p>        
+                                                                            <br><br>
+                                                                            
+                                                                            <span><b>About The Job: </b></span>
+                                                                            <br>
+                                                                            <p>
+                                                                                <%= cv.workDescription[p] %>
+                                                                            </p>
+                                                                            <br>
+                                                                            
+                                                                            <% if(cv.reference[p] != ''){ %>
+                                                                            <br>
+                                                                            <span><b>Reference Letter: </b></span>
+                                                                            <br>        
+                                                                            <a class="resize-drag field" download="reference_<%=p+1%>" href="<%= cv.reference[p] %>" target="_blank">
+                                                                                Download my Reference Letter here
+                                                                            </a>
+                                                                            <% }else{ %>
+                                                                            <img class="resize-drag field" style="float: right; height: auto; width: 230px;" src="/images/work_pic.svg">
+                                                                            <% } %>
+                                                                            <div class="py-4"></div>
+
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <% } else { %>
-                                                                    <a class="slider-btn" href="#slide-1">1</a>
-                                                                    <a class="slider-btn" href="#slide-2">2</a>
-
-                                                                    <div class="slides" style="color: black;"
-                                                                        contenteditable="false">
-                                                                        <div id="slide-1">
-                                                                            <div class="container field">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-4 py-4">
-                                                                                        <span><b>From: </b><br>
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                width="15" height="15"
-                                                                                                style="color: rgb(0, 4, 255)"
-                                                                                                fill="currentColor"
-                                                                                                class="bi bi-calendar svgColor"
-                                                                                                viewBox="0 0 16 16">
-                                                                                                <path
-                                                                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                                                                            </svg>
-                                                                                            <%= cv.workStartDate %>
-                                                                                                <br>
-                                                                                                | <br>
-                                                                                                <b>To: </b><br>
-                                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                    width="16"
-                                                                                                    height="16"
-                                                                                                    style="color: rgb(0, 4, 255)"
-                                                                                                    fill="currentColor"
-                                                                                                    class="bi bi-calendar svgColor"
-                                                                                                    viewBox="0 0 16 16">
-                                                                                                    <path
-                                                                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                                                                                </svg>
-                                                                                                <%= cv.workEndDate %>
-                                                                                        </span>
-                                                                                    </div>
-
-                                                                                    <div class="col-sm-8 py-4">
-                                                                                        <span style="float: left;"><b>Company:
-                                                                                            </b></span>
-                                                                                        <br>
-                                                                                        <p style="text-align: left;">
-                                                                                            <%= cv.company %>
-                                                                                        </p>
-                                                                                        <br><br>
-
-                                                                                        <span style="float: left;"><b>Title
-                                                                                                / Position:
-                                                                                            </b></span>
-                                                                                        <br>
-                                                                                        <p style="text-align: left;">
-                                                                                            <%= cv.position %>
-                                                                                        </p>
-                                                                                        <br><br>
-
-                                                                                        <span style="float: left;"><b>About
-                                                                                                The Job: </b></span>
-                                                                                        <br>
-                                                                                        <p style="text-align: left;">
-                                                                                            <%= cv.workDescription %>
-                                                                                        </p>
-                                                                                        <br>
-
-                                                                                        <% if(cv.reference !='' ){ %>
-                                                                                            <br>
-                                                                                            <span
-                                                                                                style="float: left;"><b>Reference
-                                                                                                    Letter:
-                                                                                                </b></span>
-                                                                                            <br>
-                                                                                            <a style="float: left;"
-                                                                                                download="reference_1"
-                                                                                                href="<%= cv.reference %>"
-                                                                                                target="_blank">
-                                                                                                Download my
-                                                                                                Reference Letter
-                                                                                                here
-                                                                                            </a>
-                                                                                            <% }else{ %>
-                                                                                                <img style="float: right; height: auto; width: 230px;"
-                                                                                                    src="/images/work_pic.svg">
-                                                                                                <% } %>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                            </div>
+                                                            <% } %>
+                                                            <div id="1_slide-<%=p+1%>">
+                                                                <div id="slide-<%=p+1%>_1_content" class="container" onclick="clickSlider('slide-<%=p+1%>_1_content')">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12" contenteditable="false">
+                                                                            <div class="py-3"></div>
+                                                                            <h3>Hope I can include the working experience in your company in my CV in the future :) </h3>
                                                                         </div>
-                                                                        <div id="slide-2">
-                                                                            <div class="container field">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-12">
-                                                                                        <div class="py-3"></div>
-                                                                                        <h3>Hope I can include the
-                                                                                            working experience in
-                                                                                            your company in my CV in
-                                                                                            the future :) </h3>
-                                                                                    </div>
-                                                                                    <div class="col-sm-12 py-4">
-                                                                                        <img class="resize-drag"
-                                                                                            style="height: auto; width: 500px;"
-                                                                                            src='/images/work.jpg'
-                                                                                            contenteditable="false">
-                                                                                    </div>
-                                                                                </div>
+                                                                        <div class="col-sm-12">
+                                                                            <div class="py-4"></div>
+                                                                            <img class="resize-drag" style="height: auto; width: 500px;"
+                                                                            src='/images/work.jpg'>
+                                                                            <div class="py-4"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <% } else { %>
+                                                            <a class="slider-btn" href="#1_slide-1">1</a>
+                                                            <a class="slider-btn" href="#1_slide-2">2</a>
+                                                            <br><button id="slidebtn_1" class="btn" style="display: none; color: green;" onclick="leaveSlider('slidebtn_1')">✓ Finish Managing The Slideshow</button>
+                                                            <button id="slideDelBtn_1" class="btn" style="display: none; color: red;" onclick="delSlider('slidemain_1')">✕ Delete The Slideshow</button>
+                                                              
+                                                            <div class="slides" style="color: black;">
+                                                                <div id="1_slide-1">
+                                                                    <div id="slide-1_1_content" class="container" onclick="clickSlider('slide-1_1_content')">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4" contenteditable="false">
+                                                                                <div class="py-4"></div>
+                                                                                <span><b>From: </b><br>
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                        width="15" height="15"
+                                                                                        style="color: rgb(0, 4, 255)"
+                                                                                        fill="currentColor"
+                                                                                        class="bi bi-calendar svgColor"
+                                                                                        viewBox="0 0 16 16">
+                                                                                        <path
+                                                                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                                    </svg>
+                                                                                    <%= cv.workStartDate %><br>
+                                                                                    | <br>
+                                                                                    <b>To: </b><br>
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                        width="16" height="16"
+                                                                                        style="color: rgb(0, 4, 255)"
+                                                                                        fill="currentColor"
+                                                                                        class="bi bi-calendar svgColor"
+                                                                                        viewBox="0 0 16 16">
+                                                                                        <path
+                                                                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                                                                    </svg>
+                                                                                    <%= cv.workEndDate %>
+                                                                                </span>
+                                                                                <div class="py-4"></div>
+                                                                            </div>
+            
+                                                                            <div class="col-sm-8" style="float: left; text-align: left;" contenteditable="false">
+                                                                                <div class="py-4"></div>
+                                                                                <span><b>Company: </b></span> 
+                                                                                <br>
+                                                                                <p>
+                                                                                    <%= cv.company %>
+                                                                                </p>        
+                                                                                <br><br>
+        
+                                                                                <span><b>Title / Position: </b></span>
+                                                                                <br>
+                                                                                <p>
+                                                                                    <%= cv.position %>
+                                                                                </p>        
+                                                                               <br><br>
+        
+                                                                                <span><b>About The Job: </b></span>
+                                                                                <br>
+                                                                                <p>
+                                                                                    <%= cv.workDescription %>
+                                                                                </p>
+                                                                               <br>
+        
+                                                                               <% if(cv.reference != ''){ %>
+                                                                                <br>
+                                                                                <span><b>Reference Letter: </b></span>
+                                                                                <br>        
+                                                                                <a class="resize-drag field" download="reference_1" href="<%= cv.reference %>" target="_blank">
+                                                                                    Download my Reference Letter here
+                                                                                </a>
+                                                                                <% }else{ %>
+                                                                                <img class="field resize-drag" style="float: right; height: auto; width: 230px;" src="/images/work_pic.svg">
+                                                                                <% } %>
+                                                                                <div class="py-4"></div>
+
+                                                                            </div>  
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="1_slide-2">
+                                                                    <div id="slide-2_1_content" class="container" onclick="clickSlider('slide-2_1_content')">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12" contenteditable="false">
+                                                                                <div class="py-3"></div>
+                                                                                <h3>Hope I can include the working experience in your company in my CV in the future :) </h3>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="py-4"></div>
+                                                                                <img class="field resize-drag" style="height: auto; width: 500px;"
+                                                                                src='/images/work.jpg' contenteditable="false">
+                                                                                <div class="py-4"></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <% } %>
-
+                                                                </div>
+                                                            </div>
+                                                        <% } %>
+                                                                
                                                     </div>
                                                 </div>
                                             </div>
-
+        
                                             <div class="py-4"></div>
                                         </div>
+                                      </div>
                                     </div>
                                     <% } %>
 
@@ -685,8 +650,8 @@
                                             <div style="display: none;" id="Skill"
                                                 class="animate animate__animated animate__fadeInRight new-page card shadow mb-4">
 
-                                                <div class="container field py-3 resize-drag"
-                                                    style="font-size: 2rem; color: black;" contenteditable="false">
+                                                <div class="py-3 ml-4 resize-drag" style="font-size: 2rem; color: rgb(0, 0, 0);"
+                                                    contenteditable="false">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                         fill="currentColor" class="bi bi-screwdriver svgColor" style="color:rgb(0, 4, 255)"
                                                         viewBox="0 0 16 16">
@@ -779,8 +744,8 @@
                                                 <div style="display: none;" id="Language"
                                                     class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
 
-                                                    <div class="container field py-3 resize-drag"
-                                                        style="font-size: 2rem; color: black;" contenteditable="false">
+                                                    <div class="py-3 ml-4 resize-drag" style="font-size: 2rem; color: rgb(0, 0, 0);"
+                                                        contenteditable="false">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                             fill="currentColor" class="bi bi-globe svgColor" style="color:rgb(0, 4, 255)" viewBox="0 0 16 16">
                                                             <path

@@ -1780,7 +1780,7 @@
             //get the theme color of the bar
             var color = document.getElementById("themeColor").style.color;
             //add html
-            document.getElementById(contentid).innerHTML += '<div class="field resize-drag row"><div class="col-sm-12" contenteditable=""><div class="mb-1" style="color: black;">' + item + '<span style="float: right;">' + percent + '%</span></div><div class="progress progress mb-2"><div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:' + percent + '%; background-color:' + color + '" aria-valuenow="20"></div></div></div></div>';
+            document.getElementById(contentid).innerHTML += '<div class="field resize-drag row"><div class="col-sm-12" contenteditable=""><div class="mb-1" style="color: black;">' + item + '<span style="float: right;">' + percent + '%</span></div><div class="progress mb-2"><div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:' + percent + '%; background-color:' + color + '" aria-valuenow="20"></div></div></div></div>';
         }
 
         //reload CV for updated code
@@ -1831,10 +1831,11 @@
             return;
         }
         //prepare for the new slider id
-        var idNum = document.querySelectorAll('.slider').length;
+        var idNum = document.querySelectorAll('.slideshow').length + 1;
+        alert(idNum)
         // add HTML to current page
         var contentid = sessionStorage.getItem('currentPage');
-        document.getElementById(contentid).innerHTML += '<div id="slidemain_' + idNum + '" class="container"><div class="row resize-drag"><div class="col-sm-12"><div class="slider">' + loopForSlider(pageNum, idNum) + '<br><button id="slidebtn_' + idNum + '" class="btn" style="display: none; color: green;" onclick="leaveSlider(\'\slidebtn_' + idNum + '\'\)">✓ Finish Managing The Slideshow</button><button id="slideDelBtn_' + idNum + '" class="btn ml-xl" style="display: none; color: red;" onclick="delSlider(\'\slidemain_' + idNum + '\'\)">✕ Delete The Slideshow</button><div class="slides" style="color: black;" contenteditable>' + loopForSliderContent(pageNum, idNum) + '</div></div></div></div></div>';
+        document.getElementById(contentid).innerHTML += '<div class="slideshow"><div id="slidemain_' + idNum + '" class="container"><div class="row resize-drag"><div class="col-sm-12"><div class="slider">' + loopForSlider(pageNum, idNum) + '<br><button id="slidebtn_' + idNum + '" class="btn" style="display: none; color: green;" onclick="leaveSlider(\'\slidebtn_' + idNum + '\'\)">✓ Finish Managing The Slideshow</button><button id="slideDelBtn_' + idNum + '" class="btn" style="display: none; color: red;" onclick="delSlider(\'\slidemain_' + idNum + '\'\)">✕ Delete The Slideshow</button><div class="slides" style="color: black;" contenteditable>' + loopForSliderContent(pageNum, idNum) + '</div></div></div></div></div></div>';
         //reload CV for updated code
         reload(reloadStatus)
     }
@@ -1856,7 +1857,7 @@
         var i;
         var contentHTML = '';
         for (i = 1; i <= pageNum; i++) {
-            contentHTML += '<div id="' + idNum + '_slide-' + i + '"><div id="slide-' + i + '_' + idNum + '_content" style="min-height:200px; text-align:left;" contenteditable onclick="clickSlider(\'\slide-' + i + '_' + idNum + '_content\'\, )"></div></div>';
+            contentHTML += '<div id="' + idNum + '_slide-' + i + '"><div id="slide-' + i + '_' + idNum + '_content" style="min-height:200px; text-align:left;" contenteditable onclick="clickSlider(\'\slide-' + i + '_' + idNum + '_content\'\)"></div></div>';
         }
         return contentHTML;
     }
@@ -2305,7 +2306,9 @@
         document.getElementById("pageAlert").innerHTML = '';
         //get the theme color
         var themeColor;
-        themeColor = document.getElementById('darkerColor').style.color;
+        document.querySelectorAll(".darkerColor").forEach(ele => {
+            themeColor = ele.style.color;
+        })
         //get the present button & card color
         var btnColor = document.getElementById("btnColor").value;
         var cardColor = document.getElementById("cardColor").value;
@@ -2313,7 +2316,7 @@
         if (template == "template1" || template == "template2") {
             document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn fieldbar' onclick='showContent(this.value)' style='background-color: " + btnColor + "'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
         } else if (template == "template3") {
-            document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-2'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
+            document.getElementById("fieldbar").innerHTML += "<li id='" + newPage + "btn' class='nav-item mx-1 py-1'> <button type='button' value='" + newPage + "' class='btn content-btn' onclick='showContent(this.value)'> <b class='darkerColor' style='color:" + themeColor + "'>" + newPage + "</b> </button> </li>";
             var newHeight = parseInt(document.getElementById("fieldbarCard").style.height, 10) + 25;
             document.getElementById("fieldbarCard").style.height = newHeight.toString() + 'px';
         }
