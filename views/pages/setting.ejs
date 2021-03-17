@@ -1,0 +1,155 @@
+<div class="py-3"></div>
+
+<div class="container-fluid container">
+    <span class="h1">Setting</span>
+    <hr class="sidebar-divider">
+    <div class="py-3"></div>
+
+    <div class="row">
+        <!-- Profile -->
+        <div class="col-sm-12 col-lg-4">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <!-- Show Profile Pic -->
+                    <img id="showImg" style="height:220px; width:220px" class="rounded-circle" <% if (person.profile==''
+                        ){ %>src="/images/avatar.png"<% }else{ %>src="<%=person.profile%>"<%}%>>
+                </div>
+                <div class="col-sm-2"></div>
+
+                <div class="col-sm-12 py-3">
+                    <label class="file">
+                        <!-- input for upload file -->
+                        <input type="file" accept="image/*" onchange="uploadFile()">
+                        <span id='imageFileContent' class="file-custom">Choose a profile...</span>
+                        <!-- input for store file -->
+                        <input type="hidden" id="profile" value="<%=person.profile%>">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- End of Profile -->
+
+        <!-- Other Info -->
+        <div class="col-sm-12 col-lg-8">
+            
+            <div class="row" style="color: #a570a7;">
+
+                <!-- firstname -->
+                <div class="col-sm-12 col-lg-6">
+                    First Name
+                    <input id="firstname" type="text" class="form-control form-control-user"
+                        value="<%=person.firstName%>" required>
+                </div>
+
+                <!-- lastname -->
+                <div class="col-sm-12 col-lg-6">
+                    Last Name
+                    <input id="lastname" type="text" class="form-control form-control-user" value="<%=person.lastName%>"
+                        required>
+                </div>
+
+                <!-- new password -->
+                <div class="col-sm-8 col-lg-6 py-5">
+                    Change New Password
+                    <input id="password1" type="password" class="form-control form-control-user" required>
+
+                </div>
+
+                <!-- confirm of new password -->
+                <div class="col-sm-8 col-lg-6 py-5">
+                    Confirm New Password
+                    <input id="password2" type="password" class="form-control form-control-user">
+                </div>
+
+                <!-- email -->
+                <div class="col-sm-12">
+                    Email Address
+                    <input id="email" type="email" class="form-control form-control-user" value="<%=person.email%>"
+                        required>
+                </div>
+
+            </div>
+        </div>
+        <!-- End of Other Info -->
+
+    </div>
+
+    <!-- button for save -->
+    <div class="py-3"></div>
+    <button class="btn main-create-btn" style="float: right; width: 100px; height: 50px;"
+        onclick="update('<%=person.password%>')">SAVE</button>
+    <div class="py-3"></div>
+    <!-- End of button for save -->
+
+</div>
+
+<div class="py-3"></div>
+
+<script>
+    ///////for update data
+    async function update(currentPassword) {
+        //check whether the new password is entered correctly
+        var newPassword = document.getElementById('password1').value;
+        var confirmPassword = document.getElementById('password2').value;
+        if (newPassword != confirmPassword) {
+            alert('Two password do not match')
+            return;
+        }
+        //check whether the user/admin wants to change the current password
+        if (newPassword == '') {
+            newPassword = currentPassword;
+        }
+
+        var data = JSON.stringify({
+            firstName: document.getElementById('firstname').value,
+            lastName: document.getElementById('lastname').value,
+            email: document.getElementById('email').value,
+            profile: document.getElementById('profile').value,
+            password: newPassword
+        });
+
+        var response = await fetch("/setting", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else if (response.status == 401) {
+            var data = await response.text();   // for res.send()
+            alert("⚠️ " + data + " ⚠️");
+        } else {
+            alert(response.statusText);
+        }
+    };
+    ///////
+
+
+    ///////for upload file
+    function uploadFile() {
+        const file = event.target.files[0];
+
+        if (!file.type.startsWith('image/')) return;
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            //for input
+            document.getElementById('profile').value = e.target.result;
+            //for showing
+            document.getElementById('showImg').src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+        document.getElementById('imageFileContent').innerHTML = "1 file is selected.";
+    }
+    ///////
+</script>

@@ -30,7 +30,7 @@ module.exports.routes = {
   "/merge_image": { view: "pages/users/mergeImage" },
   "/webcam_record": { view: "pages/users/webcamRecord" },
   "/webcam_capture": { view: "pages/users/webcamCapture" },
-  "/chart": {view: "pages/users/chart"},
+  "/chart": { view: "pages/users/chart" },
   "/finish": { view: "pages/users/finish" },
 
   /***************************************************************************
@@ -49,6 +49,8 @@ module.exports.routes = {
   "POST /login": "PersonController.login",
   "POST /logout": "PersonController.logout",
   "POST /signup": "PersonController.signup",
+  "GET /setting": "PersonController.setting",
+  "POST /setting": "PersonController.setting",
 
   "GET /main": "UserController.main",
   "GET /editCV/:id": "CVController.editCV",
@@ -70,4 +72,4 @@ module.exports.routes = {
   "POST /cv/submitCVCode": "CVController.submitCVCode",
   "POST /cv/passStep": "CVController.passStep",
   "POST /cv/reloadCV": "CVController.reloadCV",
-}
+};

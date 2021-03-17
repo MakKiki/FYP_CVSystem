@@ -30,6 +30,10 @@ module.exports = {
       type: "string",
     },
 
+    profile : {
+      type: "string",
+    },
+
     role: {
       type: "string",
     },
