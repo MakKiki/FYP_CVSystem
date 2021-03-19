@@ -6,7 +6,14 @@
  */
 
 module.exports = {
-  
+  //main page
+  main: async function (req, res) {
+    if (req.method == "GET") {
+      var models = await User.find();
 
+      if (!models) models = null;
+
+      return res.view("pages/admin/main", { users: models });
+    }
+  },
 };
-

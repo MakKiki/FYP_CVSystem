@@ -33,7 +33,13 @@ module.exports.bootstrap = async function () {
 
   if ((await Admin.count()) == 0) {
     await Admin.createEach([
-      { email: "admin@gmail.com", password: "123456", role: "admin" },
+      {
+        email: "admin@gmail.com",
+        password: "123456",
+        firstName: "Admin",
+        lastName: "",
+        role: "admin",
+      },
     ]);
   }
 

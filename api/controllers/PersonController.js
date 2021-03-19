@@ -40,18 +40,26 @@ module.exports = {
         req.session.progressingCV = null;
         req.session.reloadCV = "";
         req.session.reloadStatus = "false";
+
+        sails.log("[Session] ", req.session);
+
+        if (req.wantsJSON) {
+          return res.json({ url: "/main" }); // for ajax request
+        } else {
+          return res.redirect("/main"); // for normal request
+        }
       }
 
       if (person.role == "admin") {
         req.session.adminID = person.id;
-      }
 
-      sails.log("[Session] ", req.session);
+        sails.log("[Session] ", req.session);
 
-      if (req.wantsJSON) {
-        return res.json({ url: "/main" }); // for ajax request
-      } else {
-        return res.redirect("/main"); // for normal request
+        if (req.wantsJSON) {
+          return res.json({ url: "/admin_main" }); // for ajax request
+        } else {
+          return res.redirect("/admin_main"); // for normal request
+        }
       }
     });
   },

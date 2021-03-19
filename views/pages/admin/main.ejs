@@ -1,0 +1,87 @@
+<div class="py-3"></div>
+
+<div class="container-fluid container">
+    <!-- Page Heading -->
+    <span class="h1">User List</span>
+    <hr class="sidebar-divider">
+    <div class="py-2"></div>
+
+    <!-- search field -->
+    <div class="row">
+        <div class="col-lg-4 col-sm-12">
+            <input id="searchInput" type="text" class="form-control form-control-user" placeholder="🔍 Search..."
+                onkeyup="search()">
+        </div>
+    </div>
+    <div class="py-2"></div>
+
+    <!-- user list table -->
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th style="width: 10%;">Profile</th>
+                <th style="width: 30%;">Email Address</th>
+                <th style="width: 20%;">First Name</th>
+                <th style="width: 20%;">Last Name</th>
+                <th style="width: 20%;">Function</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% var i=0; users.forEach( function(user) { i++; %>
+                <tr class="user_row">
+                    <td class="text-center">
+                        <img class="img-profile rounded-circle" style="width: 50px; height: 50px;" <%if(user.profile==''
+                            ) {%>src="/images/avatar.png"
+                        <%}else{%>src="<%=user.profile%>"<%}%>>
+                    </td>
+                    <td class="userlist_content">
+                        <%=user.email%>
+                    </td>
+                    <td class="userlist_content">
+                        <%=user.firstName%>
+                    </td>
+                    <td class="userlist_content">
+                        <%=user.lastName%>
+                    </td>
+                    <td>
+                        <a class="btn purple-btn" style="width: 200px;" href="">Edit</a>
+                        <a class="btn btn-danger ml-4" href="">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+    <!-- End of user list table -->
+</div>
+
+
+<script>
+     ///////for search
+    function search() {
+        //get the search word
+        var input = document.getElementById("searchInput").value.toUpperCase();
+
+        //get all the user row
+        var user_row = document.querySelectorAll(".user_row");
+
+        //for each of the user row
+        for (j = 0; j < user_row.length; j++) {
+            //get the user data (array)
+            var user_data = user_row[j].querySelectorAll(".userlist_content");
+            //for counting the user data length
+            var i = 0;
+            //for judging when to stop the loop
+            var show = false;
+
+            while (i < user_data.length && show == false) {
+                if (user_data[i].innerText.toUpperCase().indexOf(input) > -1) {
+                    user_row[j].style.display = "";
+                    show = true;
+                } else {
+                    user_row[j].style.display = "none";
+                    i++;
+                }
+            }
+        }
+    }
+</script>

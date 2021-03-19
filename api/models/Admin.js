@@ -22,6 +22,18 @@ module.exports = {
       required: true,
     },
 
+    firstName: {
+      type: "string",
+    },
+
+    lastName: {
+      type: "string",
+    },
+
+    profile: {
+      type: "string",
+    },
+
     role: {
       type: "string",
     },

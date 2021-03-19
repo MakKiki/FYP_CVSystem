@@ -52,6 +52,8 @@ module.exports.routes = {
   "GET /setting": "PersonController.setting",
   "POST /setting": "PersonController.setting",
 
+  "GET /admin_main": "AdminController.main",
+
   "GET /main": "UserController.main",
   "GET /editCV/:id": "CVController.editCV",
   "DELETE /deleteCV/:id": "CVController.deleteCV",
