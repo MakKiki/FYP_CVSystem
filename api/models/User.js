@@ -38,18 +38,7 @@ module.exports = {
       type: "string",
     },
 
-    progressingCV: {
-      type: "json",
-      columnType: "array",
-    },
 
-    CV: {
-      type: "string",
-    },
-
-    link: {
-      type: "string",
-    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

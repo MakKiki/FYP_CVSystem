@@ -72,7 +72,7 @@
 
                     <div class="col-sm-12 py-1">
                       <!-- Continue / Edit -->
-                      <button class="btn main-btn" onclick="window.location.href='/editCV/<%= model.id %>'">
+                      <a class="btn main-btn" href='/editCV/<%= model.id %>'>
                         <svg width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"
                           class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -83,7 +83,7 @@
                         <% if (model.step !='finish' ) { %><span class="ml-1">Continue</span>
                           <% } else { %><span class="ml-1">Edit</span>
                             <% } %>
-                      </button>
+                      </a>
                     </div>
 
                     <div class="col-sm-12 py-1">

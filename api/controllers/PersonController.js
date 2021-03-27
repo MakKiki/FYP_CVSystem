@@ -121,24 +121,24 @@ module.exports = {
           repeat = await Admin.findOne({ email: req.body.email });
         } else {
           //repeated email in User
-          return res.status(401).send("This email has been registrated");
+          return res.status(401).send("This email has been registered");
         }
         //Conflict with Admin
         if (repeat)
-          return res.status(401).send("This email has been registrated");
+          return res.status(401).send("This email has been registered");
       } else {
         //no repeated
         //check whether conflicted with Admin
         repeat = await Admin.findOne({ email: req.body.email });
         //Conflict with Admin
         if (repeat)
-          return res.status(401).send("This email has been registrated");
+          return res.status(401).send("This email has been registered");
       }
     } else {
       //for admin (No check admin because only 1 admin exists)
       //repeated with User
       if (repeat)
-        return res.status(401).send("This email has been registrated");
+        return res.status(401).send("This email has been registered");
     }
 
     if (req.session.role == "user") {
