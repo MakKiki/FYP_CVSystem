@@ -24,7 +24,8 @@
       <div class="container">
 
         <span class="h1">My CV</span>
-        <button type="btn" class="btn main-create-btn" style="float: right; height: 50px; width: 180px;">+ Create New
+        <button type="btn" class="btn main-create-btn" style="float: right; height: 50px; width: 180px;"
+          onclick="window.location.href='/editCV/null'">+ Create New
           CV</button>
         <hr class="sidebar-divider">
         <div class="py-2"></div>
@@ -33,7 +34,7 @@
         <div class="row">
 
           <!-- Loop the cv for shown -->
-          <% var i=0; cv.forEach( function(model) { i++; %>
+          <% cv.forEach( function(model) { %>
             <div class="col-lg-6 col-sm-12">
 
               <div class="row">
@@ -42,7 +43,7 @@
 
                   <div class="row" style="color: #a570a7">
                     <div class="col-sm-12 py-3">
-                      <h5 class="text-center">Resume <%=i%>
+                      <h5 class="text-center">Resume <%=model.id%>
                       </h5>
                     </div>
 
@@ -157,9 +158,10 @@
                           </svg>
                           <span class="ml-1">Updated At </span>
                         </div>
-                        <div style="font-size:small"> The recent updated date is 
-                            <%= new Date(model.updatedAt).toLocaleDateString()%> at <%=new Date(model.updatedAt).toLocaleTimeString()%>.
-                            </div>
+                        <div style="font-size:small"> The recent updated date is
+                          <%= new Date(model.updatedAt).toLocaleDateString()%> at <%=new
+                              Date(model.updatedAt).toLocaleTimeString()%>.
+                        </div>
                       </div>
                     </div>
 
@@ -219,6 +221,7 @@
 
       if (response.ok) {
         var data = await response.json();
+        alert(data.message)
         window.location = data.url;
       } else {
         alert(response.statusText);

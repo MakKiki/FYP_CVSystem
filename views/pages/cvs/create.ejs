@@ -232,10 +232,15 @@
             </div>
 
             <div class="py-2">
-                <button onclick="showAlert('submitModal')" class="btn btn-danger" style="width: 100%">Finish</button>
+                <button onclick="preview('<%=req.session.reloadStatus%>')" class="btn btn-info"
+                  style="width: 100%">Preview</button>
+            </div>
+        
+            <div>
+                <button onclick="showAlert('submitModal')" class="btn btn-success" style="width: 100%">Finish</button>
             </div>
 
-            <div>
+            <div class="py-2">
                 <button onclick="showAlert('passModal')" class="btn btn-dark" style="width: 100%">Pass This
                     Step</button>
             </div>
@@ -516,7 +521,7 @@
             </div>
 
             <div class="py-2">
-                <button onclick="showAlert('submitModal')" class="btn btn-danger" style="width: 100%">Finish</button>
+                <button onclick="showAlert('submitModal')" class="btn btn-success" style="width: 100%">Finish</button>
             </div>
 
             <div>
@@ -1250,10 +1255,6 @@
 <!-- End of Pass Modal -->
 
 
-<!-- Scroll to Top Button-->
-<!-- <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a> -->
 
 
 <!-- JavaScript -->

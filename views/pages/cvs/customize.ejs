@@ -261,11 +261,16 @@
       </div>
 
       <div class="py-2">
-        <button onclick="submitCV('<%=req.session.reloadStatus%>')" class="btn btn-danger"
-          style="width: 100%">Finish</button>
+        <button onclick="preview('<%=req.session.reloadStatus%>')" class="btn btn-info"
+          style="width: 100%">Preview</button>
       </div>
 
       <div>
+        <button onclick="submitCV('<%=req.session.reloadStatus%>')" class="btn btn-success"
+          style="width: 100%">Finish</button>
+      </div>
+
+      <div class="py-2">
         <button onclick="pass()" class="btn btn-dark" style="width: 100%">Pass This Step</button>
       </div>
 

@@ -20,7 +20,7 @@ module.exports = {
     if (req.method == "GET") {
       if (req.params.id == "null") {
         req.session.progressingCV = null;
-        return res.view("pages/users/inputData");
+        return res.view("pages/cvs/inputData");
       }
 
       var model = await CV.findOne(req.params.id);
@@ -29,9 +29,9 @@ module.exports = {
       req.session.progressingCV = model;
 
       if (model.step == "step1" || model.step == "finish") {
-        return res.view("pages/users/inputData");
+        return res.view("pages/cvs/inputData");
       } else {
-        return res.view("pages/users/" + model.step);
+        return res.view("pages/cvs/" + model.step);
       }
     }
   },
@@ -42,7 +42,7 @@ module.exports = {
       var model = await CV.findOne(req.params.id);
       if (!model) return res.notFound();
 
-      return res.view("pages/users/CV", { cv: model });
+      return res.view("pages/cvs/CV", { cv: model });
     }
   },
 
@@ -64,7 +64,7 @@ module.exports = {
 
   //save cv data
   saveData: async function (req, res) {
-    if (req.method == "GET") return res.view("pages/users/inputData");
+    if (req.method == "GET") return res.view("pages/cvs/inputData");
 
     req.body.step = "step1";
     req.body.belongTo = req.session.userID;
@@ -126,7 +126,7 @@ module.exports = {
 
   //submit cv data
   submitData: async function (req, res) {
-    if (req.method == "GET") return res.view("pages/users/inputData");
+    if (req.method == "GET") return res.view("pages/cvs/inputData");
 
     if (!req.body.CV) return res.badRequest("Form-data not received.");
 
@@ -181,7 +181,7 @@ module.exports = {
     req.session.progressingCV = req.body.CV;
 
     //sails.log("[Session] ", req.session);
-    return res.view("pages/users/step2");
+    return res.view("pages/cvs/step2");
   },
 
   //show template1
@@ -191,7 +191,7 @@ module.exports = {
 
       if (!model) return res.notFound();
 
-      return res.view("pages/users/template1", { cv: model });
+      return res.view("pages/cvs/template1", { cv: model });
     }
   },
 
@@ -202,7 +202,7 @@ module.exports = {
 
       if (!model) return res.notFound();
 
-      return res.view("pages/users/template2", { cv: model });
+      return res.view("pages/cvs/template2", { cv: model });
     }
   },
 
@@ -213,7 +213,7 @@ module.exports = {
 
       if (!model) return res.notFound();
 
-      return res.view("pages/users/template3", { cv: model });
+      return res.view("pages/cvs/template3", { cv: model });
     }
   },
 
@@ -245,7 +245,7 @@ module.exports = {
 
       if (!model) return res.notFound();
 
-      return res.view("pages/users/customize", { cv: model });
+      return res.view("pages/cvs/customize", { cv: model });
     }
   },
 
@@ -256,7 +256,7 @@ module.exports = {
 
       if (!model) return res.notFound();
 
-      return res.view("pages/users/create", { cv: model });
+      return res.view("pages/cvs/create", { cv: model });
     }
   },
 

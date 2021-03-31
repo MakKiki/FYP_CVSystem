@@ -22,7 +22,7 @@ module.exports = {
 
       if (!models) models = null;
 
-      return res.view("pages/users/main", { cv: models });
+      return res.view("pages/cvs/main", { cv: models });
     }
   },
 

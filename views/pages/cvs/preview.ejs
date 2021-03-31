@@ -1,0 +1,89 @@
+<!-- Content Wrapper-->
+<div id="content-wrapper">
+    <!-- color selection for the template -->
+    <div class="row py-2">
+        <div class="col-sm-3">
+            <div class="custom-control custom-radio">
+                <span style="color:#81828b;"><b>Webpage Background Color</b></span>
+                <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
+                    <option value="Original">Original</option>
+                    <option value="bg-gradient-light">Light</option>
+                    <option value="bg-gradient-dark">Dark</option>
+                    <option value="bg-gradient-pink">Pink</option>
+                    <option value="bg-gradient-purple">Purple</option>
+                    <option value="bg-gradient-danger">Red</option>
+                    <option value="bg-gradient-primary">Blue</option>
+                    <option value="bg-gradient-warning">Yellow</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3">
+            <div class="custom-control custom-radio">
+                <span style="color: #81828b;"><b>Theme Color</b></span>
+                <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
+                    <option value="navy/rgb(0, 4, 255)/#4e73df/blue">Blue</option>
+                    <option value="rgb(196, 65, 95)/mediumvioletred/rgb(235, 155, 182)/pink">Pink</option>
+                    <option value="rgb(112, 0, 97)/#9954ad/#a570a7/purple">Purple</option>
+                    <option value="rgb(206, 65, 0)/#ff5100/#df7f31/orange">Orange</option>
+                    <option value="rgb(1, 80, 45)/#027c45/#4fb487/green">Green</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <br>
+            <button type="button" class="btn pink-btn" onclick="submitCV()">I want to choose this template</button>
+        </div>
+    </div>
+    <!-- end of the color selection -->
+    <div class="py-3"></div>
+</div>
+
+
+<script>
+    /////// change background color
+    function changeBackground(newBackground) {
+        if (newBackground == "Original") {
+            document.body.setAttribute("class", "");
+            document.body.style.backgroundColor = 'rgb(248, 248, 248)';
+            document.getElementById('webpageColor').value = 'rgb(248, 248, 248)';
+        } else {
+            document.body.setAttribute("class", newBackground);
+            document.getElementById('webpageColor').value = newBackground;
+        }
+    }
+    ///////
+
+
+    /////// change theme color
+    function changeColor(newTheme) {
+        var colorArray = newTheme.split("/");
+        document.querySelectorAll(".darkerColor").forEach(ele => {
+            ele.style.color = colorArray[0];
+        })
+        document.getElementById("darkerColor").value = colorArray[0];
+        document.querySelectorAll(".svgColor").forEach(ele => {
+            ele.style.color = colorArray[1];
+        })
+        document.querySelectorAll(".timelineCard").forEach(ele => {
+            ele.style.borderLeft = "var(--timelineCardBorderLeftWidth, 3px) solid " + colorArray[2];
+        })
+        document.querySelectorAll(".timeline").forEach(ele => {
+            ele.style.setProperty('--uiTimelineMainColor', 'var(--timelineMainColor, ' + colorArray[2] + ')');
+        })
+        document.querySelectorAll(".circular-chart").forEach(ele => {
+            ele.setAttribute("class", "circular-chart " + colorArray[3]);
+        })
+        document.querySelectorAll(".slider-btn").forEach(ele => {
+            ele.style.background = colorArray[2];
+        })
+        document.querySelectorAll(".progress-bar").forEach(ele => {
+            ele.style.backgroundColor = colorArray[2];
+        })
+        document.getElementById("themeColor").style.color = colorArray[2];
+        document.getElementById("progressCirColor").value = colorArray[3];
+    }
+    ///////
+</script>
