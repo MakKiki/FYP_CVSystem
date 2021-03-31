@@ -1,0 +1,364 @@
+<!-- Delete Account Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none; z-index: 1;" id="deleteUserModal"
+    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete this User?</h5>
+            </div>
+            <div class="modal-body">You cannot retrieve this user's account once you delete it.</div>
+            <div class="modal-footer">
+                <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showDeleteUserAlert()"
+                    data-dismiss="modal">Cancel</button>
+                <button id="alert-delete" class="btn btn-danger" type="button" onclick="deleteUser('<%=user.id%>')"
+                    data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Delete Account Modal -->
+
+
+<!-- button for go back to the user list -->
+<div class="py-1"></div>
+<a class="btn" href="/admin_main"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-door-open" viewBox="0 0 16 16">
+        <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+        <path
+            d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z" />
+    </svg>
+    Back to the user list page
+</a>
+<!-- End of the button -->
+
+
+<div class="py-3"></div>
+<div class="container-fluid container">
+    <!-- Account Details -->
+    <span class="h2" style="color: #a570a7">Account Details</span>
+
+    <!-- button -->
+    <!-- delete -->
+    <button class="btn btn-danger ml-4" style="float: right; width: 80px;"
+        onclick="showDeleteUserAlert()">DELETE</button>
+    <!-- save -->
+    <button class="btn pink-btn" style="float: right; width: 80px;"
+        onclick="update('<%=user.password%>', '<%=user.id%>')">SAVE</button>
+    <!-- End of button -->
+
+    <div class="py-2"></div>
+    <!-- outer row -->
+    <div class="row justify-content-center">
+        <!-- Profile -->
+        <div class="col-sm-12">
+            <img id="showImg" style="height:220px; width:220px;  display: block;margin-left: auto; margin-right: auto;"
+                class="rounded-circle" <% if (user.profile=='' ){ %>src="/images/avatar.png"<% }else{ %>src="
+                <%=user.profile%>"<%}%>>
+        </div>
+        <!-- End of Profile -->
+
+        <!-- Change Profile -->
+        <div class="col-lg-6 col-sm-12 py-3">
+            <label class="file">
+                <!-- input for upload file -->
+                <input type="file" accept="image/*" onchange="uploadFile()">
+                <span id='imageFileContent' class="file-custom">Choose a profile...</span>
+                <!-- input for store file -->
+                <input type="hidden" id="profile" value="<%=user.profile%>">
+            </label>
+        </div>
+        <!-- End of Change Profile -->
+
+        <!-- Basic Info -->
+        <div class="col-sm-12 py-2">
+
+            <div class="row justify-content-center">
+
+                <!-- created at -->
+                <div class="col-sm-12 " style="color: #a570a7;">
+                    <div class="py-2"></div>
+                    The account is created on <%= new Date(user.createdAt).toLocaleDateString()%> at <%=new
+                            Date(user.createdAt).toLocaleTimeString()%>.
+                </div>
+
+                <!-- user id -->
+                <div class="col-lg-4 col-sm-12 py-4">
+                    ID
+                    <input type="text" class="form-control form-control-user" value="<%=user.id%>" readonly>
+                </div>
+
+                <!-- firstname -->
+                <div class="col-lg-4 col-sm-12 py-4">
+                    First Name
+                    <input id="firstname" type="text" class="form-control form-control-user" value="<%=user.firstName%>"
+                        required>
+                </div>
+
+                <!-- lastname -->
+                <div class="col-lg-4 col-sm-12 py-4">
+                    Last Name
+                    <input id="lastname" type="text" class="form-control form-control-user" value="<%=user.lastName%>"
+                        required>
+                </div>
+
+                <!-- current password -->
+                <div class="col-lg-4 col-sm-12 py-4">
+                    Current Password
+                    <input class="form-control form-control-user" value="<%=user.password%>" readonly>
+                </div>
+
+                <!-- new password -->
+                <div class="col-lg-4 col-sm-12 py-4">
+                    Change New Password
+                    <input id="password1" type="password" class="form-control form-control-user">
+                </div>
+
+                <!-- confirm of new password -->
+                <div class="col-lg-4 col-sm-12 py-4">
+                    Confirm New Password
+                    <input id="password2" type="password" class="form-control form-control-user">
+                </div>
+
+                <!-- email -->
+                <div class="col-lg-8 col-sm-12 py-4">
+                    Email Address
+                    <input id="email" type="email" class="form-control form-control-user" value="<%=user.email%>"
+                        required>
+                </div>
+            </div>
+        </div>
+        <!-- End of Basic Info -->
+
+
+        <!-- CV Details -->
+        <div class="col-sm-12 py-5">
+            <div class="py-2"></div>
+            <span class="h2" style="color: #a570a7">CV Details</span>
+            <!-- button for create new CV -->
+            <button type="btn" class="btn main-create-btn" style="float: right; height: 50px; width: 180px;"
+                onclick="window.location.href='/editCV/null'">+ Create New
+                CV</button>
+            <!-- End of button for create new CV -->
+            <div class="py-4"></div>
+
+            <!-- CV list of the user -->
+            <!-- When no CV -->
+            <% if (cvs=='' ) { %> The user has not created any CV yet. <% }else{ %>
+                    <!-- When have CV -->
+                    <!-- cv list table -->
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">ID</th>
+                                <th style="width: 20%;">Status</th>
+                                <th style="width: 20%;">Current Step</th>
+                                <th style="width: 30%;">Link</th>
+                                <th style="width: 20%;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% cvs.forEach( function(cv) { %>
+                                <tr>
+                                    <td>
+                                        <%=cv.id%>
+                                    </td>
+                                    <td>
+                                        <%if (cv.step !='finish' ) {%>
+                                            Processing
+                                            <% } else { %>
+                                                Publicated
+                                                <% } %>
+                                    </td>
+                                    <td>
+                                        <%=cv.step%>
+                                    </td>
+                                    <td>
+                                        <%if (cv.CVlink=='' ) {%>
+                                            Have not publicated
+                                            <% } else { %>
+                                                <button type="button" class="btn btn-link"
+                                                    onclick="window.open('/CV/<%= cv.id %>')">
+                                                    <%= cv.CVlink %>
+                                                </button>
+                                                <% } %>
+                                    </td>
+                                    <td>
+                                        <a class="btn purple-btn" href='/editCV/<%= cv.id %>'>Edit</a>
+                                        <button id="deleteCVBtn" type="button" class="btn btn-danger ml-4"
+                                            onclick="showDeleteCVAlert('<%=cv.id%>')">Delete</button>
+                                    </td>
+                                </tr>
+
+                                <!-- Delete CV Modal-->
+                                <div class="animate__animated animate__fadeIn center" style="display:none; z-index: 1;"
+                                    id="deleteCVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete this
+                                                    CV?</h5>
+                                            </div>
+                                            <div class="modal-body">You cannot retrieve this CV once you delete it.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="alert-cancel" class="btn btn-secondary" type="button"
+                                                    onclick="showDeleteCVAlert('<%=cv.id%>')"
+                                                    data-dismiss="modal">Cancel</button>
+                                                <button id="alert-delete" class="btn btn-danger" type="button"
+                                                    onclick="deleteCV()" data-dismiss="modal">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of Delete CV Modal -->
+
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <!-- End of cv list table -->
+                    <% } %>
+                        <!-- End of CV list of the user -->
+        </div>
+        <!-- End of CV details -->
+    </div>
+    <!-- End of outer row -->
+</div>
+
+<div class="py-3"></div>
+
+<script>
+    ///////for upload file
+    function uploadFile() {
+        const file = event.target.files[0];
+
+        if (!file.type.startsWith('image/')) return;
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            //for input
+            document.getElementById('profile').value = e.target.result;
+            //for showing
+            document.getElementById('showImg').src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+        document.getElementById('imageFileContent').innerHTML = "1 file is selected.";
+    }
+    ///////
+
+
+    ///////for update data
+    async function update(currentPassword, userID) {
+        //check whether the new password is entered correctly
+        var newPassword = document.getElementById('password1').value;
+        var confirmPassword = document.getElementById('password2').value;
+        if (newPassword != confirmPassword) {
+            alert('⚠️ Two password do not match ⚠️')
+            return;
+        }
+
+        //check whether the required info is filled in
+        if (document.getElementById('firstname').value == '' || document.getElementById('lastname').value == '' || document.getElementById('email').value == '') {
+            alert('⚠️ Please ensure the First Name, Last Name & Email are filled in ⚠️')
+            return;
+        }
+
+        //check whether the admin wants to change user's current password
+        if (newPassword == '') {
+            newPassword = currentPassword;
+        }
+
+        var data = JSON.stringify({
+            firstName: document.getElementById('firstname').value,
+            lastName: document.getElementById('lastname').value,
+            email: document.getElementById('email').value,
+            profile: document.getElementById('profile').value,
+            password: newPassword,
+            id: userID
+        });
+
+        var response = await fetch("/user_info", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else if (response.status == 401) {
+            var data = await response.text();   // for res.send()
+            alert("⚠️ " + data + " ⚠️");
+        } else {
+            alert(response.statusText);
+        }
+    };
+    ///////
+
+
+    ///////for showing delete account alert
+    function showDeleteUserAlert() {
+        var deleteAlert = document.getElementById('deleteUserModal');
+        if (deleteAlert.style.display == '') {
+            deleteAlert.style.display = 'none';
+        } else {
+            deleteAlert.style.display = '';
+        }
+    }
+    ///////
+
+    /////// for delete user account
+    async function deleteUser(id) {
+        var response = await fetch("/deleteUser/" + id, {
+            method: "DELETE",
+            credentials: 'same-origin',
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+
+
+    ///////for showing delete CV alert
+    function showDeleteCVAlert(id) {
+        var deleteAlert = document.getElementById('deleteCVModal');
+        if (deleteAlert.style.display == '') {
+            document.getElementById('deleteCVBtn').value = '';
+            deleteAlert.style.display = 'none';
+        } else {
+            document.getElementById('deleteCVBtn').value = id;
+            deleteAlert.style.display = '';
+        }
+    }
+    ///////
+
+    /////// for delete user's CV
+    async function deleteCV() {
+        var id = document.getElementById('deleteCVBtn').value;
+        var response = await fetch("/deleteCV/" + id, {
+            method: "DELETE",
+            credentials: 'same-origin',
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            location.reload();
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+</script>

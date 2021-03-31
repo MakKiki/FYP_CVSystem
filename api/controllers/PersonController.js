@@ -52,6 +52,10 @@ module.exports = {
 
       if (person.role == "admin") {
         req.session.adminID = person.id;
+        req.session.userID = '';
+        req.session.progressingCV = null;
+        req.session.reloadCV = "";
+        req.session.reloadStatus = "false";
 
         sails.log("[Session] ", req.session);
 
@@ -114,8 +118,8 @@ module.exports = {
     //for user
     if (req.session.role == "user") {
       if (repeat) {
-        //check whether the repeat is due to unchanged password or conflict with others
-        //if due to unchanged password
+        //check whether the repeat is due to unchanged email or conflict with others
+        //if due to unchanged email
         if (repeat.id == req.session.userID) {
           //check whether conflicted with Admin
           repeat = await Admin.findOne({ email: req.body.email });

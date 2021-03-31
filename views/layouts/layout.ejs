@@ -47,7 +47,7 @@
 </head>
 
 <script>
-  ////////for showing toolbar
+  ////////for toolbar
   function showUserToolbar() {
     var toolbar = document.getElementById('userToolbar');
     if (toolbar.style.display == '') {
@@ -60,12 +60,11 @@
 </script>
 
 <body>
-  <% var currentPath=req.path.split('/'); 
-    if (req.session.role=='user' || req.session.role=='admin' ){ 
-    if (currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' ){ %>
+  <% var currentPath=req.path.split('/'); if (req.session.role=='user' || req.session.role=='admin' ){ if
+    (currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' ){ %>
     <!-- Topbar after login -->
-    <nav id="topbar" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow" 
-      <% if (req.path=='/input' && req.session.progressingCV==null || req.path=='/step2' ) {%> style="opacity: .4;" <%}%>>
+    <nav id="topbar" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow" <% if
+      (req.path=='/input' && req.session.progressingCV==null || req.path=='/step2' ) {%> style="opacity: .4;" <%}%>>
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -89,78 +88,96 @@
             </li>
             <% } %>
 
-            <% if (req.session.role=="admin" ) { %>
-              <!-- Nav Item - User List -->
-              <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="/admin_main" id="alertsDropdown" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div
-                    class="mr-2 d-none d-lg-inline header-href text-left <% if (req.path == '/admin_main') { %>active<% }%>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-people-fill" viewBox="0 0 16 16">
-                      <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd"
-                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                      <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                    </svg>
-                    <span>User List</span>
-                  </div>
-                </a>
-              </li>
-              <% }} %>
+              <% if (req.session.role=="admin" ) { %>
+                <% if (req.path!='/setting' && req.path!='/admin_main' && currentPath[1]!='user') { %>
+                  <!-- Nav Item - Back -->
+                  <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="/user/info/<%=req.session.userID%>" id="alertsDropdown"
+                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <div class="mr-2 d-none d-lg-inline header-href text-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-door-open" viewBox="0 0 16 16">
+                          <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+                          <path
+                            d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z" />
+                        </svg>
+                        <span>Back To User Info Page</span>
+                      </div>
+                    </a>
+                  </li>
+                  <% } %>
 
-              <!-- Divider -->
-              <div class="topbar-divider d-none d-sm-block"></div>
+                    <!-- Nav Item - User List -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                      <a class="nav-link dropdown-toggle" href="/admin_main" id="alertsDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div
+                          class="mr-2 d-none d-lg-inline header-href text-left <% if (req.path == '/admin_main') { %>active<% }%>">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            <path fill-rule="evenodd"
+                              d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                          </svg>
+                          <span>User List</span>
+                        </div>
+                      </a>
+                    </li>
+                    <% } %>
 
-              <!-- Nav Item - Person Information -->
-              <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" onclick="showUserToolbar()" id="userDropdown" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-3 d-none d-lg-inline header-href">Hello, <%=req.session.firstName %></span>
-                  <img class="img-profile rounded-circle" <%if(req.session.profile=='' ) {%>src="/images/avatar.png"
-                  <%}else{%>src="<%=req.session.profile%>"<%}%>>
-                </a>
+                      <!-- Divider -->
+                      <div class="topbar-divider d-none d-sm-block"></div>
 
-                <!-- Dropdown - Person Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" id="userToolbar"
-                  style="display: none;">
-                  <!-- Setting -->
-                  <a class="dropdown-item btn btn-block" href="/setting" <%if(req.path=='/setting' ){%>style="color:
-                    #9e687d"<%}%>>
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
-                        <path fill-rule="evenodd"
-                          d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
-                      </svg>
-                      Setting
-                  </a>
-                  <!-- <div class="dropdown-divider"></div> -->
+                      <!-- Nav Item - Person Information -->
+                      <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" onclick="showUserToolbar()" id="userDropdown" role="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="mr-3 d-none d-lg-inline header-href">Hello, <%=req.session.firstName %></span>
+                          <img class="img-profile rounded-circle" <%if(req.session.profile=='' )
+                            {%>src="/images/avatar.png"
+                          <%}else{%>src="<%=req.session.profile%>"<%}%>>
+                        </a>
 
-                  <!-- Logout -->
-                  <form action="/logout" method="POST">
-                    <button type="sumbit" class="dropdown-item btn btn-block" data-toggle="modal"
-                      data-target="#logoutModal">
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
-                        <path fill-rule="evenodd"
-                          d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
-                        <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
-                      </svg>
-                      Logout
-                  </form>
-                </div>
-              </li>
+                        <!-- Dropdown - Person Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" id="userToolbar"
+                          style="display: none;">
+                          <!-- Setting -->
+                          <a class="dropdown-item btn btn-block" href="/setting" <%if(req.path=='/setting'
+                            ){%>style="color:
+                            #9e687d"<%}%>>
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                  d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+                                <path fill-rule="evenodd"
+                                  d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+                              </svg>
+                              Setting
+                          </a>
 
-
+                          <!-- Logout -->
+                          <form action="/logout" method="POST">
+                            <button type="sumbit" class="dropdown-item btn btn-block" data-toggle="modal"
+                              data-target="#logoutModal">
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                  d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
+                                <path fill-rule="evenodd"
+                                  d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
+                                <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
+                              </svg>
+                              Logout
+                          </form>
+                        </div>
+                      </li>
         </ul>
     </nav>
     <!-- End of Topbar -->
 
-    <% } else if (req.path !='/CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' ){  %> 
+    <% }} else if (req.path !='/CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' ){
+      %>
       <!-- Navbar for person before login -->
       <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
         <div class="container px-4">

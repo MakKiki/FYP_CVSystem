@@ -56,7 +56,7 @@ module.exports = {
 
     if (req.wantsJSON) {
       //  sails.log("[Session] ", req.session);
-      return res.json({ url: "/main" }); // for ajax request
+      return res.json({ message: "✔️ Successfully Deleted ✔️", url: "/main" }); // for ajax request
     } else {
       return res.redirect("/main"); // for normal request
     }

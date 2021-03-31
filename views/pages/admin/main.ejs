@@ -19,16 +19,20 @@
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
             <tr>
+                <th style="width: 5%;">ID</th>
                 <th style="width: 10%;">Profile</th>
                 <th style="width: 30%;">Email Address</th>
                 <th style="width: 20%;">First Name</th>
-                <th style="width: 20%;">Last Name</th>
+                <th style="width: 15%;">Last Name</th>
                 <th style="width: 20%;">Function</th>
             </tr>
         </thead>
         <tbody>
-            <% var i=0; users.forEach( function(user) { i++; %>
+            <% users.forEach( function(user) {%>
                 <tr class="user_row">
+                    <td class="userlist_content">
+                        <%=user.id%>
+                    </td>
                     <td class="text-center">
                         <img class="img-profile rounded-circle" style="width: 50px; height: 50px;" <%if(user.profile==''
                             ) {%>src="/images/avatar.png"
@@ -44,10 +48,33 @@
                         <%=user.lastName%>
                     </td>
                     <td>
-                        <a class="btn purple-btn" style="width: 200px;" href="">Edit</a>
-                        <a class="btn btn-danger ml-4" href="">Delete</a>
+                        <a class="btn purple-btn" href="/user/info/<%=user.id%>">Edit</a>
+                        <button id="deleteBtn" type="button" class="btn btn-danger ml-4"
+                            onclick="showDeleteAlert('<%=user.id%>')">Delete</button>
                     </td>
                 </tr>
+
+
+                <!-- Delete Modal-->
+                <div class="animate__animated animate__fadeIn center" style="display:none; z-index: 1;" id="deleteModal"
+                    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete this User?</h5>
+                            </div>
+                            <div class="modal-body">You cannot retrieve this user's account once you delete it.</div>
+                            <div class="modal-footer">
+                                <button id="alert-cancel" class="btn btn-secondary" type="button"
+                                    onclick="showDeleteAlert('<%=user.id%>')" data-dismiss="modal">Cancel</button>
+                                <button id="alert-delete" class="btn btn-danger" type="button" onclick="deleteUser()"
+                                    data-dismiss="modal">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Delete Modal -->
+
                 <% }) %>
         </tbody>
     </table>
@@ -56,7 +83,7 @@
 
 
 <script>
-     ///////for search
+    ///////for search
     function search() {
         //get the search word
         var input = document.getElementById("searchInput").value.toUpperCase();
@@ -83,5 +110,38 @@
                 }
             }
         }
+    };
+    ///////
+
+
+    ///////for showing delete alert
+    function showDeleteAlert(id) {
+        var deleteAlert = document.getElementById('deleteModal');
+        if (deleteAlert.style.display == '') {
+            document.getElementById('deleteBtn').value = '';
+            deleteAlert.style.display = 'none';
+        } else {
+            document.getElementById('deleteBtn').value = id;
+            deleteAlert.style.display = '';
+        }
+    };
+    ///////
+
+    /////// for delete user account
+    async function deleteUser() {
+        var id = document.getElementById('deleteBtn').value;
+        var response = await fetch("/deleteUser/" + id, {
+            method: "DELETE",
+            credentials: 'same-origin',
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
     }
+    ////////
 </script>
