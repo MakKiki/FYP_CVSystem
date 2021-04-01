@@ -1,48 +1,241 @@
-<!-- Content Wrapper-->
-<div id="content-wrapper">
-    <!-- color selection for the template -->
-    <div class="row py-2">
-        <div class="col-sm-3">
-            <div class="custom-control custom-radio">
-                <span style="color:#81828b;"><b>Webpage Background Color</b></span>
-                <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
-                    <option value="Original">Original</option>
-                    <option value="bg-gradient-light">Light</option>
-                    <option value="bg-gradient-dark">Dark</option>
-                    <option value="bg-gradient-pink">Pink</option>
-                    <option value="bg-gradient-purple">Purple</option>
-                    <option value="bg-gradient-danger">Red</option>
-                    <option value="bg-gradient-primary">Blue</option>
-                    <option value="bg-gradient-warning">Yellow</option>
-                </select>
-            </div>
-        </div>
 
+<!-- color selection -->
+<div class="row py-2">
+    <!-- Back button -->
+    <div class="col-sm-3">
+        <br>
+        <button type="button" class="btn rectangle-btn" style="float: right;" onclick="save('<%=cv.step%>')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                <path fill-rule="evenodd"
+                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+            </svg>
+            Back To The Customize Page
+        </button>
+    </div>
+    <!-- End of Back button -->
 
-        <div class="col-sm-3">
-            <div class="custom-control custom-radio">
-                <span style="color: #81828b;"><b>Theme Color</b></span>
-                <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
-                    <option value="navy/rgb(0, 4, 255)/#4e73df/blue">Blue</option>
-                    <option value="rgb(196, 65, 95)/mediumvioletred/rgb(235, 155, 182)/pink">Pink</option>
-                    <option value="rgb(112, 0, 97)/#9954ad/#a570a7/purple">Purple</option>
-                    <option value="rgb(206, 65, 0)/#ff5100/#df7f31/orange">Orange</option>
-                    <option value="rgb(1, 80, 45)/#027c45/#4fb487/green">Green</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="col-sm-3">
-            <br>
-            <button type="button" class="btn pink-btn" onclick="submitCV()">I want to choose this template</button>
+    <!-- Background color of the webpage -->
+    <div class="col-sm-3">
+        <div class="custom-control custom-radio">
+            <span style="color:#81828b;"><b>Webpage Background Color</b></span>
+            <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
+                <option id="Original" value="Original">Original</option>
+                <option id="bg-gradient-light" value="bg-gradient-light">Light</option>
+                <option id="bg-gradient-dark" value="bg-gradient-dark">Dark</option>
+                <option id="bg-gradient-pink" value="bg-gradient-pink">Pink</option>
+                <option id="bg-gradient-purple" value="bg-gradient-purple">Purple</option>
+                <option id="bg-gradient-danger" value="bg-gradient-danger">Red</option>
+                <option id="bg-gradient-primary" value="bg-gradient-primary">Blue</option>
+                <option id="bg-gradient-warning" value="bg-gradient-warning">Yellow</option>
+            </select>
         </div>
     </div>
-    <!-- end of the color selection -->
-    <div class="py-3"></div>
+    <!-- End of Background color of the webpage -->
+
+    <!-- theme color of the CV -->
+    <div class="col-sm-3">
+        <div class="custom-control custom-radio">
+            <span style="color: #81828b;"><b>Theme Color</b></span>
+            <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
+                <option id="blue" value="navy/rgb(0, 4, 255)/#4e73df/blue">Blue</option>
+                <option id="pink" value="rgb(196, 65, 95)/mediumvioletred/rgb(235, 155, 182)/pink">Pink</option>
+                <option id="purple" value="rgb(112, 0, 97)/#9954ad/#a570a7/purple">Purple</option>
+                <option id="orange" value="rgb(206, 65, 0)/#ff5100/#df7f31/orange">Orange</option>
+                <option id="green" value="rgb(1, 80, 45)/#027c45/#4fb487/green">Green</option>
+            </select>
+        </div>
+    </div>
+    <!-- End of theme color of the CV -->
+
+    <!-- button for finish -->
+    <div class="col-sm-3">
+        <br>
+        <button type="button" class="btn pink-btn" <% if (cv.step=='step4' ){ %>onclick="showAlert()"<% }else{ %>
+                onclick="finish('<%=cv.step%>')"<% } %>>Finish</button>
+    </div>
+    <!-- end of button for finish -->
 </div>
+<!-- end of color selection -->
 
 
+<div class="py-3"></div>
+
+<!-- show CV -->
+<div id="content" class="container-fluid container">
+    <%- cv.CVcode %>
+</div>
+<!-- End of show CV -->
+
+
+<!-- Submit Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none" id="submitModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to publish your CV?</h5>
+            </div>
+            <div class="modal-body">Are you sure you have finished the creation? Your CV will then be published as a
+                hyperlink.
+            </div>
+            <div class="modal-footer">
+                <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAlert()"
+                    data-dismiss="modal">No</button>
+                <button id="alert-delete" class="btn pink-btn" type="button" onclick="finish('<%=cv.step%>')"
+                    data-dismiss="modal">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Submit Modal -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script>
+    ////////for interctions & visulizations of publicated CV
+    window.onload = function () {
+        chart();
+        map();
+        setBackground();
+        setSelection();
+    };
+    //show chart after loading the page
+    function chart() {
+        var p;
+        document.querySelectorAll('canvas').forEach(ctx => {
+            var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
+            var input = [];
+            document.querySelectorAll(presentChart).forEach(ele => {
+                input.push(ele.value)
+            });
+            var categoryArr = input[1].split(",");
+            var category = [];
+            for (p = 0; p < categoryArr.length; p++) {
+                category.push(categoryArr[p])
+            }
+
+            var dataArr = input[3].split(",");
+            var chartData = [];
+            for (p = 0; p < dataArr.length; p++) {
+                chartData.push(parseInt(dataArr[p], 10))
+            }
+
+            var o = Math.round, r = Math.random, s = 255;
+            var color = document.getElementById('themeColor').style.color;
+            var colorArr = [];
+            for (p = 0; p < dataArr.length; p++) {
+                colorArr.push(color)
+            }
+
+            new Chart(ctx, {
+                type: input[0],
+                data: {
+                    labels: category,
+                    datasets: [{
+                        label: input[2],
+                        data: chartData,
+                        backgroundColor: colorArr
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    responsiveAnimationDuration: 1000,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: input[4]
+                    }
+                },
+            });
+        });
+    }
+    //////
+
+    //////show map after loading the page
+    function map() {
+        document.querySelectorAll('.leaflet-container').forEach(map => {
+            //get the present map's input's class
+            var presentMap = '.' + map.nextSibling.nextSibling.nextSibling.classList;
+            //get all the input data of that map
+            var input = [];
+            document.querySelectorAll(presentMap).forEach(ele => {
+                input.push(ele.value)
+            });
+
+            //create new map
+            var newMap = L.map(map.id).setView([input[0], input[1]], 18);
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoibWFra2lraSIsImEiOiJja2xldXcwMmExbnpvMnVxZTAyZ2VkamR5In0.fyuBDRmXfmKoFeDmgU1cUA'
+            }).addTo(newMap);
+
+            //add marker
+            var marker = L.marker([input[0], input[1]]).addTo(newMap);
+            marker.bindPopup("<b>" + input[2] + "</b><br>" + Math.round(input[0] * 1000) / 1000 + ", " + Math.round(input[1] * 1000) / 1000 + "<br>" + input[3]).openPopup();
+        })
+    }
+    //////
+
+    ///////set background color
+    function setBackground() {
+        background = document.getElementById("webpageColor").value;
+        document.body.style.backgroundColor = 'rgb(248, 248, 248)';
+        document.body.setAttribute("class", background);
+    }
+    ///////
+
+     ///////set current selection
+     function setSelection() {
+        background = document.getElementById("webpageColor").value;
+        document.getElementById(background).selected = 'true';
+        theme = document.getElementById("progressCirColor").value;
+        document.getElementById(theme).selected = 'true';
+    }
+    ///////
+
+    ////////for showing content page
+    function showContent(targetPage) {
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        var i;
+        for (i = 0; i < contentBtnArray.length; i++) {
+            if (contentBtnArray[i].value == targetPage) {
+                document.getElementById(targetPage).style.display = '';
+            } else {
+                id = contentBtnArray[i].value;
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+    }
+    ////////
+
+    ////////show responsitive window
+    document.querySelectorAll(".windowModalBtn").forEach(btn => {
+        btn.addEventListener("click", showWindow);
+    })
+
+    function showWindow(event) {
+        var modal = document.getElementById(event.target.value);
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+        }
+    }
+    ////////
+    ////////
+
+
+
+    ////////functions in the preview page
     /////// change background color
     function changeBackground(newBackground) {
         if (newBackground == "Original") {
@@ -86,4 +279,108 @@
         document.getElementById("progressCirColor").value = colorArray[3];
     }
     ///////
+
+
+    ////////save
+    async function save(step) {
+        //confirm the cv can be editable again in the customized page
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.contentEditable = "true";
+        });
+
+        var renderPage;
+        if (step == 'step3') {
+            renderPage = '/customize';
+        } else {
+            renderPage = '/create';
+        }
+
+        var data = JSON.stringify({
+            CV: document.getElementById("content").innerHTML,
+            page: renderPage
+        });
+
+        var response = await fetch("/cv/saveCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ///////
+
+
+    ///////for showing submit alert
+    function showAlert() {
+        var modalAlert = document.getElementById("submitModal");
+        var content = document.getElementById("wrapper");
+        var topbar = document.getElementById("topbar");
+        if (modalAlert.style.display == '') {
+            modalAlert.style.display = 'none';
+            content.style.opacity = '';
+            topbar.style.opacity = '';
+        } else {
+            modalAlert.style.display = ''
+            content.style.opacity = '.4';
+            topbar.style.opacity = '.4';
+        }
+    }
+    ///////
+
+    ////////finish
+    async function finish(step) {
+        var renderStep;
+        if (step == 'step3') {
+            //confirm the cv can be editable again in the create page
+            document.querySelectorAll("[contenteditable]").forEach(field => {
+                field.contentEditable = "true";
+            });
+            renderStep = 'step4';
+        } else if (step == 'step4') {
+            //confirm the publicated cv is at the first page at the beginning
+            var contentBtnArray = document.getElementsByClassName("content-btn");
+            document.getElementById(contentBtnArray[0].value).style.display = '';
+            var i;
+            for (i = 1; i < contentBtnArray.length; i++) {
+                id = contentBtnArray[i].value;
+                document.getElementById(id).style.display = 'none';
+            }
+            renderStep = 'finish';
+        }
+
+        var data = JSON.stringify({
+            CV: document.getElementById("content").innerHTML,
+            CVdefaultCode: document.getElementById("content").innerHTML,
+            step: renderStep
+        });
+
+        var response = await fetch("/cv/submitCVCode", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ///////
+    ////////
 </script>

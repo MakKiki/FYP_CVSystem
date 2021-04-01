@@ -232,10 +232,10 @@
             </div>
 
             <div class="py-2">
-                <button onclick="preview('<%=req.session.reloadStatus%>')" class="btn btn-info"
-                  style="width: 100%">Preview</button>
+                <button onclick="save_preview('<%=req.session.reloadStatus%>')" class="btn btn-info"
+                    style="width: 100%">Save & Preview</button>
             </div>
-        
+
             <div>
                 <button onclick="showAlert('submitModal')" class="btn btn-success" style="width: 100%">Finish</button>
             </div>
@@ -518,6 +518,11 @@
             <div>
                 <button onclick="saveContent('<%=req.session.reloadStatus%>')" class="btn btn-warning"
                     style="width: 100%">Save</button>
+            </div>
+
+            <div class="py-2">
+                <button onclick="save_preview('<%=req.session.reloadStatus%>')" class="btn btn-info"
+                    style="width: 100%">Save & Preview</button>
             </div>
 
             <div class="py-2">
@@ -1366,6 +1371,59 @@
         if (response.ok) {
             var data = await response.json();
             alert(data.message);
+            window.location = data.url;
+        } else {
+            alert(response.statusText);
+        }
+    }
+    ////////
+
+
+    /////// for save & preview
+    async function save_preview(reloadStatus) {
+        //confirm everything like the publicated CV
+        //confirm the cv cannot be editable
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.contentEditable = "false";
+        });
+        //confirm the cv is at the first page at the beginning
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        document.getElementById(contentBtnArray[0].value).style.display = '';
+        var i;
+        for (i = 1; i < contentBtnArray.length; i++) {
+            id = contentBtnArray[i].value;
+            document.getElementById(id).style.display = 'none';
+        }
+        //confirm the cv included animated
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+        //
+
+        //Check whether the page has been reloaded before 
+        if (reloadStatus == "true") {
+            var cvContent = document.getElementById('reloadWhole').innerHTML
+        } else {
+            var cvContent = document.getElementById('whole').innerHTML
+        }
+
+        var data = JSON.stringify({
+            CV: cvContent,
+            page: '/preview'
+        });
+
+        var response = await fetch("/cv/saveCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        if (response.ok) {
+            var data = await response.json();
             window.location = data.url;
         } else {
             alert(response.statusText);

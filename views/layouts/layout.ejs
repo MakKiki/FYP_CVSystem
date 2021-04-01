@@ -61,7 +61,7 @@
 
 <body>
   <% var currentPath=req.path.split('/'); if (req.session.role=='user' || req.session.role=='admin' ){ if
-    (currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' ){ %>
+    (currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' && req.path !='/preview'){ %>
     <!-- Topbar after login -->
     <nav id="topbar" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow" <% if
       (req.path=='/input' && req.session.progressingCV==null || req.path=='/step2' ) {%> style="opacity: .4;" <%}%>>

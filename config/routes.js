@@ -72,6 +72,7 @@ module.exports.routes = {
 
   "GET /customize": "CVController.customize",
   "GET /create": "CVController.create",
+  "GET /preview": "CVController.preview",
 
   "POST /cv/saveCV": "CVController.saveCV",
   "POST /cv/submitCVCode": "CVController.submitCVCode",

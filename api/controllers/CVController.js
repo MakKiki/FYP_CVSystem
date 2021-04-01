@@ -238,7 +238,7 @@ module.exports = {
     }
   },
 
-  // show customize
+  // show customize page
   customize: async function (req, res) {
     if (req.method == "GET") {
       var model = await CV.findOne(req.session.progressingCV.id);
@@ -249,7 +249,7 @@ module.exports = {
     }
   },
 
-  // show create
+  // show create page
   create: async function (req, res) {
     if (req.method == "GET") {
       var model = await CV.findOne(req.session.progressingCV.id);
@@ -260,7 +260,18 @@ module.exports = {
     }
   },
 
-  // save CV code (page: customize)
+  // show preview page
+  preview: async function (req, res) {
+    if (req.method == "GET") {
+      var cvmodel = await CV.findOne(req.session.progressingCV.id);
+
+      if (!cvmodel) return res.notFound();
+
+      return res.view("pages/cvs/preview", { cv: cvmodel });
+    }
+  },
+
+  // save CV code
   saveCV: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
@@ -286,7 +297,7 @@ module.exports = {
     }
   },
 
-  //submit cv code (page: customize)
+  //submit cv code
   submitCVCode: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
