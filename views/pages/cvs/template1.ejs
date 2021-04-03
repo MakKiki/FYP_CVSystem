@@ -1,8 +1,6 @@
-<!-- Content Wrapper-->
-<div id="content-wrapper">
     <!-- color selection for the template -->
     <div class="row py-2">
-        <div class="col-sm-3">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="custom-control custom-radio">
                 <span style="color:#81828b;"><b>Webpage Background Color</b></span>
                 <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
@@ -19,7 +17,7 @@
         </div>
     
     
-        <div class="col-sm-3">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="custom-control custom-radio">
                 <span style="color: #81828b;"><b>Theme Color</b></span>
                 <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
@@ -32,16 +30,18 @@
             </div>
         </div>
     
-        <div class="col-sm-3">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <br>
-            <button type="button" class="btn pink-btn" onclick="submitCV()">I want to choose this template</button>
+            <button type="button" class="ml-4 btn pink-btn" onclick="submitCV()">I want to choose this template</button>
         </div>
     </div>
+
+
     <!-- end of the color selection -->
     <div class="py-3"></div>
     
     <!-- Content -->
-    <div id="content" class="container-fluid container">
+    <div id="content" class="container-md">
                 
                 <!-- innerHTML for CV -->
                 <div id="CVbody">
@@ -55,10 +55,10 @@
                             <div class="row">
         
                                 <!-- Fieldbar -->
-                                <div class="col-sm-2">
+                                <div class="col-lg-2 col-md-12 col-sm-12">
                                     <ul id="fieldbar" class="ul-noBullet py-3">
                                         <!-- Basic Info Button -->
-                                        <li id="Basic Informationbtn" class="nav-item mx-1 py-1">
+                                        <li id="Basic Informationbtn" class="mx-1 py-1">
                                             <button type="button" value="Basic Information" class="btn content-btn fieldbar"
                                                 onclick="showContent(this.value)">
                                                 <b class="darkerColor" style="color: navy">Basic Information</b>
@@ -66,7 +66,7 @@
                                         </li>
         
                                         <!-- Education Button -->
-                                        <li id="Educationbtn" class="nav-item mx-1 py-1">
+                                        <li id="Educationbtn" class="mx-1 py-1">
                                             <button type="button" value="Education" class="btn content-btn fieldbar"
                                                 onclick="showContent(this.value)">
                                                 <b class="darkerColor" style="color: navy">Education</b>
@@ -75,7 +75,7 @@
         
                                         <!-- Work experience -->
                                         <% if(cv.company != '') { %>
-                                        <li id="Work Experiencebtn" class="nav-item mx-1 py-1">
+                                        <li id="Work Experiencebtn" class="mx-1 py-1">
                                             <button type="button" value="Work Experience" class="btn content-btn fieldbar"
                                                 onclick="showContent(this.value)">
                                                 <b class="darkerColor" style="color: navy">Work Experience</b>
@@ -85,7 +85,7 @@
         
                                         <!-- Skill -->
                                         <% if(cv.codingSkill != '' || cv.typingSkill != '' || cv.softwareSkill != '') { %>
-                                        <li id="Skillbtn" class="nav-item mx-1 py-1">
+                                        <li id="Skillbtn" class="mx-1 py-1">
                                             <button type="button" value="Skill" class="btn content-btn fieldbar"
                                                 onclick="showContent(this.value)">
                                                 <b class="darkerColor" style="color: navy">Skill</b>
@@ -94,7 +94,7 @@
                                         <% } %>
         
                                         <!-- Language -->
-                                        <li id="Languagebtn" class="nav-item mx-1 py-1">
+                                        <li id="Languagebtn" class="mx-1 py-1">
                                             <button type="button" value="Language" class="btn content-btn fieldbar"
                                                 onclick="showContent(this.value)">
                                                 <b class="darkerColor" style="color: navy">Language</b>
@@ -105,7 +105,7 @@
                                 <!-- End of Fieldbar -->
         
                                 <!-- Main Content -->
-                                <div id="main" class="col-sm-10">
+                                <div id="main" class="col-lg-10 col-md-12 col-sm-12">
                                     <div style="transform: translate(0px, 0px);" id="Basic Information"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
         
@@ -121,20 +121,20 @@
                                       
                                         <div class="container field">
                                             <div class="row">
-                                                <div class="col-sm-4 py-4">
+                                                <div class="col-lg-4 col-md-5 col-sm-12">
                                                     <% if (cv.profile !='' ){ %>
-                                                        <img class="rounded-lg resize-drag" style="height: auto; width:240px"
+                                                        <img class="rounded-lg resize-drag template1-img img-center" 
                                                         src='<%= cv.profile %>'>
                                                     <% } else { if (cv.sex=='Male' ) {%>
-                                                        <img class="rounded-lg resize-drag" style="height: auto; width:240px"
+                                                        <img class="rounded-lg resize-drag template1-img img-center"
                                                         src='/images/about_me_2.svg'>
                                                     <% }else{ %>
-                                                        <img class="rounded-lg resize-drag" style="height: auto; width:240px"
+                                                        <img class="rounded-lg resize-drag template1-img img-center"
                                                         src='/images/about_me.svg'>
                                                     <% } } %>
                                                 </div>
         
-                                                <div class="col-sm-8" style="color: black;">
+                                                <div class="col-lg-8 col-md-7 col-sm-12" style="color: black;">
         
                                                     <div class="row resize-drag">
                                                         <div class="col-sm-12" contenteditable="false">
@@ -150,7 +150,7 @@
                                                     </div>
         
                                                     <div class="row resize-drag" contenteditable="false">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -162,7 +162,7 @@
                                                         </div>
         
                                                         <% if (cv.nickname != ''){ %>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color: rgb(0, 4, 255);" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -175,7 +175,7 @@
                                                         <% } %>
         
                                                         <% if (cv.chiName != ''){ %>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -186,7 +186,7 @@
                                                         </div>
                                                         <% } %>
         
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -196,7 +196,7 @@
                                                             <b>Sex: </b><%= cv.sex %><br>
                                                         </div>
         
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -206,7 +206,7 @@
                                                             <b>Birth Date: </b><%= cv.birth %>
                                                         </div>
         
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -216,7 +216,7 @@
                                                             <b>Email: </b><%= cv.email %><br>
                                                         </div>
         
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -226,7 +226,7 @@
                                                             <b>Country Code: </b><%= cv.countryCode %>
                                                         </div>
         
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6 col-md-12 col-sm-6">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -237,7 +237,7 @@
                                                         </div>
         
                                                         <% if (cv.personWebLink != ''){ %>
-                                                        <div class="col-sm-12">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -249,7 +249,7 @@
                                                         </div>
                                                         <% } %>
         
-                                                        <div class="col-sm-12">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 style="color:rgb(0, 4, 255)" fill="currentColor"
                                                                 class="bi bi-chevron-right svgColor" viewBox="0 0 16 16">
@@ -442,7 +442,6 @@
                                                                                 </svg>
                                                                                 <%= cv.workEndDate[p] %>
                                                                             </span>
-                                                                            <div class="py-4"></div>
                                                                         </div>
 
                                                                         <div class="col-sm-8" style="float:left; text-align: left;" contenteditable="false">
@@ -476,7 +475,7 @@
                                                                                 Download my Reference Letter here
                                                                             </a>
                                                                             <% }else{ %>
-                                                                            <img class="resize-drag field" style="float: right; height: auto; width: 230px;" src="/images/work_pic.svg">
+                                                                            <img class="d-xs-none resize-drag field" style="float: right; height: auto; width: 230px;" src="/images/work_pic.svg">
                                                                             <% } %>
                                                                             <div class="py-4"></div>
 
@@ -489,12 +488,12 @@
                                                                 <div id="slide-<%=p+1%>_1_content" class="container" onclick="clickSlider('slide-<%=p+1%>_1_content')">
                                                                     <div class="row">
                                                                         <div class="col-sm-12" contenteditable="false">
-                                                                            <div class="py-3"></div>
+                                                                            <div class="py-4"></div>
                                                                             <h3>Hope I can include the working experience in your company in my CV in the future :) </h3>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <div class="py-4"></div>
-                                                                            <img class="resize-drag" style="height: auto; width: 500px;"
+                                                                            <img class="resize-drag" style="height: auto; width: 80%"
                                                                             src='/images/work.jpg'>
                                                                             <div class="py-4"></div>
                                                                         </div>
@@ -572,7 +571,7 @@
                                                                                     Download my Reference Letter here
                                                                                 </a>
                                                                                 <% }else{ %>
-                                                                                <img class="field resize-drag" style="float: right; height: auto; width: 230px;" src="/images/work_pic.svg">
+                                                                                <img class="d-xs-none field resize-drag" style="float: right; height: auto; width: 230px;" src="/images/work_pic.svg">
                                                                                 <% } %>
                                                                                 <div class="py-4"></div>
 
@@ -584,12 +583,12 @@
                                                                     <div id="slide-2_1_content" class="container" onclick="clickSlider('slide-2_1_content')">
                                                                         <div class="row">
                                                                             <div class="col-sm-12" contenteditable="false">
-                                                                                <div class="py-3"></div>
+                                                                                <div class="py-4"></div>
                                                                                 <h3>Hope I can include the working experience in your company in my CV in the future :) </h3>
                                                                             </div>
                                                                             <div class="col-sm-12">
                                                                                 <div class="py-4"></div>
-                                                                                <img class="field resize-drag" style="height: auto; width: 500px;"
+                                                                                <img class="field resize-drag" style="height: auto; width: 80%"
                                                                                 src='/images/work.jpg' contenteditable="false">
                                                                                 <div class="py-4"></div>
                                                                             </div>
@@ -631,15 +630,14 @@
                                                 if (cv.typingSkill != ''){
                                                     var skill1 = cv.typingSkill.split(",");
                                                 for (i = 0; i < skill1.length; i++) { 
-                                                    var detail = skill1[i].split(":");
-                                                    var percent = detail[1].split("%");%>
-                                                <div class="col-sm-4">
+                                                    var detail = skill1[i].split(":");%>       
+                                                <div class="col-lg-4 col-sm-6 col-6">
                                                     <div class="single-chart resize-drag" contenteditable="false">
                                                         <svg viewBox="0 0 36 36" class="circular-chart blue">
                                                             <path class="circle-bg" d="M18 2.0845
                                                       a 15.9155 15.9155 0 0 1 0 31.831
                                                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                            <path class="circle" stroke-dasharray="<%= percent[0] %>, 100" d="M18 2.0845
+                                                            <path class="circle" stroke-dasharray="<%= detail[1] %>, 100" d="M18 2.0845
                                                       a 15.9155 15.9155 0 0 1 0 31.831
                                                       a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                             <text x="18" y="20.35" class="percentage"><%= detail[0] %></text>
@@ -651,15 +649,14 @@
                                                 if (cv.codingSkill != ''){
                                                     var skill2 = cv.codingSkill.split(",");
                                                 for (i = 0; i < skill2.length; i++) { 
-                                                    var detail = skill2[i].split(":");
-                                                    var percent = detail[1].split("%");%>
-                                                <div class="col-sm-4">
+                                                    var detail = skill2[i].split(":");%>
+                                                <div class="col-lg-4 col-sm-6 col-6">
                                                     <div class="single-chart resize-drag" contenteditable="false">
                                                         <svg viewBox="0 0 36 36" class="circular-chart blue">
                                                             <path class="circle-bg" d="M18 2.0845
                                                       a 15.9155 15.9155 0 0 1 0 31.831
                                                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                            <path class="circle" stroke-dasharray="<%= percent[0] %>, 100" d="M18 2.0845
+                                                            <path class="circle" stroke-dasharray="<%= detail[1] %>, 100" d="M18 2.0845
                                                       a 15.9155 15.9155 0 0 1 0 31.831
                                                       a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                             <text x="18" y="20.35" class="percentage"><%= detail[0] %></text>
@@ -671,15 +668,14 @@
                                                 if (cv.softwareSkill != ''){
                                                     var skill3 = cv.softwareSkill.split(",");
                                                 for (i = 0; i < skill3.length; i++) { 
-                                                    var detail = skill3[i].split(":");
-                                                    var percent = detail[1].split("%");%>
-                                                <div class="col-sm-4">
+                                                    var detail = skill3[i].split(":");%>
+                                                <div class="col-lg-4 col-sm-6 col-6">
                                                     <div class="single-chart resize-drag" contenteditable="false">
                                                         <svg viewBox="0 0 36 36" class="circular-chart blue">
                                                             <path class="circle-bg" d="M18 2.0845
                                                       a 15.9155 15.9155 0 0 1 0 31.831
                                                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                                            <path class="circle" stroke-dasharray="<%= percent[0] %>, 100" d="M18 2.0845
+                                                            <path class="circle" stroke-dasharray="<%= detail[1] %>, 100" d="M18 2.0845
                                                       a 15.9155 15.9155 0 0 1 0 31.831
                                                       a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                             <text x="18" y="20.35" class="percentage"><%= detail[0] %></text>
@@ -784,7 +780,7 @@
 
         <!-- End of the content -->
     </div>
-</div>
+
 
 <script>
     ////////for showing content page

@@ -15,69 +15,73 @@
     </div>
     <div class="py-2"></div>
 
+
     <!-- user list table -->
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th style="width: 5%;">ID</th>
-                <th style="width: 10%;">Profile</th>
-                <th style="width: 30%;">Email Address</th>
-                <th style="width: 20%;">First Name</th>
-                <th style="width: 15%;">Last Name</th>
-                <th style="width: 20%;">Function</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% users.forEach( function(user) {%>
-                <tr class="user_row">
-                    <td class="userlist_content">
-                        <%=user.id%>
-                    </td>
-                    <td class="text-center">
-                        <img class="img-profile rounded-circle" style="width: 50px; height: 50px;" <%if(user.profile==''
-                            ) {%>src="/images/avatar.png"
-                        <%}else{%>src="<%=user.profile%>"<%}%>>
-                    </td>
-                    <td class="userlist_content">
-                        <%=user.email%>
-                    </td>
-                    <td class="userlist_content">
-                        <%=user.firstName%>
-                    </td>
-                    <td class="userlist_content">
-                        <%=user.lastName%>
-                    </td>
-                    <td>
-                        <a class="btn purple-btn" href="/user/info/<%=user.id%>">Edit</a>
-                        <button id="deleteBtn" type="button" class="btn btn-danger ml-4"
-                            onclick="showDeleteAlert('<%=user.id%>')">Delete</button>
-                    </td>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Profile</th>
+                    <th>Email Address</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Function</th>
                 </tr>
+            </thead>
+            <tbody>
+                <% users.forEach( function(user) {%>
+                    <tr class="user_row">
+                        <td class="userlist_content">
+                            <%=user.id%>
+                        </td>
+                        <td class="text-center">
+                            <img class="img-profile rounded-circle" style="width: 50px; height: 50px;"
+                                <%if(user.profile=='' ) {%>src="/images/avatar.png"
+                            <%}else{%>src="<%=user.profile%>"<%}%>>
+                        </td>
+                        <td class="userlist_content">
+                            <%=user.email%>
+                        </td>
+                        <td class="userlist_content">
+                            <%=user.firstName%>
+                        </td>
+                        <td class="userlist_content">
+                            <%=user.lastName%>
+                        </td>
+                        <td>
+                            <a class="admin-action-btn btn purple-btn" href="/user/info/<%=user.id%>">Edit</a>
+                            <button id="deleteBtn" type="button" class="admin-action-btn btn btn-danger"
+                                onclick="showDeleteAlert('<%=user.id%>')">Delete</button>
+                        </td>
+                    </tr>
 
 
-                <!-- Delete Modal-->
-                <div class="animate__animated animate__fadeIn center" style="display:none; z-index: 1;" id="deleteModal"
-                    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete this User?</h5>
-                            </div>
-                            <div class="modal-body">You cannot retrieve this user's account once you delete it.</div>
-                            <div class="modal-footer">
-                                <button id="alert-cancel" class="btn btn-secondary" type="button"
-                                    onclick="showDeleteAlert('<%=user.id%>')" data-dismiss="modal">Cancel</button>
-                                <button id="alert-delete" class="btn btn-danger" type="button" onclick="deleteUser()"
-                                    data-dismiss="modal">Delete</button>
+                    <!-- Delete Modal-->
+                    <div class="animate__animated animate__fadeIn center" style="display:none; z-index: 1;"
+                        id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete this User?</h5>
+                                </div>
+                                <div class="modal-body">You cannot retrieve this user's account once you delete it.
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="alert-cancel" class="btn btn-secondary" type="button"
+                                        onclick="showDeleteAlert('<%=user.id%>')" data-dismiss="modal">Cancel</button>
+                                    <button id="alert-delete" class="btn btn-danger" type="button"
+                                        onclick="deleteUser()" data-dismiss="modal">Delete</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- End of Delete Modal -->
+                    <!-- End of Delete Modal -->
 
-                <% }) %>
-        </tbody>
-    </table>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
     <!-- End of user list table -->
 </div>
 

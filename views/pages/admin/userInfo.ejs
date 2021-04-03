@@ -51,14 +51,14 @@
     <div class="row justify-content-center">
         <!-- Profile -->
         <div class="col-sm-12">
-            <img id="showImg" style="height:220px; width:220px;  display: block;margin-left: auto; margin-right: auto;"
-                class="rounded-circle" <% if (user.profile=='' ){ %>src="/images/avatar.png"<% }else{ %>src="
+            <img id="showImg" style="height:220px; width:220px;"
+                class="rounded-circle img-center" <% if (user.profile=='' ){ %>src="/images/avatar.png"<% }else{ %>src="
                 <%=user.profile%>"<%}%>>
         </div>
         <!-- End of Profile -->
 
         <!-- Change Profile -->
-        <div class="col-lg-6 col-sm-12 py-3">
+        <div class="col-lg-6 col-md-8 col-sm-12 py-3">
             <label class="file">
                 <!-- input for upload file -->
                 <input type="file" accept="image/*" onchange="uploadFile()">
@@ -82,45 +82,45 @@
                 </div>
 
                 <!-- user id -->
-                <div class="col-lg-4 col-sm-12 py-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 py-4">
                     ID
                     <input type="text" class="form-control form-control-user" value="<%=user.id%>" readonly>
                 </div>
 
                 <!-- firstname -->
-                <div class="col-lg-4 col-sm-12 py-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 py-4">
                     First Name
                     <input id="firstname" type="text" class="form-control form-control-user" value="<%=user.firstName%>"
                         required>
                 </div>
 
                 <!-- lastname -->
-                <div class="col-lg-4 col-sm-12 py-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 py-4">
                     Last Name
                     <input id="lastname" type="text" class="form-control form-control-user" value="<%=user.lastName%>"
                         required>
                 </div>
 
                 <!-- current password -->
-                <div class="col-lg-4 col-sm-12 py-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 py-4">
                     Current Password
                     <input class="form-control form-control-user" value="<%=user.password%>" readonly>
                 </div>
 
                 <!-- new password -->
-                <div class="col-lg-4 col-sm-12 py-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 py-4">
                     Change New Password
                     <input id="password1" type="password" class="form-control form-control-user">
                 </div>
 
                 <!-- confirm of new password -->
-                <div class="col-lg-4 col-sm-12 py-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 py-4">
                     Confirm New Password
                     <input id="password2" type="password" class="form-control form-control-user">
                 </div>
 
                 <!-- email -->
-                <div class="col-lg-8 col-sm-12 py-4">
+                <div class="col-lg-8 col-md-10 col-sm-12 py-4">
                     Email Address
                     <input id="email" type="email" class="form-control form-control-user" value="<%=user.email%>"
                         required>
@@ -144,16 +144,18 @@
             <!-- CV list of the user -->
             <!-- When no CV -->
             <% if (cvs=='' ) { %> The user has not created any CV yet. <% }else{ %>
-                    <!-- When have CV -->
-                    <!-- cv list table -->
+                <!-- When have CV -->
+                <!-- cv list table -->
+                <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th style="width: 10%;">ID</th>
-                                <th style="width: 20%;">Status</th>
-                                <th style="width: 20%;">Current Step</th>
-                                <th style="width: 30%;">Link</th>
-                                <th style="width: 20%;">Action</th>
+                                <th>ID</th>
+                                <th>Update Date</th>
+                                <th>Status</th>
+                                <th>Current Step</th>
+                                <th>Link</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -161,6 +163,10 @@
                                 <tr>
                                     <td>
                                         <%=cv.id%>
+                                    </td>
+                                    <td>
+                                        <%= new Date(cv.updatedAt).toLocaleDateString()%> at <%=new
+                                        Date(cv.updatedAt).toLocaleTimeString()%>
                                     </td>
                                     <td>
                                         <%if (cv.step !='finish' ) {%>
@@ -183,8 +189,8 @@
                                                 <% } %>
                                     </td>
                                     <td>
-                                        <a class="btn purple-btn" href='/editCV/<%= cv.id %>'>Edit</a>
-                                        <button id="deleteCVBtn" type="button" class="btn btn-danger ml-4"
+                                        <a class="admin-action-btn btn purple-btn" href='/editCV/<%= cv.id %>'>Edit</a>
+                                        <button id="deleteCVBtn" type="button" class="admin-action-btn btn btn-danger"
                                             onclick="showDeleteCVAlert('<%=cv.id%>')">Delete</button>
                                     </td>
                                 </tr>
@@ -215,9 +221,10 @@
                                 <% }) %>
                         </tbody>
                     </table>
+                </div>
                     <!-- End of cv list table -->
                     <% } %>
-                        <!-- End of CV list of the user -->
+                    <!-- End of CV list of the user -->
         </div>
         <!-- End of CV details -->
     </div>

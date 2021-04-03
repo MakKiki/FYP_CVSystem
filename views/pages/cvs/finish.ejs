@@ -5,10 +5,11 @@
             <h1 style="color: #f1869f">🎉 You have sucessfully created & published the CV 🎉</h1>
             <div class="py-4"></div>
             <h2>Here is the link:</h2>
-            <a class="h2" href='/CV/<%=req.session.progressingCV.id%>'>
-                <%=req.session.progressingCV.CVlink%>
-            </a>
+            <button type="button" class="btn btn-link" onclick="window.open('/CV/<%=req.session.progressingCV.id%>')">
+                <h2><%=req.session.progressingCV.CVlink%></h2>
+            </button>
             <div class="py-5"></div>
+            <% if (req.session.role != 'admin'){ %>
             <h3>Go back to the
                 <button type="button" class="btn pink-btn" style="width:110px;" onclick="window.location.href='/main'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -22,9 +23,10 @@
                 </button> page to check out more!!
             </h3>
             <div class="py-2"></div>
+            <% } %>
         </div>
 
-        <img src="/images/resume.svg" style="height: 550px;" />
+        <img src="/images/resume.svg" style="height: 70%; width:70%;" />
     </div>
-    <div class="py-2"></div>
+    <div class="py-3"></div>
 </div>

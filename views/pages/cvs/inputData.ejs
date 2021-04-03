@@ -4,14 +4,14 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel" style="color: #f1869f">Step 1 - 📝 Inputting Data 📝
+                <h4 class="modal-title" id="exampleModalLabel" style="color: #f1869f">Step 1 - Inputting Data
                 </h4>
             </div>
             <div class="modal-body">
-                <br>
+                <div class="py-2"></div>
                 Please fill in the following fields. After finishing, please press the "NEXT"
                 button for the next step.
-                <br><br>
+                <div class="py-2"></div>
             </div>
             <div class="modal-footer">
                 <button id="alert-delete" class="btn pink-btn" type="button" onclick="closeStep1Modal()"
@@ -27,26 +27,28 @@
 <div id="content" <% if(req.session.progressingCV != null){ %> style="opacity: ;" <% }else{ %> style="opacity: .4;" <%}%>>
     <!-- progress bar -->
     <div class="py-4"></div>
-    <ul class="progressbar">
-        <li>Inputting Data</li>
-        <li>Choosing Theme</li>
-        <li>Customizing your CV</li>
-        <li>Making your CV into 3D</li>
-    </ul>
+    <div class="justify-content-center">
+     <ul class="progressbar">
+        <li>Inputting<br>Data</li>
+        <li>Choosing<br>Theme</li>
+        <li>Customizing<br>CV</li>
+        <li>Making<br>3D CV</li>
+     </ul>
+    </div>
     <div class="py-3"></div>
     <!-- End of progress bar -->
 
 
     <!-- form -->
-    <form id="CVData" action="/cv/submitData" method="POST">
+    <form name="CVData" action="/cv/submitData" method="POST">
 
         <div class="container">
             <!-- Basic Info -->
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                    <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                         <h3 style="color: #a570a7">🧍 Basic Information</h3>
-                        <br>
+                        <div class="py-2"></div>
                         <div class="row">
 
                             <div class="col-sm-12 col-lg-12">
@@ -61,7 +63,8 @@
                                      <% } %>
                             </div>
 
-                            <div class="col-sm-12 col-lg-4 py-4">
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="py-2"></div>
                                 Full Name In English
                                 <input type="text" id="engName" name="CV[engName]"
                                     class="form-control form-control-user"
@@ -70,7 +73,8 @@
                                     required>
                             </div>
 
-                            <div class="col-sm-12 col-lg-4 py-4">
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="py-2"></div>
                                 Full Name In Chinese (If any)
                                 <input type="text" id="chiName" name="CV[chiName]"
                                     class="form-control form-control-user"
@@ -78,7 +82,8 @@
                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.chiName%>" <%}%>>
                             </div>
 
-                            <div class="col-sm-12 col-lg-4 py-4">
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="py-2"></div>
                                 Nick Name (If any)
                                 <input type="text" id="nickname" name="CV[nickname]"
                                     class="form-control form-control-user"
@@ -86,6 +91,7 @@
                             </div>
 
                             <div class="col-sm-12 col-lg-2">
+                                <div class="py-2"></div>
                                 Sex
                                 <select class="form-control" id="sex" name="CV[sex]" value="" required>
                                     <option value="Female" <% if(req.session.progressingCV !=null && req.session.progressingCV.sex == 'Female') {%> selected <%}%>>Female</option>
@@ -94,6 +100,7 @@
                             </div>
 
                             <div class="col-sm-12 col-lg-3">
+                                <div class="py-2"></div>
                                 Birth Date
                                 <input type="date" id="birth" name="CV[birth]" 
                                 class="form-control form-control-user"
@@ -102,6 +109,7 @@
                             </div>
 
                             <div class="col-sm-12 col-lg-3">
+                                <div class="py-2"></div>
                                 Country Code
                                 <input type="number" id="countryCode" name="CV[countryCode]"
                                     class="form-control form-control-user" placeholder="E.g. 852"
@@ -110,20 +118,23 @@
                             </div>
 
                             <div class="col-sm-12 col-lg-4">
+                                <div class="py-2"></div>
                                 Phone
                                 <input type="tel" id="phone" name="CV[phone]" class="form-control form-control-user" pattern=[0-9]{8} 
                                 <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.phone%>" <%}%>
                                     required>
                             </div>
 
-                            <div class="col-sm-12 col-lg-6 py-4">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="py-2"></div>
                                 Email Address
                                 <input type="email" id="email" name="CV[email]" class="form-control form-control-user"
                                 <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.email%>" <%}%>
                                 required>
                             </div>
 
-                            <div class="col-sm-12 col-lg-6 py-4">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="py-2"></div>
                                 Personal website (If any)
                                 <input type="url" id="personWebLink" name="CV[personWebLink]"
                                     class="form-control form-control-user"
@@ -131,6 +142,7 @@
                             </div>
 
                             <div class="col-sm-12 col-lg-12">
+                                <div class="py-2"></div>
                                 Address
                                 <input type="text" id="address" name="CV[address]"
                                     class="form-control form-control-user" 
@@ -138,7 +150,8 @@
                                     required>
                             </div>
 
-                            <div class="col-sm-12 col-lg-6 py-4">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="py-2"></div>
                                 Targeted Occupation
                                 <input type="text" id="occupation" name="CV[occupation]"
                                     class="form-control form-control-user" placeholder="E.g. Programmar" 
@@ -146,7 +159,8 @@
                                     required>
                             </div>
 
-                            <div class="col-sm-12 col-lg-6 py-4">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="py-2"></div>
                                 Job Area
                                 <input type="text" id="jobArea" name="CV[jobArea]"
                                     class="form-control form-control-user" placeholder="E.g. Information Technology"
@@ -155,6 +169,7 @@
                             </div>
 
                             <div class="col-sm-12 col-lg-12">
+                                <div class="py-2"></div>
                                 Objective (If any)
                                 <input type="text" id="objective" name="CV[objective]"
                                     class="form-control form-control-user"
@@ -170,7 +185,7 @@
             <!-- Education -->
             <div id="eduData1" class="container eduField">
                 <div class="row justify-content-center">
-                    <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                    <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                         <div class="card o-hidden border-0">
                             <div class="py-5"></div>
                             <h3 style="color: #a570a7">🎓 Education</h3>
@@ -193,7 +208,8 @@
                                     required>
                                 </div>
 
-                                <div class="col-sm-12 col-lg-4 py-4">
+                                <div class="col-sm-12 col-lg-4">
+                                    <div class="py-2"></div>
                                     Start Date
                                     <input type="date" name="CV[eduStartDate]" class="form-control form-control-user"
                                     <% if(req.session.progressingCV !=null && req.session.progressingCV.eduStartDate!= null) { 
@@ -205,7 +221,8 @@
                                     required>
                                 </div>
 
-                                <div class="col-sm-12 col-lg-4 py-4">
+                                <div class="col-sm-12 col-lg-4">
+                                    <div class="py-2"></div>
                                     End Date (or Expected End Date)
                                     <input type="date" name="CV[eduEndDate]" class="form-control form-control-user"
                                     <% if(req.session.progressingCV !=null && req.session.progressingCV.eduEndDate!= null) { 
@@ -217,7 +234,8 @@
                                     required>
                                 </div>
 
-                                <div class="col-sm-12 col-lg-4 py-4">
+                                <div class="col-sm-12 col-lg-4">
+                                    <div class="py-2"></div>
                                     Major
                                     <input type="text" name="CV[major]" class="form-control form-control-user"
                                     <% if(req.session.progressingCV !=null && req.session.progressingCV.major!= null) { 
@@ -230,6 +248,7 @@
                                 </div>
 
                                 <div class="col-sm-12 col-lg-6">
+                                    <div class="py-2"></div>
                                     Degree / Level
                                     <select class="form-control" name="CV[degree]" required>
                                         <option value='Professional Degree' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.degree[0] == 'Professional Degree' || req.session.progressingCV.degree == 'Professional Degree') {%> selected <%}}%>>Professional Degree</option>
@@ -243,6 +262,7 @@
                                 </div>
 
                                 <div class="col-sm-12 col-lg-6">
+                                    <div class="py-2"></div>
                                     CGPA / Result
                                     <input type="text" name="CV[mark]" class="form-control form-control-user"
                                     <% if(req.session.progressingCV !=null && req.session.progressingCV.mark!= null) { 
@@ -255,7 +275,8 @@
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
-                                    <br>Others About The School / Institution (If any)
+                                    <div class="py-2"></div>
+                                     Others About The School / Institution (If any)
                                     <input type="text" name="CV[eduDescription]" class="form-control form-control-user"
                                     <% if(req.session.progressingCV !=null && req.session.progressingCV.mark!= null) { 
                                         var eduDescription = req.session.progressingCV.eduDescription  + '';
@@ -266,7 +287,7 @@
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
-                                    <br>
+                                    <div class="py-2"></div>
                                     Certificate (If any)
                                     <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                     <input type="hidden" id="eduCertificate1" name="CV[eduCertificate]"
@@ -293,26 +314,26 @@
                 <% var i; for(i=1; i<req.session.progressingCV.school.length; i++ ) { %>
                     <div id='eduData<%=i+1%>' class='container eduField'>
                         <div class='row justify-content-center'>
-                            <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'>
+                            <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'>
                                 <div class='card o-hidden border-0'>
                                     <div class='row'>
-                                        <div class='col-sm-12 col-lg-12'> <br> <br> Name Of The School / Institution
+                                        <div class='col-sm-12 col-lg-12'><div class="py-3"></div> Name Of The School / Institution
                                             <input type='text' name='CV[school]' class='form-control form-control-user'
                                             value="<%=req.session.progressingCV.school[i]%>" required>
                                         </div>
-                                        <div class='col-sm-12 col-lg-4 py-4'> Start Date <input type='date'
+                                        <div class='col-sm-12 col-lg-4'><div class="py-2"></div> Start Date <input type='date'
                                                 name='CV[eduStartDate]' class='form-control form-control-user'
                                                 value="<%=req.session.progressingCV.eduStartDate[i]%>" required>
                                         </div>
-                                        <div class='col-sm-12 col-lg-4 py-4'> End Date (or Expected End Date) 
+                                        <div class='col-sm-12 col-lg-4'><div class="py-2"></div> End Date (or Expected End Date) 
                                             <input type='date' name='CV[eduEndDate]' class='form-control form-control-user'
                                             value="<%=req.session.progressingCV.eduEndDate[i]%>" required>
                                         </div>
-                                        <div class="col-sm-12 col-lg-4 py-4"> Major <input type='text'
+                                        <div class="col-sm-12 col-lg-4"><div class="py-2"></div> Major <input type='text'
                                             name='CV[major]' class='form-control form-control-user'
                                             value="<%=req.session.progressingCV.major[i]%>" required>
                                         </div>
-                                        <div class="col-sm-12 col-lg-6">
+                                        <div class="col-sm-12 col-lg-6"><div class="py-2"></div>
                                             Degree / Level
                                             <select class="form-control" name="CV[degree]" required>
                                                 <option value='Professional Degree' <% if(req.session.progressingCV.degree[i] == 'Professional Degree') {%> selected <%}%>>Professional Degree</option>
@@ -324,15 +345,15 @@
                                                 <option value='In Progress' <% if(req.session.progressingCV.degree[i] == 'In Progress') {%> selected <%}%>>In Progress</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-12 col-lg-6"> CGPA / Result <input type='text'
+                                        <div class="col-sm-12 col-lg-6"><div class="py-2"></div> CGPA / Result <input type='text'
                                             name='CV[mark]' class='form-control form-control-user'
                                             value="<%=req.session.progressingCV.mark[i]%>" required>
                                         </div>
-                                        <div class='col-sm-12 col-lg-12'><br> Others About The School / Institution (If any)
+                                        <div class='col-sm-12 col-lg-12'><div class="py-2"></div> Others About The School / Institution (If any)
                                             <input type='text' name='CV[eduDescription]'
                                                 class='form-control form-control-user' value="<%=req.session.progressingCV.eduDescription[i]%>">
                                         </div>
-                                        <div class='col-sm-12 col-lg-12'> <br> Certificate (If any)
+                                        <div class='col-sm-12 col-lg-12'><div class="py-2"></div> Certificate (If any)
                                             <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                            <input type="hidden" id="eduCertificate<%=i+1%>" name="CV[eduCertificate]"
                                             value="<%=req.session.progressingCV.eduCertificate[i]%>"> 
@@ -356,7 +377,7 @@
 
                         <div id="eduBtn" class="container">
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                                     <button type="button" class="btn btn-link" onclick="addData('education')">+ More
                                         Educations
                                     </button>
@@ -369,7 +390,7 @@
                         <!-- Work Expereience -->
                         <div id="workData1" class="container workField">
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                                     <div class="card o-hidden border-0">
                                         <div class="py-5"></div>
                                         <h3 style="color: #a570a7">💼 Work Experience (If any)</h3>
@@ -378,9 +399,10 @@
                                          to the <b>Previous</b>.
                                         </span>
                                         
-                                        <div class="row py-4">
+                                        <div class="row py-2">
 
                                             <div class="col-sm-12 col-lg-6">
+                                                <div class="py-2"></div>
                                                 Company
                                                 <input type="text" name="CV[company]" class="form-control form-control-user"
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.company!= null) { 
@@ -392,6 +414,7 @@
                                             </div>
 
                                             <div class="col-sm-12 col-lg-6">
+                                                <div class="py-2"></div>
                                                 Title / Position
                                                 <input type="text" name="CV[position]" class="form-control form-control-user"
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.position!= null) { 
@@ -402,7 +425,8 @@
                                                     value="<%=req.session.progressingCV.position%>" <% } } %>>
                                             </div>
 
-                                            <div class="col-sm-12 col-lg-3 py-4">
+                                            <div class="col-sm-12 col-lg-3">
+                                                <div class="py-2"></div>
                                                 Start Date
                                                 <input type="date" name="CV[workStartDate]" class="form-control form-control-user"
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.workStartDate!= null) { 
@@ -413,7 +437,8 @@
                                                     value="<%=req.session.progressingCV.workStartDate%>" <% } } %>>
                                             </div>
 
-                                            <div class="col-sm-12 col-lg-3 py-4">
+                                            <div class="col-sm-12 col-lg-3">
+                                                <div class="py-2"></div>
                                                 End Date
                                                 <input id="workEndDate1" name="CV[workEndDate]" class="form-control form-control-user"
                                                 type="<% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %>text<% }else{ %>date<% }}else{%>date<%} %>" 
@@ -426,13 +451,16 @@
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %> readOnly <% }} %>>
                                             </div>
 
-                                            <div class="col-sm-12 col-lg-3 py-5">
+                                            <div class="col-sm-12 col-lg-3">
+                                                <div class="py-4"></div>
                                                 <input value="workEndDate1" type="checkbox" name="CV[inJob]" onclick='checkEndDateBox()'
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %> checked <% }} %>>
                                                 <span>Still in this job right now?</span>
+                                                <div class="py-2"></div>
                                             </div>
 
                                             <div class="col-sm-12 col-lg-12">
+                                                <div class="py-2"></div>
                                                 Description About The Job
                                                 <input type="text" name="CV[workDescription]" class="form-control form-control-user"
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.workDescription!= null) { 
@@ -443,8 +471,8 @@
                                                     value="<%=req.session.progressingCV.workDescription%>" <% } } %>>
                                             </div>
 
-                                            <div class="col-sm-12 col-lg-12k">
-                                                <br>
+                                            <div class="col-sm-12 col-lg-12">
+                                                <div class="py-2"></div>
                                                 Reference Letter
                                                 <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="reference1" name="CV[reference]"
@@ -469,44 +497,46 @@
 
                         <% if (req.session.progressingCV !=null && req.session.progressingCV.company.length>0 && workStartDateData[1]!=null) {%>
                             <% var i; for(i=1; i<req.session.progressingCV.company.length; i++ ) { %>
+                        <div class="py-3"></div>
                         <div id='workData<%=i+1%>' class='container workField'>
                             <div class='row justify-content-center'>
-                                <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'>
+                                <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'>
                                     <div class='card o-hidden border-0'>
                                         <div class='row'>
                                             <div class='col-sm-12 col-lg-6'>
-                                                <br> <br> Company
+                                                <div class="py-2"></div> Company
                                                 <input type='text' name='CV[company]' class='form-control form-control-user'
                                                 value="<%=req.session.progressingCV.company[i]%>">
                                             </div>
                                             <div class='col-sm-12 col-lg-6'>
-                                                <br> <br> Title / Position
+                                                <div class="py-2"></div> Title / Position
                                                 <input type='text' name='CV[position]' class='form-control form-control-user'
                                                 value="<%=req.session.progressingCV.position[i]%>">
                                             </div>
-                                            <div class='col-sm-12 col-lg-3 py-4'> 
-                                                Start Date
+                                            <div class='col-sm-12 col-lg-3'> 
+                                                <div class="py-2"></div> Start Date
                                                 <input type='date' name='CV[workStartDate]' class='form-control form-control-user'
                                                 value="<%=req.session.progressingCV.workStartDate[i]%>">
                                             </div>
-                                            <div class='col-sm-12 col-lg-3 py-4'>
-                                                End Date
+                                            <div class='col-sm-12 col-lg-3'>
+                                                <div class="py-2"></div> End Date
                                                 <input id='workEndDate<%=i+1%>' name='CV[workEndDate]' class='form-control form-control-user'
                                                 type="<% if(req.session.progressingCV.inJob[i] == true || req.session.progressingCV.workEndDate[i] == 'Until NOW'){ %>text<% }else{ %>date<% } %>" 
                                                 value="<%=req.session.progressingCV.workEndDate[i]%>" <% if (req.session.progressingCV.inJob[i] == true || req.session.progressingCV.workEndDate[i] == 'Until NOW'){ %> readOnly <% } %>>
                                             </div>
-                                            <div class='col-sm-12 col-lg-3 py-5'>
+                                            <div class='col-sm-12 col-lg-3'>
+                                                <div class="py-4"></div>
                                                 <input value='workEndDate<%=i+1%>' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'
                                                 <% if(req.session.progressingCV.inJob[i] == true || req.session.progressingCV.workEndDate[i] == 'Until NOW'){ %> checked <% } %>>
                                                 <span>Still in this job right now?</span>
                                             </div>
                                             <div class='col-sm-12 col-lg-12'>
-                                                Description About The Job
+                                                <div class="py-3"></div>Description About The Job
                                                 <input type='text' name='CV[workDescription]' class='form-control form-control-user'
                                                 value="<%=req.session.progressingCV.workDescription[i]%>">
                                             </div>
                                             <div class='col-sm-12 col-lg-12'>
-                                                <br> Reference Letter
+                                                <div class="py-2"></div> Reference Letter
                                                 <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="reference<%=i+1%>" name="CV[reference]"
                                                 value="<%=req.session.progressingCV.reference[i]%>"> 
@@ -525,10 +555,10 @@
                             </div>
                         </div>
                         <% } } %>
-
-                        <div id="workBtn" class="container">
+                        
+                        <div id="workBtn" class="container">    
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                                     <button type="button" class="btn btn-link" onclick="addData('work')">+ More Work
                                         Experiences</button>
                                 </div>
@@ -540,7 +570,7 @@
                         <!-- Skill -->
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                                     <div class="card o-hidden border-0">
                                         <div class="py-5"></div>
                                         <h3 style="color: #a570a7">🔧 Skill</h3>
@@ -553,8 +583,8 @@
                                                     separate each of the skill and the format <b>[Skill]:[Percentage]</b> to indicate the skill and how familiar you are with that skill
                                                 </span>
                                                 <input type="text" id="typingSkill" name="CV[typingSkill]"
-                                                    class="form-control form-control-user"
-                                                    placeholder="E.g. Chinese Typing:90%,Engish Typing:80%"
+                                                    class="form-control form-control-user" onchange="checkSkill('typingSkill')"
+                                                    placeholder="E.g. Chinese Typing:90,Engish Typing:80"
                                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.typingSkill%>" <%}%>>
                                             </div>
 
@@ -565,8 +595,8 @@
                                                     separate each of the skill and the format <b>[Skill]:[Percentage]</b> to indicate the skill and how familiar you are with that skill
                                                 </span>
                                                 <input type="text" id="codingSkill" name="CV[codingSkill]"
-                                                    class="form-control form-control-user"
-                                                    placeholder="E.g. HTML:75%,Javascript:60%"
+                                                    class="form-control form-control-user" onchange="checkSkill('codingSkill')"
+                                                    placeholder="E.g. HTML:75,Javascript:60"
                                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.codingSkill%>" <%}%>>
                                             </div>
 
@@ -577,8 +607,8 @@
                                                     separate each of the skill and the format <b>[Skill]:[Percentage]</b> to indicate the skill and how familiar you are with that skill
                                                 </span>
                                                 <input type="text" id="softwareSkill" name="CV[softwareSkill]"
-                                                    class="form-control form-control-user"
-                                                    placeholder="E.g. MS Office:100%,Photoshop:50%"
+                                                    class="form-control form-control-user" onchange="checkSkill('softwareSkill')"
+                                                    placeholder="E.g. MS Office:100,Photoshop:50"
                                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.softwareSkill%>" <%}%>>
                                             </div>
                                         </div>
@@ -592,13 +622,14 @@
                         <!-- Language -->
                         <div id="languageData1" class="container languageField">
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                                     <div class="card o-hidden border-0">
                                         <div class="py-5"></div>
                                         <h3 style="color: #a570a7">🌎 Language</h3>
-                                        <div class="row py-4">
+                                        <div class="row py-2">
 
                                             <div class="col-sm-12 col-lg-4">
+                                                <div class="py-2"></div>
                                                 Name
                                                 <input type="text" name="CV[name]" class="form-control form-control-user"
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.name!= null) { 
@@ -611,6 +642,7 @@
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3">
+                                                <div class="py-2"></div>
                                                 Level
                                                 <select class="form-control" name="CV[level]" required>
                                                     <option value='Native' <% if(req.session.progressingCV !=null){ if(req.session.progressingCV.level[0] == 'Native' || req.session.progressingCV.level == 'Native') {%> selected <%}}%>>Native</option>
@@ -622,6 +654,7 @@
                                             </div>
 
                                             <div class="col-sm-12 col-lg-5">
+                                                <div class="py-2"></div>
                                                 Certificate (If any)
                                                 <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="lanCertificate1" name="CV[lanCertificate]"
@@ -648,16 +681,16 @@
                             <% var i; for(i=1; i<req.session.progressingCV.name.length; i++ ) { %>
                         <div id='languageData<%=i+1%>' class='container languageField'>
                             <div class='row justify-content-center'>
-                                <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'>
+                                <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'>
                                     <div class='card o-hidden border-0'>
                                         <div class='row'>
                                             <div class='col-sm-12 col-lg-4'>
-                                                <br> Name 
+                                                <div class="py-2"></div> Name 
                                                 <input type='text' name='CV[name]' class='form-control form-control-user' 
                                                 value="<%=req.session.progressingCV.name[i]%>" required>
                                             </div>
                                             <div class='col-sm-12 col-lg-3'>
-                                                <br> Level 
+                                                <div class="py-2"></div> Level 
                                                 <select class='form-control' name='CV[level]' 
                                                 value="<%=req.session.progressingCV.level[i]%>" required>
                                                     <option value='Native' <% if(req.session.progressingCV.level[i] == 'Native') {%> selected <%}%>>Native</option>
@@ -668,7 +701,7 @@
                                                 </select>
                                             </div>
                                             <div class='col-sm-12 col-lg-5'>
-                                                <br> Certificate (If any)
+                                                <div class="py-2"></div> Certificate (If any)
                                                 <input type="file" accept="image/*,application/pdf" class="form-control form-control-user py-1" onchange="uploadFile()">
                                                 <input type="hidden" id="lanCertificate<%=i+1%>" name="CV[lanCertificate]"
                                                 value="<%=req.session.progressingCV.lanCertificate[i]%>"> 
@@ -687,9 +720,10 @@
                         </div>
                         <% } } %>
 
+                        <div class="py-2"></div>
                         <div id="lanBtn" class="container">
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9">
+                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-12">
                                     <button type="button" class="btn btn-link" onclick="addData('language')">+ More
                                         Languages</button>
                                 </div>
@@ -699,13 +733,11 @@
 
 
                         <div class="container">
-                            <div class="row justify-content-center py-4">
-                                <div class="col-sm-12 col-xl-10 col-lg-12 col-md-9"></div>
-                                <button type="button" class="btn btn-danger" style="float: left;"
-                                    onclick="saveData()">SAVE</button>
-                                &nbsp&nbsp&nbsp&nbsp&nbsp
-                                <button type="submit" class="btn pink-btn" style="float: left;">NEXT</button>
-                                <br>
+                            <div class="row py-4" style="float: right;">
+                                <div class="col-sm-12" style="float: right;">
+                                <button type="button" class="btn btn-danger" onclick="saveData()">SAVE</button> 
+                                <button type="submit" class="btn pink-btn ml-4">NEXT</button>
+                                <div class="py-2"></div>
                             </div>
                         </div>
         </div>
@@ -781,17 +813,17 @@
             var currentEduField = parseInt(sessionStorage.getItem('numEduField'), 10);
             var idnumForNewField = currentEduField + 1;
             sessionStorage.setItem('numEduField', idnumForNewField);
-            document.getElementById('eduBtn').insertAdjacentHTML('beforebegin', "<div id='eduData" + idnumForNewField + "' class='container eduField'> <div class='row justify-content-center'>  <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-12'> <br> <br> Name Of The School / Institution <input type='text' name='CV[school]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-4 py-4'> Start Date <input type='date' name='CV[eduStartDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-4 py-4'> End Date (or Expected End Date) <input type='date' name='CV[eduEndDate]' class='form-control form-control-user' required> </div>  <div class='col-sm-12 col-lg-4 py-4'> Major <input type='text' name='CV[major]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-6'> Degree / Level <select class='form-control' name='CV[degree]' required> <option value='Professional Degree'>Professional Degree</option> <option value='Doctoral Degree'>Doctoral Degree</option> <option value='Master Degree'>Master Degree</option> <option value='Bachelor Degree'>Bachelor Degree</option> <option value='Associate Degree'>Associate Degree</option> <option value='Graduate'>Graduate</option> <option value='In Progress'>In Progress</option> </select> </div> <div class='col-sm-12 col-lg-6'> CGPA / Result <input type='text' name='CV[mark]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-12'><br> Others About The School / Institution (If any) <input type='text' name='CV[eduDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <br> Certificate (If any)  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='eduCertificate" + idnumForNewField + "' name='CV[eduCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='eduData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right;' onclick='deleteData()'> - Remove this field </button> </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
+            document.getElementById('eduBtn').insertAdjacentHTML('beforebegin', "<div id='eduData" + idnumForNewField + "' class='container eduField'> <div class='row justify-content-center'>  <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-12'> <div class='py-3'></div> Name Of The School / Institution <input type='text' name='CV[school]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-4'><div class='py-2'></div> Start Date <input type='date' name='CV[eduStartDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-4'><div class='py-2'></div> End Date (or Expected End Date) <input type='date' name='CV[eduEndDate]' class='form-control form-control-user' required> </div>  <div class='col-sm-12 col-lg-4'><div class='py-2'></div> Major <input type='text' name='CV[major]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-6'><div class='py-2'></div> Degree / Level <select class='form-control' name='CV[degree]' required> <option value='Professional Degree'>Professional Degree</option> <option value='Doctoral Degree'>Doctoral Degree</option> <option value='Master Degree'>Master Degree</option> <option value='Bachelor Degree'>Bachelor Degree</option> <option value='Associate Degree'>Associate Degree</option> <option value='Graduate'>Graduate</option> <option value='In Progress'>In Progress</option> </select> </div> <div class='col-sm-12 col-lg-6'><div class='py-2'></div> CGPA / Result <input type='text' name='CV[mark]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-12'><div class='py-2'></div> Others About The School / Institution (If any) <input type='text' name='CV[eduDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <div class='py-2'></div> Certificate (If any)  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='eduCertificate" + idnumForNewField + "' name='CV[eduCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='eduData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right;' onclick='deleteData()'> - Remove this field </button> </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
         } else if (data == "work") {
             var currentWorkField = parseInt(sessionStorage.getItem('numWorkField'), 10);
             var idnumForNewField = currentWorkField + 1;
             sessionStorage.setItem('numWorkField', idnumForNewField);
-            document.getElementById('workBtn').insertAdjacentHTML('beforebegin', "<div id='workData" + idnumForNewField + "' class='container workField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-6'> <br> <br> Company <input type='text' name='CV[company]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-6'> <br> <br> Title / Position <input type='text' name='CV[position]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-4'> Start Date <input type='date' name='CV[workStartDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-4'> End Date <input id='workEndDate" + idnumForNewField + "' type='date' name='CV[workEndDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3 py-5'> <input value='workEndDate" + idnumForNewField + "' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'> <span>Still in this job right now?</span> </div> <div class='col-sm-12 col-lg-12'> Description About The Job <input type='text' name='CV[workDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <br> Reference Letter  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='reference" + idnumForNewField + "' name='CV[reference]'> </div> <div class='col-lg-12 col-sm-12'> <button value='workData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button>  </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
+            document.getElementById('workBtn').insertAdjacentHTML('beforebegin', "<div id='workData" + idnumForNewField + "' class='container workField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-6'> <div class='py-2'></div> Company <input type='text' name='CV[company]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-6'> <div class='py-2'></div> Title / Position <input type='text' name='CV[position]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3'> <div class='py-2'></div> Start Date <input type='date' name='CV[workStartDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3'> <div class='py-2'></div> End Date <input id='workEndDate" + idnumForNewField + "' type='date' name='CV[workEndDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3'> <div class='py-4'></div> <input value='workEndDate" + idnumForNewField + "' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'> <span>Still in this job right now?</span> </div> <div class='col-sm-12 col-lg-12'> <div class='py-3'></div> Description About The Job <input type='text' name='CV[workDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <div class='py-2'></div> Reference Letter  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='reference" + idnumForNewField + "' name='CV[reference]'> </div> <div class='col-lg-12 col-sm-12'> <button value='workData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button>  </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
         } else if (data == "language") {
             var currentLanField = parseInt(sessionStorage.getItem('numLanField'), 10);
             var idnumForNewField = currentLanField + 1;
             sessionStorage.setItem('numLanField', idnumForNewField);
-            document.getElementById('lanBtn').insertAdjacentHTML('beforebegin', "<div id='languageData" + idnumForNewField + "' class='container languageField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-9'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-4'> <br> Name <input type='text' name='CV[name]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3'> <br> Level <select class='form-control' name='CV[level]' value='' required>  <option value='Native'>Native</option> <option value='Advance'>Advance</option> <option value='Good'>Good</option> <option value='Intermediate'>Intermediate</option> <option value='Basic'>Basic</option> </select> </div> <div class='col-sm-12 col-lg-5'> <br> Certificate (If any) <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='lanCertificate" + idnumForNewField + "' name='CV[lanCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='languageData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button> </div> </div> </div> </div> </div> </div>")
+            document.getElementById('lanBtn').insertAdjacentHTML('beforebegin', "<div id='languageData" + idnumForNewField + "' class='container languageField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-4'> <div class='py-2'></div> Name <input type='text' name='CV[name]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3'> <div class='py-2'></div> Level <select class='form-control' name='CV[level]' value='' required>  <option value='Native'>Native</option> <option value='Advance'>Advance</option> <option value='Good'>Good</option> <option value='Intermediate'>Intermediate</option> <option value='Basic'>Basic</option> </select> </div> <div class='col-sm-12 col-lg-5'> <div class='py-2'></div> Certificate (If any) <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='lanCertificate" + idnumForNewField + "' name='CV[lanCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='languageData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button> </div> </div> </div> </div> </div> </div>")
         }
     }
     ////////
@@ -1013,4 +1045,50 @@
     }
     ////////
 
+
+   ////////check whether the skill are in correct format
+   function checkSkill(skillID) {
+        var skill = document.getElementById(skillID).value;
+        var i, j;
+        var typedSkill = [];
+
+        if (skill != '') {
+            //extract each skill & percentage
+            var mutiSkill = skill.split(',');
+            for (i = 0; i < mutiSkill.length; i++) {
+                var skill_percent = mutiSkill[i].split(':');
+
+                for (j = 0; j < skill_percent.length; j++) {
+                    typedSkill.push(skill_percent[j]);
+                }
+            }
+            //
+
+            for (i = 0; i < typedSkill.length; i++) {
+                //check whether each skill have percentage and vise verse 
+                if (typedSkill[i] == '' || typedSkill.length % 2 != 0) {
+                    alert("⚠️ Please ensure the format typed in 'Skill' is correct ⚠️");
+                    document.getElementById(skillID).value = '';
+                    return;
+                }
+                //check the percentage part
+                if (i % 2 != 0) {
+                    //check whether only digital contain
+                    for (j = 0; j < typedSkill[i].length; j++) {
+                        if (typedSkill[i].charAt(j) >= '0' && typedSkill[i].charAt(j) <= '9') {
+                            continue;
+                        }
+                        else {
+                            alert("⚠️ Please ensure the format typed in 'Skill' is correct ⚠️");
+                            document.getElementById(skillID).value = '';
+                            return;
+                        }
+                    }
+                    //
+                }
+                //
+            }
+        }
+    }
+    ////////
 </script>

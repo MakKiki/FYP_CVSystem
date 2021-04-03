@@ -1,10 +1,8 @@
+<div class="row">
 
-<!-- color selection -->
-<div class="row py-2">
     <!-- Back button -->
-    <div class="col-sm-3">
-        <br>
-        <button type="button" class="btn rectangle-btn" style="float: right;" onclick="save('<%=cv.step%>')">
+    <div class="col-lg-12 col-md-12 col-sm-12 py-2">
+        <button type="button" class="ml-4 btn rectangle-btn" onclick="save('<%=cv.step%>')">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -14,11 +12,14 @@
             </svg>
             Back To The Customize Page
         </button>
+        <div class="py-2"></div>
     </div>
     <!-- End of Back button -->
 
+
+    <!-- color selection -->
     <!-- Background color of the webpage -->
-    <div class="col-sm-3">
+    <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="custom-control custom-radio">
             <span style="color:#81828b;"><b>Webpage Background Color</b></span>
             <select class="form-control" id="background" name="" value="" onchange="changeBackground(this.value)">
@@ -36,7 +37,7 @@
     <!-- End of Background color of the webpage -->
 
     <!-- theme color of the CV -->
-    <div class="col-sm-3">
+    <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="custom-control custom-radio">
             <span style="color: #81828b;"><b>Theme Color</b></span>
             <select class="form-control" id="textColor" name="" value="" onchange="changeColor(this.value)">
@@ -51,20 +52,22 @@
     <!-- End of theme color of the CV -->
 
     <!-- button for finish -->
-    <div class="col-sm-3">
+    <div class="col-lg-4 col-md-4 col-sm-12">
         <br>
-        <button type="button" class="btn pink-btn" <% if (cv.step=='step4' ){ %>onclick="showAlert()"<% }else{ %>
+        <button type="button" class="ml-4 btn pink-btn" <% if (cv.step=='step4' ){ %>onclick="showAlert()"<% }else{ %>
                 onclick="finish('<%=cv.step%>')"<% } %>>Finish</button>
     </div>
     <!-- end of button for finish -->
 </div>
 <!-- end of color selection -->
+</div>
 
 
 <div class="py-3"></div>
 
+
 <!-- show CV -->
-<div id="content" class="container-fluid container">
+<div id="content" class="container-md">
     <%- cv.CVcode %>
 </div>
 <!-- End of show CV -->
@@ -193,8 +196,8 @@
     }
     ///////
 
-     ///////set current selection
-     function setSelection() {
+    ///////set current selection
+    function setSelection() {
         background = document.getElementById("webpageColor").value;
         document.getElementById(background).selected = 'true';
         theme = document.getElementById("progressCirColor").value;

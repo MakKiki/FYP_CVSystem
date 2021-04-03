@@ -61,20 +61,20 @@
 
 <body>
   <% var currentPath=req.path.split('/'); if (req.session.role=='user' || req.session.role=='admin' ){ if
-    (currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' && req.path !='/preview'){ %>
-    <!-- Topbar after login -->
+    (currentPath[1] !='CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' && req.path
+    !='/preview' ){ %>
+    <!-- Navbar after login -->
     <nav id="topbar" class="navbar navbar-expand navbar-light bg-white topbar static-top shadow" <% if
       (req.path=='/input' && req.session.progressingCV==null || req.path=='/step2' ) {%> style="opacity: .4;" <%}%>>
 
-        <!-- Topbar Navbar -->
+        <!-- Nav item -->
         <ul class="navbar-nav ml-auto">
-
           <% if (req.session.role=="user" ) { %>
+            <!-- For user -->
             <!-- Nav Item - My CV -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="/main" id="alertsDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <div class="mr-2 d-none d-lg-inline header-href text-left <% if (req.path == '/main') { %>active<% }%>">
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="/main" role="button">
+                <div class="mr-2 header-href text-left <% if (req.path == '/main') { %>active<% }%>">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-file-text" viewBox="0 0 16 16">
                     <path
@@ -86,15 +86,18 @@
                 </div>
               </a>
             </li>
+            <!-- End of My CV -->
+            <!-- End of user -->
             <% } %>
 
               <% if (req.session.role=="admin" ) { %>
-                <% if (req.path!='/setting' && req.path!='/admin_main' && currentPath[1]!='user') { %>
+                <!-- For admin -->
+                <% if (req.path!='/setting' && req.path!='/admin_main' && currentPath[1]!='user' ) { %>
+                  <!-- Only available whenadmin editing CV -->
                   <!-- Nav Item - Back -->
-                  <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="/user/info/<%=req.session.userID%>" id="alertsDropdown"
-                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="mr-2 d-none d-lg-inline header-href text-left">
+                  <li class="nav-item mx-1">
+                    <a class="nav-link" href="/user/info/<%=req.session.userID%>" role="button">
+                      <div class="mr-2 header-href text-left">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                           class="bi bi-door-open" viewBox="0 0 16 16">
                           <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
@@ -105,14 +108,14 @@
                       </div>
                     </a>
                   </li>
+                  <!-- End of Back -->
                   <% } %>
 
                     <!-- Nav Item - User List -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                      <a class="nav-link dropdown-toggle" href="/admin_main" id="alertsDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item mx-1">
+                      <a class="nav-link" href="/admin_main" role="button">
                         <div
-                          class="mr-2 d-none d-lg-inline header-href text-left <% if (req.path == '/admin_main') { %>active<% }%>">
+                          class="mr-2 header-href text-left <% if (req.path == '/admin_main') { %>active<% }%>">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-people-fill" viewBox="0 0 16 16">
                             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -124,16 +127,18 @@
                         </div>
                       </a>
                     </li>
+                    <!-- End of User List -->
                     <% } %>
 
                       <!-- Divider -->
-                      <div class="topbar-divider d-none d-sm-block"></div>
+                      <div class="topbar-divider d-sm-block"></div>
+                      <!-- End of divider -->
 
                       <!-- Nav Item - Person Information -->
                       <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" onclick="showUserToolbar()" id="userDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="mr-3 d-none d-lg-inline header-href">Hello, <%=req.session.firstName %></span>
+                          <span class="mr-3 d-none d-sm-inline header-href">Hello, <%=req.session.firstName %></span>
                           <img class="img-profile rounded-circle" <%if(req.session.profile=='' )
                             {%>src="/images/avatar.png"
                           <%}else{%>src="<%=req.session.profile%>"<%}%>>
@@ -155,6 +160,7 @@
                               </svg>
                               Setting
                           </a>
+                          <!-- End of Setting -->
 
                           <!-- Logout -->
                           <form action="/logout" method="POST">
@@ -170,20 +176,24 @@
                               </svg>
                               Logout
                           </form>
+                          <!-- End of Logout -->
                         </div>
                       </li>
+                      <!-- End of person information -->
         </ul>
+        <!-- End of Nav item -->
     </nav>
-    <!-- End of Topbar -->
+    <!-- End of Navbar after login -->
 
     <% }} else if (req.path !='/CV' && req.path !='/template1' && req.path !='/template2' && req.path !='/template3' ){
       %>
-      <!-- Navbar for person before login -->
-      <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+      <!-- Navbar before login -->
+      <nav class="navbar navbar-top navbar-horizontal navbar-expand navbar-dark">
         <div class="container px-4">
 
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
+            <!-- 1st item - signup -->
             <li class="nav-item mx-4">
               <a href="/signup"
                 class="nav-link-inner--text nav-link nav-link-icon <% if (req.path == '/signup') { %>active<% }%>">
@@ -196,6 +206,9 @@
                 Register
               </a>
             </li>
+            <!-- end of signup item -->
+
+            <!-- 2nd item- login -->
             <li class="nav-item">
               <a href="/login"
                 class="nav-link-inner--text nav-link nav-link-icon <% if (req.path == '/login') { %>active<% }%>">
@@ -207,10 +220,14 @@
                 Login
               </a>
             </li>
+            <!-- End of login item -->
+
           </ul>
+          <!-- End of Navbar items -->
         </div>
         </div>
       </nav>
+      <!-- End of Navbar before login -->
       <% } %>
 
         <%- body %>

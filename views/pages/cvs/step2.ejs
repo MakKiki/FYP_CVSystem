@@ -4,17 +4,15 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel" style="color: #f1869f">Step 2 - 🎨 Choosing Theme 🎨
+                <h4 class="modal-title" id="exampleModalLabel" style="color: #f1869f">Step 2 - Choosing Theme
                 </h4>
             </div>
             <div class="modal-body">
-                <br>
-                Please choose one of the default template in this page. You can click the "Demo For More" button to have
+                In this page, you can click the "Demo For More" button to have
                 a demo. You can change the color of the theme and webpage in the demo page.
                 <br><br>
-                If you want to use that template, you can press the "I want to choose this template" button
-                in the demo page for the next step.
-                <br><br>
+                You should press the "I want to choose this template" button
+                in the demo page in order to go to the next step.
             </div>
             <div class="modal-footer">
                 <button id="alert-delete" class="btn pink-btn" type="button" onclick="closeStep2Modal()"
@@ -29,52 +27,53 @@
 <div id="content" style="opacity: .4;">
     <!-- progress bar -->
     <div class="py-4"></div>
-    <ul class="progressbar">
-        <li class="active">Inputting Data</li>
-        <li>Choosing Theme</li>
-        <li>Customizing your CV</li>
-        <li>Making your CV into 3D</li>
-    </ul>
+    <div class="justify-content-center">
+        <ul class="progressbar">
+            <li class="active">Inputting<br>Data</li>
+            <li>Choosing<br>Theme</li>
+            <li>Customizing<br>CV</li>
+            <li>Making<br>3D CV</li>
+        </ul>
+    </div>
     <div class="py-3"></div>
     <!-- End of progress bar -->
 
 
     <!-- content -->
     <div class="container my-4">
-        <div class="header-body text-center mb-7">
+        <div class="text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-sm-12">
                     <h1 style="color: #a570a7">Step 2 - 🎨 Choosing Theme 🎨</h1>
                     <div class="py-3"></div>
                     <h2>Let's choose one of the template you like below!</h2>
-                    <div class="py-4"></div>
+                    <div class="py-2"></div>
                 </div>
 
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                    <div class="py-3"></div>
                     <h5 style="color: #a570a7;">Template 1 </h5>
-                    <img class="rounded-xl" style="height: auto; width: 530px; border: 1px solid #e7e7e7"
-                        src='/images/template1.png'>
+                    <img class="rounded-xl template" src='/images/template1.png'>
                     <div class="py-2"></div>
                     <button class="btn main-create-btn" onclick="window.open('/template1');"
                         style="width: 200px; height: 50px;">Demo For More</button>
                 </div>
 
 
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                    <div class="py-3"></div>
                     <h5 style="color: #a570a7;">Template 2 </h5>
-                    <img class="rounded-xl" style="height: auto; width: 530px; border: 1px solid #e7e7e7"
-                        src='/images/template2.png'>
+                    <img class="rounded-xl template" src='/images/template2.png'>
                     <div class="py-2"></div>
                     <button class="btn main-create-btn" onclick="window.open('/template2');"
                         style="width: 200px; height: 50px;">Demo For More</button>
                 </div>
 
 
-                <div class="col-lg-6 col-sm-12 py-3">
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 py-3">
                     <div class="py-3"></div>
                     <h5 style="color: #a570a7;">Template 3 </h5>
-                    <img class="rounded-xl" style="height: auto; width: 530px; border: 1px solid #e7e7e7"
-                        src='/images/template3.png'>
+                    <img class="rounded-xl template" src='/images/template3.png'>
                     <div class="py-2"></div>
                     <button class="btn main-create-btn" onclick="window.open('/template3');"
                         style="width: 200px; height: 50px;">Demo For More</button>
@@ -85,7 +84,7 @@
 </div>
 
 
-<script>  
+<script>
     ///////for close step1 modal
     function closeStep2Modal() {
         var modal = document.getElementById('step2Modal');

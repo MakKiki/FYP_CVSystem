@@ -1,76 +1,104 @@
-<div class="header signup-bg py-7 py-lg-8">
-    <br><br>
+<div class="py-4"></div>
 
-    <!-- Signup card -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
+<!-- Main content -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-9">
 
-                            <!-- Left part of the card -->
-                            <div class="col-lg-6 d-none d-lg-block">
-                                <br>
-                                <img src="/images/signup_pic.svg" style="width: 90%; height: 90%; float: right;" />
-                            </div>
+            <!-- sign up card -->
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="row">
 
-                            <!-- Right part of the card -->
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <!-- meesage -->
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                                    </div>
-                                    <br>
+                        <!-- Left part of the card -->
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <br>
+                            <img src="/images/signup_pic.svg" style="width: 90%; height: 90%; float: right;" />
+                        </div>
+                        <!-- End of left part -->
 
-                                    <!-- User info -->
-                                    <form class="user" action="/signup" method="POST">
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="text" name="User[firstName]"
-                                                    class="form-control form-control-user" id="exampleFirstName"
-                                                    placeholder="First Name">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="User[lastName]"
-                                                    class="form-control form-control-user" id="exampleLastName"
-                                                    placeholder="Last Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" name="User[email]"
-                                                class="form-control form-control-user" id="exampleInputEmail"
-                                                placeholder="Email Address">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="password" name="User[password]"
-                                                class="form-control form-control-user" id="exampleInputPassword"
-                                                placeholder="Password">
-                                        </div>
-
-                                        <br>
-                                        <button typr="sumbit" class="btn signup-btn btn-block">
-                                            Register Account
-                                        </button>
-                                    </form>
-
-                                    <!-- others -->
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="/login">Already have an account? Login!</a>
-                                    </div>
+                        <!-- Right part of the card -->
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <!-- meesage -->
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                 </div>
+                                <!-- end of meesage -->
+
+                                <div class="py-2"></div>
+
+                                <!-- User info -->
+                                <form class="user" action="/signup" method="POST">
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" name="User[firstName]"
+                                                class="form-control form-control-user" placeholder="First Name"
+                                                required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="User[lastName]"
+                                                class="form-control form-control-user" placeholder="Last Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="User[email]" class="form-control form-control-user"
+                                            placeholder="Email Address" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" name="User[password]"
+                                            class="form-control form-control-user" id="password1" placeholder="Password"
+                                            required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" id="password2" class="form-control form-control-user"
+                                            placeholder="Confirm Password" onchange="match()" required>
+                                    </div>
+
+                                    <div class="py-2"></div>
+                                    <button type="sumbit" class="btn signup-btn btn-block">
+                                        Register Account
+                                    </button>
+                                </form>
+                                <!-- End of User info -->
+
+                                <!-- others -->
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="/login">Already have an account? Login!</a>
+                                </div>
+                                <!-- End of others -->
                             </div>
                         </div>
+                        <!-- End of Right part of the card -->
+
                     </div>
                 </div>
             </div>
+            <!-- End of sign up card -->
+
         </div>
     </div>
 </div>
+<!-- End of main content -->
+
+
+<script>
+    ////////set background color
+    window.onload = function () {
+        document.body.classList.add('signup-bg');
+    }
+    ////////
+
+
+    ////////confirm the two passwords are matched
+    function match() {
+        if (document.getElementById("password1").value != document.getElementById("password2").value) {
+            alert("⚠️ Please ensure the typed passwords are matched ⚠️");
+            document.getElementById("password2").value = '';
+        }
+    }
+    ////////
+</script>

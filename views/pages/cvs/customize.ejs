@@ -1,344 +1,338 @@
-<!-- Page Wrapper -->
-<div id="wrapper">
+<div class="scroll">
+  <!-- Sidebar -->
+  <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion" id="sidebar">
 
-  <div class="scroll">
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion" id="sidebar">
+    <!-- Sidebar Title -->
+    <div class="sidebar-title align-items-center justify-content-center">
+      <span>Tool Board</span>
+    </div>
 
-      <!-- Sidebar Title -->
-      <div class="sidebar-title align-items-center justify-content-center">
-        <span class="sidebar-title-text">Tool Board</span>
-      </div>
+    <div class="py-2"></div>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Nav Item - Text Style -->
-      <div class="sidebar-heading">
-        Text Style
-      </div>
-      <li class="nav-item active">
-        <div style="padding: 0.5rem 1rem; display: block;">
-          <span title="Bold">
-            <button class="btn-light" data-edit="bold">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-bold" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Italic">
-            <button class="btn-light" data-edit="italic">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-italic" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M7.991 11.674L9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Underline">
-            <button class="btn-light" data-edit="underline">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-underline" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136z" />
-                <path fill-rule="evenodd" d="M12.5 15h-9v-1h9v1z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Strikethrough">
-            <button class="btn-light" data-edit="strikeThrough">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-type-strikethrough" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M8.527 13.164c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675L8.046 8.5h3.45c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967zM6.602 6.5H5.167a2.776 2.776 0 0 1-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607 0 .31.083.581.27.814z" />
-                <path fill-rule="evenodd" d="M15 8.5H1v-1h14v1z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Remove format">
-            <button class="btn-light" data-edit="removeFormat">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Extra Small size">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:1">XS</button>
-          </span>
-
-          <span title="Small size">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:2">S</button>
-          </span>
-
-          <span title="Middle size">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3">M</button>
-          </span>
-
-          <span title="Large size">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:4">L</button>
-          </span>
-
-          <span title="Heading1">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:7">H1</button>
-          </span>
-
-          <span title="Heading2">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:6">H2</button>
-          </span>
-
-          <span title="Heading3">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:5">H3</button>
-          </span>
-
-          <span title="Paragraph">
-            <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3">P</button>
-          </span>
-          <!-- Haven't finished: Text font -->
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Nav Item - Paragraph Style -->
-      <div class="sidebar-heading">
-        Paragraph
-      </div>
-      <li class="nav-item active">
-        <div style="padding: 0.5rem 1rem; display: block;">
-
-          <span title="Unordered list">
-            <button class="btn-light" data-edit="insertUnorderedList">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ul" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Ordered list">
-            <button class="btn-light" data-edit="insertOrderedList">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-ol" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
-                <path
-                  d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Left alignment">
-            <button class="btn-light" data-edit="justifyLeft">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-text-left" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Align to center">
-            <button class="btn-light" data-edit="justifyCenter">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-text-center" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-              </svg>
-            </button>
-          </span>
-
-          <span title="Right alignment">
-            <button class="btn-light" data-edit="justifyRight">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-text-right" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-              </svg>
-            </button>
-          </span>
-
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Nav Item - Color Style -->
-      <div class="sidebar-heading">
-        Color
-      </div>
-
-      <li class="nav-item">
-        <div class="py-2">
-          <label
-            style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
-            for="textColor">
-            Text </label>
-          <input type="color" value="#00000" id="textColor" onmouseup="setColor(this.value)">
-        </div>
-
-        <div>
-          <label
-            style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
-            for="cardColor">
-            Card </label>
-          <input type="color" value="#ffffff" id="cardColor" onmouseup="setCardColor('.new-page', this.value)">
-        </div>
-
-        <div class="py-2">
-          <label
-            style="padding: 2px 2px; padding-left: 1.05rem; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #e7e7eb"
-            for="btnColor">
-            Button Card </label>
-          <input type="color" value="#ffffff" id="btnColor" <% if(cv.template=='template3' ) { %>
-          onmouseup="setCardColor('.fieldbarCard', this.value)" <% }else{ %>
-            onmouseup="setCardColor('.content-btn', this.value)" <% } %>>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Nav Item - Addons -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
-
-      <li class="nav-item">
-        <div class="py-2">
-          <button class="btn nav-link" onclick="addField('<%=req.session.reloadStatus%>')"
-            style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>+ Text Field</span>
+    <!-- Nav Item - Text Style -->
+    <div class="sidebar-heading">
+      Text Style
+    </div>
+    <li class="nav-item active">
+      <div style="padding: 0.5rem 1rem; display: block;">
+        <span title="Bold">
+          <button class="btn-light" data-edit="bold">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-type-bold" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z" />
+            </svg>
           </button>
-        </div>
-        <button type="button" class="btn nav-link" onclick="showAddPageWindow()"
-          style="padding: 2px 2px; padding-left: 1.05rem;">
-          <span>+ Page</span>
-        </button>
-        <div class="py-1"></div>
-      </li>
+        </span>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Nav Item - Delete -->
-      <div class="sidebar-heading">
-        Delete
-      </div>
-
-      <li class="nav-item">
-        <div class="py-2">
-          <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
-            style="padding: 2px 2px; padding-left: 1.05rem;">
-            <span>- Textfield</span>
+        <span title="Italic">
+          <button class="btn-light" data-edit="italic">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-type-italic" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.991 11.674L9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z" />
+            </svg>
           </button>
-        </div>
-        <button type="button" class="btn nav-link" onclick="showDeletePageWindow()"
-          style="padding: 2px 2px; padding-left: 1.05rem;">
-          <span>- Page</span>
-        </button>
-        <div class="py-1"></div>
-      </li>
+        </span>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+        <span title="Underline">
+          <button class="btn-light" data-edit="underline">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-type-underline" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136z" />
+              <path fill-rule="evenodd" d="M12.5 15h-9v-1h9v1z" />
+            </svg>
+          </button>
+        </span>
 
-      <!-- Buttton -->
-      <div>
-        <button onclick="saveContent('<%=req.session.reloadStatus%>')" class="btn btn-warning"
-          style="width: 100%">Save</button>
+        <span title="Strikethrough">
+          <button class="btn-light" data-edit="strikeThrough">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-type-strikethrough" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.527 13.164c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675L8.046 8.5h3.45c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967zM6.602 6.5H5.167a2.776 2.776 0 0 1-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607 0 .31.083.581.27.814z" />
+              <path fill-rule="evenodd" d="M15 8.5H1v-1h14v1z" />
+            </svg>
+          </button>
+        </span>
+
+        <span title="Remove format">
+          <button class="btn-light" data-edit="removeFormat">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z" />
+            </svg>
+          </button>
+        </span>
+
+        <span title="Extra Small size">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:1"><b>XS</b></button>
+        </span>
+
+        <span title="Small size">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:2"><b>S</b></button>
+        </span>
+
+        <span title="Middle size">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3"><b>M</b></button>
+        </span>
+
+        <span title="Large size">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:4"><b>L</b></button>
+        </span>
+
+        <span title="Heading1">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:7"><b>H1</b></button>
+        </span>
+
+        <span title="Heading2">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:6"><b>H2</b></button>
+        </span>
+
+        <span title="Heading3">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:5"><b>H3</b></button>
+        </span>
+
+        <span title="Paragraph">
+          <button style="width:2.5em; height:2em" class="btn-light" data-edit="fontSize:3"><b>P</b></button>
+        </span>
       </div>
+    </li>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Paragraph Style -->
+    <div class="sidebar-heading">
+      Paragraph
+    </div>
+    <li class="nav-item active">
+      <div style="padding: 0.5rem 1rem; display: block;">
+
+        <span title="Unordered list">
+          <button class="btn-light" data-edit="insertUnorderedList">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-list-ul" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+            </svg>
+          </button>
+        </span>
+
+        <span title="Ordered list">
+          <button class="btn-light" data-edit="insertOrderedList">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-list-ol" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
+              <path
+                d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z" />
+            </svg>
+          </button>
+        </span>
+
+        <span title="Left alignment">
+          <button class="btn-light" data-edit="justifyLeft">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-text-left" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+        </span>
+
+        <span title="Align to center">
+          <button class="btn-light" data-edit="justifyCenter">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-text-center" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+        </span>
+
+        <span title="Right alignment">
+          <button class="btn-light" data-edit="justifyRight">
+            <svg width="1.45em" height="1.45em" viewBox="0 0 16 16" class="bi bi-text-right" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+        </span>
+
+      </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Color Style -->
+    <div class="sidebar-heading">
+      Color
+    </div>
+
+    <li class="nav-item">
       <div class="py-2">
-        <button onclick="save_preview('<%=req.session.reloadStatus%>')" class="btn btn-info" style="width: 100%">Save &
-          Preview</button>
+        <label class="custom-color-item" for="textColor">
+          Text </label>
+        <input type="color" value="#00000" id="textColor" style="width:40px" onmouseup="setColor(this.value)">
       </div>
 
       <div>
-        <button onclick="submitCV('<%=req.session.reloadStatus%>')" class="btn btn-success"
-          style="width: 100%">Finish</button>
+        <label class="custom-color-item" for="cardColor">
+          Card </label>
+        <input type="color" value="#ffffff" id="cardColor" style="width:40px"
+          onmouseup="setCardColor('.new-page', this.value)">
       </div>
 
       <div class="py-2">
-        <button onclick="pass()" class="btn btn-dark" style="width: 100%">Pass This Step</button>
+        <label class="custom-color-item" for="btnColor">
+          Menu</label>
+        <input type="color" value="#ffffff" id="btnColor" style="width:40px" <% if(cv.template=='template3' ) { %>
+        onmouseup="setCardColor('.fieldbarCard', this.value)" <% }else{ %>
+          onmouseup="setCardColor('.content-btn', this.value)" <% } %>>
       </div>
+    </li>
 
-      <!-- <div>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Addons -->
+    <div class="sidebar-heading">
+      Addons
+    </div>
+
+    <li class="nav-item">
+      <div class="py-2">
+        <button class="btn nav-link" onclick="addField('<%=req.session.reloadStatus%>')"
+          style="padding: 2px 2px; padding-left: 1rem;">
+          <span style="float: left;">+ Text Field</span>
+        </button>
+      </div>
+      <button type="button" class="btn nav-link" onclick="showAddPageWindow()"
+        style="padding: 2px 2px; padding-left: 1rem;">
+        <span style="float: left;">+ Page</span>
+      </button>
+      <div class="py-1"></div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Delete -->
+    <div class="sidebar-heading">
+      Delete
+    </div>
+
+    <li class="nav-item">
+      <div class="py-2">
+        <button type="button" class="btn nav-link" id="deleteField-btn" onclick="deleteBtn(this)"
+          style="padding: 2px 2px; padding-left: 1rem;">
+          <span style="float: left;">- Textfield</span>
+        </button>
+      </div>
+      <button type="button" class="btn nav-link" onclick="showDeletePageWindow()"
+        style="padding: 2px 2px; padding-left: 1rem;">
+        <span style="float: left;">- Page</span>
+      </button>
+      <div class="py-1"></div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Buttton -->
+    <div>
+      <div class="py-1"></div>
+      <button onclick="saveContent('<%=req.session.reloadStatus%>')" class="btn btn-warning"
+        style="width: 100%">Save</button>
+    </div>
+
+    <div>
+      <div class="py-1"></div>
+      <button onclick="save_preview('<%=req.session.reloadStatus%>')" class="btn btn-info" style="width: 100%">Save &
+        Preview</button>
+    </div>
+
+    <div>
+      <div class="py-1"></div>
+      <button onclick="submitCV('<%=req.session.reloadStatus%>')" class="btn btn-success"
+        style="width: 100%">Finish</button>
+    </div>
+
+    <div>
+      <div class="py-1"></div>
+      <button onclick="pass()" class="btn btn-dark" style="width: 100%">Pass This Step</button>
+    </div>
+
+    <!-- <div>
         <button onclick="showDeleteAlert()" class="btn btn-dark" style="width: 100%">Delete</button>
       </div> -->
-    </ul>
-  </div>
-  <!-- End of Sidebar -->
-
-
-  <!-- Content position -->
-  <div style="position:absolute; left:268px; top:90px; height: 400px; width:980px;">
-
-    <% if (req.session.reloadCV=='' ){ %>
-      <div id="whole">
-        <%- cv.CVcode %>
-      </div>
-      <!-- when add field/img/doc -->
-      <% } else { %>
-        <div id="reloadWhole">
-          <%- req.session.reloadCV %>
-        </div>
-        <% } %>
-
-  </div>
-  <!-- End of content position -->
-
-
-  <!-- Add Page Modal-->
-  <div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
-    role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <h6>Please input the name of your new page:</h6><br>
-          <input type="text" id="newPageName" name="" class="form-control form-control-user">
-          <span id='pageAlert' style="font-size: 2px; color: red;"></span>
-        </div>
-        <div class="modal-footer">
-          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
-            data-dismiss="modal">Cancel</button>
-          <button id="alert-addPage" class="btn pink-btn" type="button"
-            onclick="addPage('<%=cv.template%>', '<%=req.session.reloadStatus%>')" data-dismiss="modal">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Add Page Modal -->
-
-
-  <!-- Delete Page Modal-->
-  <div class="animate__animated animate__fadeIn center" style="display:none;" id="deletePageModal" tabindex="-1"
-    role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div id="deletePageModalBody" class="modal-body">
-          <h6>Please choose the page(s) you want to delete.</h6><br>
-        </div>
-        <div class="modal-footer">
-          <button id="alert-cancel" class="btn pink-btn" type="button" onclick="showDeletePageWindow()"
-            data-dismiss="modal">Finish</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Delete Page Modal -->
+  </ul>
 </div>
+<!-- End of Sidebar -->
+
+
+<!-- Content -->
+<div class="custom-cv">
+  <% if (req.session.reloadCV=='' ){ %>
+    <div id="whole">
+      <%- cv.CVcode %>
+    </div>
+    <!-- when add field/img/doc -->
+    <% } else { %>
+      <div id="reloadWhole">
+        <%- req.session.reloadCV %>
+      </div>
+      <% } %>
+</div>
+<!-- End of content -->
+
+
+<!-- Add Page Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none;" id="addPageModal" tabindex="-1"
+  role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h6>Please input the name of your new page:</h6><br>
+        <input type="text" id="newPageName" name="" class="form-control form-control-user">
+        <span id='pageAlert' style="font-size: 2px; color: red;"></span>
+      </div>
+      <div class="modal-footer">
+        <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showAddPageWindow()"
+          data-dismiss="modal">Cancel</button>
+        <button id="alert-addPage" class="btn pink-btn" type="button"
+          onclick="addPage('<%=cv.template%>', '<%=req.session.reloadStatus%>')" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Add Page Modal -->
+
+
+<!-- Delete Page Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none;" id="deletePageModal" tabindex="-1"
+  role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div id="deletePageModalBody" class="modal-body">
+        <h6>Please choose the page(s) you want to delete.</h6><br>
+      </div>
+      <div class="modal-footer">
+        <button id="alert-cancel" class="btn pink-btn" type="button" onclick="showDeletePageWindow()"
+          data-dismiss="modal">Finish</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Delete Page Modal -->
+
 
 
 
@@ -588,6 +582,7 @@
     // not due to add field
     else {
       console.log("click refresh to reload")
+      showFirstPage();
       updateReloadCVSession();
       window.location.href = "/customize";
     }
@@ -595,8 +590,22 @@
   //leave page and enter again
   else {
     console.log("leave the page and enter again")
+    showFirstPage();
     console.log(sessionStorage)
     updateReloadCVSession();
+  }
+  ///////
+
+  ///////update CV code to ensure the first page
+  function showFirstPage() {
+    //show the first page
+    var contentBtnArray = document.getElementsByClassName("content-btn");
+    document.getElementById(contentBtnArray[0].value).style.display = '';
+    var i;
+    for (i = 1; i < contentBtnArray.length; i++) {
+      id = contentBtnArray[i].value;
+      document.getElementById(id).style.display = 'none';
+    }
   }
   ///////
 
@@ -622,7 +631,8 @@
   window.onload = function () {
     if (window.location.href.substr(-1) !== '?') {
       window.location = window.location.href + '?';
-      sessionStorage.setItem('currentPage', 'Basic Information');
+      var contentBtnArray = document.getElementsByClassName("content-btn");
+      sessionStorage.setItem('currentPage', contentBtnArray[0].value);
       sessionStorage.setItem('addField', 'false');
       sessionStorage.setItem('deleteBtn', 'off');
       console.log(sessionStorage)
