@@ -589,7 +589,7 @@
 
                 <div class="row docBtn" style="display: none;">
                     <!-- radio of docBtn1 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="docBtnRadio custom-control-input" name="radio" value="btn-link"
                                 id="docBtn1">
@@ -597,7 +597,7 @@
                         </div>
                     </div>
                     <!-- radio of docBtn2 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="docBtnRadio custom-control-input" name="radio"
                                 value="filled-rectangle-btn" id="docBtn2">
@@ -605,7 +605,8 @@
                         </div>
                     </div>
                     <!-- docBtn1 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
+                        <div class="py-1"></div>
                         <button id="docbtn-link" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                 height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                 <path
@@ -615,7 +616,8 @@
                             </svg><span class="ml-1">Download the document here</span></button>
                     </div>
                     <!-- docBtn2 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
+                        <div class="py-1"></div>
                         <button id="docfilled-rectangle-btn" class="btn filled-rectangle-btn"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-download" viewBox="0 0 16 16">
@@ -626,7 +628,7 @@
                             </svg><span class="ml-1">Download the document here</span></button>
                     </div>
                     <!-- radio of docBtn3 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="py-1"></div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="docBtnRadio custom-control-input" name="radio"
@@ -635,7 +637,7 @@
                         </div>
                     </div>
                     <!-- radio of docBtn4 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="py-1"></div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="docBtnRadio custom-control-input" name="radio" value=""
@@ -644,7 +646,7 @@
                         </div>
                     </div>
                     <!-- docBtn3 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
                         <button id="docrectangle-btn" class="btn rectangle-btn"><svg xmlns="http://www.w3.org/2000/svg"
                                 width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                 <path
@@ -654,7 +656,7 @@
                             </svg><span class="ml-1">Download the document here</span></button>
                     </div>
                     <!-- docBtn4 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
                         <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                 <path
@@ -664,17 +666,17 @@
                             </svg><span class="ml-1">Download the document here</span></button>
                     </div>
                     <!-- button for changing docBtn color -->
-                    <div class="col-lg-12 d-none d-lg-block">
+                    <div class="col-lg-12">
                         <div class="py-3"></div>
                         <label for="docBtnColor">
                             Button Color
                         </label>
                         <input type="color" value="#e7e7eb" id="docBtnColor">
-                        <button type="button" class="btn purple-btn ml-3" style="padding: 0rem 0.75rem; height: 30px;"
+                        <button type="button" class="btn purple-btn" style="padding: 0rem 0.75rem; height: 30px;"
                             onclick="setBtnColor('doc','docBtnColor')"><span style="font-size: 2px;">Select
                                 This
                                 Color</span></button>
-                        <button type="button" class="btn btn-secondary ml-1"
+                        <button type="button" class="btn btn-secondary"
                             style="padding: 0rem 0.75rem; height: 30px;"
                             onclick="setBtnColor('doc','darkerColor')"><span style="font-size: 2px;">Default
                                 Color</span></button>
@@ -723,21 +725,21 @@
 
                 <!-- radio -->
                 <div class="row imageFrame" style="display: none;">
-                    <div class="col-lg-4 d-none d-lg-block">
+                    <div class="col-lg-4 col-sm-12">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="frameRadio custom-control-input" name="radio"
                                 value="rounded-circle" id="frame1">
                             <label class="custom-control-label" for="frame1">Rounded Circle</label>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-none d-lg-block">
+                    <div class="col-lg-3 col-sm-12">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="frameRadio custom-control-input" name="radio" value="rounded-xl"
                                 id="frame2">
                             <label class="custom-control-label" for="frame2">Rounded Rectangle</label>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-none d-lg-block">
+                    <div class="col-lg-3 col-sm-12">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="frameRadio custom-control-input" name="radio" value=""
                                 id="frame3">
@@ -747,9 +749,9 @@
                 </div>
 
                 <!-- image -->
-                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-circle">
-                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-xl mx-5">
-                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame">
+                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-circle d-none d-md-inline">
+                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-xl mx-4 d-none d-md-inline">
+                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame d-none d-md-inline">
 
             </div>
             <div class="modal-footer">
@@ -828,8 +830,9 @@
                 <h6 class="py-3 text-center">Please choose a method to create the video:</h6>
 
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 col-sm-12">
-                        <button class="btn pink-btn" style="float: right; width: 130px;"
+                    <div class="col-lg-1 col-md-1"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-8">
+                        <button class="btn pink-btn" style="width: 130px;"
                             onclick="window.open('/webcam_record')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-camera-video" viewBox="0 0 16 16">
@@ -838,8 +841,8 @@
                             </svg><br><span style="font-size: smaller">Webcam</span>
                         </button>
                     </div>
-
-                    <div class="col-lg-6 col-sm-12">
+                    <div class="col-lg-1 col-md-2"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-8">
                         <button class="btn pink-btn" style="width: 130px;" onclick="window.open('/merge_image')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-images" viewBox="0 0 16 16">
@@ -849,6 +852,7 @@
                             </svg><br><span style="font-size: smaller">Merge Image(s)</span>
                         </button>
                     </div>
+                    <div class="col-lg-2 col-md-2"></div>
                 </div>
                 <div class="py-1"></div>
             </div>
@@ -951,7 +955,8 @@
 
                 <div class="row windowBtn">
                     <!-- radio of windowBtn1 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="py-1"></div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="windowBtnRadio custom-control-input" name="radio"
                                 value="btn-link" id="windowBtn1">
@@ -959,7 +964,8 @@
                         </div>
                     </div>
                     <!-- radio of windowBtn2 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="py-1"></div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="windowBtnRadio custom-control-input" name="radio"
                                 value="filled-rectangle-btn" id="windowBtn2">
@@ -967,17 +973,17 @@
                         </div>
                     </div>
                     <!-- windowBtn1 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
                         <button id="windowbtn-link" class="btn btn-link">
                             <span>Name of the button</span></button>
                     </div>
                     <!-- windowBtn2 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
                         <button id="windowfilled-rectangle-btn" class="btn filled-rectangle-btn">
                             <span>Name of the button</span></button>
                     </div>
                     <!-- radio of windowBtn3 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="py-1"></div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="windowBtnRadio custom-control-input" name="radio"
@@ -986,7 +992,7 @@
                         </div>
                     </div>
                     <!-- radio of windowBtn4 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="py-1"></div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="windowBtnRadio custom-control-input" name="radio" value=""
@@ -995,27 +1001,27 @@
                         </div>
                     </div>
                     <!-- windowBtn3 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
                         <button id="windowrectangle-btn" class="btn rectangle-btn">
                             <span>Name of the button</span></button>
                     </div>
                     <!-- windowBtn4 -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6 col-md-6 d-none d-md-block">
                         <button class="btn">
                             <span>Name of the button</span></button>
                     </div>
                     <!-- button for changing windowBtn color -->
-                    <div class="col-lg-12 d-none d-lg-block">
+                    <div class="col-lg-12">
                         <div class="py-3"></div>
                         <label for="windowBtnColor">
                             Button Color
                         </label>
                         <input type="color" value="" id="windowBtnColor">
-                        <button type="button" class="btn purple-btn ml-3" style="padding: 0rem 0.75rem; height: 30px;"
+                        <button type="button" class="btn purple-btn" style="padding: 0rem 0.75rem; height: 30px;"
                             onclick="setBtnColor('window','windowBtnColor')"><span style="font-size: 2px;">Select
                                 This Color</span>
                         </button>
-                        <button type="button" class="btn btn-secondary ml-1"
+                        <button type="button" class="btn btn-secondary"
                             style="padding: 0rem 0.75rem; height: 30px;"
                             onclick="setBtnColor('window','darkerColor')"><span style="font-size: 2px;">Default
                                 Color</span>
