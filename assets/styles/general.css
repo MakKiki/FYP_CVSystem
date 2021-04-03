@@ -10619,26 +10619,35 @@ body.sidebar-toggled footer.sticky-footer {
     border: 1px solid #e7e7e7;
   }
 }
-.template1-img {
-  height: 100%;
-  width: 100%;
-}
+
 @media (min-width: 576px) {
-  .template1-img {
-    height: 80%;
-    width: 80%;
+  .template-img {
+    height: auto;
+    width: 240px;
   }
 }
 @media (max-width: 576px) {
-  .template1-img {
-    height: 80%;
-    width: 80%;
+  .template-img {
+    height: auto;
+    width: 240px;
   }
 }
 @media (min-width: 768px) {
-  .template1-img {
-    height: 100%;
-    width: 100%;
+  .template-img {
+    height: auto;
+    width: 190px;
+  }
+}
+@media (min-width: 992px) {
+  .template-img {
+    height: auto;
+    width: 180px;
+  }
+}
+@media (min-width: 1200px) {
+  .template-img {
+    height: auto;
+    width: 240px;
   }
 }
 .custom-cv {

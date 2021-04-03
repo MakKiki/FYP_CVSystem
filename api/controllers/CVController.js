@@ -28,8 +28,10 @@ module.exports = {
 
       req.session.progressingCV = model;
 
-      if (model.step == "step1" || model.step == "finish") {
+      if (model.step == "step1") {
         return res.view("pages/cvs/inputData");
+      } else if (model.step == "finish") {
+        return res.view("pages/cvs/create", { cv: model });
       } else {
         return res.view("pages/cvs/" + model.step);
       }

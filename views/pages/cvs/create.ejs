@@ -1645,7 +1645,7 @@
 
             //add new document
             var file = document.getElementById('videoFile').value;
-            document.getElementById(contentid).innerHTML += "<div class='field'> <video class='resize-drag' width='600' controls> <source src='" + file + "'> </video> </div>";
+            document.getElementById(contentid).innerHTML += "<div class='field'> <video class='resize-drag' width='80%' controls> <source src='" + file + "'> </video> </div>";
         }
 
         //reload CV for updated code
@@ -2135,7 +2135,7 @@
         var contentid = sessionStorage.getItem('currentPage');
 
         //add new text field
-        document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' contenteditable> <p style='color:black'>You can edit any text here</p> </div> </div> </div>";
+        document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' style='color: black' contenteditable> You can edit any text here </div> </div> </div>";
         reload(reloadStatus);
     }
     ////////
