@@ -15,10 +15,13 @@ module.exports = {
         .status(401)
         .send("Please input the email address and the password");
 
+    //first find the account from User
     var person = await User.findOne({ email: req.body.email });
 
+    //if no that account in User, check whether it is an admin account
     if (!person) {
       person = await Admin.findOne({ email: req.body.email });
+      //if still not found
       if (!person) {
         return res.status(401).send("Account not found");
       }
@@ -37,32 +40,37 @@ module.exports = {
 
       if (person.role == "user") {
         req.session.userID = person.id;
+        //for use when user is editing a CV
         req.session.progressingCV = null;
+        //for use when user add new elements in the CV
         req.session.reloadCV = "";
         req.session.reloadStatus = "false";
 
-        sails.log("[Session] ", req.session);
+        //sails.log("[Session] ", req.session);
 
         if (req.wantsJSON) {
-          return res.json({ url: "/main" }); // for ajax request
+          return res.json({ url: "/main" });
         } else {
-          return res.redirect("/main"); // for normal request
+          return res.redirect("/main");
         }
       }
 
       if (person.role == "admin") {
         req.session.adminID = person.id;
-        req.session.userID = '';
+        //for use when admin is editing an user account
+        req.session.userID = "";
+        //for use when admin is editing user's CV
         req.session.progressingCV = null;
+        //for use when admin add new elements in the user's CV
         req.session.reloadCV = "";
         req.session.reloadStatus = "false";
 
-        sails.log("[Session] ", req.session);
+        //sails.log("[Session] ", req.session);
 
         if (req.wantsJSON) {
-          return res.json({ url: "/admin_main" }); // for ajax request
+          return res.json({ url: "/admin_main" });
         } else {
-          return res.redirect("/admin_main"); // for normal request
+          return res.redirect("/admin_main");
         }
       }
     });
@@ -73,7 +81,7 @@ module.exports = {
     req.session.destroy(function (err) {
       if (err) return res.serverError(err);
 
-      return res.redirect("/login"); // for normal request
+      return res.redirect("/");
     });
   },
 
@@ -141,8 +149,7 @@ module.exports = {
     } else {
       //for admin (No check admin because only 1 admin exists)
       //repeated with User
-      if (repeat)
-        return res.status(401).send("This email has been registered");
+      if (repeat) return res.status(401).send("This email has been registered");
     }
 
     if (req.session.role == "user") {
@@ -177,9 +184,9 @@ module.exports = {
       return res.json({
         message: "✔️ Successfully Updated ✔️",
         url: "/setting",
-      }); // for ajax request
+      });
     } else {
-      return res.redirect("/setting"); // for normal request
+      return res.redirect("/setting");
     }
   },
 };

@@ -29,7 +29,6 @@ module.exports.routes = {
   "/merge_image": { view: "pages/cvs/mergeImage" },
   "/webcam_record": { view: "pages/cvs/webcamRecord" },
   "/webcam_capture": { view: "pages/cvs/webcamCapture" },
-  "/chart": { view: "pages/cvs/chart" },
   "/finish": { view: "pages/cvs/finish" },
 
   /***************************************************************************

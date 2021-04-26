@@ -21,107 +21,111 @@
 <!-- End of confirm publish Modal -->
 
 
-<div id="content">
-    <!-- progress bar -->
-    <div class="py-4"></div>
-    <div class="justify-content-center">
-        <ul class="progressbar">
-            <li class="active">Inputting<br>Data</li>
-            <li class="active">Choosing<br>Theme</li>
-            <li class="active">Customizing<br>CV</li>
-            <li>Making<br>3D CV</li>
-        </ul>
-    </div>
-    <div class="py-3"></div>
-    <!-- End of progress bar -->
+<!-- progress bar -->
+<div class="py-4"></div>
+<div class="justify-content-center">
+    <ul class="progressbar">
+        <li class="active">Inputting<br>Data</li>
+        <li class="active">Choosing<br>Theme</li>
+        <li class="active">Customizing<br>CV</li>
+        <li>Making<br>3D CV</li>
+    </ul>
+</div>
+<div class="py-3"></div>
+<!-- End of progress bar -->
 
 
-    <!-- Message -->
-    <div class="container my-4">
-        <div class="text-center">
-            <div class="row justify-content-center">
+<!-- Content -->
+<div class="container my-4">
+    <div class="text-center">
+        <div class="row justify-content-center">
 
-
-                <div class="col-lg-12 col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h1 style="color: #a570a7">Step 4 - 💻 Making a 3D CV 💻 </h1>
-                            <div class="py-3"></div>
-                            <h2>Now, let's making your CV into a 3D version!</h2>
-                            <div class="py-2"></div>
-                        </div>
-
-                        <div class="d-none d-md-inline col-lg-3"></div>
-                        
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                            <div class="py-2"></div>
-                            <button class="btn main-create-btn" onclick="location.href='/create';">Start
-                                Creating</button>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                            <div class="py-2"></div>
-                            <button class="btn main-create-btn2" onclick="showPublishModal()">Pass This
-                                Step</button>
-                        </div>
-
-                        <div class="d-none d-md-inline col-lg-3"></div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="row">
+                    <!-- Titile -->
+                    <div class="col-sm-12">
+                        <h1 style="color: #a570a7">Step 4 - 💻 Making a 3D CV 💻 </h1>
+                        <div class="py-3"></div>
+                        <h2>Now, let's making your CV into a 3D version!</h2>
+                        <div class="py-2"></div>
                     </div>
-                    <div class="py-4"></div>
-                </div>
 
+                    <div class="d-none d-md-inline col-lg-3"></div>
 
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
-                    <div class="py-3"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7"
-                        fill="currentColor" class="bi bi-upload img-center" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                    </svg>
-                    <div class="py-2"></div>
-                    <span class="text-center">You can upload any files (including document, image and video) or
-                        hyperlinks
-                        in this step.</span>
-                </div>
+                    <!-- Create btn -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="py-2"></div>
+                        <button class="btn main-create-btn" onclick="location.href='/create';">Start
+                            Creating</button>
+                    </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
-                    <div class="py-3"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7"
-                        fill="currentColor" class="bi bi-camera-video img-center" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
-                    </svg>
-                    <div class="py-2"></div>
-                    <span class="text-center">You can create videos using the tools provided by the system.</span>
-                </div>
+                    <!-- Pass btn -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="py-2"></div>
+                        <button class="btn main-create-btn2" onclick="showPublishModal()">Pass This
+                            Step</button>
+                    </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
-                    <div class="py-3"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7"
-                        fill="currentColor" class="bi bi-pie-chart img-center" viewBox="0 0 16 16">
-                        <path
-                            d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0V7.5h6.482A7.001 7.001 0 0 0 8.5 1.018zM14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-                    </svg>
-                    <div class="py-2"></div>
-                    <span class="text-center">You can visualize the data using the tools provided by the system.</span>
+                    <div class="d-none d-md-inline col-lg-3"></div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
-                    <div class="py-3"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7"
-                        fill="currentColor" class="bi bi-film img-center" viewBox="0 0 16 16">
-                        <path
-                            d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
-                    </svg>
-                    <div class="py-2"></div>
-                    <span class="text-center">You can change the animation of your CV in this step.</span>
-                </div>
-
+                <div class="py-4"></div>
             </div>
+
+
+            <!-- illustrate functions in step 4 -->
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
+                <div class="py-3"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7" fill="currentColor"
+                    class="bi bi-upload img-center" viewBox="0 0 16 16">
+                    <path
+                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                    <path
+                        d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+                </svg>
+                <div class="py-2"></div>
+                <span class="text-center">You can upload any files (including document, image and video) or
+                    hyperlinks
+                    in this step.</span>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
+                <div class="py-3"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7" fill="currentColor"
+                    class="bi bi-film img-center" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
+                </svg>
+                <div class="py-2"></div>
+                <span class="text-center">You can your own create videos using the tools provided by the system.</span>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
+                <div class="py-3"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7" fill="currentColor"
+                    class="bi bi-pie-chart img-center" viewBox="0 0 16 16">
+                    <path
+                        d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0V7.5h6.482A7.001 7.001 0 0 0 8.5 1.018zM14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                </svg>
+                <div class="py-2"></div>
+                <span class="text-center">You can visualize the data using the tools provided by the system.</span>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
+                <div class="py-3"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7" fill="currentColor"
+                    class="bi bi-menu-up img-center" viewBox="0 0 16 16">
+                    <path
+                        d="M7.646 15.854a.5.5 0 0 0 .708 0L10.207 14H14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.793l1.853 1.854zM1 9V6h14v3H1zm14 1v2a1 1 0 0 1-1 1h-3.793a1 1 0 0 0-.707.293l-1.5 1.5-1.5-1.5A1 1 0 0 0 5.793 13H2a1 1 0 0 1-1-1v-2h14zm0-5H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2zM2 11.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 0-1h-8a.5.5 0 0 0-.5.5zm0-4a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11a.5.5 0 0 0-.5.5zm0-4a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1h-6a.5.5 0 0 0-.5.5z" />
+                </svg>
+                <div class="py-2"></div>
+                <span class="text-center">You can create responsive elements to include more interactions in your
+                    CV.</span>
+            </div>
+
         </div>
     </div>
 </div>
+<!-- End of content -->
+
 
 <script>
     ///////for showing publish alert
@@ -141,7 +145,7 @@
     }
     ///////
 
-    ////////pass this step (save defaultcode to cvcode)
+    ////////pass this step (save defaultcode as cvcode)
     async function pass() {
         var data = JSON.stringify({
             step: "finish"

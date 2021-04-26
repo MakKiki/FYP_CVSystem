@@ -2,13 +2,17 @@
     <div class="py-5"></div>
     <div class="row text-center justify-content-center">
         <div class="col-sm-12">
+            <!-- show successful message & CVlink -->
             <h1 style="color: #f1869f">🎉 You have sucessfully created & published the CV 🎉</h1>
             <div class="py-4"></div>
             <h2>Here is the link:</h2>
-            <button type="button" class="btn btn-link" onclick="window.open('/CV/<%=req.session.progressingCV.id%>')">
+            <button class="CVlink-btn" onclick="window.open('/CV/<%=req.session.progressingCV.id%>')">
                 <h2><%=req.session.progressingCV.CVlink%></h2>
             </button>
             <div class="py-5"></div>
+            <!-- End of successful message & CVlink -->
+
+            <!-- if user, show the my CV btn for them to go back to the main page  -->
             <% if (req.session.role != 'admin'){ %>
             <h3>Go back to the
                 <button type="button" class="btn pink-btn" style="width:110px;" onclick="window.location.href='/main'">
@@ -24,6 +28,7 @@
             </h3>
             <div class="py-2"></div>
             <% } %>
+            <!-- End of user access -->
         </div>
 
         <img src="/images/resume.svg" style="height: 70%; width:70%;" />

@@ -15,17 +15,19 @@ module.exports = {
     return res.json(model);
   },
 
-  //click edit CV in main page
+  //user access their CVs in main page
   editCV: async function (req, res) {
     if (req.method == "GET") {
+      //if user click create a new CV in the main page
       if (req.params.id == "null") {
         req.session.progressingCV = null;
         return res.view("pages/cvs/inputData");
       }
 
+      //else, find the CV the user click for edit in the db
       var model = await CV.findOne(req.params.id);
       if (!model) return res.notFound();
-
+      //store that cv's content in the progressingCV
       req.session.progressingCV = model;
 
       if (model.step == "step1") {
@@ -43,7 +45,6 @@ module.exports = {
     if (req.method == "GET") {
       var model = await CV.findOne(req.params.id);
       if (!model) return res.notFound();
-
       return res.view("pages/cvs/CV", { cv: model });
     }
   },
@@ -58,13 +59,13 @@ module.exports = {
 
     if (req.wantsJSON) {
       //  sails.log("[Session] ", req.session);
-      return res.json({ message: "✔️ Successfully Deleted ✔️", url: "/main" }); // for ajax request
+      return res.json({ message: "✔️ Successfully Deleted ✔️", url: "/main" });
     } else {
-      return res.redirect("/main"); // for normal request
+      return res.redirect("/main");
     }
   },
 
-  //save cv data
+  //save information related to the cv that the user inputted in step 1
   saveData: async function (req, res) {
     if (req.method == "GET") return res.view("pages/cvs/inputData");
 
@@ -116,17 +117,18 @@ module.exports = {
       req.body.id = req.session.progressingCV.id;
     }
 
+    //update the progressingCV data
     req.session.progressingCV = req.body;
 
     //sails.log("[Session] ", req.session);
     if (req.wantsJSON) {
-      return res.json({ message: "✔️ Successfully Saved ✔️", url: "/input" }); // for ajax request
+      return res.json({ message: "✔️ Successfully Saved ✔️", url: "/input" });
     } else {
-      return res.redirect("/input"); // for normal request
+      return res.redirect("/input");
     }
   },
 
-  //submit cv data
+  //submit information related to the cv that the user inputted in step 1
   submitData: async function (req, res) {
     if (req.method == "GET") return res.view("pages/cvs/inputData");
 
@@ -180,6 +182,7 @@ module.exports = {
       req.body.CV.id = req.session.progressingCV.id;
     }
 
+    //update the progressingCV data
     req.session.progressingCV = req.body.CV;
 
     //sails.log("[Session] ", req.session);
@@ -273,10 +276,11 @@ module.exports = {
     }
   },
 
-  // save CV code
+  // save CV code (for step3 & step4 action)
   saveCV: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
+    //clear the reloadCV & reloadStatus in the session to ensure every things go back to the beginning & for later storing the updated code after the user add in new elements in their cv
     req.session.reloadCV = "";
     req.session.reloadStatus = "false";
 
@@ -299,10 +303,11 @@ module.exports = {
     }
   },
 
-  //submit cv code
+  //submit cv code (for step3 & step4 action)
   submitCVCode: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
+    //clear the reloadCV & reloadStatus in the session to ensure every things go back to the beginning & for later storing the updated code after the user add in new elements in their cv
     req.session.reloadCV = "";
     req.session.reloadStatus = "false";
 
@@ -321,7 +326,7 @@ module.exports = {
     if (model.length == 0) return res.notFound();
 
     if (req.body.step == "finish") {
-      cv.CVlink = "/" + cv.engName + "/CV_" + cv.id;
+      cv.CVlink = "localhost:1337/CV/" + cv.id;
       await CV.update(req.session.progressingCV.id).set({
         CVlink: cv.CVlink,
       });
@@ -336,10 +341,12 @@ module.exports = {
     }
   },
 
-  //pass the step (submit the default template code)
+  //pass the step (submit the default template code as cv code) 
+  //(for step3 & step4 action)
   passStep: async function (req, res) {
     if (req.method == "GET") return res.forbidden();
 
+    //clear the reloadCV & reloadStatus in the session to ensure every things go back to the beginning & for later storing the updated code after the user add in new elements in their cv
     req.session.reloadCV = "";
     req.session.reloadStatus = "false";
 
@@ -357,7 +364,7 @@ module.exports = {
     if (model.length == 0) return res.notFound();
 
     if (req.body.step == "finish") {
-      cv.CVlink = "/" + cv.engName + "/CV_" + cv.id;
+      cv.CVlink = "localhost:1337/CV/" + cv.id;
       await CV.update(req.session.progressingCV.id).set({
         CVlink: cv.CVlink,
       });
@@ -372,7 +379,8 @@ module.exports = {
     }
   },
 
-  // reloadCV
+  // reloadCV (for step3 & step4 action)
+  // when user add in elements in their cv
   reloadCV: async function (req, res) {
     req.session.reloadCV = req.body.CV;
     req.session.reloadStatus = req.body.status;

@@ -36,7 +36,7 @@
                             <%=user.id%>
                         </td>
                         <td class="text-center">
-                            <img class="img-profile rounded-circle" style="width: 50px; height: 50px;"
+                            <img class="img-profile rounded-circle" style="width: auto; height: 50px;"
                                 <%if(user.profile=='' ) {%>src="/images/avatar.png"
                             <%}else{%>src="<%=user.profile%>"<%}%>>
                         </td>
@@ -122,9 +122,11 @@
     function showDeleteAlert(id) {
         var deleteAlert = document.getElementById('deleteModal');
         if (deleteAlert.style.display == '') {
+            //when cancel, the delete btn value should be clear for use next time
             document.getElementById('deleteBtn').value = '';
             deleteAlert.style.display = 'none';
         } else {
+            //store that user id as delete btn value for distinguish which user is going to be deleted
             document.getElementById('deleteBtn').value = id;
             deleteAlert.style.display = '';
         }

@@ -3,7 +3,24 @@
     <div class="row text-center justify-content-center">
         <div class="col-sm-12">
             <h1 style='color: #a570a7'>📷 Capture Your Picture From Your WebCam 📷</h1>
-            <div class="py-3"></div>
+        </div>
+
+        <div class="col-sm-8 py-3">
+            <br>
+            <h5>💡 Tips for you to make a good profile: 💡</h5>
+            <div style="text-align: left;">
+                <br>
+                1. Keep the smile on your face.
+                <br>
+                2. Dress professionally.
+                <br>
+                3. Ensure you have a tidy background (A white wall is always the best choice).
+                <br>
+                4. Ensure it is light enough to see your face clearly.
+                <br>
+                5. Ensure you are at the middle of the webcam.
+            </div>
+            <div class="py-2"></div>
         </div>
 
         <div id="content" class="col-sm-12">
@@ -68,18 +85,21 @@
         document.getElementById("snapshot").innerHTML = '';
         document.getElementById("configureBtn").style.display = "none";
         document.getElementById("downloadBtn").style.display = "none";
+        //show webcam screen & snapshot btn
         document.getElementById("webcam").style.display = "";
         document.getElementById("snapshotBtn").style.display = "";
     }
 
     //capture snapshot
     function capture() {
+        //show snapshot
         Webcam.snap(function (data_url) {
             document.getElementById("snapshot").innerHTML =
                 "<img id='snapshotImg' src='" + data_url + "'/>";
         });
         document.getElementById("webcam").style.display = "none";
         document.getElementById("snapshotBtn").style.display = 'none';
+        //show Re-capture & downloaded btn
         document.getElementById("configureBtn").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">  <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/> <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/><span class="ml-1">Re-Capture</span></svg>';
         document.getElementById("configureBtn").style.display = '';
         document.getElementById("downloadBtn").style.display = '';

@@ -1,6 +1,6 @@
 <div class="py-4"></div>
 <!-- Content -->
-<div id="content" class="container-fluid">
+<div id="content" class="container-md">
     <%- cv.CVcode %>
 </div>
 
@@ -10,11 +10,17 @@
         chart();
         map();
         setBackground();
+        //ensure the element cannot be editable
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.contentEditable = "false";
+        });
     };
     //show chart after loading the page
     function chart() {
         var p;
+        //for each canvas element (for storing chart)
         document.querySelectorAll('canvas').forEach(ctx => {
+            //get the inputted data of the chart
             var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
             var input = [];
             document.querySelectorAll(presentChart).forEach(ele => {
@@ -32,13 +38,19 @@
                 chartData.push(parseInt(dataArr[p], 10))
             }
 
+            //if the type is donutchart/pie, need to use different colors istead just the theme color
             var o = Math.round, r = Math.random, s = 255;
             var color = document.getElementById('themeColor').style.color;
             var colorArr = [];
             for (p = 0; p < dataArr.length; p++) {
-                colorArr.push(color)
+                if (input[0] != 'pie' && input[0] != 'doughnut') {
+                    colorArr.push(color);
+                } else {
+                    colorArr.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+                }
             }
 
+            //form chart
             new Chart(ctx, {
                 type: input[0],
                 data: {
@@ -50,6 +62,13 @@
                     }]
                 },
                 options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
                     responsive: true,
                     responsiveAnimationDuration: 1000,
                     legend: {
@@ -80,7 +99,7 @@
             var newMap = L.map(map.id).setView([input[0], input[1]], 18);
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
+                maxZoom: 15,
                 id: 'mapbox/streets-v11',
                 tileSize: 512,
                 zoomOffset: -1,
@@ -94,7 +113,7 @@
     }
     //////
 
-    ///////set background color
+    ///////set webpage background color
     function setBackground() {
         background = document.getElementById("webpageColor").value;
         document.body.style.backgroundColor = 'rgb(248, 248, 248)';
@@ -103,7 +122,7 @@
     ///////
 
 
-    ////////for showing content page
+    ////////for showing different content page when a meun button is clicked
     function showContent(targetPage) {
         var contentBtnArray = document.getElementsByClassName("content-btn");
         var i;
@@ -119,7 +138,7 @@
     ////////
 
 
-    ////////show responsitive window
+    ////////show responsitive window if it exists and its btn is clicked
     document.querySelectorAll(".windowModalBtn").forEach(btn => {
         btn.addEventListener("click", showWindow);
     })

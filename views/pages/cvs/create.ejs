@@ -2,7 +2,7 @@
 <div class="scroll" style="display: none;" id="3Dsidebar">
     <ul class="navbar-nav sidebar2-bg sidebar sidebar-dark accordion">
 
-        <!-- button for changing toolbar to customize -->
+        <!-- button for changing toolbar to the one of step 3 -->
         <button type="button" class="btn btn-link text-left" style="color: white;"
             onclick="showSidebar('3Dsidebar','custSidebar')">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -120,77 +120,78 @@
             </button>
 
             <div class="py-1"></div>
-            <!-- Chart -->
             <div class="py-2">
-                <button class="btn nav-link" onclick="showChartModal()" style="padding: 0px 15px;">
+                <!-- Window -->
+                <button class="btn nav-link" onclick="showWindowModal()" style="padding: 0px 15px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                        class="bi bi-window" viewBox="0 0 16 16">
                         <path
-                            d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+                            d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                        <path
+                            d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm13 2v2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zM2 14a1 1 0 0 1-1-1V6h14v7a1 1 0 0 1-1 1H2z" />
                     </svg>
-                    <span>Chart</span>
+                    <span>Window</span>
                 </button>
             </div>
-
-            <div class="py-1"></div>
-            <!-- Window -->
-            <button class="btn nav-link" onclick="showWindowModal()" style="padding: 0px 15px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-window"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
-                    <path
-                        d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm13 2v2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zM2 14a1 1 0 0 1-1-1V6h14v7a1 1 0 0 1-1 1H2z" />
-                </svg>
-                <span>Window</span>
-            </button>
 
             <div class="py-1"></div>
             <!-- Progress Bar -->
-            <div class="py-2">
-                <button class="btn nav-link" onclick="showProgressModal()" style="padding: 0px 15px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-percent" viewBox="0 0 16 16">
-                        <path
-                            d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                    </svg>
-                    <span>Progress Bar</span>
-                </button>
-            </div>
-
-            <div class="py-1"></div>
-            <!-- Timeline -->
-            <button class="btn nav-link" onclick="createTimeline('<%=req.session.reloadStatus%>')"
-                style="padding: 0px 15px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+            <button class="btn nav-link" onclick="showProgressModal()" style="padding: 0px 15px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-percent"
+                    viewBox="0 0 16 16">
                     <path
-                        d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z" />
+                        d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                 </svg>
-                <span>Timeline</span>
+                <span>Progress Bar</span>
             </button>
 
             <div class="py-1"></div>
-            <!-- Slideshow -->
             <div class="py-2">
-                <button class="btn nav-link" onclick="showSliderModal()" style="padding: 0px 15px;">
+                <!-- Timeline -->
+                <button class="btn nav-link" onclick="createTimeline('<%=req.session.reloadStatus%>')"
+                    style="padding: 0px 15px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-collection" viewBox="0 0 16 16">
+                        class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
                         <path
-                            d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
+                            d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z" />
                     </svg>
-                    <span>Slideshow</span>
+                    <span>Timeline</span>
                 </button>
             </div>
 
             <div class="py-1"></div>
-            <!-- Map -->
-            <button class="btn nav-link" onclick="showMapModal()" style="padding: 0px 15px;">
+            <!-- Slideshow -->
+            <button class="btn nav-link" onclick="showSliderModal()" style="padding: 0px 15px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                    class="bi bi-collection" viewBox="0 0 16 16">
+                    <path
+                        d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
                 </svg>
-                <span>Map</span>
+                <span>Slideshow</span>
+            </button>
+
+            <div class="py-1"></div>
+            <!-- Map -->
+            <div class="py-2">
+                <button class="btn nav-link" onclick="showMapModal()" style="padding: 0px 15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                    </svg>
+                    <span>Map</span>
+                </button>
+            </div>
+
+            <div class="py-1"></div>
+            <!-- Chart -->
+            <button class="btn nav-link" onclick="showChartModal()" style="padding: 0px 15px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+                </svg>
+                <span>Chart</span>
             </button>
         </li>
 
@@ -252,11 +253,11 @@
 <!-- End of 3D sidebar -->
 
 
-<!-- Customize Sidebar -->
+<!-- Step 3 Sidebar -->
 <div class="scroll" style="display: none;" id="custSidebar">
     <ul class="navbar-nav sidebar-bg sidebar sidebar-dark accordion">
 
-        <!-- button for changing toolbar to customize -->
+        <!-- button for changing toolbar to the one of step 4 -->
         <button type="button" class="btn btn-link text-left" style="color: white;"
             onclick="showSidebar('custSidebar','3Dsidebar')">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -537,24 +538,24 @@
         </div>
     </ul>
 </div>
-<!-- End of Customize Sidebar -->
+<!-- End of step 3 Sidebar -->
 
 
-<!-- Content position -->
+<!-- Content -->
 <div class="custom-cv">
 
     <% if (req.session.reloadCV=='' ){ %>
         <div id="whole">
             <%- cv.CVcode %>
         </div>
-        <!-- when add field/img/doc -->
+        <!-- when the CV has been customized -->
         <% } else { %>
             <div id="reloadWhole">
                 <%- req.session.reloadCV %>
             </div>
             <% } %>
 </div>
-<!-- End of content position -->
+<!-- End of content -->
 
 
 <!-- UploadDoc Modal-->
@@ -580,7 +581,7 @@
                 <!-- annouce the user to upload file -->
                 <span id='documentFileAlert' style="font-size: 2px; color: red;"></span>
 
-                <!-- ask for choosing button -->
+                <!-- ask for choosing downloaded button -->
                 <h6 class="docBtn" style="display: none"><br><br>Please choose the style of the downloaded
                     button:<br>
                 </h6>
@@ -676,8 +677,7 @@
                             onclick="setBtnColor('doc','docBtnColor')"><span style="font-size: 2px;">Select
                                 This
                                 Color</span></button>
-                        <button type="button" class="btn btn-secondary"
-                            style="padding: 0rem 0.75rem; height: 30px;"
+                        <button type="button" class="btn btn-secondary" style="padding: 0rem 0.75rem; height: 30px;"
                             onclick="setBtnColor('doc','darkerColor')"><span style="font-size: 2px;">Default
                                 Color</span></button>
                     </div>
@@ -749,8 +749,10 @@
                 </div>
 
                 <!-- image -->
-                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-circle d-none d-md-inline">
-                &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame rounded-xl mx-4 d-none d-md-inline">
+                &nbsp;<img style="display: none; height: 25%; width:25%;"
+                    class="imageFrame rounded-circle d-none d-md-inline">
+                &nbsp;<img style="display: none; height: 25%; width:25%;"
+                    class="imageFrame rounded-xl mx-4 d-none d-md-inline">
                 &nbsp;<img style="display: none; height: 25%; width:25%;" class="imageFrame d-none d-md-inline">
 
             </div>
@@ -832,8 +834,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-1 col-md-1"></div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-8">
-                        <button class="btn pink-btn" style="width: 130px;"
-                            onclick="window.open('/webcam_record')">
+                        <button class="btn pink-btn" style="width: 130px;" onclick="window.open('/webcam_record')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-camera-video" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -865,70 +866,6 @@
     </div>
 </div>
 <!-- End of CreateVideo Modal -->
-
-
-<!-- Create Chart Modal-->
-<div class="animate__animated animate__fadeIn center" style="display:none" id="chartModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content" style="overflow: auto;">
-
-            <div class="modal-body" style="overflow: auto;">
-                <span class='h6'>Please enter the information about the chart:</span>
-                <br>
-                <span id='chartAlert' style="font-size: 2px; color: red;"></span>
-                <div class="py-1"></div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        Type Of Chart
-                        <select class="form-control" id="type" value="">
-                            <option value="bar">Vertical Bar Chart</option>
-                            <option value="horizontalBar">Horizontal Bar Chart</option>
-                            <option value="line">Line Chart</option>
-                            <option value="pie">Pie Chart</option>
-                            <option value="doughnut">Doughnut Chart</option>
-                            <option value="radar">Radar Chart</option>
-                        </select>
-                    </div>
-
-                    <div class="col-sm-12 py-1">
-                        Title
-                        <input id="title" type="text" class="form-control form-control-user">
-                    </div>
-
-                    <div class="col-sm-12">
-                        Label (y-axis)
-                        <input id="label" type="text" class="form-control form-control-user">
-                    </div>
-
-                    <div class="col-sm-12 py-1">
-                        Category (x-axis)
-                        <br>
-                        <div style="color: red; font-size: 3px;">**Please use "," to separate each of the
-                            category (E.g. Jan,Feb)</div>
-                        <input id="category" type="text" class="barData form-control form-control-user">
-                    </div>
-
-                    <div class="col-sm-12">
-                        Data Plot
-                        <br>
-                        <div style="color: red; font-size: 3px;">**Please use "," to separate each of the
-                            data and list it according to the category (E.g. 12,25)</div>
-                        <input id="data" type="text" class="form-control form-control-user">
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showChartModal()"
-                    data-dismiss="modal">Cancel</button>
-                <button id="alert-delete" class="btn pink-btn" type="button"
-                    onclick="createChart('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End of Create Chart Modal -->
 
 
 <!-- Create Window Modal-->
@@ -1021,8 +958,7 @@
                             onclick="setBtnColor('window','windowBtnColor')"><span style="font-size: 2px;">Select
                                 This Color</span>
                         </button>
-                        <button type="button" class="btn btn-secondary"
-                            style="padding: 0rem 0.75rem; height: 30px;"
+                        <button type="button" class="btn btn-secondary" style="padding: 0rem 0.75rem; height: 30px;"
                             onclick="setBtnColor('window','darkerColor')"><span style="font-size: 2px;">Default
                                 Color</span>
                         </button>
@@ -1102,7 +1038,7 @@
 <!-- End of Create Progress Bar Modal -->
 
 
-<!-- Create Progress Bar Modal-->
+<!-- Create Slideshow Modal-->
 <div class="animate__animated animate__fadeIn center" style="display: none;" id="sliderModal" tabindex="-1"
     role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
@@ -1126,7 +1062,7 @@
         </div>
     </div>
 </div>
-<!-- End of Create Progress Bar Modal -->
+<!-- End of Sildeshow Modal -->
 
 
 <!-- Create Map Modal-->
@@ -1176,6 +1112,70 @@
     </div>
 </div>
 <!-- End of Create Map Modal -->
+
+
+<!-- Create Chart Modal-->
+<div class="animate__animated animate__fadeIn center" style="display:none" id="chartModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content" style="overflow: auto;">
+
+            <div class="modal-body" style="overflow: auto;">
+                <span class='h6'>Please enter the information about the chart:</span>
+                <br>
+                <span id='chartAlert' style="font-size: 2px; color: red;"></span>
+                <div class="py-1"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        Type Of Chart
+                        <select class="form-control" id="type" value="">
+                            <option value="bar">Vertical Bar Chart</option>
+                            <option value="horizontalBar">Horizontal Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="pie">Pie Chart</option>
+                            <option value="doughnut">Doughnut Chart</option>
+                            <option value="radar">Radar Chart</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12 py-1">
+                        Title
+                        <input id="title" type="text" class="form-control form-control-user">
+                    </div>
+
+                    <div class="col-sm-12">
+                        Label (y-axis)
+                        <input id="label" type="text" class="form-control form-control-user">
+                    </div>
+
+                    <div class="col-sm-12 py-1">
+                        Category (x-axis)
+                        <br>
+                        <div style="color: red; font-size: 3px;">**Please use "," to separate each of the
+                            category (E.g. Jan,Feb)</div>
+                        <input id="category" type="text" class="barData form-control form-control-user">
+                    </div>
+
+                    <div class="col-sm-12">
+                        Data Plot
+                        <br>
+                        <div style="color: red; font-size: 3px;">**Please use "," to separate each of the
+                            data and list it according to the category (E.g. 12,25)</div>
+                        <input id="data" type="text" class="form-control form-control-user">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showChartModal()"
+                    data-dismiss="modal">Cancel</button>
+                <button id="alert-delete" class="btn pink-btn" type="button"
+                    onclick="createChart('<%=req.session.reloadStatus%>')" data-dismiss="modal">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Create Chart Modal -->
 
 
 <!-- Add Page Modal-->
@@ -1271,15 +1271,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 <script>
-    ////////for showing different toolboard(sidebar)
-    function showSidebar(current, requestBar) {
-        document.getElementById(requestBar).style.display = '';
-        document.getElementById(current).style.display = 'none';
-        sessionStorage.setItem('toolbar', requestBar)
-    }
-    ////////
-
-
+    //////////////////////////////////////////////////////////////////////functions that invlove Controller
     ///////for showing submit & pass alert
     function showAlert(modal) {
         var modalAlert = document.getElementById(modal);
@@ -1299,11 +1291,11 @@
 
     //////// for submit cv code
     async function submitCV(reloadStatus) {
-        //confirm the cv cannot be editable in the publicated page
+        //ensure the cv cannot be edited in the publicated page
         document.querySelectorAll("[contenteditable]").forEach(field => {
             field.contentEditable = "false";
         });
-        //confirm the cv is at the first page at the beginning
+        //ensure the cv is at the first page when shown
         var contentBtnArray = document.getElementsByClassName("content-btn");
         document.getElementById(contentBtnArray[0].value).style.display = '';
         var i;
@@ -1311,13 +1303,14 @@
             id = contentBtnArray[i].value;
             document.getElementById(id).style.display = 'none';
         }
-        //confirm the cv included animated
+        //ensure the cv includes all animations
         document.querySelectorAll('.animate').forEach(ele => {
             ele.classList.add("animate__animated");
         })
 
         //Check whether the page has been reloaded before 
         if (reloadStatus == "true") {
+            //if yes, get the reloaded one as it is the most updated
             var cvContent = document.getElementById('reloadWhole').innerHTML
         } else {
             var cvContent = document.getElementById('whole').innerHTML
@@ -1352,6 +1345,7 @@
     async function saveContent(reloadStatus) {
         //Check whether the page has been reloaded before 
         if (reloadStatus == "true") {
+            //if yes, get the reloaded one as it is the most updated
             var cvContent = document.getElementById('reloadWhole').innerHTML
         } else {
             var cvContent = document.getElementById('whole').innerHTML
@@ -1385,12 +1379,12 @@
 
     /////// for save & preview
     async function save_preview(reloadStatus) {
-        //confirm everything like the publicated CV
-        //confirm the cv cannot be editable
+        //ensure all formats look like the publicated CV
+        //ensure the cv cannot be edited
         document.querySelectorAll("[contenteditable]").forEach(field => {
             field.contentEditable = "false";
         });
-        //confirm the cv is at the first page at the beginning
+        //ensure the cv is at the first page when shown at the beginning
         var contentBtnArray = document.getElementsByClassName("content-btn");
         document.getElementById(contentBtnArray[0].value).style.display = '';
         var i;
@@ -1398,7 +1392,7 @@
             id = contentBtnArray[i].value;
             document.getElementById(id).style.display = 'none';
         }
-        //confirm the cv included animated
+        //ensure the cv includes all animations
         document.querySelectorAll('.animate').forEach(ele => {
             ele.classList.add("animate__animated");
         })
@@ -1406,6 +1400,7 @@
 
         //Check whether the page has been reloaded before 
         if (reloadStatus == "true") {
+            //if yes, get the reloaded one as it is the most updated
             var cvContent = document.getElementById('reloadWhole').innerHTML
         } else {
             var cvContent = document.getElementById('whole').innerHTML
@@ -1436,13 +1431,13 @@
     ////////
 
 
-    ////////pass this step (save defaultcode to cvcode)
+    ////////pass this step (save defaultcode as cvcode)
     async function pass() {
-        //confirm the cv cannot be editable in the publicated page
+        //ensure the cv cannot be edited in the publicated page
         document.querySelectorAll("[contenteditable]").forEach(field => {
             field.contentEditable = "false";
         });
-        //confirm the cv is at the first page at the beginning
+        //ensure the cv is at the first page when shoen at the beginning
         var contentBtnArray = document.getElementsByClassName("content-btn");
         document.getElementById(contentBtnArray[0].value).style.display = '';
         var i;
@@ -1450,7 +1445,7 @@
             id = contentBtnArray[i].value;
             document.getElementById(id).style.display = 'none';
         }
-        //confirm the cv included animated
+        //confirm the cv includes all animations
         document.querySelectorAll('.animate').forEach(ele => {
             ele.classList.add("animate__animated");
         })
@@ -1479,12 +1474,296 @@
     ////////
 
 
+    //////////////////////////////////////////////////////////////////////functions for relaod page
+    ////////Everytime a new element is added, the system should reload the page for update the coding because if no reload, the user cannot delete the new added elements later
+    ////////Store the reload html to session because if the page reload for updating the code, the elements added previously will be gone
+    async function reload(reloadStatus) {
+        //Check whether the page has been reloaded before 
+        if (reloadStatus == "true") {
+            //if yes, get the reloaded one as it is the most updated
+            var cvContent = document.getElementById('reloadWhole').innerHTML
+        } else {
+            var cvContent = document.getElementById('whole').innerHTML
+        }
+        var data = JSON.stringify({
+            CV: cvContent,
+            status: "true"
+        });
+        var response = await fetch("/cv/reloadCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+
+        //the addField is true now, so when the system reload the page for update the coding, the system will know the reload is due to addField but not refresh
+        sessionStorage.setItem('addField', 'true');
+
+        //Reload the page for update the cv code so that delete action can take place
+        location.reload();
+    }
+    ////////
+
+    ////////check whether the reload is due to add field
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        // due to add field
+        if (sessionStorage.getItem("addField") == "true") {
+            //no need to have effect when enter
+            document.querySelectorAll(".animate").forEach(ele => {
+                ele.classList.remove("animate__animated");
+            })
+            //for use next time when elements are added
+            sessionStorage.setItem('addField', 'false');
+            //keep the sidebar unchanged
+            if (sessionStorage.getItem('toolbar') == '3Dsidebar') {
+                document.getElementById('3Dsidebar').style.display = '';
+                document.getElementById('custSidebar').style.display = 'none';
+            } else {
+                document.getElementById('3Dsidebar').style.display = 'none';
+                document.getElementById('custSidebar').style.display = '';
+            }
+            //show chart
+            chart();
+            //show map
+            map();
+            //ensure the element can be edited
+            document.querySelectorAll("[contenteditable]").forEach(field => {
+                field.contentEditable = "true";
+            });
+        }
+        // not due to add field
+        else {
+            console.log("click refresh to reload")
+            //ensure the first page is shown at the beginning
+            showFirstPage();
+            //clear the reload html so everything go to the beginning
+            updateReloadCVSession();
+            //show 3d sidebar at the beginning
+            document.getElementById('3Dsidebar').style.display = '';
+            //show effect
+            document.querySelectorAll('.animate').forEach(ele => {
+                ele.classList.add("animate__animated");
+            })
+            window.location.href = "/create";
+        }
+    }
+    //new enter
+    else {
+        console.log("new enter");
+        //ensure the first page is shown at the beginning
+        showFirstPage();
+
+        //clear the reload html so everything goes back to the beginning
+        updateReloadCVSession();
+
+        ////set session storage
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        //for checking which page is editing
+        sessionStorage.setItem('currentPage', contentBtnArray[0].value);
+        //needed when editing contents in silders or responsive windows
+        sessionStorage.setItem('previousPage', '');
+        //to check whether the reload is due to add field
+        sessionStorage.setItem('addField', 'false');
+        //to check whether the user want to delete elements
+        sessionStorage.setItem('deleteBtn', 'off');
+        //to show the side bar
+        sessionStorage.setItem('toolbar', '3Dsidebar');
+        console.log(sessionStorage)
+        ////
+
+        //show 3d sidebar at the beginning
+        document.getElementById('3Dsidebar').style.display = '';
+
+        //show effect
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+
+        //show chart
+        chart();
+
+        //show map
+        map();
+
+        //ensure the element can be edited
+        document.querySelectorAll("[contenteditable]").forEach(field => {
+            field.contentEditable = "true";
+        });
+    }
+    ///////
+
+    ///////when new enter or refresh the page
+    ///////ensure first page is shown at the beginning
+    function showFirstPage() {
+        //show the first page
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        document.getElementById(contentBtnArray[0].value).style.display = '';
+        var i;
+        for (i = 1; i < contentBtnArray.length; i++) {
+            id = contentBtnArray[i].value;
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+    ///////
+
+    ///////when new enter or refresh the page
+    ///////update the reloadCV to '' so everything go back to the beginning
+    async function updateReloadCVSession() {
+        var data = JSON.stringify({
+            CV: '',
+            status: 'false'
+        });
+        var response = await fetch("/cv/reloadCV", {
+            method: "POST",
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+    }
+    //////
+
+    //////show chart after loading the page
+    function chart() {
+        var p;
+        //for each canvas element (for storing chart)
+        document.querySelectorAll('canvas').forEach(ctx => {
+            //get the inputted data of the chart
+            var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
+            var input = [];
+            document.querySelectorAll(presentChart).forEach(ele => {
+                input.push(ele.value)
+            });
+            var categoryArr = input[1].split(",");
+            var category = [];
+            for (p = 0; p < categoryArr.length; p++) {
+                category.push(categoryArr[p])
+            }
+
+            var dataArr = input[3].split(",");
+            var chartData = [];
+            for (p = 0; p < dataArr.length; p++) {
+                chartData.push(parseInt(dataArr[p], 10))
+            }
+
+            //if the type is donutchart/pie, need to use different colors istead just the theme color
+            var o = Math.round, r = Math.random, s = 255;
+            var color = document.getElementById('themeColor').style.color;
+            var colorArr = [];
+            for (p = 0; p < dataArr.length; p++) {
+                if (input[0] != 'pie' && input[0] != 'doughnut') {
+                    colorArr.push(color);
+                } else {
+                    colorArr.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+                }
+            }
+
+            //form chart
+            new Chart(ctx, {
+                type: input[0],
+                data: {
+                    labels: category,
+                    datasets: [{
+                        label: input[2],
+                        data: chartData,
+                        backgroundColor: colorArr
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    responsive: true,
+                    responsiveAnimationDuration: 1000,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: input[4]
+                    }
+                },
+            });
+        });
+    }
+    //////
+
+    //////show map after loading the page
+    function map() {
+        document.querySelectorAll('.leaflet-container').forEach(map => {
+            //get the present map's input's class
+            var presentMap = '.' + map.nextSibling.nextSibling.nextSibling.classList;
+            //get all the input data of that map
+            var input = [];
+            document.querySelectorAll(presentMap).forEach(ele => {
+                input.push(ele.value)
+            });
+
+            //create new map
+            var newMap = L.map(map.id).setView([input[0], input[1]], 18);
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 15,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoibWFra2lraSIsImEiOiJja2xldXcwMmExbnpvMnVxZTAyZ2VkamR5In0.fyuBDRmXfmKoFeDmgU1cUA'
+            }).addTo(newMap);
+
+            //add marker
+            var marker = L.marker([input[0], input[1]]).addTo(newMap);
+            marker.bindPopup("<b>" + input[2] + "</b><br>" + Math.round(input[0] * 1000) / 1000 + ", " + Math.round(input[1] * 1000) / 1000 + "<br>" + input[3]).openPopup();
+        })
+    }
+    //////
+
+
+    //////////////////////////////////////////////////////////////////////general functions
+    ////////for showing different toolboard(sidebar)
+    function showSidebar(current, requestBar) {
+        document.getElementById(requestBar).style.display = '';
+        document.getElementById(current).style.display = 'none';
+        sessionStorage.setItem('toolbar', requestBar)
+    }
+    ////////
+
+
+    ////////for showing different content page when a meun button is clicked
+    function showContent(targetPage) {
+        var contentBtnArray = document.getElementsByClassName("content-btn");
+        var i;
+        for (i = 0; i < contentBtnArray.length; i++) {
+            if (contentBtnArray[i].value == targetPage) {
+                document.getElementById(targetPage).style.display = '';
+            } else {
+                id = contentBtnArray[i].value;
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+        sessionStorage.setItem('currentPage', targetPage);
+        document.querySelectorAll('.animate').forEach(ele => {
+            ele.classList.add("animate__animated");
+        })
+    }
+    ////////
+
+
+    //////////////////////////////////////////////////////////////////////function for 3d sider bar
     ///////for showing upload file window
     function showUploadModal(modalType) {
         var modal = document.getElementById(modalType);
         if (modal.style.display == '') {
             modal.style.display = 'none';
-            //when cancel is clicked, clear all file in the modal
+            //when cancel is clicked, clear all the modifications in the modal
             if (modalType == 'uploadDocModal') {
                 document.getElementById('doc').value = "";
                 document.getElementById('documentFileContent').innerHTML = 'Choose a file...'
@@ -1529,10 +1808,9 @@
     }
     ////////
 
-    ///////for upload file
+    ///////for upload file (when the created button has not been clicked)
     function uploadFile(files, fileInput) {
         const file = files[0];
-        alert(file.name)
         if (fileInput == 'documentFile' && !file.type == 'application/pdf' && !file.type == 'application/msword' && !file.type == 'application/vnd.ms-excel' && !file.type == 'application/vnd.ms-powerpoint' &&
             !file.type == 'text/plain' && !file.type == '.zip' && !file.type == '.rar' && !file.type == '.7zip') return;
 
@@ -1542,7 +1820,6 @@
 
         var reader = new FileReader();
         reader.onload = function (e) {
-            alert(e.target.result)
             document.getElementById(fileInput).value = e.target.result;
             if (fileInput == 'imageFile') {
                 document.querySelectorAll('.imageFrame').forEach(img => {
@@ -1562,7 +1839,7 @@
     }
     ///////
 
-    ///////change downloaded document & window button color
+    ///////change downloaded document's & responsive window's button color
     function setBtnColor(type, color) {
         var currentColor = document.getElementById(color).value;
         document.getElementById(type + 'btn-link').style.color = currentColor;
@@ -1573,7 +1850,7 @@
     }
     ///////
 
-    //////add file into page
+    //////add file into page (when create button is clicked)
     function addFile(fileElement, reloadStatus) {
         //ensure the input have file
         if (document.getElementById(fileElement).value == '') {
@@ -1597,11 +1874,12 @@
                 return;
             }
 
+            //find the targeted page that the file should be added into
             var contentid = sessionStorage.getItem('currentPage');
             var file = document.getElementById('documentFile').value;
             //get the btn color
             var btnColor;
-            //if the btn color hasn't changed
+            //if no change on the btn color, use theme color
             if (document.getElementById('docrectangle-btn').style.color == document.getElementById('darkerColor').value) {
                 btnColor = document.getElementById('darkerColor').value;
             } else {
@@ -1643,18 +1921,19 @@
             //upload video  
             var contentid = sessionStorage.getItem('currentPage');
 
-            //add new document
+            //add new video
             var file = document.getElementById('videoFile').value;
             document.getElementById(contentid).innerHTML += "<div class='field'> <video class='resize-drag' width='80%' controls> <source src='" + file + "'> </video> </div>";
         }
 
-        //reload CV for updated code
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
         reload(reloadStatus);
     }
     ////////
 
 
-    //////add link into page
+    //////add hyperlink into page
     function addLink(linkElement, reloadStatus) {
         //ensure the input have link
         if (document.getElementById(linkElement).value == '') {
@@ -1664,25 +1943,26 @@
 
         var link = document.getElementById('link').value;
 
-         //ensure the input is link
-         if (link.includes("http") == false) {
+        //ensure the input is a link
+        if (link.includes("http") == false) {
             document.getElementById(linkElement + 'Alert').innerHTML = "Please ensure 'http' or 'https' is included";
             return;
         }
 
-        //upload document   
+        //find the targeted page that the link should be added into
         var contentid = sessionStorage.getItem('currentPage');
 
-        //add new document
+        //add new link
         document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag divBorder'> <a href='" + link + "' target='_blank'>" + link + "</a> </div> </div>";
 
-        //reload CV for updated code
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
         reload(reloadStatus);
     }
     ////////
 
 
-    ////////show create video modal
+    ////////show create video modal (asking whether using the webcam/merge image to create the video) 
     function showCreateVideoModal() {
         var modal = document.getElementById("createVideoModal");
         if (modal.style.display == '') {
@@ -1692,6 +1972,355 @@
         }
     }
     ////////
+
+
+    ////////show create responsive window modal
+    function showWindowModal() {
+        var modal = document.getElementById("windowModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+            setBtnColor('window', 'darkerColor')
+        } else {
+            modal.style.display = 'none';
+            document.getElementById('windowInput').value = '';
+            document.getElementById('windowAlert').innerHTML = '';
+            document.querySelectorAll('.windowBtnRadio').forEach(radio => {
+                radio.checked = false;
+            })
+            document.getElementById('windowBtnColor').value = '';
+        }
+    }
+    ////////
+
+    ////////create new responsive window
+    function createWindow(reloadStatus) {
+        var name = document.getElementById("windowInput").value;
+        //ensure the input have value
+        if (name == '') {
+            document.getElementById('windowAlert').innerHTML = 'Please enter the name of the window';
+            return;
+        }
+
+        //get the class of the button
+        var windowBtnClass = null;
+        document.querySelectorAll('.windowBtnRadio').forEach(radio => {
+            if (radio.checked == true) {
+                windowBtnClass = radio.value;
+            }
+        })
+
+        //if user hasn't selected a button yet 
+        if (windowBtnClass == null) {
+            document.getElementById('windowAlert').innerHTML = 'Please select a button';
+            return;
+        }
+
+        //find the targeted page that the window should be added into
+        var contentid = sessionStorage.getItem('currentPage');
+        //get the btn color
+        var btnColor;
+        //if no change on the btn color
+        if (document.getElementById('windowrectangle-btn').style.color == document.getElementById('darkerColor').value) {
+            btnColor = document.getElementById('darkerColor').value;
+        } else {
+            // if the btn color has changed
+            btnColor = document.getElementById('windowBtnColor').value;
+        }
+
+        //prepare for the new window id for distinguish
+        var windowNum = document.querySelectorAll(".window").length + 1;
+
+        //add btn html
+        if (windowBtnClass == 'filled-rectangle-btn') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button style='background-color: " + btnColor + "; border-color: " + btnColor + ";' class='btn " + windowBtnClass + " windowModalBtn' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        } else if (windowBtnClass == '') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        } else if (windowBtnClass == 'rectangle-btn') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' style='color: " + btnColor + "; border-color: " + btnColor + ";' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        } else if (windowBtnClass == 'btn-link') {
+            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' style='color: " + btnColor + ";' value='window" + windowNum + "'>" + name + "</button> </div></div>";
+        }
+
+        //add window html
+        if (reloadStatus == 'false') {
+            document.getElementById("whole").innerHTML += '<div class="center window animate__animated animate__fadeIn center" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
+        } else {
+            document.getElementById("reloadWhole").innerHTML += '<div class="center window animate__animated animate__fadeIn center" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
+        }
+
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
+        reload(reloadStatus);
+    }
+    ////////
+
+    ////////show responsitive window if the user click the btn to open the responsive window
+    document.querySelectorAll(".windowModalBtn").forEach(btn => {
+        btn.addEventListener("click", showWindow);
+    })
+
+    function showWindow(event) {
+        //user open the window meaning that they are editing contents of that window
+        //find out which window is being editing
+        var modal = document.getElementById(event.target.value);
+        var num = event.target.value.split("window");
+
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+
+            //previousPage: after the user finish editing into the window, 
+            //any attachments should be added into the page the user has clicked previously
+            var previous = sessionStorage.getItem('currentPage');
+            sessionStorage.setItem('previousPage', previous);
+
+            //set the current page to the responsive window that is being editing,
+            //so elements can be added into the window but not the cv page
+            sessionStorage.setItem('currentPage', 'windowBody' + num[1]);
+        } else {
+            modal.style.display = 'none';
+            //adding html back to the cv page after the user close the responsive window
+            var previous = sessionStorage.getItem('previousPage');
+            sessionStorage.setItem('currentPage', previous);
+            //set the previousPage back to '' for using next time
+            sessionStorage.setItem('previousPage', '')
+        }
+    }
+    ////////
+
+
+    ////////show create progress bar modal
+    function showProgressModal() {
+        var modal = document.getElementById("progressModal");
+        if (modal.style.display == '') {
+            modal.style.display = 'none';
+        } else {
+            modal.style.display = '';
+            document.getElementById("item").value = '';
+            document.getElementById("percent").value = '';
+            document.getElementById("progressAlert").innerHTML = '';
+            document.querySelectorAll('.progressBtnRadio').forEach(radio => {
+                radio.checked = false;
+            })
+        }
+    }
+    ////////
+
+    ////////create progress bar
+    function createProgress(reloadStatus) {
+        var item = document.getElementById("item").value;
+        var percent = document.getElementById("percent").value;
+        //ensure the inputs have value
+        if (item == '' || percent == '') {
+            document.getElementById('progressAlert').innerHTML = 'Please enter all the data of the bar';
+            return;
+        }
+        //get the type of the bar
+        var progressBtnClass = null;
+        document.querySelectorAll('.progressBtnRadio').forEach(radio => {
+            if (radio.checked == true) {
+                progressBtnClass = radio.value;
+            }
+        })
+        //if user hasn't selected a type yet 
+        if (progressBtnClass == null) {
+            document.getElementById('progressAlert').innerHTML = 'Please select a type of the bar';
+            return;
+        }
+        //find the targeted page that the bar should be added into
+        var contentid = sessionStorage.getItem('currentPage');
+        //check which type of progress bar the user wants to create
+        if (progressBtnClass == 'circle') {
+            //circle
+            //get the theme color of the bar
+            var color = document.getElementById("progressCirColor").value;
+            //add html
+            document.getElementById(contentid).innerHTML += '<div class="field single-chart resize-drag" contenteditable="" style="width:200px; height:200px;"> <svg viewBox="0 0 36 36" class="circular-chart ' + color + '"> <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/><path class="circle" stroke-dasharray="' + percent + ', 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/><text x="18" y="20.35" class="percentage">' + item + '</text></svg></div>';
+        } else {
+            //bar
+            //get the theme color of the bar
+            var color = document.getElementById("themeColor").style.color;
+            //add html
+            document.getElementById(contentid).innerHTML += '<div class="field resize-drag row"><div class="col-sm-12 animate animate__animated animate__flipInX" contenteditable=""><div class="mb-1" style="color: black;">' + item + '<span style="float: right;">' + percent + '%</span></div><div class="progress mb-2"><div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:' + percent + '%; background-color:' + color + '" aria-valuenow="20"></div></div></div></div>';
+        }
+
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
+        reload(reloadStatus)
+    }
+    ////////
+
+
+    ////////create timeline
+    function createTimeline(reloadStatus) {
+        //find the targeted page that the timeline should be added into
+        var contentid = sessionStorage.getItem('currentPage');
+        //add the timeline html
+        document.getElementById(contentid).innerHTML += '<div class="container field"><div class="row resize-drag"><div class="col-sm-12"><div class="timeline ml-2" style="color: black;"><div class="timeline__group"><span class="timeline__date time" aria-hidden="true" contenteditable></span><div class="timeline__cards animate animate__animated animate__fadeInUp"><div class="timeline__card timelineCard"><header class="card__header"><span class="time" style="font-size:medium" contenteditable></span></header><div class="py-2"></div><div class="card__content" contenteditable></div></div></div></div></div></div></div></div>';
+        //get the theme color and set to the timeline
+        var color = document.getElementById("themeColor").style.color;
+        document.querySelectorAll(".timelineCard").forEach(ele => {
+            ele.style.borderLeft = "var(--timelineCardBorderLeftWidth, 3px) solid " + color;
+        })
+        document.querySelectorAll(".timeline").forEach(ele => {
+            ele.style.setProperty('--uiTimelineMainColor', 'var(--timelineMainColor, ' + color + ')');
+        })
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
+        reload(reloadStatus)
+    }
+    ////////
+
+
+    ////////show create slideshow modal
+    function showSliderModal() {
+        var modal = document.getElementById("sliderModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+            document.getElementById("pageNum").value = '';
+            document.getElementById("sliderAlert").innerHTML = '';
+        }
+    }
+    ////////
+
+    ////////create new slideshow
+    function createSlider(reloadStatus) {
+        //get the input for the page number of the slideshow
+        var pageNum = document.getElementById("pageNum").value;
+        //annouce user if input is null
+        if (pageNum == '') {
+            document.getElementById("sliderAlert").innerHTML = 'Please enter the number of page of the slider';
+            return;
+        }
+        //prepare for the new slider id for distinguish
+        var idNum = document.querySelectorAll('.slideshow').length + 1;
+        //find the targeted page that the slideshow should be added into
+        var contentid = sessionStorage.getItem('currentPage');
+        //add slideshow html
+        document.getElementById(contentid).innerHTML += '<div class="slideshow"><div id="slidemain_' + idNum + '" class="container"><div class="row resize-drag"><div class="col-sm-12"><div class="slider">' + loopForSlider(pageNum, idNum) + '<br><button id="slidebtn_' + idNum + '" class="btn" style="display: none; color: green;" onclick="leaveSlider(\'\slidebtn_' + idNum + '\'\)">✓ Finish Managing The Slideshow</button><button id="slideDelBtn_' + idNum + '" class="btn" style="display: none; color: red;" onclick="delSlider(\'\slidemain_' + idNum + '\'\)">✕ Delete The Slideshow</button><div class="slides" style="color: black;" contenteditable>' + loopForSliderContent(pageNum, idNum) + '</div></div></div></div></div></div>';
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
+        reload(reloadStatus)
+    }
+
+    ////////html for the slideshow button
+    function loopForSlider(pageNum, idNum) {
+        var i;
+        var btnHTML = '';
+        //get the theme color
+        var color = document.getElementById("themeColor").style.color;
+        //loop to add in each page button
+        for (i = 1; i <= pageNum; i++) {
+            btnHTML += '<a class="slider-btn" href="#' + idNum + '_slide-' + i + '" style="background-color:' + color + ';">' + i + '</a>';
+        }
+        return btnHTML;
+    }
+
+    ////////html for the slideshow content
+    function loopForSliderContent(pageNum, idNum) {
+        var i;
+        var contentHTML = '';
+        //loop to add in each page content
+        for (i = 1; i <= pageNum; i++) {
+            contentHTML += '<div id="' + idNum + '_slide-' + i + '"><div id="slide-' + i + '_' + idNum + '_content" style="min-height:200px; text-align:left;" onclick="clickSlider(\'\slide-' + i + '_' + idNum + '_content\'\)"><div class="row"><div class="col-sm-12" contenteditable>Edit Your SlideShow</div></div><div></div></div></div>';
+        }
+        return contentHTML;
+    }
+    ////////
+
+    ////////when slideshow is clicked
+    function clickSlider(sliderid) {
+        //previousPage: after the user finish editing the slideshow, 
+        //any attachments should be added into the page the user has clicked previously
+        if (sessionStorage.getItem('previousPage') == '') {
+            //if a particular slideshow is clicked first time
+            var previous = sessionStorage.getItem('currentPage');
+            sessionStorage.setItem('previousPage', previous);
+        }
+
+        //currentPage change to sliderid for adding html to the slider but not the cv page
+        sessionStorage.setItem('currentPage', sliderid);
+
+        //show up the managed btn for announcing the user is editing content into the slider
+        var idNum = sliderid.split("_")[1];
+        var btn = 'slidebtn_' + idNum;
+        var delBtn = 'slideDelBtn_' + idNum;
+        document.getElementById(btn).style.display = '';
+        document.getElementById(delBtn).style.display = '';
+    }
+    ////////
+
+    ////////when the user finish editing contents in the slideshow and click the finish btn
+    function leaveSlider(slidebtn) {
+        //set the currentPage back to the cv page so elements can be added back to the cv page but not in slider
+        var previous = sessionStorage.getItem('previousPage');
+        sessionStorage.setItem('currentPage', previous);
+        //set the previousPage back to '' for using next time
+        sessionStorage.setItem('previousPage', '')
+        //not display the finish & del btn
+        var idNum = slidebtn.split("_")[1];
+        var delBtn = 'slideDelBtn_' + idNum;
+        document.getElementById(slidebtn).style.display = 'none';
+        document.getElementById(delBtn).style.display = 'none';
+    }
+    ////////
+
+    ////////when the delete btn of the slider is clicked
+    function delSlider(mainSlider) {
+        //delete the slider
+        document.getElementById(mainSlider).remove();
+        //set the currentPage back to the cv page
+        var previous = sessionStorage.getItem('previousPage');
+        sessionStorage.setItem('currentPage', previous);
+        //set the previousPage back to '' for using next time
+        sessionStorage.setItem('previousPage', '');
+    }
+    ////////
+
+
+    ////////show create map modal
+    function showMapModal() {
+        var modal = document.getElementById("mapModal");
+        if (modal.style.display == 'none') {
+            modal.style.display = '';
+        } else {
+            modal.style.display = 'none';
+            document.getElementById("x-coordinate").value = '';
+            document.getElementById("y-coordinate").value = '';
+            document.getElementById("location").value = '';
+            document.getElementById("locationDes").value = '';
+            document.getElementById("locationDes").value = '';
+            document.getElementById("mapAlert").innerHTML = '';
+        }
+    }
+    ////////
+
+    ////////create the map
+    function createMap(reloadStatus) {
+        //get the coordinates, name & description of the location
+        var xCoordinate = document.getElementById('x-coordinate').value;
+        var yCoordinate = document.getElementById('y-coordinate').value;
+        var location = document.getElementById('location').value;
+        var locationDes = document.getElementById('locationDes').value;
+
+        //annouce the user if input = ''
+        if (xCoordinate == '' || yCoordinate == '' || location == '') {
+            document.getElementById('mapAlert').innerHTML = 'Please ensure the fields of X-Coordinate, Y-Coordinate & Name Of The Location are filled in.'
+            return;
+        }
+
+        //prepare for the new map id & classname
+        var mapNum = document.querySelectorAll('.mapInput').length + 1;
+        //add map html (div of map & input) into the targeted content page
+        var contentid = sessionStorage.getItem('currentPage');
+        document.getElementById(contentid).innerHTML += '<div class="container"><div id="map' + mapNum + '" style="width: 300px; height: 200px; position: relative; outline: none;" class="resize-drag field leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2046/1361?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-200px, -347px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2047/1361?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(312px, -347px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2046/1362?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-200px, 165px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2047/1362?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(312px, 165px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.04805e+06px, 697379px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a></div></div></div></div> <input class="map' + mapNum + ' mapInput" type="hidden" value="' + xCoordinate + '"><input class="map' + mapNum + '" type="hidden" value="' + yCoordinate + '"><input class="map' + mapNum + '" type="hidden" value="' + location + '"><input class="map' + mapNum + '" type="hidden" value="' + locationDes + '"></div>';
+
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
+        reload(reloadStatus);
+    }
+    ///////
 
 
     ////////show chart modal
@@ -1757,354 +2386,26 @@
             }
         }
 
-        //add chart html (canvas & input) into the page
+        //add chart html (canvas & input) into the targeted content page
         var contentid = sessionStorage.getItem('currentPage');
         var canvasNum = document.querySelectorAll('.canvasInput').length + 1;
-        alert(canvasNum)
         document.getElementById(contentid).innerHTML += '<div id="newChart' + canvasNum + '" class="container"><canvas class="field resize-drag"></canvas><input class="chart' + canvasNum + ' canvasInput" type="hidden" value="' + chartType + '"><input class="chart' + canvasNum + '" type="hidden" value="' + category + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartLabel + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartData + '"><input class="chart' + canvasNum + '" type="hidden" value="' + chartTitle + '"></div>';
 
-        //reload for updated code
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
         reload(reloadStatus);
     }
     ////////
 
 
-    ////////show window modal
-    function showWindowModal() {
-        var modal = document.getElementById("windowModal");
-        if (modal.style.display == 'none') {
-            modal.style.display = '';
-            setBtnColor('window', 'darkerColor')
-        } else {
-            modal.style.display = 'none';
-            document.getElementById('windowInput').value = '';
-            document.getElementById('windowAlert').innerHTML = '';
-            document.querySelectorAll('.windowBtnRadio').forEach(radio => {
-                radio.checked = false;
-            })
-            document.getElementById('windowBtnColor').value = '';
-        }
-    }
-    ////////
-
-    ////////create new window
-    function createWindow(reloadStatus) {
-        var name = document.getElementById("windowInput").value;
-        //ensure the input have value
-        if (name == '') {
-            document.getElementById('windowAlert').innerHTML = 'Please enter the name of the window';
-            return;
-        }
-
-        //get the class of the button
-        var windowBtnClass = null;
-        document.querySelectorAll('.windowBtnRadio').forEach(radio => {
-            if (radio.checked == true) {
-                windowBtnClass = radio.value;
-            }
-        })
-
-        //if user hasn't selected a button yet 
-        if (windowBtnClass == null) {
-            document.getElementById('windowAlert').innerHTML = 'Please select a button';
-            return;
-        }
-
-        var contentid = sessionStorage.getItem('currentPage');
-        //get the btn color
-        var btnColor;
-        //if the btn color hasn't changed
-        alert(document.getElementById('windowrectangle-btn').style.color)
-        if (document.getElementById('windowrectangle-btn').style.color == document.getElementById('darkerColor').value) {
-            btnColor = document.getElementById('darkerColor').value;
-        } else {
-            // if the btn color has changed
-            btnColor = document.getElementById('windowBtnColor').value;
-        }
-
-        //prepare for the new window id
-        var windowNum = document.querySelectorAll(".window").length + 1;
-
-        //add btn html
-        if (windowBtnClass == 'filled-rectangle-btn') {
-            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button style='background-color: " + btnColor + "; border-color: " + btnColor + ";' class='btn " + windowBtnClass + " windowModalBtn' value='window" + windowNum + "'>" + name + "</button> </div></div>";
-        } else if (windowBtnClass == '') {
-            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' value='window" + windowNum + "'>" + name + "</button> </div></div>";
-        } else if (windowBtnClass == 'rectangle-btn') {
-            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' style='color: " + btnColor + "; border-color: " + btnColor + ";' value='window" + windowNum + "'>" + name + "</button> </div></div>";
-        } else if (windowBtnClass == 'btn-link') {
-            document.getElementById(contentid).innerHTML += "<div class='field'> <div class='resize-drag' style='width:270px'> <button class='btn " + windowBtnClass + " windowModalBtn' style='color: " + btnColor + ";' value='window" + windowNum + "'>" + name + "</button> </div></div>";
-        }
-
-        //add window html
-        if (reloadStatus == 'false') {
-            document.getElementById("whole").innerHTML += '<div class="center window animate__animated animate__fadeIn center" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
-        } else {
-            document.getElementById("reloadWhole").innerHTML += '<div class="center window animate__animated animate__fadeIn center" id="window' + windowNum + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"> <div class="modal-dialog modal-xl" role="document"> <div class="modal-content"> <div> <button class="btn windowModalBtn" value="window' + windowNum + '" style="float: right;"> ✕ </button></div><div id="windowBody' + windowNum + '" class="modal-body" contenteditable="" style="color: black;"></div></div></div></div></div>';
-        }
-
-        //reload CV for updated code
-        reload(reloadStatus);
-    }
-    ////////
-
-
-    ////////show create progress bar modal
-    function showProgressModal() {
-        var modal = document.getElementById("progressModal");
-        if (modal.style.display == '') {
-            modal.style.display = 'none';
-        } else {
-            modal.style.display = '';
-            document.getElementById("item").value = '';
-            document.getElementById("percent").value = '';
-            document.getElementById("progressAlert").innerHTML = '';
-            document.querySelectorAll('.progressBtnRadio').forEach(radio => {
-                radio.checked = false;
-            })
-        }
-    }
-    ////////
-
-    ////////create progress bar
-    function createProgress(reloadStatus) {
-        var item = document.getElementById("item").value;
-        var percent = document.getElementById("percent").value;
-        //ensure the inputs have value
-        if (item == '' || percent == '') {
-            document.getElementById('progressAlert').innerHTML = 'Please enter all the data of the bar';
-            return;
-        }
-        //get the type of the bar
-        var progressBtnClass = null;
-        document.querySelectorAll('.progressBtnRadio').forEach(radio => {
-            if (radio.checked == true) {
-                progressBtnClass = radio.value;
-            }
-        })
-        //if user hasn't selected a button yet 
-        if (progressBtnClass == null) {
-            document.getElementById('progressAlert').innerHTML = 'Please select a type of the bar';
-            return;
-        }
-        var contentid = sessionStorage.getItem('currentPage');
-        //check which type of progress bar the user wants to create
-        if (progressBtnClass == 'circle') {
-            //circle
-            //get the theme color of the bar
-            var color = document.getElementById("progressCirColor").value;
-            //add html
-            document.getElementById(contentid).innerHTML += '<div class="field single-chart resize-drag" contenteditable="" style="width:200px; height:200px;"> <svg viewBox="0 0 36 36" class="circular-chart ' + color + '"> <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/><path class="circle" stroke-dasharray="' + percent + ', 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/><text x="18" y="20.35" class="percentage">' + item + '</text></svg></div>';
-        } else {
-            //bar
-            //get the theme color of the bar
-            var color = document.getElementById("themeColor").style.color;
-            //add html
-            document.getElementById(contentid).innerHTML += '<div class="field resize-drag row"><div class="col-sm-12" contenteditable=""><div class="mb-1" style="color: black;">' + item + '<span style="float: right;">' + percent + '%</span></div><div class="progress mb-2"><div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:' + percent + '%; background-color:' + color + '" aria-valuenow="20"></div></div></div></div>';
-        }
-
-        //reload CV for updated code
-        reload(reloadStatus)
-    }
-    ////////
-
-
-    ////////create timeline
-    function createTimeline(reloadStatus) {
-        // add HTML to current page
-        var contentid = sessionStorage.getItem('currentPage');
-        document.getElementById(contentid).innerHTML += '<div class="container field"><div class="row resize-drag"><div class="col-sm-12"><div class="timeline ml-2" style="color: black;"><div class="timeline__group"><span class="timeline__date time" aria-hidden="true" contenteditable></span><div class="timeline__cards animate animate__animated animate__fadeInUp"><div class="timeline__card timelineCard"><header class="card__header"><span class="time" style="font-size:medium" contenteditable></span></header><div class="py-2"></div><div class="card__content" contenteditable></div></div></div></div></div></div></div></div>';
-        //get the theme color and set to the timeline
-        var color = document.getElementById("themeColor").style.color;
-        document.querySelectorAll(".timelineCard").forEach(ele => {
-            ele.style.borderLeft = "var(--timelineCardBorderLeftWidth, 3px) solid " + color;
-        })
-        document.querySelectorAll(".timeline").forEach(ele => {
-            ele.style.setProperty('--uiTimelineMainColor', 'var(--timelineMainColor, ' + color + ')');
-        })
-        //reload CV for updated code
-        reload(reloadStatus)
-    }
-    ////////
-
-
-    ////////show create slider modal
-    function showSliderModal() {
-        var modal = document.getElementById("sliderModal");
-        if (modal.style.display == 'none') {
-            modal.style.display = '';
-        } else {
-            modal.style.display = 'none';
-            document.getElementById("pageNum").value = '';
-            document.getElementById("sliderAlert").innerHTML = '';
-        }
-    }
-    ////////
-
-    ////////create new slider
-    function createSlider(reloadStatus) {
-        //get the input for page of the slider
-        var pageNum = document.getElementById("pageNum").value;
-        //annouce user if input is null
-        if (pageNum == '') {
-            document.getElementById("sliderAlert").innerHTML = 'Please enter the number of page of the slider';
-            return;
-        }
-        //prepare for the new slider id
-        var idNum = document.querySelectorAll('.slideshow').length + 1;
-        alert(idNum)
-        // add HTML to current page
-        var contentid = sessionStorage.getItem('currentPage');
-        document.getElementById(contentid).innerHTML += '<div class="slideshow"><div id="slidemain_' + idNum + '" class="container"><div class="row resize-drag"><div class="col-sm-12"><div class="slider">' + loopForSlider(pageNum, idNum) + '<br><button id="slidebtn_' + idNum + '" class="btn" style="display: none; color: green;" onclick="leaveSlider(\'\slidebtn_' + idNum + '\'\)">✓ Finish Managing The Slideshow</button><button id="slideDelBtn_' + idNum + '" class="btn" style="display: none; color: red;" onclick="delSlider(\'\slidemain_' + idNum + '\'\)">✕ Delete The Slideshow</button><div class="slides" style="color: black;" contenteditable>' + loopForSliderContent(pageNum, idNum) + '</div></div></div></div></div></div>';
-        //reload CV for updated code
-        reload(reloadStatus)
-    }
-
-    ////////html for the slider button
-    function loopForSlider(pageNum, idNum) {
-        var i;
-        var btnHTML = '';
-        //get the theme color
-        var color = document.getElementById("themeColor").style.color;
-        for (i = 1; i <= pageNum; i++) {
-            btnHTML += '<a class="slider-btn" href="#' + idNum + '_slide-' + i + '" style="background-color:' + color + ';">' + i + '</a>';
-        }
-        return btnHTML;
-    }
-
-    ////////html for the slider content
-    function loopForSliderContent(pageNum, idNum) {
-        var i;
-        var contentHTML = '';
-        for (i = 1; i <= pageNum; i++) {
-            contentHTML += '<div id="' + idNum + '_slide-' + i + '"><div id="slide-' + i + '_' + idNum + '_content" style="min-height:200px; text-align:left;" contenteditable onclick="clickSlider(\'\slide-' + i + '_' + idNum + '_content\'\)"></div></div>';
-        }
-        return contentHTML;
-    }
-    ////////
-
-    ////////when slider is clicked
-    function clickSlider(sliderid) {
-        //previousPage for later adding html back to th main page
-        if (sessionStorage.getItem('previousPage') == '') {
-            var previous = sessionStorage.getItem('currentPage');
-            sessionStorage.setItem('previousPage', previous);
-        }
-
-        //currentPage change to sliderid for adding html to the slider
-        sessionStorage.setItem('currentPage', sliderid);
-
-        //show up the managed btn for announcing the user is editing content into the slider
-        var idNum = sliderid.split("_")[1];
-        var btn = 'slidebtn_' + idNum;
-        var delBtn = 'slideDelBtn_' + idNum;
-        document.getElementById(btn).style.display = '';
-        document.getElementById(delBtn).style.display = '';
-    }
-    ////////
-
-    ////////when finish btn is clicked
-    function leaveSlider(slidebtn) {
-        //set the currentPage back to the main page
-        var previous = sessionStorage.getItem('previousPage');
-        sessionStorage.setItem('currentPage', previous);
-        //set the previousPage back to '' for using next time
-        sessionStorage.setItem('previousPage', '')
-        //not display the finish & del btn
-        var idNum = slidebtn.split("_")[1];
-        var delBtn = 'slideDelBtn_' + idNum;
-        document.getElementById(slidebtn).style.display = 'none';
-        document.getElementById(delBtn).style.display = 'none';
-    }
-    ////////
-
-    ////////when delete btn is clicked
-    function delSlider(mainSlider) {
-        //delete the slider
-        document.getElementById(mainSlider).remove();
-        //set the currentPage back to the main page
-        var previous = sessionStorage.getItem('previousPage');
-        sessionStorage.setItem('currentPage', previous);
-        //set the previousPage back to '' for using next time
-        sessionStorage.setItem('previousPage', '');
-    }
-    ////////
-
-
-    ////////show create map modal
-    function showMapModal() {
-        var modal = document.getElementById("mapModal");
-        if (modal.style.display == 'none') {
-            modal.style.display = '';
-        } else {
-            modal.style.display = 'none';
-            document.getElementById("x-coordinate").value = '';
-            document.getElementById("y-coordinate").value = '';
-            document.getElementById("location").value = '';
-            document.getElementById("locationDes").value = '';
-            document.getElementById("locationDes").value = '';
-            document.getElementById("mapAlert").innerHTML = '';
-        }
-    }
-    ////////
-
-    ////////create the map
-    function createMap(reloadStatus) {
-        //get the coordinates, name & description of the location
-        var xCoordinate = document.getElementById('x-coordinate').value;
-        var yCoordinate = document.getElementById('y-coordinate').value;
-        var location = document.getElementById('location').value;
-        var locationDes = document.getElementById('locationDes').value;
-
-        //annouce the user if input = ''
-        if (xCoordinate == '' || yCoordinate == '' || location == '') {
-            document.getElementById('mapAlert').innerHTML = 'Please ensure the fields of X-Coordinate, Y-Coordinate & Name Of The Location are filled in.'
-            return;
-        }
-
-        //prepare for the new map id & classname
-        var mapNum = document.querySelectorAll('.mapInput').length + 1;
-        //add map html (div of map & input) into the page
-        var contentid = sessionStorage.getItem('currentPage');
-        document.getElementById(contentid).innerHTML += '<div class="container"><div id="map' + mapNum + '" style="width: 600px; height: 400px; position: relative; outline: none;" class="resize-drag field leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2046/1361?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-200px, -347px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2047/1361?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(312px, -347px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2046/1362?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-200px, 165px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/12/2047/1362?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(312px, 165px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.04805e+06px, 697379px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a></div></div></div></div> <input class="map' + mapNum + ' mapInput" type="hidden" value="' + xCoordinate + '"><input class="map' + mapNum + '" type="hidden" value="' + yCoordinate + '"><input class="map' + mapNum + '" type="hidden" value="' + location + '"><input class="map' + mapNum + '" type="hidden" value="' + locationDes + '"></div>';
-
-        //reload for updated code
-        reload(reloadStatus);
-    }
-    ///////
-
-
-    ////////show responsitive window
-    document.querySelectorAll(".windowModalBtn").forEach(btn => {
-        btn.addEventListener("click", showWindow);
-    })
-
-    function showWindow(event) {
-        var modal = document.getElementById(event.target.value);
-        var num = event.target.value.split("window");
-        if (modal.style.display == 'none') {
-            modal.style.display = '';
-            //adding html to the window
-            var previous = sessionStorage.getItem('currentPage');
-            sessionStorage.setItem('previousPage', previous)
-            sessionStorage.setItem('currentPage', 'windowBody' + num[1]);
-        } else {
-            modal.style.display = 'none';
-            //adding html back to the page
-            var previous = sessionStorage.getItem('previousPage');
-            sessionStorage.setItem('currentPage', previous);
-            //set the previousPage back to '' for using next time
-            sessionStorage.setItem('previousPage', '')
-        }
-    }
-    ////////
-
-
+    //////////////////////////////////////////////////////////////////////functions in step3 siderbar
     ////////for change text style
+    //when stylize text btn is clicked
     document.querySelectorAll("[data-edit]").forEach(styleBtn =>
         styleBtn.addEventListener("click", changeTextStyle)
     );
 
+    //change the texts to different style according to the btn content
     function changeTextStyle(event) {
         event.preventDefault();
         const newValue = this.getAttribute("data-edit").split(":");
@@ -2121,7 +2422,7 @@
     ////////
 
 
-    ////////for change card & button color
+    ////////for change cv card background color & meun bar button color
     function setCardColor(classItem, color) {
         document.querySelectorAll(classItem).forEach(item => {
             item.style.backgroundColor = color;
@@ -2132,290 +2433,15 @@
 
     ////////for add field
     function addField(reloadStatus) {
+        //the text field should be added into the targeted page only
         var contentid = sessionStorage.getItem('currentPage');
 
         //add new text field
         document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' style='color: black' contenteditable> You can edit any text here </div> </div> </div>";
+
+        //reload CV for update the coding so delete action can work
+        //(if no reload, the user cannot delete the new added elements)
         reload(reloadStatus);
-    }
-    ////////
-
-    ////////Reload the page for update the code
-    async function reload(reloadStatus) {
-        //Check whether the page has been reloaded before 
-        if (reloadStatus == "true") {
-            var cvContent = document.getElementById('reloadWhole').innerHTML
-        } else {
-            var cvContent = document.getElementById('whole').innerHTML
-        }
-        var data = JSON.stringify({
-            CV: cvContent,
-            status: "true"
-        });
-        var response = await fetch("/cv/reloadCV", {
-            method: "POST",
-            credentials: 'same-origin',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: data
-        });
-        sessionStorage.setItem('addField', 'true');
-
-        location.reload();
-    }
-    ////////
-
-    ////////check whether the reload is due to add field
-    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-        // due to add field
-        if (sessionStorage.getItem("addField") == "true") {
-            //no need to have effect when enter
-            document.querySelectorAll(".animate").forEach(ele => {
-                ele.classList.remove("animate__animated");
-            })
-            //keep page layout
-            sessionStorage.setItem('addField', 'false');
-            //keep the sidebar
-            if (sessionStorage.getItem('toolbar') == '3Dsidebar') {
-                document.getElementById('3Dsidebar').style.display = '';
-                document.getElementById('custSidebar').style.display = 'none';
-            } else {
-                document.getElementById('3Dsidebar').style.display = 'none';
-                document.getElementById('custSidebar').style.display = '';
-            }
-            chart();
-            map();
-        }
-        // not due to add field
-        else {
-            console.log("click refresh to reload")
-            //ensure the first page is shown at the beginning
-            showFirstPage();
-            //clear the reload html
-            updateReloadCVSession();
-            //show 3d sidebar at th beginning
-            document.getElementById('3Dsidebar').style.display = '';
-            //show effect
-            document.querySelectorAll('.animate').forEach(ele => {
-                ele.classList.add("animate__animated");
-            })
-            window.location.href = "/create";
-        }
-    }
-    //new enter
-    else {
-        console.log("new enter");
-        //ensure the first page is shown at the beginning
-        showFirstPage();
-        //clear the reload html
-        updateReloadCVSession();
-        //set session storage
-        var contentBtnArray = document.getElementsByClassName("content-btn");
-        sessionStorage.setItem('currentPage', contentBtnArray[0].value);
-        sessionStorage.setItem('previousPage', '');
-        sessionStorage.setItem('addField', 'false');
-        sessionStorage.setItem('deleteBtn', 'off');
-        sessionStorage.setItem('toolbar', '3Dsidebar');
-        console.log(sessionStorage)
-        //show 3d sidebar at th beginning
-        document.getElementById('3Dsidebar').style.display = '';
-        //show effect
-        document.querySelectorAll('.animate').forEach(ele => {
-            ele.classList.add("animate__animated");
-        })
-        //show chart
-        chart();
-        //show map
-        map();
-    }
-    ///////
-
-    ///////update CV code to ensure the first page
-    function showFirstPage() {
-        //show the first page
-        var contentBtnArray = document.getElementsByClassName("content-btn");
-        document.getElementById(contentBtnArray[0].value).style.display = '';
-        var i;
-        for (i = 1; i < contentBtnArray.length; i++) {
-            id = contentBtnArray[i].value;
-            document.getElementById(id).style.display = 'none';
-        }
-    }
-    ///////
-
-    ///////update the reloadCV to ''
-    async function updateReloadCVSession() {
-        var data = JSON.stringify({
-            CV: '',
-            status: 'false'
-        });
-        var response = await fetch("/cv/reloadCV", {
-            method: "POST",
-            credentials: 'same-origin',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: data
-        });
-    }
-    //////
-
-    //////show chart after loading the page
-    function chart() {
-        var p;
-        document.querySelectorAll('canvas').forEach(ctx => {
-            var presentChart = '.' + ctx.nextSibling.nextSibling.classList;
-            var input = [];
-            document.querySelectorAll(presentChart).forEach(ele => {
-                input.push(ele.value)
-            });
-            var categoryArr = input[1].split(",");
-            var category = [];
-            for (p = 0; p < categoryArr.length; p++) {
-                category.push(categoryArr[p])
-            }
-
-            var dataArr = input[3].split(",");
-            var chartData = [];
-            for (p = 0; p < dataArr.length; p++) {
-                chartData.push(parseInt(dataArr[p], 10))
-            }
-
-            var color = document.getElementById('themeColor').style.color;
-            var colorArr = [];
-            for (p = 0; p < dataArr.length; p++) {
-                if (input[0] != 'pie' && input[0] != 'doughnut') {
-                    colorArr.push(color);
-                } else {
-                    colorArr.push('#' + Math.floor(Math.random() * 16777215).toString(16));
-                }
-            }
-
-            new Chart(ctx, {
-                type: input[0],
-                data: {
-                    labels: category,
-                    datasets: [{
-                        label: input[2],
-                        data: chartData,
-                        backgroundColor: colorArr
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    responsive: true,
-                    responsiveAnimationDuration: 1000,
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: input[4]
-                    },
-
-                },
-            });
-        });
-    }
-    //////
-
-    //////show map after loading the page
-    function map() {
-        document.querySelectorAll('.leaflet-container').forEach(map => {
-            //get the present map's input's class
-            var presentMap = '.' + map.nextSibling.nextSibling.nextSibling.classList;
-            //get all the input data of that map
-            var input = [];
-            document.querySelectorAll(presentMap).forEach(ele => {
-                input.push(ele.value)
-            });
-
-            //create new map
-            var newMap = L.map(map.id).setView([input[0], input[1]], 18);
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                accessToken: 'pk.eyJ1IjoibWFra2lraSIsImEiOiJja2xldXcwMmExbnpvMnVxZTAyZ2VkamR5In0.fyuBDRmXfmKoFeDmgU1cUA'
-            }).addTo(newMap);
-
-            //add marker
-            var marker = L.marker([input[0], input[1]]).addTo(newMap);
-            marker.bindPopup("<b>" + input[2] + "</b><br>" + Math.round(input[0] * 1000) / 1000 + ", " + Math.round(input[1] * 1000) / 1000 + "<br>" + input[3]).openPopup();
-        })
-    }
-    //////
-
-    ///////reload once before enter to the page to ensure the CV content is the most updated
-    window.onload = function () {
-        if (window.location.href.substr(-1) !== '?') {
-            window.location = window.location.href + '?';
-        }
-    }
-    ///////
-
-
-    ////////for delete field button's style
-    function deleteBtn(element) {
-        if (element.classList.contains("active")) {
-            element.setAttribute("class", "btn nav-link");
-            element.style.color = "#dddfeb";
-            sessionStorage.setItem("deleteBtn", "off")
-        } else {
-            element.setAttribute("class", "btn nav-link active");
-            element.style.color = "black";
-            sessionStorage.setItem("deleteBtn", "on")
-        }
-    }
-    ///////
-
-    //////when field is being clicked
-    document.querySelectorAll(".field").forEach(field => {
-        field.addEventListener("click", deleteField);
-    });
-
-    function deleteField(event) {
-        // if delete button is already clicked - delete field
-        if (sessionStorage.getItem("deleteBtn") == "on") {
-            event.preventDefault();
-            console.info(event.target)
-            event.target.remove();
-        }
-        //Otherwise
-        else {
-            return;
-        }
-    }
-    ////////
-
-
-    ////////for showing content page
-    function showContent(targetPage) {
-        var contentBtnArray = document.getElementsByClassName("content-btn");
-        var i;
-        for (i = 0; i < contentBtnArray.length; i++) {
-            if (contentBtnArray[i].value == targetPage) {
-                document.getElementById(targetPage).style.display = '';
-            } else {
-                id = contentBtnArray[i].value;
-                document.getElementById(id).style.display = 'none';
-            }
-        }
-        sessionStorage.setItem('currentPage', targetPage);
-        document.querySelectorAll('.animate').forEach(ele => {
-            ele.classList.add("animate__animated");
-        })
     }
     ////////
 
@@ -2476,6 +2502,40 @@
         document.getElementById("newPageName").value = "";
         //reload to ensure updated code
         reload(reloadStatus);
+    }
+    ////////
+
+
+    ////////for delete field button's style
+    function deleteBtn(element) {
+        if (element.classList.contains("active")) {
+            element.setAttribute("class", "btn nav-link");
+            element.style.color = "#dddfeb";
+            sessionStorage.setItem("deleteBtn", "off")
+        } else {
+            element.setAttribute("class", "btn nav-link active");
+            element.style.color = "black";
+            sessionStorage.setItem("deleteBtn", "on")
+        }
+    }
+    ///////
+
+    //////when field is being clicked
+    document.querySelectorAll(".field").forEach(field => {
+        field.addEventListener("click", deleteField);
+    });
+
+    function deleteField(event) {
+        // if delete button is already clicked - delete field
+        if (sessionStorage.getItem("deleteBtn") == "on") {
+            event.preventDefault();
+            console.info(event.target)
+            event.target.remove();
+        }
+        //Otherwise
+        else {
+            return;
+        }
     }
     ////////
 

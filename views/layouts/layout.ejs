@@ -3,13 +3,14 @@
 
 <head>
   <title>3D CV System</title>
-  <link rel="icon" href="http://example.com/image.png">
+  <!-- open source - leaftlet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+  <!-- End of leaftlet -->
 
   <!-- Viewport mobile tag for sensible mobile support -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -47,7 +48,7 @@
 </head>
 
 <script>
-  ////////for toolbar
+  ////////after login: show the toolbar when clicking the right hand corner
   function showUserToolbar() {
     var toolbar = document.getElementById('userToolbar');
     if (toolbar.style.display == '') {
@@ -93,7 +94,7 @@
               <% if (req.session.role=="admin" ) { %>
                 <!-- For admin -->
                 <% if (req.path!='/setting' && req.path!='/admin_main' && currentPath[1]!='user' ) { %>
-                  <!-- Only available whenadmin editing CV -->
+                  <!-- Only available when admin is editing a CV -->
                   <!-- Nav Item - Back -->
                   <li class="nav-item mx-1">
                     <a class="nav-link" href="/user/info/<%=req.session.userID%>" role="button">
@@ -129,22 +130,25 @@
                     </li>
                     <!-- End of User List -->
                     <% } %>
+                    <!-- End of admin -->
+
 
                       <!-- Divider -->
                       <div class="topbar-divider d-sm-block"></div>
                       <!-- End of divider -->
 
+                      <!-- For both users and admin -->
                       <!-- Nav Item - Person Information -->
                       <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" onclick="showUserToolbar()" id="userDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span class="mr-3 d-none d-sm-inline header-href">Hello, <%=req.session.firstName %></span>
-                          <img class="img-profile rounded-circle" <%if(req.session.profile=='' )
+                          <img class="img-profile rounded-circle" style="height:50%; width:auto;" <%if(req.session.profile=='' )
                             {%>src="/images/avatar.png"
                           <%}else{%>src="<%=req.session.profile%>"<%}%>>
                         </a>
 
-                        <!-- Dropdown - Person Information -->
+                        <!-- Dropdown -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" id="userToolbar"
                           style="display: none;">
                           <!-- Setting -->

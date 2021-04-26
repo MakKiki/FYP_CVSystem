@@ -270,9 +270,6 @@
       <button onclick="pass()" class="btn btn-dark" style="width: 100%">Pass This Step</button>
     </div>
 
-    <!-- <div>
-        <button onclick="showDeleteAlert()" class="btn btn-dark" style="width: 100%">Delete</button>
-      </div> -->
   </ul>
 </div>
 <!-- End of Sidebar -->
@@ -284,7 +281,7 @@
     <div id="whole">
       <%- cv.CVcode %>
     </div>
-    <!-- when add field/img/doc -->
+    <!-- when the CV has been customized -->
     <% } else { %>
       <div id="reloadWhole">
         <%- req.session.reloadCV %>
@@ -343,7 +340,7 @@
 <script>
   //////// for submit cv code
   async function submitCV(reloadStatus) {
-    //confirm the cv is at the first page at the beginning
+    //ensure the cv is at the first page when shown
     var contentBtnArray = document.getElementsByClassName("content-btn");
     document.getElementById(contentBtnArray[0].value).style.display = '';
     var i;
@@ -351,12 +348,14 @@
       id = contentBtnArray[i].value;
       document.getElementById(id).style.display = 'none';
     }
+    //ensure the cv includes all animations
     document.querySelectorAll('.animate').forEach(ele => {
       ele.classList.add("animate__animated");
     })
 
     //Check whether the page has been reloaded before 
     if (reloadStatus == "true") {
+      //if yes, get the reloaded one as it is the most updated
       var cvContent = document.getElementById('reloadWhole').innerHTML
     } else {
       var cvContent = document.getElementById('whole').innerHTML
@@ -391,6 +390,7 @@
   async function saveContent(reloadStatus) {
     //Check whether the page has been reloaded before 
     if (reloadStatus == "true") {
+      //if yes, get the reloaded one as it is the most updated
       var cvContent = document.getElementById('reloadWhole').innerHTML
     } else {
       var cvContent = document.getElementById('whole').innerHTML
@@ -424,12 +424,12 @@
 
   /////// for save & preview
   async function save_preview(reloadStatus) {
-    //confirm everything like the publicated CV
-    //confirm the cv cannot be editable
+    //ensure all formats look like the publicated CV
+    //ensure the cv cannot be edited
     document.querySelectorAll("[contenteditable]").forEach(field => {
       field.contentEditable = "false";
     });
-    //confirm the cv is at the first page at the beginning
+    //ensure the cv is at the first page when shown at the beginning
     var contentBtnArray = document.getElementsByClassName("content-btn");
     document.getElementById(contentBtnArray[0].value).style.display = '';
     var i;
@@ -437,7 +437,7 @@
       id = contentBtnArray[i].value;
       document.getElementById(id).style.display = 'none';
     }
-    //confirm the cv included animated
+    //ensure the cv includes all animations
     document.querySelectorAll('.animate').forEach(ele => {
       ele.classList.add("animate__animated");
     })
@@ -445,6 +445,7 @@
 
     //Check whether the page has been reloaded before 
     if (reloadStatus == "true") {
+      //if yes, get the reloaded one as it is the most updated
       var cvContent = document.getElementById('reloadWhole').innerHTML
     } else {
       var cvContent = document.getElementById('whole').innerHTML
@@ -475,7 +476,7 @@
   ////////
 
 
-  ////////pass this step (save defaultcode to cvcode)
+  ////////pass this step (save defaultcode as cvcode)
   async function pass() {
     var data = JSON.stringify({
       step: "step4"
@@ -502,10 +503,12 @@
 
 
   ////////for change text style
+  //when stylize text btn is clicked
   document.querySelectorAll("[data-edit]").forEach(styleBtn =>
     styleBtn.addEventListener("click", changeTextStyle)
   );
 
+  //change the texts to different style according to the btn content
   function changeTextStyle(event) {
     event.preventDefault();
     const newValue = this.getAttribute("data-edit").split(":");
@@ -522,7 +525,7 @@
   ////////
 
 
-  ////////for change card & button color
+  ////////for change cv card background color & meun bar button color
   function setCardColor(classItem, color) {
     document.querySelectorAll(classItem).forEach(item => {
       item.style.backgroundColor = color;
@@ -533,164 +536,15 @@
 
   ////////for add field
   function addField(reloadStatus) {
+    //the text field should be added into the targeted page only
     var contentid = sessionStorage.getItem('currentPage');
 
-     //add new text field
-     document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' style='color: black' contenteditable> You can edit any text here </div> </div> </div>";
-     reload(reloadStatus);
-  }
-  ////////
+    //add new text field
+    document.getElementById(contentid).innerHTML += "<div class='container field'> <div class='row resize-drag'> <div class='col-sm-12' style='color: black' contenteditable> You can edit any text here </div> </div> </div>";
 
-  ////////Reload the page for update the code
-  async function reload(reloadStatus) {
-    //Check whether the page has been reloaded before 
-    if (reloadStatus == "true") {
-      var cvContent = document.getElementById('reloadWhole').innerHTML
-    } else {
-      var cvContent = document.getElementById('whole').innerHTML
-    }
-    var data = JSON.stringify({
-      CV: cvContent,
-      status: "true"
-    });
-    var response = await fetch("/cv/reloadCV", {
-      method: "POST",
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: data
-    });
-    sessionStorage.setItem('addField', 'true');
-
-    location.reload();
-  }
-  ////////
-
-  ////////check whether the reload is due to add field
-  if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-    // due to add field
-    if (sessionStorage.getItem("addField") == "true") {
-      //no need to have effect when enter
-      document.querySelectorAll(".animate").forEach(ele => {
-        ele.classList.remove("animate__animated");
-      })
-      //keep page layout
-      sessionStorage.setItem('addField', 'false');
-    }
-    // not due to add field
-    else {
-      console.log("click refresh to reload")
-      showFirstPage();
-      updateReloadCVSession();
-      window.location.href = "/customize";
-    }
-  }
-  //leave page and enter again
-  else {
-    console.log("leave the page and enter again")
-    showFirstPage();
-    console.log(sessionStorage)
-    updateReloadCVSession();
-  }
-  ///////
-
-  ///////update CV code to ensure the first page
-  function showFirstPage() {
-    //show the first page
-    var contentBtnArray = document.getElementsByClassName("content-btn");
-    document.getElementById(contentBtnArray[0].value).style.display = '';
-    var i;
-    for (i = 1; i < contentBtnArray.length; i++) {
-      id = contentBtnArray[i].value;
-      document.getElementById(id).style.display = 'none';
-    }
-  }
-  ///////
-
-  ///////update the reloadCV to ''
-  async function updateReloadCVSession() {
-    var data = JSON.stringify({
-      CV: '',
-      status: 'false'
-    });
-    var response = await fetch("/cv/reloadCV", {
-      method: "POST",
-      credentials: 'same-origin',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: data
-    });
-  }
-  //////
-
-  ///////reload once before enter to the page to ensure the CV content is the most updated
-  window.onload = function () {
-    if (window.location.href.substr(-1) !== '?') {
-      window.location = window.location.href + '?';
-      var contentBtnArray = document.getElementsByClassName("content-btn");
-      sessionStorage.setItem('currentPage', contentBtnArray[0].value);
-      sessionStorage.setItem('addField', 'false');
-      sessionStorage.setItem('deleteBtn', 'off');
-      console.log(sessionStorage)
-    }
-  }
-  ///////
-
-
-  ////////for delete field button's style
-  function deleteBtn(element) {
-    if (element.classList.contains("active")) {
-      element.setAttribute("class", "btn nav-link");
-      element.style.color = "#dddfeb";
-      sessionStorage.setItem("deleteBtn", "off")
-    } else {
-      element.setAttribute("class", "btn nav-link active");
-      element.style.color = "black";
-      sessionStorage.setItem("deleteBtn", "on")
-    }
-  }
-  ///////
-
-  //////when field is being clicked
-  document.querySelectorAll(".field").forEach(field => {
-    field.addEventListener("click", deleteField);
-  });
-
-  function deleteField(event) {
-    // if delete button is already clicked - delete field
-    if (sessionStorage.getItem("deleteBtn") == "on") {
-      event.preventDefault();
-      console.info(event.target)
-      event.target.remove();
-    }
-    //Otherwise
-    else {
-      return;
-    }
-  }
-  ////////
-
-
-  ////////for showing content page
-  function showContent(targetPage) {
-    var contentBtnArray = document.getElementsByClassName("content-btn");
-    var i;
-    for (i = 0; i < contentBtnArray.length; i++) {
-      if (contentBtnArray[i].value == targetPage) {
-        document.getElementById(targetPage).style.display = '';
-      } else {
-        id = contentBtnArray[i].value;
-        document.getElementById(id).style.display = 'none';
-      }
-    }
-    sessionStorage.setItem('currentPage', targetPage);
-    document.querySelectorAll('.animate').forEach(ele => {
-      ele.classList.add("animate__animated");
-    })
+    //reload CV for update the coding so delete action can work
+    //(if no reload, the user cannot delete the new added elements)
+    reload(reloadStatus);
   }
   ////////
 
@@ -755,6 +609,161 @@
   ////////
 
 
+  ////////Everytime a new element is added, the system should reload the page for update the coding because if no reload, the user cannot delete the new added elements later
+  ////////Store the reload html to session because if the page reload for updating the code, the elements added previously will be gone
+  async function reload(reloadStatus) {
+    //Check whether the page has been reloaded before 
+    if (reloadStatus == "true") {
+      //if yes, get the reloaded one as it is the most updated
+      var cvContent = document.getElementById('reloadWhole').innerHTML
+    } else {
+      var cvContent = document.getElementById('whole').innerHTML
+    }
+    var data = JSON.stringify({
+      CV: cvContent,
+      status: "true"
+    });
+    var response = await fetch("/cv/reloadCV", {
+      method: "POST",
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: data
+    });
+
+    //the addField is true now, so when the system reload the page for update the coding, the system will know the reload is due to addField but not refresh
+    sessionStorage.setItem('addField', 'true');
+
+    //store the current card & meun bar btn color, so that after reload, the previous access is still here
+    sessionStorage.setItem('cardColor', document.getElementById('cardColor').value);
+    sessionStorage.setItem('btnColor', document.getElementById('btnColor').value)
+
+    //Reload the page for update the cv code so that delete action can take place
+    location.reload();
+  }
+  ////////
+
+  ////////check whether the reload is due to add field
+  if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+    // due to add field
+    if (sessionStorage.getItem("addField") == "true") {
+      //no need to have effect when enter
+      document.querySelectorAll(".animate").forEach(ele => {
+        ele.classList.remove("animate__animated");
+      })
+
+      //for use next time when elements are added
+      sessionStorage.setItem('addField', 'false');
+
+      //get back the color of the card and meun bar btn
+      document.getElementById('cardColor').value = sessionStorage.getItem("cardColor");
+      document.getElementById('btnColor').value = sessionStorage.getItem("btnColor");
+    }
+    // not due to add field
+    else {
+      console.log("click refresh to reload")
+      //ensure the first page is shown at the beginning
+      showFirstPage();
+      //clear the reload html so everything go to the beginning
+      updateReloadCVSession();
+
+      //set session storage
+      var contentBtnArray = document.getElementsByClassName("content-btn");
+
+      window.location.href = "/customize";
+    }
+  }
+  //new enter
+  else {
+    console.log("new enter");
+    //ensure the first page is shown at the beginning
+    showFirstPage();
+
+    //clear the reload html so everything goes back to the beginning
+    updateReloadCVSession();
+
+    //set session storage
+    var contentBtnArray = document.getElementsByClassName("content-btn");
+    //currentPage: for indicate which page the element should add into
+    sessionStorage.setItem('currentPage', contentBtnArray[0].value);
+    //addField: for indicate whether the reload is due to add field
+    sessionStorage.setItem('addField', 'false');
+    //deleteBtn: for indicate whether the user wants to delete the field
+    sessionStorage.setItem('deleteBtn', 'off');
+    console.log(sessionStorage)
+  }
+  ///////
+
+  ///////when new enter or refresh the page
+  ///////ensure first page is shown at the beginning
+  function showFirstPage() {
+    //show the first page
+    var contentBtnArray = document.getElementsByClassName("content-btn");
+    document.getElementById(contentBtnArray[0].value).style.display = '';
+    var i;
+    for (i = 1; i < contentBtnArray.length; i++) {
+      id = contentBtnArray[i].value;
+      document.getElementById(id).style.display = 'none';
+    }
+  }
+  ///////
+
+  ///////when new enter or refresh the page
+  ///////update the reloadCV to '' so everything go back to the beginning
+  async function updateReloadCVSession() {
+    var data = JSON.stringify({
+      CV: '',
+      status: 'false'
+    });
+    var response = await fetch("/cv/reloadCV", {
+      method: "POST",
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: data
+    });
+  }
+  //////
+
+
+  ////////for delete field button's style
+  function deleteBtn(element) {
+    if (element.classList.contains("active")) {
+      element.setAttribute("class", "btn nav-link");
+      element.style.color = "#dddfeb";
+      sessionStorage.setItem("deleteBtn", "off")
+    } else {
+      element.setAttribute("class", "btn nav-link active");
+      element.style.color = "black";
+      sessionStorage.setItem("deleteBtn", "on")
+    }
+  }
+  ///////
+
+  //////when field is being clicked
+  document.querySelectorAll(".field").forEach(field => {
+    field.addEventListener("click", deleteField);
+  });
+
+  function deleteField(event) {
+    // if delete button is already clicked - delete field
+    if (sessionStorage.getItem("deleteBtn") == "on") {
+      event.preventDefault();
+      console.info(event.target)
+      event.target.remove();
+    }
+    //Otherwise
+    else {
+      return;
+    }
+  }
+  ////////
+
+
   //////for showing delete page window
   function showDeletePageWindow() {
     var deletePageWindow = document.getElementById('deletePageModal');
@@ -785,7 +794,27 @@
   ////////
 
 
-  ////////for class resize-only: resize div (textfield)
+  ////////for showing different content page when a meun button is clicked
+  function showContent(targetPage) {
+    var contentBtnArray = document.getElementsByClassName("content-btn");
+    var i;
+    for (i = 0; i < contentBtnArray.length; i++) {
+      if (contentBtnArray[i].value == targetPage) {
+        document.getElementById(targetPage).style.display = '';
+      } else {
+        id = contentBtnArray[i].value;
+        document.getElementById(id).style.display = 'none';
+      }
+    }
+    sessionStorage.setItem('currentPage', targetPage);
+    document.querySelectorAll('.animate').forEach(ele => {
+      ele.classList.add("animate__animated");
+    })
+  }
+  ////////
+
+
+  ////////for class resize-only
   interact('.resize-only')
     .resizable({
       // resize from all edges and corners
@@ -828,7 +857,7 @@
     })
   ////////
 
-  //////// for class resize-drag: for resize and drag div (textfield)
+  //////// for class resize-drag: resize and drag
   interact('.resize-drag')
     .resizable({
       // resize from all edges and corners
@@ -912,5 +941,4 @@
   // this function is used later in the resizing and gesture demos
   window.dragMoveListener = dragMoveListener
     ////////
-
 </script>

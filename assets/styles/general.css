@@ -10556,6 +10556,18 @@ body.sidebar-toggled footer.sticky-footer {
   border-color: #9d71aa;
   box-shadow: 0 0 0 0.2rem rgba(139, 83, 153, 0.5);
 }
+.CVlink-btn {
+  border: 0;
+  background-color: white;
+  color: rgb(26, 124, 221);
+}
+.CVlink-btn:hover,
+.CVlink-btn.hover,
+.CVlink-btn:focus,
+.CVlink-btn.focus {
+  outline: 0;
+  text-decoration: underline;
+}
 .center {
   position: fixed;
   top: 45%;
@@ -10647,7 +10659,7 @@ body.sidebar-toggled footer.sticky-footer {
 @media (min-width: 1200px) {
   .template-img {
     height: auto;
-    width: 240px;
+    width: 230px;
   }
 }
 .custom-cv {

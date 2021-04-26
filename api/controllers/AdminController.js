@@ -73,9 +73,9 @@ module.exports = {
       return res.json({
         message: "✔️ Successfully Updated ✔️",
         url: "/user/info/" + req.body.id,
-      }); // for ajax request
+      }); 
     } else {
-      return res.redirect("/user/info/" + req.body.id); // for normal request
+      return res.redirect("/user/info/" + req.body.id); 
     }
   },
 

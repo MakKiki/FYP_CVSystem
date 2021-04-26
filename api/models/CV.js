@@ -11,10 +11,12 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+    //finalize CV
     CVcode: {
       type: "string",
     },
 
+    //for pass step
     CVdefaultCode: {
       type: "string",
     },

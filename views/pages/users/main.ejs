@@ -55,7 +55,7 @@
 
                 <div class="row" style="color: #a570a7">
 
-                  <!-- id -->
+                  <!-- resume no. -->
                   <div class="col-sm-12 py-3">
                     <h5 class="text-center">Resume <%=i%>
                     </h5>
@@ -111,7 +111,7 @@
 
                   <!-- Delete Button -->
                   <div class="col-sm-12 py-1">
-                    <button type="button" class="btn main-btn" onclick="showDeleteAlert()">
+                    <button id="deleteCVBtn" type="button" class="btn main-btn" onclick="showDeleteAlert('<%=model.id%>')">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-trash" viewBox="0 0 16 16">
                         <path
@@ -134,10 +134,10 @@
                         </div>
                         <div class="modal-body">Once you delete your CV, you cannot retrieve it back.</div>
                         <div class="modal-footer">
-                          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showDeleteAlert()"
+                          <button id="alert-cancel" class="btn btn-secondary" type="button" onclick="showDeleteAlert('<%=model.id%>')"
                             data-dismiss="modal">Cancel</button>
                           <button id="alert-delete" class="btn btn-danger" type="button"
-                            onclick="deleteCV('<%=model.id%>')" data-dismiss="modal">Delete</button>
+                            onclick="deleteCV()" data-dismiss="modal">Delete</button>
                         </div>
                       </div>
                     </div>
@@ -160,7 +160,7 @@
                       <% if (model.CVlink=='' ){ %>
                         <div style="font-size:small">You have not published this CV yet.</div>
                         <% } else{ %>
-                          <button type="button" class="btn btn-link" onclick="window.open('/CV/<%= model.id %>')">
+                          <button class="CVlink-btn" onclick="window.open('/CV/<%= model.id %>')">
                             <%= model.CVlink %>
                           </button>
                           <% } %>
@@ -228,18 +228,21 @@
 
       <script>
         ///////for showing delete alert
-        function showDeleteAlert() {
+        function showDeleteAlert(id) {  
           var deleteAlert = document.getElementById('deleteModal');
           if (deleteAlert.style.display == '') {
+            document.getElementById('deleteCVBtn').value = '';
             deleteAlert.style.display = 'none';
           } else {
+            document.getElementById('deleteCVBtn').value = id;
             deleteAlert.style.display = '';
           }
         }
         ///////
 
         /////// for delete user's CV
-        async function deleteCV(id) {
+        async function deleteCV() {
+          var id = document.getElementById('deleteCVBtn').value;
           var response = await fetch("/deleteCV/" + id, {
             method: "DELETE",
             credentials: 'same-origin',

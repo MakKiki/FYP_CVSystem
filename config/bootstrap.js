@@ -13,10 +13,10 @@ module.exports.bootstrap = async function () {
   if ((await User.count()) == 0) {
     await User.createEach([
       {
-        email: "susan@gmail.com",
+        email: "sunny@gmail.com",
         password: "123456",
-        firstName: "Su San",
-        lastName: "Chan",
+        firstName: "Sun Ling",
+        lastName: "Kwok",
         role: "user",
       },
       {
@@ -24,6 +24,13 @@ module.exports.bootstrap = async function () {
         password: "123456",
         firstName: "Tong Lee",
         lastName: "Wong",
+        role: "user",
+      },
+      {
+        email: "karen@gmail.com",
+        password: "123456",
+        firstName: "Ka Wan",
+        lastName: "Yip",
         role: "user",
       },
 
@@ -42,15 +49,5 @@ module.exports.bootstrap = async function () {
       },
     ]);
   }
-
-  // if ((await CV.count()) == 0) {
-  //   await CV.createEach([{ CVcode: "", CVlink: "123456", owner: "Su San Chan" }]);
-  // }
-
-  // const susan = await User.findOne({ email: "susan@gmail.com" });
-  // const susanCV = await CV.findOne({ owner: "Su San Chan" });
-
-  // await User.addToCollection(susan.id, "have").members(susanCV.id);
-
   return;
 };

@@ -53,7 +53,6 @@
 
                             <div class="col-sm-12 col-lg-12">
                                 Profile Image (If any)
-                                <div style="color: red; font-size: 3px;">**Suggested Picture: Image in <b>Rectangle</b> form</div>
                                 <input type="file" accept="image/*" class="form-control form-control-user py-1" onchange="uploadProfile(this.files)">
                                     <input type="hidden" id="profile" name="CV[profile]"
                                      <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.profile%>" <%}%>>
@@ -71,6 +70,7 @@
                                     onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" 
                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.engName%>" <%}%>
                                     required>
+                                    <!-- onkeyup="value=value.replace(/[^\a-\z\A-\Z\ ]/g,'')" not allow user to enter anything that is not English -->
                             </div>
 
                             <div class="col-sm-12 col-lg-4">
@@ -80,6 +80,7 @@
                                     class="form-control form-control-user"
                                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
                                     <% if(req.session.progressingCV !=null) {%>value="<%=req.session.progressingCV.chiName%>" <%}%>>
+                                    <!-- onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" not allow user to enter anything that is not Chinese -->
                             </div>
 
                             <div class="col-sm-12 col-lg-4">
@@ -206,6 +207,9 @@
                                         value="<%=req.session.progressingCV.school[0]%>" <%} else {%>
                                         value="<%=req.session.progressingCV.school%>" <% } } %>
                                     required>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if schoolData[1] != null meaning the data number is >1  -->
                                 </div>
 
                                 <div class="col-sm-12 col-lg-4">
@@ -219,6 +223,9 @@
                                         value="<%=req.session.progressingCV.eduStartDate[0]%>" <%} else {%>
                                         value="<%=req.session.progressingCV.eduStartDate%>" <% } } %>
                                     required>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if eduStartDateData[1] != null meaning the data number is >1  -->
                                 </div>
 
                                 <div class="col-sm-12 col-lg-4">
@@ -232,6 +239,9 @@
                                         value="<%=req.session.progressingCV.eduEndDate[0]%>" <%} else {%>
                                         value="<%=req.session.progressingCV.eduEndDate%>" <% } } %>
                                     required>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if eduEndDateData[1] != null meaning the data number is >1  -->
                                 </div>
 
                                 <div class="col-sm-12 col-lg-4">
@@ -245,6 +255,9 @@
                                         value="<%=req.session.progressingCV.major[0]%>" <%} else {%>
                                         value="<%=req.session.progressingCV.major%>" <% } } %>
                                     required>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if majorData[1] != null meaning the data number is >1  -->
                                 </div>
 
                                 <div class="col-sm-12 col-lg-6">
@@ -272,6 +285,9 @@
                                         value="<%=req.session.progressingCV.mark[0]%>" <%} else {%>
                                         value="<%=req.session.progressingCV.mark%>" <% } } %>
                                     required>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if markData[1] != null meaning the data number is >1  -->
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -284,6 +300,9 @@
                                         if(eduDescriptionData[1] != null) {%>
                                         value="<%=req.session.progressingCV.eduDescription[0]%>" <%} else {%>
                                         value="<%=req.session.progressingCV.eduDescription%>" <% } } %>>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if eduDescriptionData[1] != null meaning the data number is >1  -->
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -303,6 +322,9 @@
                                         href="<%=req.session.progressingCV.eduCertificate%>" <% } %> target="_blank">
                                         Click here to download the previous Certificate you uploaded</a>
                                     <% } %>
+                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                    <!-- if eduCertificateData[1] != null meaning the data number is >1  -->
                                 </div>
                             </div>
                         </div>
@@ -310,7 +332,9 @@
                 </div>
             </div>
 
+            <!-- if saved before, and the number of data is >1 -->
             <% if (req.session.progressingCV !=null && req.session.progressingCV.school.length>0 && eduStartDateData[1] != null) {%>
+                <!-- loop for showing back each of the info of data -->
                 <% var i; for(i=1; i<req.session.progressingCV.school.length; i++ ) { %>
                     <div id='eduData<%=i+1%>' class='container eduField'>
                         <div class='row justify-content-center'>
@@ -411,6 +435,9 @@
                                                     if(companyData[1] != null) {%>
                                                     value="<%=req.session.progressingCV.company[0]%>" <%} else {%>
                                                     value="<%=req.session.progressingCV.company%>" <% } } %>>
+                                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                      so it is a need to split the data by ',' to get back the value of the original data -->
+                                                    <!-- if companyData[1] != null meaning the data number is >1  -->
                                             </div>
 
                                             <div class="col-sm-12 col-lg-6">
@@ -423,6 +450,9 @@
                                                     if(positionData[1] != null) {%>
                                                     value="<%=req.session.progressingCV.position[0]%>" <%} else {%>
                                                     value="<%=req.session.progressingCV.position%>" <% } } %>>
+                                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                      so it is a need to split the data by ',' to get back the value of the original data -->
+                                                    <!-- if positionData[1] != null meaning the data number is >1  -->
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3">
@@ -435,6 +465,9 @@
                                                     if(workStartDateData[1] != null) {%>
                                                     value="<%=req.session.progressingCV.workStartDate[0]%>" <%} else {%>
                                                     value="<%=req.session.progressingCV.workStartDate%>" <% } } %>>
+                                                    <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                      so it is a need to split the data by ',' to get back the value of the original data -->
+                                                    <!-- if workStartDateData[1] != null meaning the data number is >1  -->
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3">
@@ -449,12 +482,17 @@
                                                     value="<%=req.session.progressingCV.workEndDate[0]%>" <%} else {%>
                                                     value="<%=req.session.progressingCV.workEndDate%>" <% } } %>
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %> readOnly <% }} %>>
+                                                <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                    so it is a need to split the data by ',' to get back the value of the original data -->
+                                                <!-- if workEndDateData[1] != null meaning the data number is >1  -->
+                                                <!-- if inJob == true || inJob == workEndDate meaning the end date is until now  -->
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3">
                                                 <div class="py-4"></div>
                                                 <input value="workEndDate1" type="checkbox" name="CV[inJob]" onclick='checkEndDateBox()'
                                                 <% if(req.session.progressingCV !=null && req.session.progressingCV.inJob != null){ if(req.session.progressingCV.inJob[0] == true || req.session.progressingCV.inJob == 'workEndDate1' || req.session.progressingCV.inJob[0] == 'workEndDate1'){ %> checked <% }} %>>
+                                                <!-- if saved and inJob == true || inJob == workEndDate, the checkbox should be ticked  -->
                                                 <span>Still in this job right now?</span>
                                                 <div class="py-2"></div>
                                             </div>
@@ -469,6 +507,9 @@
                                                     if(workDescriptionData[1] != null) {%>
                                                     value="<%=req.session.progressingCV.workDescription[0]%>" <%} else {%>
                                                     value="<%=req.session.progressingCV.workDescription%>" <% } } %>>
+                                                <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                so it is a need to split the data by ',' to get back the value of the original data -->
+                                                <!-- if workDescriptionData[1] != null meaning the data number is >1  -->
                                             </div>
 
                                             <div class="col-sm-12 col-lg-12">
@@ -488,6 +529,9 @@
                                                     href="<%=req.session.progressingCV.reference%>" <% } %> target="_blank">
                                                     Click here to download the previous Reference you uploaded</a>
                                                 <% } %>
+                                                <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                so it is a need to split the data by ',' to get back the value of the original data -->
+                                                <!-- if referenceData[1] != null meaning the data number is >1  -->
                                             </div>
                                         </div>
                                     </div>
@@ -495,7 +539,9 @@
                             </div>
                         </div>
 
+                        <!-- if saved before, and the number of data is >1 -->
                         <% if (req.session.progressingCV !=null && req.session.progressingCV.company.length>0 && workStartDateData[1]!=null) {%>
+                            <!-- loop for showing back each of the info of data -->
                             <% var i; for(i=1; i<req.session.progressingCV.company.length; i++ ) { %>
                         <div class="py-3"></div>
                         <div id='workData<%=i+1%>' class='container workField'>
@@ -639,6 +685,9 @@
                                                     value="<%=req.session.progressingCV.name[0]%>" <%} else {%>
                                                     value="<%=req.session.progressingCV.name%>" <% } } %>
                                                 required>
+                                                <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                so it is a need to split the data by ',' to get back the value of the original data -->
+                                                <!-- if nameData[1] != null meaning the data number is >1  -->
                                             </div>
 
                                             <div class="col-sm-12 col-lg-3">
@@ -670,6 +719,9 @@
                                                     href="<%=req.session.progressingCV.lanCertificate%>" <% } %> target="_blank">
                                                     Click here to download the previous Certificate you uploaded</a>
                                                 <% } %>
+                                                <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                so it is a need to split the data by ',' to get back the value of the original data -->
+                                                <!-- if lanCertificateData[1] != null meaning the data number is >1  -->
                                             </div>
                                         </div>
                                     </div>
@@ -677,7 +729,9 @@
                             </div>
                         </div>
 
+                        <!-- if saved before, and the number of data is >1 -->
                         <% if (req.session.progressingCV !=null && req.session.progressingCV.name.length>0 && nameData[1] != null) {%>
+                            <!-- loop for showing back each of the info of data -->
                             <% var i; for(i=1; i<req.session.progressingCV.name.length; i++ ) { %>
                         <div id='languageData<%=i+1%>' class='container languageField'>
                             <div class='row justify-content-center'>
@@ -748,9 +802,11 @@
 <script>
     ////////update sessionStorage before enter to the page
     window.onload = function () {
+        //for counting the number of fields added to the education/work/language
         sessionStorage.setItem('numEduField', document.getElementsByClassName('eduField').length);
         sessionStorage.setItem('numWorkField', document.getElementsByClassName('workField').length);
         sessionStorage.setItem('numLanField', document.getElementsByClassName('languageField').length);
+        //show the step 1 modal when user first enter
         if (response.session.progressingCV != null) {
             document.getElementById('step1Modal').style = 'none';
         }
@@ -779,7 +835,6 @@
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            alert(e.target.result)
             document.getElementById("profile").value = e.target.result;
         }
         reader.readAsDataURL(file);
@@ -789,7 +844,6 @@
 
     ///////for upload certificate / reference
     function uploadFile() {
-        alert(event.target.nextElementSibling.id)
         const fieldID = event.target.nextElementSibling.id;
         const file = event.target.files[0];
 
@@ -798,7 +852,6 @@
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            alert(e.target.result)
             document.getElementById(fieldID).value = e.target.result;
 
         }
@@ -807,20 +860,26 @@
     ///////
 
 
-    ////////add more fied
+    ////////for add more fied in education/work/language
     function addData(data) {
         if (data == "education") {
+            //get the session storage to know how many fields are added until now
             var currentEduField = parseInt(sessionStorage.getItem('numEduField'), 10);
+            //field length +1 for update the number of fields & the id for for new added field
             var idnumForNewField = currentEduField + 1;
             sessionStorage.setItem('numEduField', idnumForNewField);
             document.getElementById('eduBtn').insertAdjacentHTML('beforebegin', "<div id='eduData" + idnumForNewField + "' class='container eduField'> <div class='row justify-content-center'>  <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-12'> <div class='py-3'></div> Name Of The School / Institution <input type='text' name='CV[school]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-4'><div class='py-2'></div> Start Date <input type='date' name='CV[eduStartDate]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-4'><div class='py-2'></div> End Date (or Expected End Date) <input type='date' name='CV[eduEndDate]' class='form-control form-control-user' required> </div>  <div class='col-sm-12 col-lg-4'><div class='py-2'></div> Major <input type='text' name='CV[major]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-6'><div class='py-2'></div> Degree / Level <select class='form-control' name='CV[degree]' required> <option value='Professional Degree'>Professional Degree</option> <option value='Doctoral Degree'>Doctoral Degree</option> <option value='Master Degree'>Master Degree</option> <option value='Bachelor Degree'>Bachelor Degree</option> <option value='Associate Degree'>Associate Degree</option> <option value='Graduate'>Graduate</option> <option value='In Progress'>In Progress</option> </select> </div> <div class='col-sm-12 col-lg-6'><div class='py-2'></div> CGPA / Result <input type='text' name='CV[mark]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-12'><div class='py-2'></div> Others About The School / Institution (If any) <input type='text' name='CV[eduDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <div class='py-2'></div> Certificate (If any)  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='eduCertificate" + idnumForNewField + "' name='CV[eduCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='eduData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right;' onclick='deleteData()'> - Remove this field </button> </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
         } else if (data == "work") {
+            //get the session storage to know how many fields are added until now
             var currentWorkField = parseInt(sessionStorage.getItem('numWorkField'), 10);
+            //field length +1 for update the number of fields & the id for for new added field
             var idnumForNewField = currentWorkField + 1;
             sessionStorage.setItem('numWorkField', idnumForNewField);
             document.getElementById('workBtn').insertAdjacentHTML('beforebegin', "<div id='workData" + idnumForNewField + "' class='container workField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-6'> <div class='py-2'></div> Company <input type='text' name='CV[company]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-6'> <div class='py-2'></div> Title / Position <input type='text' name='CV[position]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3'> <div class='py-2'></div> Start Date <input type='date' name='CV[workStartDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3'> <div class='py-2'></div> End Date <input id='workEndDate" + idnumForNewField + "' type='date' name='CV[workEndDate]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-3'> <div class='py-4'></div> <input value='workEndDate" + idnumForNewField + "' type='checkbox' name='CV[inJob]' onclick='checkEndDateBox()'> <span>Still in this job right now?</span> </div> <div class='col-sm-12 col-lg-12'> <div class='py-3'></div> Description About The Job <input type='text' name='CV[workDescription]' class='form-control form-control-user'> </div> <div class='col-sm-12 col-lg-12'> <div class='py-2'></div> Reference Letter  <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='reference" + idnumForNewField + "' name='CV[reference]'> </div> <div class='col-lg-12 col-sm-12'> <button value='workData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button>  </div> <div class='py-3'></div> </div> </div> </div> </div> </div>")
         } else if (data == "language") {
+            //get the session storage to know how many fields are added until now
             var currentLanField = parseInt(sessionStorage.getItem('numLanField'), 10);
+            //field length +1 for update the number of fields & the id for for new added field
             var idnumForNewField = currentLanField + 1;
             sessionStorage.setItem('numLanField', idnumForNewField);
             document.getElementById('lanBtn').insertAdjacentHTML('beforebegin', "<div id='languageData" + idnumForNewField + "' class='container languageField'> <div class='row justify-content-center'> <div class='col-sm-12 col-xl-10 col-lg-12 col-md-12'> <div class='card o-hidden border-0'> <div class='row'> <div class='col-sm-12 col-lg-4'> <div class='py-2'></div> Name <input type='text' name='CV[name]' class='form-control form-control-user' required> </div> <div class='col-sm-12 col-lg-3'> <div class='py-2'></div> Level <select class='form-control' name='CV[level]' value='' required>  <option value='Native'>Native</option> <option value='Advance'>Advance</option> <option value='Good'>Good</option> <option value='Intermediate'>Intermediate</option> <option value='Basic'>Basic</option> </select> </div> <div class='col-sm-12 col-lg-5'> <div class='py-2'></div> Certificate (If any) <input type='file' accept='image/*,application/pdf' class='form-control form-control-user py-1' onchange='uploadFile()'> <input type='hidden' id='lanCertificate" + idnumForNewField + "' name='CV[lanCertificate]'> </div> <div class='col-lg-12 col-sm-12'> <button value='languageData" + idnumForNewField + "' type='button' class='btn btn-link' style='color: red; float: right' onclick='deleteData()'> - Remove this field </button> </div> </div> </div> </div> </div> </div>")
@@ -829,7 +888,7 @@
     ////////
 
 
-    ///////make workEndDate disable due to work until now
+    ///////if work until now checkbox is ticked, make workEndDate to Until now
     function checkEndDateBox() {
         var currentEndDateField = event.target.value;
         if (event.target.checked == true) {
@@ -845,10 +904,10 @@
     ////////
 
 
-    ////////delete new added field
+    ////////delete new added field in education/work/language
     function deleteData() {
+        //each of the delete field btn's value = that field's id
         var deleteField = event.target.value;
-        alert(deleteField)
         document.getElementById(deleteField).remove();
     }
     ////////
@@ -859,6 +918,7 @@
         var schoolArray = [];
         var schoolList = document.getElementsByName('CV[school]');
         var i;
+        //make the data as array
         for (i = 0; i < schoolList.length; i++) {
             schoolArray.push(schoolList[i].value);
         }
@@ -911,7 +971,6 @@
         for (i = 0; i < eduCertificateList.length; i++) {
             eduCertificateArray.push(eduCertificateList[i].value);
         }
-        // alert(eduCertificateArray)
 
 
         var companyArray = [];
@@ -962,9 +1021,6 @@
         for (i = 0; i < referenceList.length; i++) {
             referenceArray.push(referenceList[i].value);
         }
-        //alert(referenceArray)
-
-
 
         var nameArray = [];
         var nameList = document.getElementsByName('CV[name]');

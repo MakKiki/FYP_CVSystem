@@ -1,5 +1,6 @@
     <!-- color selection for the template -->
     <div class="row py-2">
+        <!-- Webpage background color -->
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="custom-control custom-radio">
                 <span style="color:#81828b;"><b>Webpage Background Color</b></span>
@@ -16,7 +17,7 @@
             </div>
         </div>
     
-    
+        <!-- theme color -->
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="custom-control custom-radio">
                 <span style="color: #81828b;"><b>Theme Color</b></span>
@@ -30,22 +31,24 @@
             </div>
         </div>
     
+        <!-- button for continue -->
         <div class="col-lg-4 col-md-6 col-sm-12">
             <br>
             <button type="button" class="ml-4 btn pink-btn" onclick="submitCV()">I want to choose this template</button>
         </div>
     </div>
-
-
     <!-- end of the color selection -->
+
+
     <div class="py-3"></div>
     
+
     <!-- Content -->
     <div id="content" class="container-md">
                 
                 <!-- innerHTML for CV -->
                 <div id="CVbody">
-                <!-- for storing background color of the web page -->
+                <!-- for storing background & theme color of the cv -->
                 <input type="hidden" id="webpageColor" style="background-color: rgb(248, 248, 248);"></input> 
                 <input type="hidden" id="darkerColor" value="navy"></input>
                 <input type="hidden" id="themeColor" style="color: #4e73df"></input>
@@ -54,7 +57,7 @@
                         <div class="cotainer">
                             <div class="row">
         
-                                <!-- Fieldbar -->
+                                <!-- Meun Fieldbar -->
                                 <div class="col-lg-2 col-md-12 col-sm-12">
                                     <ul id="fieldbar" class="ul-noBullet py-3">
                                         <!-- Basic Info Button -->
@@ -102,11 +105,13 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <!-- End of Fieldbar -->
+                                <!-- End of Meun Fieldbar -->
         
-                                <!-- Main Content -->
+                                <!-- Main Content of the cv-->
                                 <div id="main" class="col-lg-10 col-md-12 col-sm-12">
-                                    <div style="transform: translate(0px, 0px);" id="Basic Information"
+
+                                    <!-- Basic Info page -->
+                                    <div id="Basic Information"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
         
                                         <div class="py-3 ml-4 resize-drag" style="font-size: 2rem; color: rgb(0, 0, 0);"
@@ -265,8 +270,10 @@
                                         </div>
                                         <div class="py-4"></div>
                                     </div>
+                                    <!-- End of Basic Info page -->
         
         
+                                    <!-- Education page -->
                                     <div style="display: none;" id="Education"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
         
@@ -284,11 +291,17 @@
                                             <div class="row resize-drag">
                                                 <div class="col-sm-12">
         
+                                                    <!-- Education info will be shown as timeline -->
                                                     <div class="timeline ml-2" style="color: black;">
+                                                        <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                            so it is a need to split the data by ',' to get back the value of the original data -->
+                                                        <!-- Make the eduStartDate as string first -->
                                                         <% var edu = cv.eduStartDate + '';
                                                         var eduData = edu.split(",");
+                                                        <!-- if the number of data is >1 -->
                                                         if(eduData[1] != null){
-                                                        var i; 
+                                                        var i;
+                                                        <!-- show each of the information in each of the array -->
                                                         for (i = 0; i < eduData.length; i++) { %>
                                                             <div class="timeline__group">
                                                                 <span class="timeline__date time" aria-hidden="true" contenteditable="false">
@@ -328,6 +341,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                        <!-- if only one data exists -->
                                                         <% }} else { %>
                                                             <div class="timeline__group">
                                                                 <span class="timeline__date time" aria-hidden="true" contenteditable="false">
@@ -375,8 +390,10 @@
                                         </div>
                                         <div class="py-4"></div>
                                     </div>
+                                    <!-- End of education page -->
         
         
+                                    <!-- Work experience page -->
                                     <% if (cv.company !=''){ %>
                                     <div style="display: none;" id="Work Experience"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
@@ -393,23 +410,30 @@
                                             <b>Work Experience</b>
                                         </div>
 
+                                        <!-- show work expreience info in the slideshow -->
                                         <div class="slideshow">
                                         <div id="slidemain_1" class="container">
                                             <div class="row resize-drag">
                                                 <div class="col-sm-12">
         
                                                     <div class="slider">
-        
+                                                        <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                                            so it is a need to split the data by ',' to get back the value of the original data -->
+                                                        <!-- Make the workStartDate as string first -->
                                                         <% var work = cv.workStartDate + '';
                                                         var workData = work.split(",");
+                                                        <!-- if the number of data is >1 -->
                                                         if (workData[1] != null){
                                                         var i; 
+                                                        <!-- loop for create the page btn -->
                                                         for (i = 1; i <= workData.length + 1; i++) { %>
                                                         <a class="slider-btn" href="#1_slide-<%=i%>"><%=i%></a>
                                                         <% } %>
+                                                        <!-- for later use when edit the slideshow -->
                                                         <br><button id="slidebtn_1" class="btn" style="display: none; color: green;" onclick="leaveSlider('slidebtn_1')">✓ Finish Managing The Slideshow</button>
                                                         <button id="slideDelBtn_1" class="btn" style="display: none; color: red;" onclick="delSlider('slidemain_1')">✕ Delete The Slideshow</button>
         
+                                                        <!-- loop for create page (1 exprencie in 1 page) -->
                                                         <div class="slides" style="color: black;">
                                                             <% var p;
                                                             for (p = 0; p < workData.length; p++) { %>
@@ -495,6 +519,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
+                                                        <!-- if only one data exists -->
                                                         <% } else { %>
                                                             <a class="slider-btn" href="#1_slide-1">1</a>
                                                             <a class="slider-btn" href="#1_slide-2">2</a>
@@ -595,8 +621,10 @@
                                       </div>
                                     </div>
                                     <% } %>
+                                    <!-- End of work experience page -->
         
         
+                                    <!-- Skill pae -->
                                     <% if (cv.typingSkill !='' || cv.codingSkill != '' || cv.softwareSkill != ''){ %>
                                     <div style="display: none;" id="Skill"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4">
@@ -616,9 +644,12 @@
                                                 <% var i;
                                                 
                                                 if (cv.typingSkill != ''){
+                                                    <!-- split the data by ',' to get back each of the skill -->
                                                     var skill1 = cv.typingSkill.split(",");
+                                                <!-- for each of the skill, split the ':' to get back that skill's name and percentage -->
                                                 for (i = 0; i < skill1.length; i++) { 
-                                                    var detail = skill1[i].split(":");%>       
+                                                    var detail = skill1[i].split(":");%>
+                                                <!-- the skill will be shown as progress bar -->
                                                 <div class="col-lg-4 col-sm-6 col-6">
                                                     <div class="single-chart resize-drag" contenteditable="false">
                                                         <svg viewBox="0 0 36 36" class="circular-chart blue">
@@ -635,9 +666,12 @@
                                                 <% }}
         
                                                 if (cv.codingSkill != ''){
+                                                    <!-- split the data by ',' to get back each of the skill -->
                                                     var skill2 = cv.codingSkill.split(",");
+                                                <!-- for each of the skill, split the ':' to get back that skill's name and percentage -->
                                                 for (i = 0; i < skill2.length; i++) { 
                                                     var detail = skill2[i].split(":");%>
+                                                <!-- the skill will be shown as progress bar -->
                                                 <div class="col-lg-4 col-sm-6 col-6">
                                                     <div class="single-chart resize-drag" contenteditable="false">
                                                         <svg viewBox="0 0 36 36" class="circular-chart blue">
@@ -654,9 +688,12 @@
                                                 <% }}
         
                                                 if (cv.softwareSkill != ''){
+                                                    <!-- split the data by ',' to get back each of the skill -->
                                                     var skill3 = cv.softwareSkill.split(",");
+                                                <!-- for each of the skill, split the ':' to get back that skill's name and percentage -->
                                                 for (i = 0; i < skill3.length; i++) { 
                                                     var detail = skill3[i].split(":");%>
+                                                <!-- the skill will be shown as progress bar -->
                                                 <div class="col-lg-4 col-sm-6 col-6">
                                                     <div class="single-chart resize-drag" contenteditable="false">
                                                         <svg viewBox="0 0 36 36" class="circular-chart blue">
@@ -676,8 +713,10 @@
                                         <div class="py-4"></div>
                                     </div>
                                     <% } %>
+                                    <!-- End of skill page -->
         
-        
+
+                                    <!-- Language page -->
                                     <div style="display: none;" id="Language"
                                         class="animate animate__animated animate__fadeInRight new-page card shadow mb-4 resize-only">
         
@@ -691,10 +730,16 @@
                                             <b>Language</b>
                                         </div>
         
+                                        <!-- In sails, the array can only be saved as ',' format but not '[]' in the db, 
+                                            so it is a need to split the data by ',' to get back the value of the original data -->
+                                        <!-- Make the level as string first -->
                                         <% var language = cv.level + '';
                                         var languageData = language.split(",");
+                                        <!-- if the number of data is >1 -->
                                         if (languageData[1] != null){
                                         var i; 
+
+                                        <!-- show each of the information in each of the array -->
                                         for (i = 0; i < languageData.length; i++) { %>
                                         <div class="container field animate animate__animated animate__flipInX">
                                             <br>
@@ -725,6 +770,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- if only one data exists -->
                                         <% }}} else { %>
                                             <div class="container field animate animate__animated animate__flipInX">
                                                 <br>
@@ -758,9 +805,10 @@
                                         <% }} %>
                                         <div class="py-4"></div>
                                     </div>
+                                    <!-- End of the skill page -->
         
                                 </div>
-                                <!-- End of main Content -->
+                                <!-- End of main Content of the cv page -->
                             </div>
                         </div>
                     </div>
@@ -771,7 +819,7 @@
 
 
 <script>
-    ////////for showing content page
+    ////////for showing different content page when a meun button is clicked
     function showContent(targetPage) {
         var contentBtnArray = document.getElementsByClassName("content-btn");
         var i;
@@ -787,22 +835,25 @@
     ////////
 
 
-     /////// change background color
+     ///////change cv webpage background color
      function changeBackground(newBackground) {
         if (newBackground == "Original") {
             document.body.setAttribute("class", "");
             document.body.style.backgroundColor = 'rgb(248, 248, 248)';
+            //for storing the cv webpage color
             document.getElementById('webpageColor').value = 'rgb(248, 248, 248)';
         } else {
             document.body.setAttribute("class", newBackground);
+            //for storing the cv webpage color
             document.getElementById('webpageColor').value = newBackground;
         }
     }
     ///////
 
 
-    /////// change theme color
+    ///////change cv theme color
     function changeColor(newTheme) {
+        // split for getting the color of svg, progress bar, timeline & main theme
         var colorArray = newTheme.split("/");
         document.querySelectorAll(".darkerColor").forEach(ele => {
             ele.style.color = colorArray[0];
@@ -834,6 +885,7 @@
 
     //////// for submit CV code
     async function submitCV() {
+        // Ensure things can be edited in the following customize page
         document.querySelectorAll("[contenteditable]").forEach(field => {
             field.contentEditable = "true";
         });

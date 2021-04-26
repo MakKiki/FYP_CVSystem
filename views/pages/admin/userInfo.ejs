@@ -51,7 +51,7 @@
     <div class="row justify-content-center">
         <!-- Profile -->
         <div class="col-sm-12">
-            <img id="showImg" style="height:220px; width:220px;"
+            <img id="showImg" style="height:100%; width: 20%;"
                 class="rounded-circle img-center" <% if (user.profile=='' ){ %>src="/images/avatar.png"<% }else{ %>src="
                 <%=user.profile%>"<%}%>>
         </div>
@@ -182,7 +182,7 @@
                                         <%if (cv.CVlink=='' ) {%>
                                             Have not publicated
                                             <% } else { %>
-                                                <button type="button" class="btn btn-link"
+                                                <button type="button" class="CVlink-btn"
                                                     onclick="window.open('/CV/<%= cv.id %>')">
                                                     <%= cv.CVlink %>
                                                 </button>
@@ -300,7 +300,7 @@
             alert(data.message);
             window.location = data.url;
         } else if (response.status == 401) {
-            var data = await response.text();   // for res.send()
+            var data = await response.text(); 
             alert("⚠️ " + data + " ⚠️");
         } else {
             alert(response.statusText);

@@ -11,14 +11,15 @@
 <div class="py-3"></div>
 <!-- End of progress bar -->
 
-<!-- Message -->
+
+<!-- Content -->
 <div class="container my-4">
     <div class="text-center">
         <div class="row justify-content-center">
 
-
             <div class="col-lg-12 col-sm-12">
                 <div class="row">
+                    <!-- Titile -->
                     <div class="col-sm-12">
                         <h1 style="color: #a570a7">Step 3 - 🔨 Customizing Your CV 🔨</h1>
                         <div class="py-3"></div>
@@ -28,12 +29,14 @@
 
                     <div class="d-none d-md-inline col-lg-3"></div>
 
+                    <!-- Create btn -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="py-2"></div>
                         <button class="btn main-create-btn" onclick="location.href='/customize';">Start
                             Creating</button>
                     </div>
                     
+                    <!-- Pass btn -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="py-2"></div>
                         <button class="btn main-create-btn2" onclick="pass()">Pass This Step</button>
@@ -44,6 +47,7 @@
             </div>
 
 
+            <!-- illustrate functions in step 3 -->
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
                 <div class="py-3"></div>
                 <svg xmlns="http://www.w3.org/2000/svg" style="width:25%; height:25%; color:#a570a7" fill="currentColor"
@@ -90,7 +94,7 @@
                     <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                 </svg>
                 <div class="py-2"></div>
-                <span class="text-center">You can delete unwanted textfields in your CV in this step.</span>
+                <span class="text-center">You can delete unwanted textfields or pages in your CV in this step.</span>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 card">
                 <div class="py-3"></div>
@@ -117,9 +121,12 @@
         </div>
     </div>
 </div>
+<!-- End of content -->
+
+
 
 <script>
-    ////////pass this step (save defaultcode to cvcode)
+    ////////pass this step (save defaultcode as cvcode)
     async function pass() {
         var data = JSON.stringify({
             step: "step4"
