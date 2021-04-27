@@ -44,7 +44,7 @@ module.exports.bootstrap = async function () {
         email: "admin@gmail.com",
         password: "123456",
         firstName: "Admin",
-        lastName: "",
+        lastName: "Mr/Ms",
         role: "admin",
       },
     ]);
